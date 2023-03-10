@@ -1,0 +1,19 @@
+{
+  "name": "michaels-page",
+  "version": "1.0.0",
+  "description": "Michael's website!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miketabb33/michaels-page.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miketabb33/michaels-page/issues"
+  },
+  "homepage": "https://github.com/miketabb33/michaels-page#readme"
+}
