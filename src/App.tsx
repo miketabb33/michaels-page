@@ -1,6 +1,7 @@
 import React from 'react'
-import { Card } from '@mui/material'
+import Card from '@mui/material/Card'
 import styled from '@emotion/styled'
+import { $spacing, $fontSize } from './styles/static'
 
 const Screen = styled.div`
   height: 100vh;
@@ -13,7 +14,8 @@ const CardWrapper = styled.div`
   transform: translate(-50%, -50%);
 `
 const CardContent = styled.div`
-  padding: 2rem;
+  padding: ${$spacing.medium};
+  font-size: ${$fontSize.normal};
 `
 
 const App = () => {
