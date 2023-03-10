@@ -25,7 +25,9 @@ module.exports = {
     'webpack.config.js',
     '.eslintrc.js',
   ],
-  rules: {},
+  rules: {
+    '@typescript-eslint/ban-ts-comment': 'off',
+  },
   settings: {
     react: {
       version: 'detect',

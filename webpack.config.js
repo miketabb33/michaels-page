@@ -21,7 +21,6 @@ module.exports = {
     ],
   },
   plugins: [new CopyPlugin({ patterns: [{ from: 'public', to: '.' }] })],
-
   devServer: {
     static: {
       directory: path.join(__dirname, 'public'),
