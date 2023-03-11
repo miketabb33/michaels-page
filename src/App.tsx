@@ -22,9 +22,9 @@ const App = () => {
       <GlobalStyle theme={theme} />
       <Screen>
         <CardWrapper>
-          <h3>Hello,</h3>
-          <p>Im Michael Tabb.</p>
-          <p>How are you today?</p>
+          <h3>Hi Shanna</h3>
+          <p>Im Michael Tabb</p>
+          <p>I love you! Have a great day!</p>
           <Button onClick={toggleTheme}>change theme</Button>
         </CardWrapper>
       </Screen>
