@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { createContext, useContext } from 'react'
 import { ChildrenProp } from '../types/ChildrenProp'
+import { Theme, ThemeSettings } from '../types/Theme'
 
 const lightTheme: ThemeSettings = {
   id: 'light',
@@ -29,8 +30,6 @@ const darkTheme: ThemeSettings = {
     large: '3rem',
   },
 }
-
-type Theme = 'light' | 'dark'
 
 type ThemeContextType = {
   theme: ThemeSettings
@@ -75,24 +74,4 @@ const parseTheme = (theme: Theme | null) => {
 
 export const useTheme = (): ThemeContextType => {
   return useContext(ThemeContext)
-}
-
-type ThemeSettings = {
-  id: Theme
-  color: Color
-  spacing: Spacing
-  fontSize: FontSize
-}
-
-type Color = {
-  text: string
-}
-
-type Spacing = {
-  medium: string
-}
-
-type FontSize = {
-  normal: string
-  large: string
 }

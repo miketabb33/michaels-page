@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Button from './components/mblocks/Button'
 import { useTheme } from './context/ThemeContext'
 import GlobalStyle from './GlobalStyles'
 
@@ -18,13 +19,13 @@ const App = () => {
   const { theme, toggleTheme } = useTheme()
   return (
     <>
-      <GlobalStyle textColor={theme.color.text} />
+      <GlobalStyle theme={theme} />
       <Screen>
         <CardWrapper>
           <h3>Hello,</h3>
           <p>Im Michael Tabb.</p>
           <p>How are you today?</p>
-          <button onClick={toggleTheme}>change theme</button>
+          <Button onClick={toggleTheme}>change theme</Button>
         </CardWrapper>
       </Screen>
     </>

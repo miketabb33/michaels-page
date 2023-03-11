@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
+import { ThemeSettings } from './types/Theme'
 
-const GlobalStyle = createGlobalStyle<{ textColor: string }>`
+const GlobalStyle = createGlobalStyle<{ theme: ThemeSettings }>`
 *,
 *::after,
 *::before {
@@ -13,7 +14,7 @@ html {
   font-size: 62.5%;
   font-family: 'lato', 'sans-serif';
   font-weight: 400;
-  color: ${(props) => props.textColor};
+  color: ${(props) => props.theme.color.text};
   box-sizing: border-box;
 }
 
