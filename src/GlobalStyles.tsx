@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+import { createGlobalStyle } from 'styled-components'
 
+const GlobalStyle = createGlobalStyle<{ textColor: string }>`
 *,
 *::after,
 *::before {
@@ -12,7 +13,7 @@ html {
   font-size: 62.5%;
   font-family: 'lato', 'sans-serif';
   font-weight: 400;
-  color: #202124;
+  color: ${(props) => props.textColor};
   box-sizing: border-box;
 }
 
@@ -44,3 +45,6 @@ img {
   max-width: 100%;
   height: auto;
 }
+`
+
+export default GlobalStyle
