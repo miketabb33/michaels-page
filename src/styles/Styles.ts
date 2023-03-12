@@ -26,6 +26,10 @@ const staticColor: StaticColor = {
   black: black,
 }
 
+const shadow: Shadow = {
+  box: `0 0 ${spacing.xSmall} rgba(0,0,0,0.5)`,
+}
+
 export const lightStyle: StylesSettings = {
   id: 'light',
   themeColor: {
@@ -42,6 +46,7 @@ export const lightStyle: StylesSettings = {
   staticColor,
   spacing,
   fontSize,
+  shadow,
 }
 
 export const darkStyle: StylesSettings = {
@@ -60,6 +65,7 @@ export const darkStyle: StylesSettings = {
   staticColor,
   spacing,
   fontSize,
+  shadow,
 }
 
 export type Theme = 'light' | 'dark'
@@ -70,6 +76,7 @@ export type StylesSettings = {
   staticColor: StaticColor
   spacing: Spacing
   fontSize: FontSize
+  shadow: Shadow
 }
 
 type ThemeColor = {
@@ -100,4 +107,8 @@ type Spacing = {
 type FontSize = {
   normal: string
   large: string
+}
+
+type Shadow = {
+  box: string
 }

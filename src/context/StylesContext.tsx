@@ -15,7 +15,7 @@ const StylesContext = createContext<StylesContextType>({
   toggleTheme: () => {},
 })
 
-export const ThemeContextProvider = ({ children }: ChildrenProp) => {
+export const StylesContextProvider = ({ children }: ChildrenProp) => {
   const validateTheme: StylesSettings = parseTheme(
     localStorage.getItem('theme') as Theme
   )

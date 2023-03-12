@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useStyles } from '../../context/StylesContext'
-import HeaderLink from './HeaderLink'
+import SidebarLink from './SidebarLink'
 import { StylesSettings } from '../../styles/Styles'
 
 const HeaderStyles = styled.nav<{ styles: StylesSettings }>`
   background-color: ${(props) => props.styles.themeColor.secondary};
+  box-shadow: ${(props) => props.styles.shadow.box};
   width: 120px;
   overflow-y: auto;
 `
@@ -33,7 +34,7 @@ const Header = () => {
       <HeaderMenu styles={styles}>
         {headerItems.map(({ label, linkTo }: HeaderLinkConfig, i) => (
           <li key={i}>
-            <HeaderLink linkTo={linkTo}>{label}</HeaderLink>
+            <SidebarLink linkTo={linkTo}>{label}</SidebarLink>
           </li>
         ))}
       </HeaderMenu>

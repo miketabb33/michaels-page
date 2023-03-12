@@ -4,12 +4,7 @@ import styled from 'styled-components'
 import { StylesSettings } from '../../styles/Styles'
 import { useStyles } from '../../context/StylesContext'
 
-type LinkProps = {
-  children: ReactNode
-  linkTo: string
-}
-
-const Link = styled(ReactLink)<{ styles: StylesSettings }>`
+const SidebarLinkStyles = styled(ReactLink)<{ styles: StylesSettings }>`
   display: block;
   text-align: center;
   padding: ${(props) => props.styles.spacing.medium} 0;
@@ -23,13 +18,19 @@ const Link = styled(ReactLink)<{ styles: StylesSettings }>`
     background-color: ${(props) => props.styles.themeColor.secondaryDark};
   }
 `
-export const HeaderLink = ({ children, linkTo }: LinkProps) => {
+
+type SidebarLinkProps = {
+  children: ReactNode
+  linkTo: string
+}
+
+export const SidebarLink = ({ children, linkTo }: SidebarLinkProps) => {
   const { styles } = useStyles()
   return (
-    <Link styles={styles} to={linkTo}>
+    <SidebarLinkStyles styles={styles} to={linkTo}>
       {children}
-    </Link>
+    </SidebarLinkStyles>
   )
 }
 
-export default HeaderLink
+export default SidebarLink
