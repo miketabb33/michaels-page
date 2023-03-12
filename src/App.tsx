@@ -1,13 +1,13 @@
 import React from 'react'
-import { useTheme } from './context/ThemeContext'
-import Router from './router/Router'
+import { useStyles } from './context/StylesContext'
+import Router from './Router'
 import GlobalStyle from './styles/GlobalStyles'
 
 const App = () => {
-  const { theme } = useTheme()
+  const { styles } = useStyles()
   return (
     <>
-      <GlobalStyle themes={theme} />
+      <GlobalStyle styles={styles} />
       <Router />
     </>
   )

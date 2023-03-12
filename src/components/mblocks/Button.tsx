@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
-import { useTheme } from '../../context/ThemeContext'
-import { StyleSettings } from '../../styles/Theme'
+import { useStyles } from '../../context/StylesContext'
+import { StylesSettings } from '../../styles/Styles'
 
-const ButtonStyles = styled.button<{ themes: StyleSettings }>`
+const ButtonStyles = styled.button<{ themes: StylesSettings }>`
   background-color: ${(props) => props.themes.themeColor.primary};
   border: ${(props) => props.themes.themeColor.primaryDark} solid 1px;
   padding: ${(props) => props.themes.spacing.small};
@@ -25,7 +25,7 @@ type ButtonProps = {
 }
 
 const Button = ({ children, onClick }: ButtonProps) => {
-  const { theme } = useTheme()
+  const { styles: theme } = useStyles()
   return (
     <ButtonStyles themes={theme} onClick={onClick}>
       {children}

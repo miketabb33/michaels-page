@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
-import { StyleSettings } from './Theme'
+import { StylesSettings } from './Styles'
 
-const GlobalStyle = createGlobalStyle<{ themes: StyleSettings }>`
+const GlobalStyle = createGlobalStyle<{ styles: StylesSettings }>`
 *,
 *::after,
 *::before {
@@ -14,12 +14,12 @@ html {
   font-size: 62.5%;
   font-family: 'lato', 'sans-serif';
   font-weight: 400;
-  color: ${(props) => props.themes.themeColor.text};
+  color: ${(props) => props.styles.themeColor.text};
   box-sizing: border-box;
 }
 
 body {
-  background-color: ${(props) => props.themes.themeColor.splash};
+  background-color: ${(props) => props.styles.themeColor.splash};
   font-size: 1.6rem;
 }
 

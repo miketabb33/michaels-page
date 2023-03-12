@@ -9,9 +9,11 @@ const hunyadiYellow = '#FBB13C'
 const tomato = '#FE6847'
 
 const spacing: Spacing = {
+  xSmall: '0.75rem',
   small: '1rem',
   medium: '2rem',
   large: '4rem',
+  xLarge: '8rem',
 }
 
 const fontSize: FontSize = {
@@ -24,7 +26,7 @@ const staticColor: StaticColor = {
   black: black,
 }
 
-export const lightStyle: StyleSettings = {
+export const lightStyle: StylesSettings = {
   id: 'light',
   themeColor: {
     splash: white,
@@ -42,7 +44,7 @@ export const lightStyle: StyleSettings = {
   fontSize,
 }
 
-export const darkStyle: StyleSettings = {
+export const darkStyle: StylesSettings = {
   id: 'dark',
   themeColor: {
     splash: black,
@@ -62,7 +64,7 @@ export const darkStyle: StyleSettings = {
 
 export type Theme = 'light' | 'dark'
 
-export type StyleSettings = {
+export type StylesSettings = {
   id: Theme
   themeColor: ThemeColor
   staticColor: StaticColor
@@ -88,9 +90,11 @@ type StaticColor = {
 }
 
 type Spacing = {
+  xSmall: string
   small: string
   medium: string
   large: string
+  xLarge: string
 }
 
 type FontSize = {

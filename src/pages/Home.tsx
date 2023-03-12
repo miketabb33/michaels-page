@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import Header from '../components/Header'
+import NavLayout from '../components/layouts/NavLayout'
 import Button from '../components/mblocks/Button'
 import Spacer from '../components/mblocks/Spacer'
-import { useTheme } from '../context/ThemeContext'
+import { useStyles } from '../context/StylesContext'
 
 const Screen = styled.div`
   height: 100vh;
@@ -21,11 +21,10 @@ const Portrait = styled.img`
 `
 
 const Home = () => {
-  const { toggleTheme } = useTheme()
+  const { toggleTheme } = useStyles()
 
   return (
-    <>
-      <Header />
+    <NavLayout>
       <Screen>
         <CardWrapper>
           <Portrait src="./images/portrait.jpeg" />
@@ -37,7 +36,7 @@ const Home = () => {
           <Button onClick={toggleTheme}>New Look?</Button>
         </CardWrapper>
       </Screen>
-    </>
+    </NavLayout>
   )
 }
 

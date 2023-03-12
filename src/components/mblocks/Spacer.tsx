@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useTheme } from '../../context/ThemeContext'
+import { useStyles } from '../../context/StylesContext'
 
-const Space = styled.div<{ space: string }>`
+const SpacerStyles = styled.div<{ space: string }>`
   height: ${(props) => props.space};
   width: ${(props) => props.space};
 `
@@ -12,12 +12,12 @@ type SpacerProps = {
 }
 
 const Spacer = ({ size }: SpacerProps) => {
-  const { theme } = useTheme()
+  const { styles: theme } = useStyles()
   const calculateSpace = () => {
     if (size === 'medium') return theme.spacing.medium
     return theme.spacing.small
   }
-  return <Space space={calculateSpace()} />
+  return <SpacerStyles space={calculateSpace()} />
 }
 
 export default Spacer

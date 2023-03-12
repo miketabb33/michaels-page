@@ -1,12 +1,11 @@
 import React from 'react'
-import Header from '../components/Header'
+import NavLayout from '../components/layouts/NavLayout'
 
 const Pong = () => {
   return (
-    <>
-      <Header />
+    <NavLayout>
       <h1>Pong</h1>
-    </>
+    </NavLayout>
   )
 }
 

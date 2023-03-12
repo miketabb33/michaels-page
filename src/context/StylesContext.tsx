@@ -1,41 +1,43 @@
 import React, { useState } from 'react'
 import { createContext, useContext } from 'react'
 import { ChildrenProp } from '../types/ChildrenProp'
-import { Theme, StyleSettings, lightStyle, darkStyle } from '../styles/Theme'
+import { Theme, StylesSettings, lightStyle, darkStyle } from '../styles/Styles'
 
-type ThemeContextType = {
-  theme: StyleSettings
+type StylesContextType = {
+  styles: StylesSettings
   changeTheme: (theme: Theme) => void
   toggleTheme: () => void
 }
 
-const ThemeContext = createContext<ThemeContextType>({
-  theme: lightStyle,
+const StylesContext = createContext<StylesContextType>({
+  styles: lightStyle,
   changeTheme: () => {},
   toggleTheme: () => {},
 })
 
 export const ThemeContextProvider = ({ children }: ChildrenProp) => {
-  const validateTheme: StyleSettings = parseTheme(
+  const validateTheme: StylesSettings = parseTheme(
     localStorage.getItem('theme') as Theme
   )
 
-  const [theme, setTheme] = useState<StyleSettings>(validateTheme)
+  const [styles, setStyles] = useState<StylesSettings>(validateTheme)
 
   const changeTheme = (theme: Theme) => {
-    setTheme(parseTheme(theme))
+    setStyles(parseTheme(theme))
     localStorage.setItem('theme', theme)
   }
 
   const toggleTheme = () => {
-    const nextTheme: Theme = theme.id === 'light' ? 'dark' : 'light'
+    const nextTheme: Theme = styles.id === 'light' ? 'dark' : 'light'
     changeTheme(nextTheme)
   }
 
   return (
-    <ThemeContext.Provider value={{ theme, changeTheme, toggleTheme }}>
+    <StylesContext.Provider
+      value={{ styles: styles, changeTheme, toggleTheme }}
+    >
       {children}
-    </ThemeContext.Provider>
+    </StylesContext.Provider>
   )
 }
 
@@ -44,6 +46,6 @@ const parseTheme = (theme: Theme | null) => {
   return lightStyle
 }
 
-export const useTheme = (): ThemeContextType => {
-  return useContext(ThemeContext)
+export const useStyles = (): StylesContextType => {
+  return useContext(StylesContext)
 }
