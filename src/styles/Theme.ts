@@ -11,6 +11,7 @@ const tomato = '#FE6847'
 const spacing: Spacing = {
   small: '1rem',
   medium: '2rem',
+  large: '4rem',
 }
 
 const fontSize: FontSize = {
@@ -89,6 +90,7 @@ type StaticColor = {
 type Spacing = {
   small: string
   medium: string
+  large: string
 }
 
 type FontSize = {
