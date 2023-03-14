@@ -20,7 +20,6 @@ const MobileNavMenu = styled.ul<{ styles: StylesSettings }>`
 
 const MobileNavMenuItem = styled.li<{ styles: StylesSettings }>`
   height: inherit;
-  padding: 0;
   width: ${(props) => props.styles.spacing.xLarge};
 `
 
