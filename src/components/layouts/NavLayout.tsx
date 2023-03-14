@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import { navConfig } from '../../config/navConfig'
 import { useBreakpoint } from '../../context/BreakpointContext'
 import { ChildrenProp } from '../../types/ChildrenProp'
-import Header from '../sidebar/Sidebar'
+import MobileNav from '../mobileNav/MobileNav'
+import Sidebar from '../sidebar/Sidebar'
 
 const NavLayoutStyles = styled.div`
   display: flex;
@@ -19,11 +21,16 @@ const NavLayout = ({ children }: ChildrenProp) => {
   const { isMobile } = useBreakpoint()
 
   if (isMobile) {
-    return <>{children}</>
+    return (
+      <>
+        <MobileNav navConfig={navConfig} />
+        {children}
+      </>
+    )
   } else {
     return (
       <NavLayoutStyles>
-        <Header />
+        <Sidebar navConfig={navConfig} />
 
         <ViewPort>{children}</ViewPort>
       </NavLayoutStyles>
