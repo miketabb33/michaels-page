@@ -6,8 +6,8 @@ import Icon, { IconName } from './Icon'
 
 const IconButtonContainer = styled.button<{ styles: StylesSettings }>`
   cursor: pointer;
-  width: 35px;
-  height: 35px;
+  width: 3.5rem;
+  height: 3.5rem;
   padding: ${(props) => props.styles.spacing.xxSmall};
   border-radius: ${(props) => props.styles.spacing.small};
   border: 0;

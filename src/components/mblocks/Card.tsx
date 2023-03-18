@@ -8,7 +8,6 @@ const CardContainer = styled.div<{ styles: StylesSettings }>`
   height: 100%;
   width: 100%;
   background-color: ${(props) => props.styles.staticColor.white};
-  padding: ${(props) => props.styles.spacing.large};
   box-shadow: ${(props) => props.styles.shadow.blur};
   border-radius: ${(props) => props.styles.spacing.medium};
 `

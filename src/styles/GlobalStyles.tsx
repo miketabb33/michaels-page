@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { Breakpoint, MQ } from '../Breakpoint'
 import { StylesSettings } from './Styles'
 
 const GlobalStyle = createGlobalStyle<{ styles: StylesSettings }>`
@@ -11,11 +12,15 @@ const GlobalStyle = createGlobalStyle<{ styles: StylesSettings }>`
 }
 
 html {
-  font-size: 62.5%;
+  font-size: 50%;
   font-family: 'lato', 'sans-serif';
   font-weight: 400;
   color: ${(props) => props.styles.themeColor.text};
   box-sizing: border-box;
+
+  @media ${MQ(Breakpoint.mobileL)} {
+    font-size: 62.5%; 
+  }
 }
 
 body {
