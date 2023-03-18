@@ -6,6 +6,7 @@ import { StylesSettings } from '../../styles/Styles'
 import Card from '../mblocks/Card'
 import IconButton from '../mblocks/IconButton'
 import Spacer from '../mblocks/Spacer'
+import Typography from '../mblocks/Typography'
 
 export const IconButtonWrapper = styled.div<{ styles: StylesSettings }>`
   position: absolute;
@@ -35,8 +36,12 @@ const ProfileCardFront = ({ onRotateIconClick }: ProfileCardFrontProps) => {
       </IconButtonWrapper>
       <Portrait src="./images/portrait.jpeg" />
       <Spacer size="medium" />
-      <h3>Michael Tabb</h3>
-      <p>Software Engineer</p>
+      <Typography variation="h3" color="black">
+        Michael Tabb
+      </Typography>
+      <Typography variation="p" color="black">
+        Software Engineer
+      </Typography>
     </Card>
   )
 }

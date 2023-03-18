@@ -23,6 +23,7 @@ const ViewPort = styled.div`
 `
 
 const SidebarContainer = styled.div`
+  min-width: 120px;
   display: none;
   @media ${MQ(Breakpoint.tablet)} {
     display: block;

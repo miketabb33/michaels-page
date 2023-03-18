@@ -17,11 +17,6 @@ const spacing: Spacing = {
   xLarge: '8rem',
 }
 
-const fontSize: FontSize = {
-  normal: '1.6rem',
-  large: '3rem',
-}
-
 const staticColor: StaticColor = {
   white: white,
   black: black,
@@ -47,7 +42,6 @@ export const lightStyle: StylesSettings = {
   },
   staticColor,
   spacing,
-  fontSize,
   shadow,
 }
 
@@ -66,7 +60,6 @@ export const darkStyle: StylesSettings = {
   },
   staticColor,
   spacing,
-  fontSize,
   shadow,
 }
 
@@ -77,7 +70,6 @@ export type StylesSettings = {
   themeColor: ThemeColor
   staticColor: StaticColor
   spacing: Spacing
-  fontSize: FontSize
   shadow: Shadow
 }
 
@@ -105,11 +97,6 @@ type Spacing = {
   medium: string
   large: string
   xLarge: string
-}
-
-type FontSize = {
-  normal: string
-  large: string
 }
 
 type Shadow = {

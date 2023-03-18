@@ -2,6 +2,7 @@ import React from 'react'
 import { useStyles } from '../../context/StylesContext'
 import Card from '../mblocks/Card'
 import IconButton from '../mblocks/IconButton'
+import Typography from '../mblocks/Typography'
 import { IconButtonWrapper, ProfileCardFrontProps } from './ProfileCardFront'
 
 type ProfileCardBackProps = ProfileCardFrontProps
@@ -13,7 +14,7 @@ const ProfileCardBack = ({ onRotateIconClick }: ProfileCardBackProps) => {
       <IconButtonWrapper styles={styles}>
         <IconButton iconName="rotate" onClick={onRotateIconClick} />
       </IconButtonWrapper>
-      <p>
+      <Typography variation="p" color="black">
         I began my studies with computer programming in August 2017 to build a
         worthwhile and inspiring career. I started with web development using
         JavaScript (front-end) and then moved into Ruby on Rails. In March of
@@ -21,7 +22,7 @@ const ProfileCardBack = ({ onRotateIconClick }: ProfileCardBackProps) => {
         been continuing to grow as a developer and choose to always be learning.
         I am committed to the pursuit of writing high quality and well-tested
         software in a world with changing project requirements.
-      </p>
+      </Typography>
     </Card>
   )
 }
