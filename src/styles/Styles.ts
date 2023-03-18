@@ -9,6 +9,7 @@ const hunyadiYellow = '#FBB13C'
 const tomato = '#FE6847'
 
 const spacing: Spacing = {
+  xxSmall: '0.5rem',
   xSmall: '0.75rem',
   small: '1rem',
   medium: '2rem',
@@ -98,6 +99,7 @@ type StaticColor = {
 }
 
 type Spacing = {
+  xxSmall: string
   xSmall: string
   small: string
   medium: string

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import NavLayout from '../components/layouts/NavLayout'
-import ProfileCard from '../components/ProfileCard'
+import ProfileCard from '../components/profileCard/ProfileCard'
 
 const HomeContainer = styled.div`
   display: flex;

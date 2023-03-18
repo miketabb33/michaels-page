@@ -7,16 +7,13 @@ const FlipperContainer = styled.div`
   perspective: 1000px;
 `
 
-const FlipperInner = styled.div`
+const FlipperInner = styled.div<{ shouldShowBack: boolean }>`
   position: relative;
   width: 100%;
   height: 100%;
   transition: transform 0.8s;
   transform-style: preserve-3d;
-
-  &:hover {
-    transform: rotateY(180deg);
-  }
+  transform: ${(props) => (props.shouldShowBack ? 'rotateY(180deg)' : 'none')};
 `
 
 const FlipperFront = styled.div`
@@ -39,12 +36,13 @@ const FlipperBack = styled.div`
 type FlipperProps = {
   front: ReactNode
   back: ReactNode
+  shouldShowBack: boolean
 }
 
-const Flipper = ({ front, back }: FlipperProps) => {
+const Flipper = ({ front, back, shouldShowBack }: FlipperProps) => {
   return (
     <FlipperContainer>
-      <FlipperInner>
+      <FlipperInner shouldShowBack={shouldShowBack}>
         <FlipperFront>{front}</FlipperFront>
         <FlipperBack>{back}</FlipperBack>
       </FlipperInner>
