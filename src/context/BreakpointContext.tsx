@@ -2,12 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { createContext, useContext } from 'react'
 import { ChildrenProp } from '../types/ChildrenProp'
 
-type Breakpoints = {
-  mobile: number
+export enum Breakpoint {
+  mobileS = 320,
+  mobileM = 375,
+  mobileL = 425,
+  tablet = 768,
+  laptop = 1024,
+  laptopL = 1440,
+  desktop = 2560,
 }
 
-const breakpoints: Breakpoints = {
-  mobile: 500,
+export const MQ = (breakpoint: Breakpoint) => {
+  return `(min-width: ${breakpoint}px)`
 }
 
 type ScreenSize = 'desktop' | 'mobile'
@@ -26,7 +32,7 @@ export const BreakpointContextProvider = ({ children }: ChildrenProp) => {
   const isMobile = screenSize === 'mobile'
 
   const checkScreenSize = () => {
-    if (window.innerWidth <= breakpoints.mobile) {
+    if (window.innerWidth <= Breakpoint.tablet) {
       setScreenSize('mobile')
     } else {
       setScreenSize('desktop')

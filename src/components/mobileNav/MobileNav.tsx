@@ -3,9 +3,10 @@ import styled from 'styled-components'
 import { NavLinkConfig } from '../../config/navConfig'
 import { useStyles } from '../../context/StylesContext'
 import { StylesSettings } from '../../styles/Styles'
+import Button from '../mblocks/Button'
 import MobileNavLink from './MobileNavLink'
 
-const MobileNavStyles = styled.nav<{ styles: StylesSettings }>`
+const MobileNavContainer = styled.nav<{ styles: StylesSettings }>`
   background-color: ${(props) => props.styles.themeColor.secondary};
   height: ${(props) => props.styles.spacing.large};
 `
@@ -23,15 +24,22 @@ const MobileNavMenuItem = styled.li<{ styles: StylesSettings }>`
   width: ${(props) => props.styles.spacing.xLarge};
 `
 
+const ThemeButtonContainer = styled.div<{ styles: StylesSettings }>`
+  position: absolute;
+  top: 2px;
+  right: 2px;
+`
+
 type MobileNavProps = {
   navConfig: NavLinkConfig[]
 }
 
 const MobileNav = ({ navConfig }: MobileNavProps) => {
-  const { styles } = useStyles()
+  const { styles, toggleTheme } = useStyles()
+  const themeButtonText = styles.id === 'light' ? 'Dark' : 'Light'
 
   return (
-    <MobileNavStyles styles={styles}>
+    <MobileNavContainer styles={styles}>
       <MobileNavMenu styles={styles}>
         {navConfig.map(({ label, linkTo }: NavLinkConfig, i) => (
           <MobileNavMenuItem styles={styles} key={i}>
@@ -39,7 +47,10 @@ const MobileNav = ({ navConfig }: MobileNavProps) => {
           </MobileNavMenuItem>
         ))}
       </MobileNavMenu>
-    </MobileNavStyles>
+      <ThemeButtonContainer styles={styles}>
+        <Button onClick={toggleTheme}>{themeButtonText}</Button>
+      </ThemeButtonContainer>
+    </MobileNavContainer>
   )
 }
 

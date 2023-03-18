@@ -27,7 +27,8 @@ const staticColor: StaticColor = {
 }
 
 const shadow: Shadow = {
-  box: `0 0 ${spacing.xSmall} rgba(0,0,0,0.5)`,
+  crisp: `0 0 ${spacing.xSmall} rgba(0,0,0,0.5)`,
+  blur: `0 0 ${spacing.medium} rgba(0,0,0,0.2)`,
 }
 
 export const lightStyle: StylesSettings = {
@@ -110,5 +111,6 @@ type FontSize = {
 }
 
 type Shadow = {
-  box: string
+  crisp: string
+  blur: string
 }

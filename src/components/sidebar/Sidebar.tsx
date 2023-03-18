@@ -4,12 +4,14 @@ import { useStyles } from '../../context/StylesContext'
 import SidebarLink from './SidebarLink'
 import { StylesSettings } from '../../styles/Styles'
 import { NavLinkConfig } from '../../config/navConfig'
+import Button from '../mblocks/Button'
 
-const SidebarStyles = styled.nav<{ styles: StylesSettings }>`
+const SidebarContainer = styled.nav<{ styles: StylesSettings }>`
   background-color: ${(props) => props.styles.themeColor.secondary};
-  box-shadow: ${(props) => props.styles.shadow.box};
-  width: 120px;
-  overflow-y: auto;
+  box-shadow: ${(props) => props.styles.shadow.crisp};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 
 const SidebarMenu = styled.ul<{ styles: StylesSettings }>`
@@ -23,9 +25,12 @@ type SidebarProps = {
 }
 
 const Sidebar = ({ navConfig }: SidebarProps) => {
-  const { styles } = useStyles()
+  const { styles, toggleTheme } = useStyles()
+
+  const themeButtonText = styles.id === 'light' ? 'Dark' : 'Light'
+
   return (
-    <SidebarStyles styles={styles}>
+    <SidebarContainer styles={styles}>
       <SidebarMenu styles={styles}>
         {navConfig.map(({ label, linkTo }: NavLinkConfig, i) => (
           <li key={i}>
@@ -33,7 +38,8 @@ const Sidebar = ({ navConfig }: SidebarProps) => {
           </li>
         ))}
       </SidebarMenu>
-    </SidebarStyles>
+      <Button onClick={toggleTheme}>{themeButtonText}</Button>
+    </SidebarContainer>
   )
 }
 
