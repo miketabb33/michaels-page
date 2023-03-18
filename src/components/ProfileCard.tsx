@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Breakpoint, MQ } from '../context/BreakpointContext'
+import { Breakpoint, MQ } from '../Breakpoint'
 import Card from './mblocks/Card'
 import Spacer from './mblocks/Spacer'
 

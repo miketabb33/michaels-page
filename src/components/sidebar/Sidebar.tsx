@@ -12,6 +12,7 @@ const SidebarContainer = styled.nav<{ styles: StylesSettings }>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
 `
 
 const SidebarMenu = styled.ul<{ styles: StylesSettings }>`
