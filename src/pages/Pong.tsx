@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
+import { getCanvasSize } from '../canvas'
 import NavLayout from '../components/layouts/NavLayout'
 import { useStyles } from '../context/StylesContext'
 import { StylesSettings } from '../styles/Styles'
+import { Size } from '../types/Size'
 
-const PongPage = styled.div`
+const PongPageContainer = styled.div`
   position: relative;
   height: 95vh;
 `
@@ -18,68 +20,57 @@ const PongCanvas = styled.canvas<{ styles: StylesSettings }>`
   background-color: ${(props) => props.styles.staticColor.black};
 `
 
-type Size = {
-  width: number
-  height: number
-}
+class PongGame {
+  canvas: HTMLCanvasElement
+  styles: StylesSettings
 
-const getCanvasSize = ({ width, height }: Size) => {
-  let calculatedSize
+  constructor(canvas: HTMLCanvasElement, styles: StylesSettings) {
+    this.canvas = canvas
+    this.styles = styles
 
-  console.log(`Given Width: ${width}`, `Given Height: ${height}`)
-  if (width >= height) {
-    calculatedSize = height * 0.9
-    console.log('Wider')
-  } else {
-    console.log('taller')
-    calculatedSize = width * 0.9
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const ctx = canvas.getContext('2d')!
+    ctx.fillStyle = styles.themeColor.primaryLight
+    ctx.fillRect(0, 0, 80, 15)
   }
 
-  return calculatedSize
-}
-
-const startPong = (
-  canvas: HTMLCanvasElement | null,
-  superViewSize: Size,
-  styles: StylesSettings
-) => {
-  console.log(`-----------------`)
-  if (!canvas) return
-  const ctx = canvas.getContext('2d')
-  if (!ctx) return
-
-  const calculatedSize = getCanvasSize(superViewSize)
-  canvas.width = calculatedSize
-  canvas.height = calculatedSize
-
-  console.log('canvas width', canvas.width)
-  console.log('canvas height', canvas.height)
-
-  ctx.fillStyle = styles.themeColor.primaryLight
-  ctx.fillRect(0, 0, 80, 15)
+  updateCanvasSize = (superViewSize: Size) => {
+    const calculatedSize = getCanvasSize(superViewSize)
+    this.canvas.width = calculatedSize
+    this.canvas.height = calculatedSize
+  }
 }
 
 const Pong = () => {
   const { styles } = useStyles()
 
+  const [pongGame, setPongGame] = useState<PongGame | null>(null)
+
   const pongPageRef = useRef<HTMLDivElement | null>(null)
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    setPongGame(new PongGame(canvasRef.current!, styles))
+  }, [])
+
+  const resizeCanvas = useCallback(() => {
     const width = pongPageRef.current?.clientWidth || 0
     const height = pongPageRef.current?.clientHeight || 0
-    startPong(canvasRef.current, { width, height }, styles)
-  }, [])
+    pongGame?.updateCanvasSize({ width, height })
+  }, [pongGame])
+
+  useEffect(() => {
+    resizeCanvas()
+    addEventListener('resize', resizeCanvas)
+    return () => removeEventListener('resize', resizeCanvas)
+  }, [resizeCanvas])
 
   return (
     <NavLayout>
-      <PongPage ref={pongPageRef}>
-        <PongCanvas
-          ref={canvasRef}
-          styles={styles}
-          id="PongCanvas"
-        ></PongCanvas>
-      </PongPage>
+      <PongPageContainer ref={pongPageRef}>
+        <PongCanvas ref={canvasRef} styles={styles} id="PongCanvas" />
+      </PongPageContainer>
     </NavLayout>
   )
 }

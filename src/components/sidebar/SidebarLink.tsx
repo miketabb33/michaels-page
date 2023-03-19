@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { StylesSettings } from '../../styles/Styles'
 import { useStyles } from '../../context/StylesContext'
-import RouterLink from '../../RouterLink'
+import RouterLink from '../../router/RouterLink'
 
 const SidebarLinkStyles = styled(RouterLink)<{ styles: StylesSettings }>`
   display: block;

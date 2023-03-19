@@ -5,7 +5,7 @@ import SidebarLink from './SidebarLink'
 import { StylesSettings } from '../../styles/Styles'
 import { NavLinkConfig } from '../../config/navConfig'
 import Button from '../mblocks/Button'
-import RouterLink from '../../RouterLink'
+import RouterLink from '../../router/RouterLink'
 
 const SidebarContainer = styled.nav<{ styles: StylesSettings }>`
   background-color: ${(props) => props.styles.themeColor.secondary};

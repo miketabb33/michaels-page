@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { useStyles } from '../../context/StylesContext'
-import RouterLink from '../../RouterLink'
+import RouterLink from '../../router/RouterLink'
 import { StylesSettings } from '../../styles/Styles'
 
 const MobileNaveLinkStyles = styled(RouterLink)<{ styles: StylesSettings }>`
