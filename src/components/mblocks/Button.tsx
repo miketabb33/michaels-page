@@ -7,7 +7,7 @@ import Typography from './Typography'
 const ButtonStyles = styled.button<{ themes: StylesSettings }>`
   background-color: ${(props) => props.themes.themeColor.primary};
   border: ${(props) => props.themes.themeColor.primaryDark} solid 1px;
-  padding: ${(props) => props.themes.spacing.small};
+  padding: ${(props) => props.themes.spacing.xSmall};
   border-radius: ${(props) => props.themes.spacing.xxSmall};
   cursor: pointer;
 

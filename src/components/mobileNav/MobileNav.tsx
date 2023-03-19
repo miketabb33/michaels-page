@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { NavLinkConfig } from '../../config/navConfig'
 import { useStyles } from '../../context/StylesContext'
+import RouterLink from '../../RouterLink'
 import { StylesSettings } from '../../styles/Styles'
 import Button from '../mblocks/Button'
 import MobileNavLink from './MobileNavLink'
@@ -9,6 +10,10 @@ import MobileNavLink from './MobileNavLink'
 const MobileNavContainer = styled.nav<{ styles: StylesSettings }>`
   background-color: ${(props) => props.styles.themeColor.secondary};
   height: ${(props) => props.styles.spacing.xLarge};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: ${(props) => props.styles.spacing.xSmall};
 `
 
 const MobileNavMenu = styled.ul<{ styles: StylesSettings }>`
@@ -24,10 +29,12 @@ const MobileNavMenuItem = styled.li<{ styles: StylesSettings }>`
   width: ${(props) => props.styles.spacing.xLarge};
 `
 
-const ThemeButtonContainer = styled.div<{ styles: StylesSettings }>`
-  position: absolute;
-  top: 2px;
-  right: 2px;
+const Logo = styled.img`
+  height: 100%;
+`
+
+const LogoLink = styled(RouterLink)`
+  height: 100%;
 `
 
 type MobileNavProps = {
@@ -40,6 +47,9 @@ const MobileNav = ({ navConfig }: MobileNavProps) => {
 
   return (
     <MobileNavContainer styles={styles}>
+      <LogoLink linkTo="/">
+        <Logo src="images/logo.png" />
+      </LogoLink>
       <MobileNavMenu styles={styles}>
         {navConfig.map(({ label, linkTo }: NavLinkConfig, i) => (
           <MobileNavMenuItem styles={styles} key={i}>
@@ -47,9 +57,7 @@ const MobileNav = ({ navConfig }: MobileNavProps) => {
           </MobileNavMenuItem>
         ))}
       </MobileNavMenu>
-      <ThemeButtonContainer styles={styles}>
-        <Button onClick={toggleTheme}>{themeButtonText}</Button>
-      </ThemeButtonContainer>
+      <Button onClick={toggleTheme}>{themeButtonText}</Button>
     </MobileNavContainer>
   )
 }

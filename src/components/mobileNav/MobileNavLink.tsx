@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react'
-import { Link as ReactLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { useStyles } from '../../context/StylesContext'
+import RouterLink from '../../RouterLink'
 import { StylesSettings } from '../../styles/Styles'
 
-const MobileNaveLinkStyles = styled(ReactLink)<{ styles: StylesSettings }>`
+const MobileNaveLinkStyles = styled(RouterLink)<{ styles: StylesSettings }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +27,7 @@ type MobileNavLinkProps = {
 const MobileNavLink = ({ children, linkTo }: MobileNavLinkProps) => {
   const { styles } = useStyles()
   return (
-    <MobileNaveLinkStyles styles={styles} to={linkTo}>
+    <MobileNaveLinkStyles styles={styles} linkTo={linkTo}>
       {children}
     </MobileNaveLinkStyles>
   )

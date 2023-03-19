@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react'
-import { Link as ReactLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { StylesSettings } from '../../styles/Styles'
 import { useStyles } from '../../context/StylesContext'
+import RouterLink from '../../RouterLink'
 
-const SidebarLinkStyles = styled(ReactLink)<{ styles: StylesSettings }>`
+const SidebarLinkStyles = styled(RouterLink)<{ styles: StylesSettings }>`
   display: block;
   text-align: center;
   padding: ${(props) => props.styles.spacing.medium} 0;
@@ -27,7 +27,7 @@ type SidebarLinkProps = {
 export const SidebarLink = ({ children, linkTo }: SidebarLinkProps) => {
   const { styles } = useStyles()
   return (
-    <SidebarLinkStyles styles={styles} to={linkTo}>
+    <SidebarLinkStyles styles={styles} linkTo={linkTo}>
       {children}
     </SidebarLinkStyles>
   )
