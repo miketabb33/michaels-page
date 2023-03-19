@@ -27,7 +27,6 @@ const TopRow = styled.div<{ styles: StylesSettings }>`
 
 const Portrait = styled.img<{ styles: StylesSettings }>`
   height: 100%;
-  max-width: none;
   aspect-ratio: 1;
   border-radius: 50%;
   border: 2px solid ${(props) => props.styles.themeColor.accent};
@@ -37,17 +36,26 @@ const TextWell = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
 `
 
-const BottomRow = styled.div<{ styles: StylesSettings }>`
+const SocialMediaRow = styled.div<{ styles: StylesSettings }>`
   display: flex;
-  gap: ${(props) => props.styles.spacing.medium};
+  gap: ${(props) => props.styles.spacing.small};
   justify-content: right;
   align-items: flex-end;
 `
 
+const TechStackRow = styled.div`
+  display: flex;
+  justify-content: right;
+  align-items: center;
+`
+
 const IconLink = styled.a<{ styles: StylesSettings }>`
-  width: ${(props) => props.styles.spacing.medium};
+  width: ${(props) => props.styles.spacing.xLarge};
+  height: ${(props) => props.styles.spacing.xLarge};
+  padding: ${(props) => props.styles.spacing.small};
 `
 
 export type ProfileCardFrontProps = {
@@ -70,7 +78,11 @@ const ProfileCardFront = ({ onRotateIconClick }: ProfileCardFrontProps) => {
             <Typography kind="p">miketabb33@gmail.com</Typography>
           </TextWell>
         </TopRow>
-        <BottomRow styles={styles}>
+
+        <TechStackRow>
+          <Typography kind="p">React • Typescript • Swift • Xcode</Typography>
+        </TechStackRow>
+        <SocialMediaRow styles={styles}>
           <IconLink
             href="https://www.linkedin.com/in/michael-tabb-24b34488/"
             target="_blank"
@@ -87,7 +99,7 @@ const ProfileCardFront = ({ onRotateIconClick }: ProfileCardFrontProps) => {
           >
             <Icon iconName="github" />
           </IconLink>
-        </BottomRow>
+        </SocialMediaRow>
       </CardFrontContent>
     </Card>
   )

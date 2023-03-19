@@ -8,7 +8,7 @@ import MobileNavLink from './MobileNavLink'
 
 const MobileNavContainer = styled.nav<{ styles: StylesSettings }>`
   background-color: ${(props) => props.styles.themeColor.secondary};
-  height: ${(props) => props.styles.spacing.large};
+  height: ${(props) => props.styles.spacing.xLarge};
 `
 
 const MobileNavMenu = styled.ul<{ styles: StylesSettings }>`

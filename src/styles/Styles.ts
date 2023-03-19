@@ -13,8 +13,9 @@ const spacing: Spacing = {
   xSmall: '0.75rem',
   small: '1rem',
   medium: '2rem',
-  large: '4rem',
-  xLarge: '8rem',
+  large: '3rem',
+  xLarge: '4rem',
+  xxLarge: '8rem',
 }
 
 const staticColor: StaticColor = {
@@ -97,6 +98,7 @@ type Spacing = {
   medium: string
   large: string
   xLarge: string
+  xxLarge: string
 }
 
 type Shadow = {
