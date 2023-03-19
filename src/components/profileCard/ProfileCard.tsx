@@ -5,12 +5,17 @@ import { StylesSettings } from '../../styles/Styles'
 import Flipper from '../mblocks/Flipper'
 import ProfileCardBack from './ProfileCardBack'
 import ProfileCardFront from './ProfileCardFront'
+import { Breakpoint, MQ } from '../../Breakpoint'
 
 const ProfileCardContainer = styled.div<{ styles: StylesSettings }>`
-  width: 75%;
+  width: 95%;
   max-width: 500px;
-  aspect-ratio: 1.4;
+  aspect-ratio: 1.5;
   color: ${(props) => props.styles.staticColor.black};
+
+  @media ${MQ(Breakpoint.tablet)} {
+    width: 75%;
+  }
 `
 
 const ProfileCard = () => {
