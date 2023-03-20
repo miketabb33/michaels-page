@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-import { getCanvasSize } from '../canvas'
 import NavLayout from '../components/layouts/NavLayout'
 import { useStyles } from '../context/StylesContext'
+import PongGame from '../pong/PongGame'
 import { StylesSettings } from '../styles/Styles'
-import { Size } from '../types/Size'
 
 const PongPageContainer = styled.div`
   position: relative;
@@ -19,27 +18,6 @@ const PongCanvas = styled.canvas<{ styles: StylesSettings }>`
   transform: translate(-50%, -50%);
   background-color: ${(props) => props.styles.staticColor.black};
 `
-
-class PongGame {
-  canvas: HTMLCanvasElement
-  styles: StylesSettings
-
-  constructor(canvas: HTMLCanvasElement, styles: StylesSettings) {
-    this.canvas = canvas
-    this.styles = styles
-
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const ctx = canvas.getContext('2d')!
-    ctx.fillStyle = styles.themeColor.primaryLight
-    ctx.fillRect(0, 0, 80, 15)
-  }
-
-  updateCanvasSize = (superViewSize: Size) => {
-    const calculatedSize = getCanvasSize(superViewSize)
-    this.canvas.width = calculatedSize
-    this.canvas.height = calculatedSize
-  }
-}
 
 const Pong = () => {
   const { styles } = useStyles()
@@ -57,7 +35,7 @@ const Pong = () => {
   const resizeCanvas = useCallback(() => {
     const width = pongPageRef.current?.clientWidth || 0
     const height = pongPageRef.current?.clientHeight || 0
-    pongGame?.updateCanvasSize({ width, height })
+    pongGame?.renderGame({ width, height })
   }, [pongGame])
 
   useEffect(() => {
