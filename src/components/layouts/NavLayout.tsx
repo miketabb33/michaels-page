@@ -6,49 +6,45 @@ import { ChildrenProp } from '../../types/ChildrenProp'
 import MobileNav from '../mobileNav/MobileNav'
 import Sidebar from '../sidebar/Sidebar'
 
-const NavLayoutStyles = styled.div`
-  display: flex;
-  flex-direction: column;
+const Container = styled.div`
   height: 100vh;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 40px 1fr;
 
   @media ${MQ(Breakpoint.tablet)} {
-    flex-direction: row;
+    grid-template-columns: 120px 1fr;
+    grid-template-rows: auto;
   }
 `
 
-const ViewPort = styled.div`
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-`
-
-const SidebarContainer = styled.div`
-  min-width: 120px;
-  width: 120px;
-  display: none;
-  @media ${MQ(Breakpoint.tablet)} {
-    display: block;
-  }
-`
-
-const MobileNavContainer = styled.div`
+const MobileContainer = styled.div`
   display: block;
   @media ${MQ(Breakpoint.tablet)} {
     display: none;
   }
 `
 
+const SidebarContainer = styled.div`
+  display: none;
+  @media ${MQ(Breakpoint.tablet)} {
+    display: block;
+  }
+`
+
 const NavLayout = ({ children }: ChildrenProp) => {
   return (
-    <NavLayoutStyles>
-      <MobileNavContainer>
-        <MobileNav navConfig={navConfig} />
-      </MobileNavContainer>
-      <SidebarContainer>
-        <Sidebar navConfig={navConfig} />
-      </SidebarContainer>
-      <ViewPort>{children}</ViewPort>
-    </NavLayoutStyles>
+    <>
+      <Container>
+        <MobileContainer>
+          <MobileNav navConfig={navConfig} />
+        </MobileContainer>
+        <SidebarContainer>
+          <Sidebar navConfig={navConfig} />
+        </SidebarContainer>
+        {children}
+      </Container>
+    </>
   )
 }
 

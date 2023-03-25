@@ -4,7 +4,7 @@ import { useStyles } from '../../context/StylesContext'
 import { StylesSettings } from '../../styles/Styles'
 import { ChildrenProp } from '../../types/ChildrenProp'
 
-const CardContainer = styled.div<{ styles: StylesSettings }>`
+const Container = styled.div<{ styles: StylesSettings }>`
   height: 100%;
   width: 100%;
   background-color: ${(props) => props.styles.staticColor.white};
@@ -14,7 +14,7 @@ const CardContainer = styled.div<{ styles: StylesSettings }>`
 
 const Card = ({ children }: ChildrenProp) => {
   const { styles } = useStyles()
-  return <CardContainer styles={styles}>{children}</CardContainer>
+  return <Container styles={styles}>{children}</Container>
 }
 
 export default Card

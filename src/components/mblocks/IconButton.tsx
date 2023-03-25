@@ -4,7 +4,7 @@ import { useStyles } from '../../context/StylesContext'
 import { StylesSettings } from '../../styles/Styles'
 import Icon, { IconName } from './Icon'
 
-const IconButtonContainer = styled.button<{ styles: StylesSettings }>`
+const Container = styled.button<{ styles: StylesSettings }>`
   cursor: pointer;
   width: 3.5rem;
   height: 3.5rem;
@@ -33,9 +33,9 @@ type IconButtonProps = {
 const IconButton = ({ iconName, onClick }: IconButtonProps) => {
   const { styles } = useStyles()
   return (
-    <IconButtonContainer onClick={onClick} styles={styles}>
+    <Container onClick={onClick} styles={styles}>
       <Icon iconName={iconName} />
-    </IconButtonContainer>
+    </Container>
   )
 }
 

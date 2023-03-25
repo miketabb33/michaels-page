@@ -5,17 +5,14 @@ import { useStyles } from '../context/StylesContext'
 import PongGame from '../pong/PongGame'
 import { StylesSettings } from '../styles/Styles'
 
-const PongPageContainer = styled.div`
-  position: relative;
-  height: 95vh;
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const PongCanvas = styled.canvas<{ styles: StylesSettings }>`
   border: 1px solid ${(props) => props.styles.themeColor.accent};
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background-color: ${(props) => props.styles.staticColor.black};
 `
 
@@ -40,22 +37,14 @@ const Pong = () => {
 
   const onKeydown = (e: KeyboardEvent) => {
     const { isPressingLeft, isPressingRight } = keyboardController(e)
-    if (isPressingRight) {
-      pongGame?.pressRight()
-    }
-    if (isPressingLeft) {
-      pongGame?.pressLeft()
-    }
+    if (isPressingRight) pongGame?.pressRight()
+    if (isPressingLeft) pongGame?.pressLeft()
   }
 
   const onKeyup = (e: KeyboardEvent) => {
     const { isPressingLeft, isPressingRight } = keyboardController(e)
-    if (isPressingRight) {
-      pongGame?.releaseRight()
-    }
-    if (isPressingLeft) {
-      pongGame?.releaseLeft()
-    }
+    if (isPressingRight) pongGame?.releaseRight()
+    if (isPressingLeft) pongGame?.releaseLeft()
   }
 
   useEffect(() => {
@@ -70,13 +59,13 @@ const Pong = () => {
       removeEventListener('keydown', onKeydown)
       removeEventListener('keyup', onKeyup)
     }
-  }, [resizeCanvas])
+  }, [resizeCanvas, pongPageRef])
 
   return (
     <NavLayout>
-      <PongPageContainer ref={pongPageRef}>
+      <Container ref={pongPageRef}>
         <PongCanvas ref={canvasRef} styles={styles} id="PongCanvas" />
-      </PongPageContainer>
+      </Container>
     </NavLayout>
   )
 }

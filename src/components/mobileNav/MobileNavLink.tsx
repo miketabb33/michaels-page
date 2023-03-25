@@ -4,7 +4,7 @@ import { useStyles } from '../../context/StylesContext'
 import RouterLink from '../../router/RouterLink'
 import { StylesSettings } from '../../styles/Styles'
 
-const MobileNaveLinkStyles = styled(RouterLink)<{ styles: StylesSettings }>`
+const Container = styled(RouterLink)<{ styles: StylesSettings }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,9 +27,9 @@ type MobileNavLinkProps = {
 const MobileNavLink = ({ children, linkTo }: MobileNavLinkProps) => {
   const { styles } = useStyles()
   return (
-    <MobileNaveLinkStyles styles={styles} linkTo={linkTo}>
+    <Container styles={styles} linkTo={linkTo}>
       {children}
-    </MobileNaveLinkStyles>
+    </Container>
   )
 }
 

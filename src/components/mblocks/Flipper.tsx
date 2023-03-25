@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 
-const FlipperContainer = styled.div`
+const Container = styled.div`
   width: 100%;
   height: 100%;
   perspective: 1000px;
@@ -41,12 +41,12 @@ type FlipperProps = {
 
 const Flipper = ({ front, back, shouldShowBack }: FlipperProps) => {
   return (
-    <FlipperContainer>
+    <Container>
       <FlipperInner shouldShowBack={shouldShowBack}>
         <FlipperFront>{front}</FlipperFront>
         <FlipperBack>{back}</FlipperBack>
       </FlipperInner>
-    </FlipperContainer>
+    </Container>
   )
 }
 

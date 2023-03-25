@@ -4,7 +4,7 @@ import { useStyles } from '../../context/StylesContext'
 import { StylesSettings } from '../../styles/Styles'
 import Typography from './Typography'
 
-const ButtonStyles = styled.button<{ themes: StylesSettings }>`
+const Container = styled.button<{ themes: StylesSettings }>`
   background-color: ${(props) => props.themes.themeColor.primary};
   border: ${(props) => props.themes.themeColor.primaryDark} solid 1px;
   padding: ${(props) => props.themes.spacing.xSmall};
@@ -28,9 +28,9 @@ type ButtonProps = {
 const Button = ({ children, onClick }: ButtonProps) => {
   const { styles: theme } = useStyles()
   return (
-    <ButtonStyles themes={theme} onClick={onClick}>
+    <Container themes={theme} onClick={onClick}>
       <Typography kind="p">{children}</Typography>
-    </ButtonStyles>
+    </Container>
   )
 }
 

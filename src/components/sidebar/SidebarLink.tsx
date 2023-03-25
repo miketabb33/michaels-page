@@ -4,7 +4,7 @@ import { StylesSettings } from '../../styles/Styles'
 import { useStyles } from '../../context/StylesContext'
 import RouterLink from '../../router/RouterLink'
 
-const SidebarLinkStyles = styled(RouterLink)<{ styles: StylesSettings }>`
+const Container = styled(RouterLink)<{ styles: StylesSettings }>`
   display: block;
   text-align: center;
   padding: ${(props) => props.styles.spacing.medium} 0;
@@ -27,9 +27,9 @@ type SidebarLinkProps = {
 export const SidebarLink = ({ children, linkTo }: SidebarLinkProps) => {
   const { styles } = useStyles()
   return (
-    <SidebarLinkStyles styles={styles} linkTo={linkTo}>
+    <Container styles={styles} linkTo={linkTo}>
       {children}
-    </SidebarLinkStyles>
+    </Container>
   )
 }
 

@@ -7,7 +7,7 @@ import { NavLinkConfig } from '../../config/navConfig'
 import Button from '../mblocks/Button'
 import RouterLink from '../../router/RouterLink'
 
-const SidebarContainer = styled.nav<{ styles: StylesSettings }>`
+const Container = styled.nav<{ styles: StylesSettings }>`
   background-color: ${(props) => props.styles.themeColor.secondary};
   box-shadow: ${(props) => props.styles.shadow.crisp};
   display: flex;
@@ -43,7 +43,7 @@ const Sidebar = ({ navConfig }: SidebarProps) => {
   const themeButtonText = styles.id === 'light' ? 'Dark' : 'Light'
 
   return (
-    <SidebarContainer styles={styles}>
+    <Container styles={styles}>
       <SidebarMenu styles={styles}>
         <LogoLink styles={styles} linkTo="/">
           <Logo src="images/logo.png" />
@@ -55,7 +55,7 @@ const Sidebar = ({ navConfig }: SidebarProps) => {
         ))}
       </SidebarMenu>
       <Button onClick={toggleTheme}>{themeButtonText}</Button>
-    </SidebarContainer>
+    </Container>
   )
 }
 

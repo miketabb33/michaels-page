@@ -10,7 +10,7 @@ import MobileNavLink from './MobileNavLink'
 
 const MobileNavContainer = styled.nav<{ styles: StylesSettings }>`
   background-color: ${(props) => props.styles.themeColor.secondary};
-  height: ${(props) => props.styles.spacing.xLarge};
+  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;

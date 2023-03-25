@@ -7,7 +7,7 @@ import ProfileCardBack from './ProfileCardBack'
 import ProfileCardFront from './ProfileCardFront'
 import { Breakpoint, MQ } from '../../Breakpoint'
 
-const ProfileCardContainer = styled.div<{ styles: StylesSettings }>`
+const Container = styled.div<{ styles: StylesSettings }>`
   width: 95%;
   max-width: 500px;
   aspect-ratio: 1.5;
@@ -27,13 +27,13 @@ const ProfileCard = () => {
   }
 
   return (
-    <ProfileCardContainer styles={styles}>
+    <Container styles={styles}>
       <Flipper
         front={<ProfileCardFront onRotateIconClick={flipCard} />}
         back={<ProfileCardBack onRotateIconClick={flipCard} />}
         shouldShowBack={isBackShowing}
       ></Flipper>
-    </ProfileCardContainer>
+    </Container>
   )
 }
 
