@@ -1,7 +1,7 @@
 import { StylesSettings } from '../styles/Styles'
 import { Rect } from '../types/Rect'
 import { Size } from '../types/Size'
-import { translateCanvas, translateRect } from './canvas'
+import { translateRect } from './canvas'
 
 const paddleSize: Size = { width: 150, height: 30 }
 
@@ -63,7 +63,7 @@ class PongGame {
   }
 
   renderGame = (superViewSize: Size) => {
-    this.renderCanvas(superViewSize)
+    this.setCanvasSize(superViewSize)
     this.renderRect(this.playerPaddle, this.styles.themeColor.primaryLight)
   }
 
@@ -79,10 +79,9 @@ class PongGame {
     this.renderRect(this.playerPaddle, this.styles.themeColor.primaryLight)
   }
 
-  private renderCanvas = (superViewSize: Size) => {
-    const calculatedSize = translateCanvas(superViewSize)
-    this.canvas.width = calculatedSize
-    this.canvas.height = calculatedSize
+  private setCanvasSize = (size: Size) => {
+    this.canvas.width = size.width
+    this.canvas.height = size.height
   }
 
   private renderRect = (rect: Rect, color: string) => {

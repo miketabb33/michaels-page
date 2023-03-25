@@ -7,6 +7,7 @@ import MobileNav from '../mobileNav/MobileNav'
 import Sidebar from '../sidebar/Sidebar'
 
 const Container = styled.div`
+  overflow-x: hidden;
   height: 100vh;
   display: grid;
   grid-template-columns: auto;

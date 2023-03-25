@@ -8,14 +8,14 @@ describe('Canvas', () => {
       const height = 100
       const width = 200
       const result = translateCanvas({ height, width })
-      expect(result).toEqual(90)
+      expect(result).toEqual(80)
     })
 
     it('should get canvas size for any given size', () => {
       const height = 150
       const width = 120
       const result = translateCanvas({ height, width })
-      expect(result).toEqual(108)
+      expect(result).toEqual(96)
     })
   })
 

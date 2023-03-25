@@ -2,7 +2,8 @@ import { Rect } from '../types/Rect'
 import { Size } from '../types/Size'
 
 export const translateCanvas = ({ width, height }: Size) => {
-  return width >= height ? height * 0.9 : width * 0.9
+  const ratio = 0.8
+  return width >= height ? height * ratio : width * ratio
 }
 
 export const translateRect = (rect: Rect, canvasSize: Size, units: number) => {
