@@ -38,10 +38,38 @@ const Pong = () => {
     pongGame?.renderGame({ width, height })
   }, [pongGame])
 
+  const onKeydown = (e: KeyboardEvent) => {
+    const { isPressingLeft, isPressingRight } = keyboardController(e)
+    if (isPressingRight) {
+      pongGame?.pressRight()
+    }
+    if (isPressingLeft) {
+      pongGame?.pressLeft()
+    }
+  }
+
+  const onKeyup = (e: KeyboardEvent) => {
+    const { isPressingLeft, isPressingRight } = keyboardController(e)
+    if (isPressingRight) {
+      pongGame?.releaseRight()
+    }
+    if (isPressingLeft) {
+      pongGame?.releaseLeft()
+    }
+  }
+
   useEffect(() => {
     resizeCanvas()
     addEventListener('resize', resizeCanvas)
-    return () => removeEventListener('resize', resizeCanvas)
+    addEventListener('keydown', onKeydown)
+    addEventListener('keyup', onKeyup)
+    pongGame?.start()
+
+    return () => {
+      removeEventListener('resize', resizeCanvas)
+      removeEventListener('keydown', onKeydown)
+      removeEventListener('keyup', onKeyup)
+    }
   }, [resizeCanvas])
 
   return (
@@ -54,3 +82,19 @@ const Pong = () => {
 }
 
 export default Pong
+
+const keyboardController = (e: KeyboardEvent) => {
+  const isDKey = e.code === 'KeyD'
+  const isArrowRightKey = e.code === 'ArrowRight'
+
+  const isAKey = e.code === 'KeyA'
+  const isArrowLeftKey = e.code === 'ArrowLeft'
+
+  const isPressingLeft = isAKey || isArrowLeftKey
+  const isPressingRight = isDKey || isArrowRightKey
+
+  return {
+    isPressingLeft,
+    isPressingRight,
+  }
+}
