@@ -1,5 +1,6 @@
 import React, { ReactNode, useEffect, useRef } from 'react'
 import styled from 'styled-components'
+import { EventConfig, eventController } from '../../eventController'
 
 const Container = styled.div`
   cursor: pointer;
@@ -11,11 +12,6 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 `
-
-type GameButtonEvent = {
-  name: 'mousedown' | 'mouseup' | 'mouseleave' | 'touchstart' | 'touchend'
-  action: (e: MouseEvent | TouchEvent) => void
-}
 
 type GameButtonProps = {
   children: ReactNode
@@ -30,17 +26,17 @@ const GameButton = ({
 }: GameButtonProps) => {
   const buttonRef = useRef<HTMLDivElement | null>(null)
 
-  const pressStarted = (e: MouseEvent | TouchEvent) => {
+  const pressStarted = (e: Event) => {
     if (e.cancelable) e.preventDefault()
     onPressStart()
   }
 
-  const pressEnded = (e: MouseEvent | TouchEvent) => {
+  const pressEnded = (e: Event) => {
     if (e.cancelable) e.preventDefault()
     onPressEnd()
   }
 
-  const gameButtonEvents: GameButtonEvent[] = [
+  const events: EventConfig[] = [
     { name: 'mousedown', action: pressStarted },
     { name: 'mouseup', action: pressEnded },
     { name: 'mouseleave', action: pressEnded },
@@ -48,19 +44,11 @@ const GameButton = ({
     { name: 'touchend', action: pressEnded },
   ]
 
-  const addEventListeners = () => {
-    gameButtonEvents.forEach((event) => {
-      buttonRef.current?.addEventListener(event.name, event.action)
-    })
-  }
-
-  const removeEventListeners = () => {
-    gameButtonEvents.forEach((event) => {
-      buttonRef.current?.removeEventListener(event.name, event.action)
-    })
-  }
-
   useEffect(() => {
+    const { addEventListeners, removeEventListeners } = eventController({
+      events,
+      target: buttonRef.current,
+    })
     addEventListeners()
     return () => removeEventListeners()
   }, [buttonRef])

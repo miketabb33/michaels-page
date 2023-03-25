@@ -1,20 +1,26 @@
 import { Rect } from '../types/Rect'
 import { Size } from '../types/Size'
-import { translateCanvas, translateRect } from './canvas'
+import { translateCanvas, translateRect } from './relativeCanvas'
 
 describe('Canvas', () => {
   describe('Translate Canvas', () => {
     it('should get canvas size for any given size', () => {
       const height = 100
       const width = 200
-      const result = translateCanvas({ height, width })
+      const result = translateCanvas({
+        size: { height, width },
+        sizeReduction: 0.8,
+      })
       expect(result).toEqual(80)
     })
 
     it('should get canvas size for any given size', () => {
       const height = 150
       const width = 120
-      const result = translateCanvas({ height, width })
+      const result = translateCanvas({
+        size: { height, width },
+        sizeReduction: 0.8,
+      })
       expect(result).toEqual(96)
     })
   })

@@ -1,16 +1,16 @@
-import { StylesSettings } from '../styles/Styles'
 import { Rect } from '../types/Rect'
 import { Size } from '../types/Size'
-import { translateRect } from './canvas'
+
+import GameRunner from '../canvas-game/GameRunner'
+import { translateRect } from '../canvas-game/relativeCanvas'
 
 const paddleSize: Size = { width: 150, height: 30 }
 
 class PongGame {
+  private readonly tuftsBlue = '#3C97D7'
   private canvasUnits = 1000
   private canvas: HTMLCanvasElement
-  private styles: StylesSettings
   private paddleSpeed = 10
-  private gameClock: NodeJS.Timer | null = null
 
   private isPressingRight = false
   private isPressingLeft = false
@@ -31,6 +31,16 @@ class PongGame {
     this.isPressingLeft = false
   }
 
+  private readonly gameRunner = new GameRunner(() => {
+    if (this.isPressingLeft) {
+      this.moveLeft()
+    }
+
+    if (this.isPressingRight) {
+      this.moveRight()
+    }
+  })
+
   private playerPaddle: Rect = {
     size: paddleSize,
     position: {
@@ -39,44 +49,38 @@ class PongGame {
     },
   }
 
-  private getCanvasSize = (): Size => {
+  private canvasSize = (): Size => {
     return { width: this.canvas.width, height: this.canvas.height }
   }
 
-  constructor(canvas: HTMLCanvasElement, styles: StylesSettings) {
-    this.canvas = canvas
-    this.styles = styles
+  private ctx = () => {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return this.canvas.getContext('2d')!
   }
 
-  render = () => {
-    if (this.isPressingLeft) {
-      this.moveLeft()
-    }
-
-    if (this.isPressingRight) {
-      this.moveRight()
-    }
+  constructor(canvas: HTMLCanvasElement) {
+    this.canvas = canvas
   }
 
   start = () => {
-    this.gameClock = setInterval(this.render, 17)
+    this.gameRunner.start()
   }
 
   renderGame = (superViewSize: Size) => {
     this.setCanvasSize(superViewSize)
-    this.renderRect(this.playerPaddle, this.styles.themeColor.primaryLight)
+    this.renderRect(this.playerPaddle, this.tuftsBlue)
   }
 
   private moveRight = () => {
     this.clearRect(this.playerPaddle)
     this.playerPaddle.position.x += this.paddleSpeed
-    this.renderRect(this.playerPaddle, this.styles.themeColor.primaryLight)
+    this.renderRect(this.playerPaddle, this.tuftsBlue)
   }
 
   private moveLeft = () => {
     this.clearRect(this.playerPaddle)
     this.playerPaddle.position.x -= this.paddleSpeed
-    this.renderRect(this.playerPaddle, this.styles.themeColor.primaryLight)
+    this.renderRect(this.playerPaddle, this.tuftsBlue)
   }
 
   private setCanvasSize = (size: Size) => {
@@ -87,28 +91,25 @@ class PongGame {
   private renderRect = (rect: Rect, color: string) => {
     const translatedRect = translateRect(
       rect,
-      this.getCanvasSize(),
+      this.canvasSize(),
       this.canvasUnits
     )
     const { width, height } = translatedRect.size
     const { x, y } = translatedRect.position
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const ctx = this.canvas.getContext('2d')!
-    ctx.fillStyle = color
-    ctx.fillRect(x, y, width, height)
+
+    this.ctx().fillStyle = color
+    this.ctx().fillRect(x, y, width, height)
   }
 
   private clearRect = (rect: Rect) => {
     const translatedRect = translateRect(
       rect,
-      this.getCanvasSize(),
+      this.canvasSize(),
       this.canvasUnits
     )
     const { width, height } = translatedRect.size
     const { x, y } = translatedRect.position
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const ctx = this.canvas.getContext('2d')!
-    ctx.clearRect(x - 1, y - 1, width + 2, height + 2)
+    this.ctx().clearRect(x - 1, y - 1, width + 2, height + 2)
   }
 }
 
