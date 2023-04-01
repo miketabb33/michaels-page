@@ -2,7 +2,7 @@ import { Rect } from '../types/Rect'
 import { Size } from '../types/Size'
 import { translateCanvas, translateRect } from './relativeCanvas'
 
-describe('Canvas', () => {
+describe('Relative Canvas', () => {
   describe('Translate Canvas', () => {
     it('should get canvas size for any given size', () => {
       const height = 100

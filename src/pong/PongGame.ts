@@ -1,16 +1,14 @@
-import { Rect } from '../types/Rect'
 import { Size } from '../types/Size'
-
 import GameRunner from '../canvas-game/GameRunner'
-import { translateRect } from '../canvas-game/relativeCanvas'
-
-const paddleSize: Size = { width: 150, height: 30 }
+import GameCanvas from '../canvas-game/GameCanvas'
+import { CanvasObject } from '../types/CanvasObject'
+import { getPongConfig } from './PongConfig'
 
 class PongGame {
-  private readonly tuftsBlue = '#3C97D7'
-  private canvasUnits = 1000
-  private canvas: HTMLCanvasElement
-  private paddleSpeed = 10
+  private readonly gameCanvas: GameCanvas
+  private pongBall: CanvasObject
+  private playerPaddle: CanvasObject
+  private opponentPaddle: CanvasObject
 
   private isPressingRight = false
   private isPressingLeft = false
@@ -32,34 +30,25 @@ class PongGame {
   }
 
   private readonly gameRunner = new GameRunner(() => {
+    this.gameCanvas.moveDownUnlessOffCanvas(this.pongBall)
+    this.gameCanvas.moveLeftUnlessOffCanvas(this.pongBall)
+
     if (this.isPressingLeft) {
-      this.moveLeft()
+      this.gameCanvas.moveLeftUnlessOffCanvas(this.playerPaddle)
     }
 
     if (this.isPressingRight) {
-      this.moveRight()
+      this.gameCanvas.moveRightUnlessOffCanvas(this.playerPaddle)
     }
   })
 
-  private playerPaddle: Rect = {
-    size: paddleSize,
-    position: {
-      x: this.canvasUnits / 2 - paddleSize.width / 2,
-      y: this.canvasUnits - paddleSize.height,
-    },
-  }
-
-  private canvasSize = (): Size => {
-    return { width: this.canvas.width, height: this.canvas.height }
-  }
-
-  private ctx = () => {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    return this.canvas.getContext('2d')!
-  }
-
   constructor(canvas: HTMLCanvasElement) {
-    this.canvas = canvas
+    const { pongBall, playerPaddle, opponentPaddle, canvasUnits } =
+      getPongConfig()
+    this.gameCanvas = new GameCanvas(canvas, canvasUnits)
+    this.playerPaddle = playerPaddle
+    this.opponentPaddle = opponentPaddle
+    this.pongBall = pongBall
   }
 
   start = () => {
@@ -67,49 +56,13 @@ class PongGame {
   }
 
   renderGame = (superViewSize: Size) => {
-    this.setCanvasSize(superViewSize)
-    this.renderRect(this.playerPaddle, this.tuftsBlue)
-  }
-
-  private moveRight = () => {
-    this.clearRect(this.playerPaddle)
-    this.playerPaddle.position.x += this.paddleSpeed
-    this.renderRect(this.playerPaddle, this.tuftsBlue)
-  }
-
-  private moveLeft = () => {
-    this.clearRect(this.playerPaddle)
-    this.playerPaddle.position.x -= this.paddleSpeed
-    this.renderRect(this.playerPaddle, this.tuftsBlue)
-  }
-
-  private setCanvasSize = (size: Size) => {
-    this.canvas.width = size.width
-    this.canvas.height = size.height
-  }
-
-  private renderRect = (rect: Rect, color: string) => {
-    const translatedRect = translateRect(
-      rect,
-      this.canvasSize(),
-      this.canvasUnits
+    this.gameCanvas.setCanvasSize(superViewSize)
+    this.gameCanvas.renderRect(this.playerPaddle.rect, this.playerPaddle.color)
+    this.gameCanvas.renderRect(this.pongBall.rect, this.pongBall.color)
+    this.gameCanvas.renderRect(
+      this.opponentPaddle.rect,
+      this.opponentPaddle.color
     )
-    const { width, height } = translatedRect.size
-    const { x, y } = translatedRect.position
-
-    this.ctx().fillStyle = color
-    this.ctx().fillRect(x, y, width, height)
-  }
-
-  private clearRect = (rect: Rect) => {
-    const translatedRect = translateRect(
-      rect,
-      this.canvasSize(),
-      this.canvasUnits
-    )
-    const { width, height } = translatedRect.size
-    const { x, y } = translatedRect.position
-    this.ctx().clearRect(x - 1, y - 1, width + 2, height + 2)
   }
 }
 
