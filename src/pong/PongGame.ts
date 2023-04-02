@@ -4,6 +4,7 @@ import GameCanvas from '../canvas-game/GameCanvas'
 import { CanvasObject } from '../types/CanvasObject'
 import { getPongConfig } from './PongConfig'
 import { DirectionalCanvasObject } from '../types/DirectionalCanvasObject'
+import { random } from '../Random'
 
 class PongGame {
   private readonly gameCanvas: GameCanvas
@@ -45,19 +46,19 @@ class PongGame {
     )
 
     if (pongBall_touched_playerPaddle) {
-      const random = Math.random()
-      if (random >= 0 && random <= 0.33) this.pongBall.direction = 'up left'
-      if (random > 0.33 && random <= 0.66) this.pongBall.direction = 'up right'
-      if (random > 0.66 && random <= 1) this.pongBall.direction = 'up'
+      const randomNum = random(3)
+      if (randomNum === 0) this.pongBall.direction = 'up left'
+      if (randomNum === 1) this.pongBall.direction = 'up right'
+      if (randomNum === 2) this.pongBall.direction = 'up'
       this.score += 1
       this.onScore(this.score)
     }
 
     if (pongBall_touched_opponentPaddle) {
-      const random = Math.random()
-      if (random >= 0 && random <= 0.33) this.pongBall.direction = 'down left'
-      if (random > 0.33 && random <= 0.66) this.pongBall.direction = 'down right'
-      if (random > 0.66 && random <= 1) this.pongBall.direction = 'down'
+      const randomNum = random(3)
+      if (randomNum === 1) this.pongBall.direction = 'down left'
+      if (randomNum === 2) this.pongBall.direction = 'down right'
+      if (randomNum === 3) this.pongBall.direction = 'down'
     }
 
     const isPongBallOffCanvas = this.gameCanvas.moveRectUnlessOffCanvas(

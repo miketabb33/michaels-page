@@ -7,6 +7,7 @@ import { translateRect } from './relativeCanvas'
 class GameCanvas {
   private readonly canvas: HTMLCanvasElement
   private readonly canvasUnits: number
+  private readonly hypotenuse = 1.41
 
   private ctx = () => {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -78,20 +79,20 @@ class GameCanvas {
         this.moveRight(object, object.speed)
         break
       case 'up left':
-        this.moveUp(object, object.speed / 2)
-        this.moveLeft(object, object.speed / 2)
+        this.moveUp(object, object.speed / this.hypotenuse)
+        this.moveLeft(object, object.speed / this.hypotenuse)
         break
       case 'up right':
-        this.moveUp(object, object.speed / 2)
-        this.moveRight(object, object.speed / 2)
+        this.moveUp(object, object.speed / this.hypotenuse)
+        this.moveRight(object, object.speed / this.hypotenuse)
         break
       case 'down left':
-        this.moveDown(object, object.speed / 2)
-        this.moveLeft(object, object.speed / 2)
+        this.moveDown(object, object.speed / this.hypotenuse)
+        this.moveLeft(object, object.speed / this.hypotenuse)
         break
       case 'down right':
-        this.moveDown(object, object.speed / 2)
-        this.moveRight(object, object.speed / 2)
+        this.moveDown(object, object.speed / this.hypotenuse)
+        this.moveRight(object, object.speed / this.hypotenuse)
         break
       case 'none':
         break
