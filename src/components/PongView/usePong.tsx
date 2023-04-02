@@ -9,6 +9,7 @@ export const usePong = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const [pongGame, setPongGame] = useState<PongGame | null>(null)
   const [controlsWidth, setControlsWidth] = useState(0)
+  const [score, setScore] = useState(0)
 
   const resizeCanvas = useCallback(() => {
     const width = pongPageRef.current?.clientWidth || 0
@@ -22,17 +23,13 @@ export const usePong = () => {
   }, [pongGame])
 
   const onKeydown = (e: Event) => {
-    const { isPressingLeft, isPressingRight } = keyboardController(
-      e as KeyboardEvent
-    )
+    const { isPressingLeft, isPressingRight } = keyboardController(e as KeyboardEvent)
     if (isPressingRight) pongGame?.pressRight()
     if (isPressingLeft) pongGame?.pressLeft()
   }
 
   const onKeyup = (e: Event) => {
-    const { isPressingLeft, isPressingRight } = keyboardController(
-      e as KeyboardEvent
-    )
+    const { isPressingLeft, isPressingRight } = keyboardController(e as KeyboardEvent)
     if (isPressingRight) pongGame?.releaseRight()
     if (isPressingLeft) pongGame?.releaseLeft()
   }
@@ -45,7 +42,7 @@ export const usePong = () => {
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    setPongGame(new PongGame(canvasRef.current!))
+    setPongGame(new PongGame(canvasRef.current!, (newScore) => setScore(newScore)))
   }, [canvasRef])
 
   useEffect(() => {
@@ -62,5 +59,5 @@ export const usePong = () => {
     }
   }, [resizeCanvas])
 
-  return { pongPageRef, canvasRef, controlsWidth, pongGame }
+  return { pongPageRef, canvasRef, controlsWidth, pongGame, score }
 }

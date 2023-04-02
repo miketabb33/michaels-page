@@ -6,10 +6,7 @@ type TranslateCanvas = {
   sizeReduction?: number
 }
 
-export const translateCanvas = ({
-  size,
-  sizeReduction = 1,
-}: TranslateCanvas) => {
+export const translateCanvas = ({ size, sizeReduction = 1 }: TranslateCanvas) => {
   const { width, height } = size
   return width >= height ? height * sizeReduction : width * sizeReduction
 }

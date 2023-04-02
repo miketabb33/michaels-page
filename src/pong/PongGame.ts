@@ -3,12 +3,15 @@ import GameRunner from '../canvas-game/GameRunner'
 import GameCanvas from '../canvas-game/GameCanvas'
 import { CanvasObject } from '../types/CanvasObject'
 import { getPongConfig } from './PongConfig'
+import { DirectionalCanvasObject } from '../types/DirectionalCanvasObject'
 
 class PongGame {
   private readonly gameCanvas: GameCanvas
-  private pongBall: CanvasObject
+  private pongBall: DirectionalCanvasObject
   private playerPaddle: CanvasObject
-  private opponentPaddle: CanvasObject
+  private opponentPaddle: DirectionalCanvasObject
+  private score = 0
+  private onScore: (score: number) => void
 
   private isPressingRight = false
   private isPressingLeft = false
@@ -30,25 +33,82 @@ class PongGame {
   }
 
   private readonly gameRunner = new GameRunner(() => {
-    this.gameCanvas.moveDownUnlessOffCanvas(this.pongBall)
-    this.gameCanvas.moveLeftUnlessOffCanvas(this.pongBall)
+    this.gameCanvas.clearCanvas()
+
+    const pongBall_touched_playerPaddle = this.gameCanvas.collisionDetection(
+      this.playerPaddle.rect,
+      this.pongBall.canvasObject.rect
+    )
+    const pongBall_touched_opponentPaddle = this.gameCanvas.collisionDetection(
+      this.opponentPaddle.canvasObject.rect,
+      this.pongBall.canvasObject.rect
+    )
+
+    if (pongBall_touched_playerPaddle) {
+      const random = Math.random()
+      if (random >= 0 && random <= 0.33) this.pongBall.direction = 'up left'
+      if (random > 0.33 && random <= 0.66) this.pongBall.direction = 'up right'
+      if (random > 0.66 && random <= 1) this.pongBall.direction = 'up'
+      this.score += 1
+      this.onScore(this.score)
+    }
+
+    if (pongBall_touched_opponentPaddle) {
+      const random = Math.random()
+      if (random >= 0 && random <= 0.33) this.pongBall.direction = 'down left'
+      if (random > 0.33 && random <= 0.66) this.pongBall.direction = 'down right'
+      if (random > 0.66 && random <= 1) this.pongBall.direction = 'down'
+    }
+
+    const isPongBallOffCanvas = this.gameCanvas.moveRectUnlessOffCanvas(
+      this.pongBall.canvasObject,
+      this.pongBall.direction
+    )
+
+    if (isPongBallOffCanvas === 'down') {
+      this.gameRunner.pause()
+      alert('You Lose!')
+    }
+
+    if (isPongBallOffCanvas === 'up') {
+      this.gameRunner.pause()
+      alert('You Win!')
+    }
+
+    if (isPongBallOffCanvas === 'left' && this.pongBall.direction === 'down left') {
+      this.pongBall.direction = 'down right'
+    }
+
+    if (isPongBallOffCanvas === 'left' && this.pongBall.direction === 'up left') {
+      this.pongBall.direction = 'up right'
+    }
+
+    if (isPongBallOffCanvas === 'right' && this.pongBall.direction === 'down right') {
+      this.pongBall.direction = 'down left'
+    }
+
+    if (isPongBallOffCanvas === 'right' && this.pongBall.direction === 'up right') {
+      this.pongBall.direction = 'up left'
+    }
 
     if (this.isPressingLeft) {
-      this.gameCanvas.moveLeftUnlessOffCanvas(this.playerPaddle)
+      this.gameCanvas.moveRectUnlessOffCanvas(this.playerPaddle, 'left')
     }
 
     if (this.isPressingRight) {
-      this.gameCanvas.moveRightUnlessOffCanvas(this.playerPaddle)
+      this.gameCanvas.moveRectUnlessOffCanvas(this.playerPaddle, 'right')
     }
+
+    this.renderRectangles()
   })
 
-  constructor(canvas: HTMLCanvasElement) {
-    const { pongBall, playerPaddle, opponentPaddle, canvasUnits } =
-      getPongConfig()
+  constructor(canvas: HTMLCanvasElement, onScore: (score: number) => void) {
+    const { pongBall, playerPaddle, opponentPaddle, canvasUnits } = getPongConfig()
     this.gameCanvas = new GameCanvas(canvas, canvasUnits)
     this.playerPaddle = playerPaddle
     this.opponentPaddle = opponentPaddle
     this.pongBall = pongBall
+    this.onScore = onScore
   }
 
   start = () => {
@@ -57,12 +117,13 @@ class PongGame {
 
   renderGame = (superViewSize: Size) => {
     this.gameCanvas.setCanvasSize(superViewSize)
+    this.renderRectangles()
+  }
+
+  private renderRectangles = () => {
     this.gameCanvas.renderRect(this.playerPaddle.rect, this.playerPaddle.color)
-    this.gameCanvas.renderRect(this.pongBall.rect, this.pongBall.color)
-    this.gameCanvas.renderRect(
-      this.opponentPaddle.rect,
-      this.opponentPaddle.color
-    )
+    this.gameCanvas.renderRect(this.pongBall.canvasObject.rect, this.pongBall.canvasObject.color)
+    this.gameCanvas.renderRect(this.opponentPaddle.canvasObject.rect, this.opponentPaddle.canvasObject.color)
   }
 }
 

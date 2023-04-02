@@ -19,11 +19,7 @@ type GameButtonProps = {
   onPressEnd: () => void
 }
 
-const GameButton = ({
-  children,
-  onPressStart,
-  onPressEnd,
-}: GameButtonProps) => {
+const GameButton = ({ children, onPressStart, onPressEnd }: GameButtonProps) => {
   const buttonRef = useRef<HTMLDivElement | null>(null)
 
   const pressStarted = (e: Event) => {

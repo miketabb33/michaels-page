@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useStyles } from '../../context/StylesContext'
 import { StylesSettings } from '../../styles/Styles'
 import GameButton from '../gameblocks/GameButton'
+import Typography from '../mblocks/Typography'
 import { usePong } from './usePong'
 
 const Container = styled.div`
@@ -26,23 +27,18 @@ const PongControls = styled.div<{ width: number }>`
 
 const PongView = () => {
   const { styles } = useStyles()
-  const { pongPageRef, canvasRef, controlsWidth, pongGame } = usePong()
+  const { pongPageRef, canvasRef, controlsWidth, pongGame, score } = usePong()
 
   return (
     <Container ref={pongPageRef}>
+      <Typography kind="h1">{score}</Typography>
       <PongCanvas ref={canvasRef} styles={styles} id="PongCanvas" />
       {!!pongGame && (
         <PongControls width={controlsWidth}>
-          <GameButton
-            onPressStart={() => pongGame.pressLeft()}
-            onPressEnd={() => pongGame.releaseLeft()}
-          >
+          <GameButton onPressStart={() => pongGame.pressLeft()} onPressEnd={() => pongGame.releaseLeft()}>
             Left
           </GameButton>
-          <GameButton
-            onPressStart={() => pongGame.pressRight()}
-            onPressEnd={() => pongGame.releaseRight()}
-          >
+          <GameButton onPressStart={() => pongGame.pressRight()} onPressEnd={() => pongGame.releaseRight()}>
             Right
           </GameButton>
         </PongControls>

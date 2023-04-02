@@ -13,6 +13,8 @@ class GameRunner {
   }
 
   pause = () => {
+    if (!this.gameClock) return
+    clearInterval(this.gameClock)
     this.gameClock = null
   }
 }

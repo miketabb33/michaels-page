@@ -91,12 +91,7 @@ const ProfileCardFront = ({ onRotateIconClick }: ProfileCardFrontProps) => {
           >
             <Icon iconName="linkedin" />
           </IconLink>
-          <IconLink
-            href="https://github.com/miketabb33"
-            target="_blank"
-            rel="noreferrer"
-            styles={styles}
-          >
+          <IconLink href="https://github.com/miketabb33" target="_blank" rel="noreferrer" styles={styles}>
             <Icon iconName="github" />
           </IconLink>
         </SocialMediaRow>

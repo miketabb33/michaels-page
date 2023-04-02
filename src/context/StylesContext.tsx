@@ -16,9 +16,7 @@ const StylesContext = createContext<StylesContextType>({
 })
 
 export const StylesContextProvider = ({ children }: ChildrenProp) => {
-  const validateTheme: StylesSettings = parseTheme(
-    localStorage.getItem('theme') as Theme
-  )
+  const validateTheme: StylesSettings = parseTheme(localStorage.getItem('theme') as Theme)
 
   const [styles, setStyles] = useState<StylesSettings>(validateTheme)
 
@@ -33,11 +31,7 @@ export const StylesContextProvider = ({ children }: ChildrenProp) => {
   }
 
   return (
-    <StylesContext.Provider
-      value={{ styles: styles, changeTheme, toggleTheme }}
-    >
-      {children}
-    </StylesContext.Provider>
+    <StylesContext.Provider value={{ styles: styles, changeTheme, toggleTheme }}>{children}</StylesContext.Provider>
   )
 }
 

@@ -1,10 +1,11 @@
 import { CanvasObject } from '../types/CanvasObject'
+import { DirectionalCanvasObject } from '../types/DirectionalCanvasObject'
 import { Size } from '../types/Size'
 
 export type PongConfig = {
-  pongBall: CanvasObject
+  pongBall: DirectionalCanvasObject
   playerPaddle: CanvasObject
-  opponentPaddle: CanvasObject
+  opponentPaddle: DirectionalCanvasObject
   canvasUnits: number
 }
 
@@ -37,31 +38,37 @@ const makePlayerPaddle = (canvasUnits: number): CanvasObject => {
   }
 }
 
-const makeOpponentPaddle = (canvasUnits: number): CanvasObject => {
+const makeOpponentPaddle = (canvasUnits: number): DirectionalCanvasObject => {
   return {
-    rect: {
-      size: paddleSize,
-      position: {
-        x: canvasUnits / 2 - paddleSize.width / 2,
-        y: 0,
+    canvasObject: {
+      rect: {
+        size: { ...paddleSize, width: canvasUnits },
+        position: {
+          x: 0, //canvasUnits / 2 - paddleSize.width / 2,
+          y: 0,
+        },
       },
+      color: tuftsBlue,
+      speed: 10,
     },
-    color: tuftsBlue,
-    speed: 10,
+    direction: 'none',
   }
 }
 
-const makePongBall = (canvasUnits: number): CanvasObject => {
+const makePongBall = (canvasUnits: number): DirectionalCanvasObject => {
   const ballSize: Size = { width: 20, height: 20 }
   return {
-    rect: {
-      size: ballSize,
-      position: {
-        x: canvasUnits / 2 - ballSize.width / 2,
-        y: canvasUnits / 2 - ballSize.height / 2,
+    canvasObject: {
+      rect: {
+        size: ballSize,
+        position: {
+          x: canvasUnits / 2 - ballSize.width / 2,
+          y: canvasUnits / 2 - ballSize.height / 2 - 100,
+        },
       },
+      color: carrotOrange,
+      speed: 15,
     },
-    color: carrotOrange,
-    speed: 3,
+    direction: 'down left',
   }
 }

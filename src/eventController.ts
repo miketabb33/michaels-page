@@ -1,12 +1,4 @@
-type EventName =
-  | 'mousedown'
-  | 'mouseup'
-  | 'mouseleave'
-  | 'touchstart'
-  | 'touchend'
-  | 'resize'
-  | 'keydown'
-  | 'keyup'
+type EventName = 'mousedown' | 'mouseup' | 'mouseleave' | 'touchstart' | 'touchend' | 'resize' | 'keydown' | 'keyup'
 
 export type EventConfig = {
   name: EventName
