@@ -1,4 +1,4 @@
-import { random } from '../Random'
+import { random } from '../random'
 import { CanvasObject } from '../types/CanvasObject'
 import { Direction } from '../types/Direction'
 import { DirectionalCanvasObject } from '../types/DirectionalCanvasObject'
@@ -77,7 +77,7 @@ const makePongBall = (canvasUnits: number): DirectionalCanvasObject => {
 
 const randomPaddleDirection = (): Direction => {
   const randomNum = random(6)
-  console.log(randomNum)
+
   if (randomNum === 0) return 'up'
   if (randomNum === 1) return 'up left'
   if (randomNum === 2) return 'up right'

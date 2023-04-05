@@ -5,6 +5,7 @@ import { StylesSettings } from '../../styles/Styles'
 import GameButton from '../gameblocks/GameButton'
 import Typography from '../mblocks/Typography'
 import { usePong } from './usePong'
+import PongMenu from './PongMenu'
 
 const Container = styled.div`
   display: flex;
@@ -33,6 +34,7 @@ const PongView = () => {
     <Container ref={pongPageRef}>
       <Typography kind="h1">{score}</Typography>
       <PongCanvas ref={canvasRef} styles={styles} id="PongCanvas" />
+      {false && <PongMenu onStart={() => console.log('cool')} />}
       {!!pongGame && (
         <PongControls width={controlsWidth}>
           <GameButton onPressStart={() => pongGame.pressLeft()} onPressEnd={() => pongGame.releaseLeft()}>

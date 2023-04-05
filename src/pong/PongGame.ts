@@ -4,7 +4,7 @@ import GameCanvas from '../canvas-game/GameCanvas'
 import { CanvasObject } from '../types/CanvasObject'
 import { getPongConfig } from './PongConfig'
 import { DirectionalCanvasObject } from '../types/DirectionalCanvasObject'
-import { random } from '../Random'
+import { random } from '../random'
 
 class PongGame {
   private readonly gameCanvas: GameCanvas
@@ -68,12 +68,12 @@ class PongGame {
 
     if (isPongBallOffCanvas === 'down') {
       this.gameRunner.pause()
-      alert('You Lose!')
+      // alert('You Lose!')
     }
 
     if (isPongBallOffCanvas === 'up') {
       this.gameRunner.pause()
-      alert('You Win!')
+      // alert('You Win!')
     }
 
     if (isPongBallOffCanvas === 'left' && this.pongBall.direction === 'down left') {
