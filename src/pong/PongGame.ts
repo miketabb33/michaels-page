@@ -1,15 +1,15 @@
 import { Size } from '../types/Size'
 import GameRunner from '../canvas-game/GameRunner'
 import GameCanvas from '../canvas-game/GameCanvas'
-import { CanvasObject } from '../types/CanvasObject'
 import { getPongConfig } from './PongConfig'
 import { DirectionalCanvasObject } from '../types/DirectionalCanvasObject'
 import { random } from '../random'
+import { CanvasObjectType } from './CanvasObject'
 
 class PongGame {
   private readonly gameCanvas: GameCanvas
   private pongBall: DirectionalCanvasObject
-  private playerPaddle: CanvasObject
+  private playerPaddle: CanvasObjectType
   private opponentPaddle: DirectionalCanvasObject
   private score = 0
   private onScore: (score: number) => void

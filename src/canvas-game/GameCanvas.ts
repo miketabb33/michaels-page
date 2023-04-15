@@ -1,4 +1,4 @@
-import { CanvasObject } from '../types/CanvasObject'
+import { CanvasObjectType } from '../pong/CanvasObject'
 import { Direction } from '../types/Direction'
 import { Rect } from '../types/Rect'
 import { Size } from '../types/Size'
@@ -47,7 +47,7 @@ class GameCanvas {
     this.canvas.height = size.height
   }
 
-  moveRectUnlessOffCanvas = (object: CanvasObject, direction: Direction): Direction => {
+  moveRectUnlessOffCanvas = (object: CanvasObjectType, direction: Direction): Direction => {
     if (direction === 'left' || direction === 'up left' || direction === 'down left') {
       if (this.isOffCanvasLeft(object.rect)) return 'left'
     }
@@ -64,7 +64,7 @@ class GameCanvas {
     return 'none'
   }
 
-  moveRect = (object: CanvasObject, direction: Direction) => {
+  moveRect = (object: CanvasObjectType, direction: Direction) => {
     switch (direction) {
       case 'up':
         this.moveUp(object, object.speed)
@@ -99,19 +99,19 @@ class GameCanvas {
     }
   }
 
-  private moveUp = (object: CanvasObject, speed: number) => {
+  private moveUp = (object: CanvasObjectType, speed: number) => {
     object.rect.position.y -= speed
   }
 
-  private moveDown = (object: CanvasObject, speed: number) => {
+  private moveDown = (object: CanvasObjectType, speed: number) => {
     object.rect.position.y += speed
   }
 
-  private moveRight = (object: CanvasObject, speed: number) => {
+  private moveRight = (object: CanvasObjectType, speed: number) => {
     object.rect.position.x += speed
   }
 
-  private moveLeft = (object: CanvasObject, speed: number) => {
+  private moveLeft = (object: CanvasObjectType, speed: number) => {
     object.rect.position.x -= speed
   }
 

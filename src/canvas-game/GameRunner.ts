@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 class GameRunner {
   private readonly fps60 = 16.666666667
 
@@ -20,3 +22,21 @@ class GameRunner {
 }
 
 export default GameRunner
+
+export const useGameRunner = (onFrame: () => void) => {
+  const fps60 = 16.666666667
+  const [gameClock, setGameClock] = useState<NodeJS.Timer | null>(null)
+
+  const start = () => {
+    if (gameClock) return
+    setGameClock(setInterval(onFrame, fps60))
+  }
+
+  const pause = () => {
+    if (!gameClock) return
+    clearInterval(gameClock)
+    setGameClock(null)
+  }
+
+  return { start, pause }
+}

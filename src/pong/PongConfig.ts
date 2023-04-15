@@ -1,12 +1,12 @@
 import { random } from '../random'
-import { CanvasObject } from '../types/CanvasObject'
 import { Direction } from '../types/Direction'
 import { DirectionalCanvasObject } from '../types/DirectionalCanvasObject'
 import { Size } from '../types/Size'
+import { CanvasObjectType } from './CanvasObject'
 
 export type PongConfig = {
   pongBall: DirectionalCanvasObject
-  playerPaddle: CanvasObject
+  playerPaddle: CanvasObjectType
   opponentPaddle: DirectionalCanvasObject
   canvasUnits: number
 }
@@ -26,7 +26,7 @@ export const getPongConfig = (): PongConfig => {
 
 const paddleSize: Size = { width: 150, height: 30 }
 
-const makePlayerPaddle = (canvasUnits: number): CanvasObject => {
+const makePlayerPaddle = (canvasUnits: number): CanvasObjectType => {
   return {
     rect: {
       size: paddleSize,
