@@ -4,7 +4,7 @@ export const GameRunner = (onFrame: () => void) => {
 
   const start = () => {
     if (gameClock) return
-    gameClock = setInterval(onFrame, fps60 * 4)
+    gameClock = setInterval(onFrame, fps60)
   }
 
   const pause = () => {

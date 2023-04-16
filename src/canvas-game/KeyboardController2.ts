@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { EventConfig, eventController } from '../eventController'
 
-export const KeyboardController = () => {
+export const KeyboardController2 = () => {
   let isPressingLeft = false
   let isPressingRight = false
 
