@@ -10,6 +10,7 @@ const CANVAS_OBJECT_MOCK: CanvasObjectType = {
   },
   color: 'anyColor',
   speed: 10,
+  direction: 'down',
 }
 
 describe('Use Canvas Object', () => {

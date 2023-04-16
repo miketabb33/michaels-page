@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { EventConfig, eventController } from '../eventController'
 import { Size } from '../types/Size'
 
@@ -9,6 +9,7 @@ export type CanvasBinding = {
 
 export const useCanvas = (sizeMultiplier: number) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
+  const [widthReact, setWidthReact] = useState(0)
 
   const getSquareCanvasSize = (parentSize: Size, multiplier: number): Size => {
     const { width: parentWidth, height: parentHeight } = parentSize
@@ -35,6 +36,7 @@ export const useCanvas = (sizeMultiplier: number) => {
 
     canvas.width = squareSize.width
     canvas.height = squareSize.height
+    setWidthReact(squareSize.width)
   }
 
   const events: EventConfig[] = [{ name: 'resize', action: attemptToResizeCanvas }]
@@ -57,5 +59,6 @@ export const useCanvas = (sizeMultiplier: number) => {
       getCanvas: () => canvasRef.current,
     } as CanvasBinding,
     canvasRef,
+    widthReact,
   }
 }

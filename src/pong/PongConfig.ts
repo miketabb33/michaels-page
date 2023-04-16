@@ -1,13 +1,12 @@
 import { random } from '../random'
 import { Direction } from '../types/Direction'
-import { DirectionalCanvasObject } from '../types/DirectionalCanvasObject'
 import { Size } from '../types/Size'
 import { CanvasObjectType } from './CanvasObject'
 
 export type PongConfig = {
-  pongBall: DirectionalCanvasObject
+  pongBall: CanvasObjectType
   playerPaddle: CanvasObjectType
-  opponentPaddle: DirectionalCanvasObject
+  opponentPaddle: CanvasObjectType
   canvasUnits: number
 }
 
@@ -37,40 +36,38 @@ const makePlayerPaddle = (canvasUnits: number): CanvasObjectType => {
     },
     color: tuftsBlue,
     speed: 10,
-  }
-}
-
-const makeOpponentPaddle = (canvasUnits: number): DirectionalCanvasObject => {
-  return {
-    canvasObject: {
-      rect: {
-        size: { ...paddleSize, width: canvasUnits },
-        position: {
-          x: 0, //canvasUnits / 2 - paddleSize.width / 2,
-          y: 0,
-        },
-      },
-      color: tuftsBlue,
-      speed: 10,
-    },
     direction: 'none',
   }
 }
 
-const makePongBall = (canvasUnits: number): DirectionalCanvasObject => {
-  const ballSize: Size = { width: 20, height: 20 }
+const makeOpponentPaddle = (canvasUnits: number): CanvasObjectType => {
   return {
-    canvasObject: {
-      rect: {
-        size: ballSize,
-        position: {
-          x: canvasUnits / 2 - ballSize.width / 2,
-          y: canvasUnits / 2 - ballSize.height / 2 - 200,
-        },
+    rect: {
+      size: { ...paddleSize, width: canvasUnits },
+      position: {
+        x: 0, //canvasUnits / 2 - paddleSize.width / 2,
+        y: 0,
       },
-      color: carrotOrange,
-      speed: 13,
     },
+    color: tuftsBlue,
+    speed: 10,
+    direction: 'none',
+  }
+}
+
+const makePongBall = (canvasUnits: number): CanvasObjectType => {
+  const ballSize: Size = { width: 20, height: 20 }
+
+  return {
+    rect: {
+      size: ballSize,
+      position: {
+        x: canvasUnits / 2 - ballSize.width / 2,
+        y: canvasUnits / 2 - ballSize.height / 2 - 200,
+      },
+    },
+    color: carrotOrange,
+    speed: 13,
     direction: randomPaddleDirection(),
   }
 }
