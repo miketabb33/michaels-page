@@ -1,8 +1,8 @@
-import { CanvasObjectType } from '../../pong/CanvasObject'
-import { CanvasBinding } from '../../pong/useCanvas'
+import { CanvasBinding } from './useCanvas'
 import { translateRect } from './translateRect'
+import { CanvasObjectType } from './CanvasObject'
 
-export const renderer2dContext = (canvasBinding: CanvasBinding, gameUnits: number) => {
+export const Renderer2dContext = (canvasBinding: CanvasBinding, gameUnits: number) => {
   const getCtx = () => {
     const canvas = canvasBinding.getCanvas()
     if (!canvas) return

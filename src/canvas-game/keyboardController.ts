@@ -1,23 +1,7 @@
 import { useEffect } from 'react'
 import { EventConfig, eventController } from '../eventController'
 
-export const keyboardController = (e: KeyboardEvent) => {
-  const isDKey = e.code === 'KeyD'
-  const isArrowRightKey = e.code === 'ArrowRight'
-
-  const isAKey = e.code === 'KeyA'
-  const isArrowLeftKey = e.code === 'ArrowLeft'
-
-  const isPressingLeft = isAKey || isArrowLeftKey
-  const isPressingRight = isDKey || isArrowRightKey
-
-  return {
-    isPressingLeft,
-    isPressingRight,
-  }
-}
-
-export const keyboardController2 = () => {
+export const KeyboardController = () => {
   let isPressingLeft = false
   let isPressingRight = false
 
@@ -66,7 +50,7 @@ export const keyboardController2 = () => {
   }, [])
 
   return {
-    isPressingLeft: () => isPressingLeft,
-    isPressingRight: () => isPressingRight,
+    isPressingLeftKey: () => isPressingLeft,
+    isPressingRightKey: () => isPressingRight,
   }
 }

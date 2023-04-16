@@ -1,5 +1,5 @@
-import { Rect } from '../../types/Rect'
-import { Size } from '../../types/Size'
+import { Rect } from '../types/Rect'
+import { Size } from '../types/Size'
 
 export const translateRect = (rect: Rect, canvasSize: Size, units: number) => {
   const translateParam = (rectParam: number, canvasParam: number) => {

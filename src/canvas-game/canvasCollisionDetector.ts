@@ -1,4 +1,4 @@
-import { getRectEdges, translateRect } from '../components/PongView/translateRect'
+import { getRectEdges, translateRect } from '../canvas-game/translateRect'
 import { Direction } from '../types/Direction'
 import { Rect } from '../types/Rect'
 import { CanvasObjectType } from './CanvasObject'

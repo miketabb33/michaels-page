@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { StylesSettings } from '../../styles/Styles'
 import styled from 'styled-components'
 import { useStyles } from '../../context/StylesContext'
-import { useCanvas } from '../../pong/useCanvas'
-import CanvasObject from '../../pong/CanvasObject'
-import { getPongConfig } from '../../pong/PongConfig'
-import { useGameRunner } from '../../canvas-game/GameRunner'
-import { renderer2dContext } from './renderer2dContext'
-import { keyboardController2 } from '../../canvas-game/keyboardController'
-import { CanvasCollisionDetector } from '../../pong/canvasCollisionDetector'
-import { collisionDetection } from './translateRect'
+import { useCanvas } from '../../canvas-game/useCanvas'
+import { getPongConfig } from './PongConfig'
+import { GameRunner } from '../../canvas-game/GameRunner'
 import { random } from '../../random'
 import PongControls from './PongControls'
+import CanvasObject from '../../canvas-game/CanvasObject'
+import { CanvasCollisionDetector } from '../../canvas-game/canvasCollisionDetector'
+import { Renderer2dContext } from '../../canvas-game/Renderer2dContext'
+import { KeyboardController } from '../../canvas-game/KeyboardController'
+import { collisionDetection } from '../../canvas-game/translateRect'
 
 const Container = styled.div`
   display: flex;
@@ -29,6 +29,8 @@ const PongBoardView = () => {
   const pongConfig = getPongConfig()
   const [score, setScore] = useState(0)
   let inGameScore = 0
+  let isPressingLeftButton = false
+  let isPressingRightButton = false
   const { styles } = useStyles()
   const { binding, canvasRef, widthReact } = useCanvas(0.8)
   const {
@@ -47,17 +49,17 @@ const PongBoardView = () => {
 
   const { isOffCanvas } = CanvasCollisionDetector(binding)
 
-  const { render } = renderer2dContext(binding, 1000)
-  const { isPressingLeft, isPressingRight } = keyboardController2()
+  const { render } = Renderer2dContext(binding, 1000)
+  const { isPressingLeftKey, isPressingRightKey } = KeyboardController()
 
   const scoreChanged = (score: number) => setScore(score)
 
   const onFrame = () => {
     //Player Paddle
     const isPlayerOffCanvas = isOffCanvas(getPlayerPaddle())
-    if (isPressingLeft() && isPlayerOffCanvas !== 'left') {
+    if ((isPressingLeftKey() || isPressingLeftButton) && isPlayerOffCanvas !== 'left') {
       changePlayerDirection('left')
-    } else if (isPressingRight() && isPlayerOffCanvas !== 'right') {
+    } else if ((isPressingRightKey() || isPressingRightButton) && isPlayerOffCanvas !== 'right') {
       changePlayerDirection('right')
     } else {
       changePlayerDirection('none')
@@ -118,7 +120,7 @@ const PongBoardView = () => {
     return 'down'
   }
 
-  const { start, pause } = useGameRunner(onFrame)
+  const { start, pause } = GameRunner(onFrame)
 
   const renderPong = () => {
     render([getPlayerPaddle(), getPongBall(), getOpponent()])
@@ -133,6 +135,13 @@ const PongBoardView = () => {
     <Container>
       <h1>Score: {score} </h1>
       <PongCanvas ref={canvasRef} styles={styles} id="PongCanvas" />
+      <PongControls
+        width={widthReact}
+        leftStarted={() => (isPressingLeftButton = true)}
+        leftEnded={() => (isPressingLeftButton = false)}
+        rightStarted={() => (isPressingRightButton = true)}
+        rightEnded={() => (isPressingRightButton = false)}
+      />
     </Container>
   )
 }

@@ -1,7 +1,7 @@
-import { random } from '../random'
-import { Direction } from '../types/Direction'
-import { Size } from '../types/Size'
-import { CanvasObjectType } from './CanvasObject'
+import { CanvasObjectType } from '../../canvas-game/CanvasObject'
+import { random } from '../../random'
+import { Direction } from '../../types/Direction'
+import { Size } from '../../types/Size'
 
 export type PongConfig = {
   pongBall: CanvasObjectType
