@@ -4,7 +4,7 @@ import { Size } from '../types/Size'
 
 export type CanvasBinding = {
   getCanvas: () => HTMLCanvasElement | null
-  getCanvasSize: () => Size
+  getCanvasSizePixels: () => Size
 }
 
 export const useCanvas = (sizeMultiplier: number) => {
@@ -17,7 +17,7 @@ export const useCanvas = (sizeMultiplier: number) => {
     return { width: size, height: size }
   }
 
-  const getCanvasSize = (): Size => {
+  const getCanvasSizePixels = (): Size => {
     const canvas = canvasRef.current
     if (!canvas) return { width: 0, height: 0 }
     return { width: canvas.clientWidth, height: canvas.clientWidth }
@@ -55,7 +55,7 @@ export const useCanvas = (sizeMultiplier: number) => {
 
   return {
     binding: {
-      getCanvasSize,
+      getCanvasSizePixels,
       getCanvas: () => canvasRef.current,
     } as CanvasBinding,
     canvasRef,

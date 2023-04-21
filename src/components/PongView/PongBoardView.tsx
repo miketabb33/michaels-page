@@ -7,8 +7,8 @@ import { getPongConfig } from './PongConfig'
 import { GameRunner } from '../../canvas-game/GameRunner'
 import { random } from '../../random'
 import PongControls from './PongControls'
-import CanvasObject from '../../canvas-game/CanvasObject'
-import { CanvasCollisionDetector } from '../../canvas-game/canvasCollisionDetector'
+import canvasObject from '../../canvas-game/canvasObject'
+import { canvasCollisionDetector } from '../../canvas-game/canvasCollisionDetector'
 import { Renderer2dContext } from '../../canvas-game/Renderer2dContext'
 import { KeyboardController2 } from '../../canvas-game/KeyboardController2'
 import { collisionDetection } from '../../canvas-game/translateRect'
@@ -37,17 +37,17 @@ const PongBoardView = () => {
     getCanvasObject: getPlayerPaddle,
     move: movePlayer,
     changeDirection: changePlayerDirection,
-  } = CanvasObject(pongConfig.playerPaddle)
+  } = canvasObject(pongConfig.playerPaddle)
 
   const {
     changeDirection: changeBallDirection,
     getCanvasObject: getPongBall,
     move: moveBall,
-  } = CanvasObject(pongConfig.pongBall)
+  } = canvasObject(pongConfig.pongBall)
 
-  const { getCanvasObject: getOpponent } = CanvasObject(pongConfig.opponentPaddle)
+  const { getCanvasObject: getOpponent } = canvasObject(pongConfig.opponentPaddle)
 
-  const { isOffCanvas } = CanvasCollisionDetector(binding)
+  const { isOffCanvas } = canvasCollisionDetector(binding, pongConfig.canvasDimensionUnits)
 
   const { render } = Renderer2dContext(binding, 1000)
   const { isPressingLeftKey, isPressingRightKey } = KeyboardController2()

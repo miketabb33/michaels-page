@@ -1,4 +1,4 @@
-import { CanvasObjectType } from '../../canvas-game/CanvasObject'
+import { CanvasObjectType } from '../../canvas-game/canvasObject'
 import { random } from '../../random'
 import { Direction } from '../../types/Direction'
 import { Size } from '../../types/Size'
@@ -7,19 +7,19 @@ export type PongConfig = {
   pongBall: CanvasObjectType
   playerPaddle: CanvasObjectType
   opponentPaddle: CanvasObjectType
-  canvasUnits: number
+  canvasDimensionUnits: number
 }
 
 const tuftsBlue = '#3C97D7'
 const carrotOrange = '#D98F25'
 
 export const getPongConfig = (): PongConfig => {
-  const canvasUnits = 1000
+  const canvasDimensionUnits = 1000
   return {
-    pongBall: makePongBall(canvasUnits),
-    playerPaddle: makePlayerPaddle(canvasUnits),
-    opponentPaddle: makeOpponentPaddle(canvasUnits),
-    canvasUnits: canvasUnits,
+    pongBall: makePongBall(canvasDimensionUnits),
+    playerPaddle: makePlayerPaddle(canvasDimensionUnits),
+    opponentPaddle: makeOpponentPaddle(canvasDimensionUnits),
+    canvasDimensionUnits,
   }
 }
 

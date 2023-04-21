@@ -1,10 +1,10 @@
 import { getRectEdges, translateRect } from '../canvas-game/translateRect'
 import { Direction } from '../types/Direction'
 import { Rect } from '../types/Rect'
-import { CanvasObjectType } from './CanvasObject'
+import { CanvasObjectType } from './canvasObject'
 import { CanvasBinding } from './useCanvas'
 
-export const CanvasCollisionDetector = (canvasBinding: CanvasBinding) => {
+export const canvasCollisionDetector = (canvasBinding: CanvasBinding, canvasDimensionUnits: number) => {
   const isOffCanvasUp = (rect: Rect): boolean => {
     if (rect.position.y < 0) return true
     return false
@@ -16,16 +16,16 @@ export const CanvasCollisionDetector = (canvasBinding: CanvasBinding) => {
   }
 
   const isOffCanvasRight = (rect: Rect): boolean => {
-    const translatedRect = translateRect(rect, canvasBinding.getCanvasSize(), 1000)
+    const translatedRect = translateRect(rect, canvasBinding.getCanvasSizePixels(), canvasDimensionUnits)
     const { right } = getRectEdges(translatedRect)
-    if (right > canvasBinding.getCanvasSize().width) return true
+    if (right > canvasBinding.getCanvasSizePixels().width) return true
     return false
   }
 
   const isOffCanvasDown = (rect: Rect): boolean => {
-    const translatedRect = translateRect(rect, canvasBinding.getCanvasSize(), 1000)
+    const translatedRect = translateRect(rect, canvasBinding.getCanvasSizePixels(), canvasDimensionUnits)
     const { bottom } = getRectEdges(translatedRect)
-    if (bottom > canvasBinding.getCanvasSize().height) return true
+    if (bottom > canvasBinding.getCanvasSizePixels().height) return true
     return false
   }
 
