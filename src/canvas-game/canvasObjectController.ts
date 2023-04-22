@@ -1,8 +1,8 @@
 import { Direction } from '../types/Direction'
-import { Rect } from '../types/Rect'
 import { Velocity } from '../types/Velocity'
+import { Rect } from './rectController'
 
-export type CanvasObjectType = {
+export type CanvasObject = {
   rect: Rect
   color: string
   speed: number
@@ -10,13 +10,13 @@ export type CanvasObjectType = {
 }
 
 export type CanvasObjectController = {
-  getCanvasObject: () => CanvasObjectType
+  getCanvasObject: () => CanvasObject
   move: (direction: Direction) => void
   changeDirection: (direction: Direction) => void
   addVelocity: (velocity: Velocity) => void
 }
 
-const canvasObject = (init: CanvasObjectType): CanvasObjectController => {
+const canvasObject = (init: CanvasObject): CanvasObjectController => {
   const width = init.rect.size.width
   const height = init.rect.size.height
   let x = init.rect.position.x
@@ -54,7 +54,7 @@ const canvasObject = (init: CanvasObjectType): CanvasObjectController => {
     direction = newDirection
   }
 
-  const getCanvasObject = (): CanvasObjectType => {
+  const getCanvasObject = (): CanvasObject => {
     return {
       rect: {
         position: { x, y },

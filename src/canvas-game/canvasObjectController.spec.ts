@@ -1,5 +1,5 @@
 import { makeCanvasObjectMock } from '../__MOCKS__/canvasType.mock'
-import canvasObject, { CanvasObjectType } from './canvasObject'
+import canvasObject, { CanvasObject } from './canvasObjectController'
 
 describe('Use Canvas Object', () => {
   it('should return the initial object when nothing changed', () => {
@@ -9,7 +9,7 @@ describe('Use Canvas Object', () => {
   })
 
   describe('Add Velocity', () => {
-    let CANVAS_OBJECT_MOCK: CanvasObjectType
+    let CANVAS_OBJECT_MOCK: CanvasObject
 
     beforeEach(() => {
       CANVAS_OBJECT_MOCK = makeCanvasObjectMock()

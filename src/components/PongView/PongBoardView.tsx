@@ -7,11 +7,11 @@ import { getPongConfig } from './PongConfig'
 import { GameRunner } from '../../canvas-game/GameRunner'
 import { random } from '../../random'
 import PongControls from './PongControls'
-import canvasObject from '../../canvas-game/canvasObject'
+import canvasObject from '../../canvas-game/canvasObjectController'
 import { canvasCollisionDetector } from '../../canvas-game/canvasCollisionDetector'
-import { Renderer2dContext } from '../../canvas-game/Renderer2dContext'
-import { KeyboardController2 } from '../../canvas-game/KeyboardController2'
-import { collisionDetection } from '../../canvas-game/translateRect'
+import { renderer2dContext } from '../../canvas-game/renderer2dContext'
+import { useGameKeyboard } from '../../canvas-game/gameKeyboard'
+import { collisionDetection } from '../../canvas-game/rectController'
 
 const Container = styled.div`
   display: flex;
@@ -49,8 +49,8 @@ const PongBoardView = () => {
 
   const { isOffCanvas } = canvasCollisionDetector(binding, pongConfig.canvasDimensionUnits)
 
-  const { render } = Renderer2dContext(binding, 1000)
-  const { isPressingLeftKey, isPressingRightKey } = KeyboardController2()
+  const { render } = renderer2dContext(binding, 1000)
+  const { isPressingLeftKey, isPressingRightKey } = useGameKeyboard()
 
   const scoreChanged = (score: number) => setScore(score)
 

@@ -1,6 +1,6 @@
-import { CanvasObjectType } from '../canvas-game/canvasObject'
+import { CanvasObject } from '../canvas-game/canvasObjectController'
 
-export const makeCanvasObjectMock = (): CanvasObjectType => {
+export const makeCanvasObjectMock = (): CanvasObject => {
   return {
     rect: {
       size: { width: 0, height: 0 },

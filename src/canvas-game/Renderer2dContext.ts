@@ -1,15 +1,15 @@
 import { CanvasBinding } from './useCanvas'
-import { translateRect } from './translateRect'
-import { CanvasObjectType } from './canvasObject'
+import { translateRect } from './rectController'
+import { CanvasObject } from './canvasObjectController'
 
-export const Renderer2dContext = (canvasBinding: CanvasBinding, gameUnits: number) => {
+export const renderer2dContext = (canvasBinding: CanvasBinding, gameUnits: number) => {
   const getCtx = () => {
     const canvas = canvasBinding.getCanvas()
     if (!canvas) return
     return canvas.getContext('2d')
   }
 
-  const renderCanvasObject = (canvasObject: CanvasObjectType) => {
+  const renderCanvasObject = (canvasObject: CanvasObject) => {
     const ctx = getCtx()
     if (!ctx) return
     const translatedRect = translateRect(canvasObject.rect, canvasBinding.getCanvasSizePixels(), gameUnits)
@@ -27,7 +27,7 @@ export const Renderer2dContext = (canvasBinding: CanvasBinding, gameUnits: numbe
     ctx.clearRect(0, 0, width, height)
   }
 
-  const render = (canvasObjects: CanvasObjectType[]) => {
+  const render = (canvasObjects: CanvasObject[]) => {
     clearCanvas()
     canvasObjects.forEach((canvasObject) => {
       renderCanvasObject(canvasObject)

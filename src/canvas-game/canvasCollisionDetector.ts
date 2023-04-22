@@ -1,7 +1,6 @@
-import { getRectEdges, translateRect } from '../canvas-game/translateRect'
+import { Rect, getRectEdges, translateRect } from './rectController'
 import { Direction } from '../types/Direction'
-import { Rect } from '../types/Rect'
-import { CanvasObjectType } from './canvasObject'
+import { CanvasObject } from './canvasObjectController'
 import { CanvasBinding } from './useCanvas'
 
 export const canvasCollisionDetector = (canvasBinding: CanvasBinding, canvasDimensionUnits: number) => {
@@ -29,7 +28,7 @@ export const canvasCollisionDetector = (canvasBinding: CanvasBinding, canvasDime
     return false
   }
 
-  const isOffCanvas = (object: CanvasObjectType): Direction => {
+  const isOffCanvas = (object: CanvasObject): Direction => {
     if (isOffCanvasLeft(object.rect)) return 'left'
     if (isOffCanvasRight(object.rect)) return 'right'
     if (isOffCanvasDown(object.rect)) return 'down'
