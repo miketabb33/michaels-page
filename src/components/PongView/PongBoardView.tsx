@@ -8,9 +8,7 @@ import { GameRunner } from '../../canvas-game/GameRunner'
 import { random } from '../../random'
 import PongControls from './PongControls'
 import canvasObject from '../../canvas-game/canvasObjectController'
-import { canvasCollisionDetector } from '../../canvas-game/canvasCollisionDetector'
-import { renderer2dContext } from '../../canvas-game/renderer2dContext'
-import { useGameKeyboard } from '../../canvas-game/gameKeyboard'
+import { useGameKeyboard } from '../../canvas-game/useGameKeyboard'
 import { collisionDetection } from '../../canvas-game/rectController'
 
 const Container = styled.div`
@@ -31,51 +29,41 @@ const PongBoardView = () => {
   let inGameScore = 0
   let isPressingLeftButton = false
   let isPressingRightButton = false
+
   const { styles } = useStyles()
-  const { binding, canvasRef, widthReact } = useCanvas(0.8)
-  const {
-    getCanvasObject: getPlayerPaddle,
-    move: movePlayer,
-    changeDirection: changePlayerDirection,
-  } = canvasObject(pongConfig.playerPaddle)
+  const { isRectOffCanvas, draw, canvasRef, widthReact } = useCanvas(0.8, pongConfig.canvasDimensionUnits)
 
-  const {
-    changeDirection: changeBallDirection,
-    getCanvasObject: getPongBall,
-    move: moveBall,
-  } = canvasObject(pongConfig.pongBall)
+  const playerPaddle = canvasObject(pongConfig.playerPaddle)
+  const pongBall = canvasObject(pongConfig.pongBall)
+  const opponentPaddle = canvasObject(pongConfig.opponentPaddle)
 
-  const { getCanvasObject: getOpponent } = canvasObject(pongConfig.opponentPaddle)
-
-  const { isOffCanvas } = canvasCollisionDetector(binding, pongConfig.canvasDimensionUnits)
-
-  const { render } = renderer2dContext(binding, 1000)
   const { isPressingLeftKey, isPressingRightKey } = useGameKeyboard()
 
   const scoreChanged = (score: number) => setScore(score)
 
   const onFrame = () => {
     //Player Paddle
-    const isPlayerOffCanvas = isOffCanvas(getPlayerPaddle())
+    const isPlayerOffCanvas = isRectOffCanvas(playerPaddle.getCanvasObject().rect)
     if ((isPressingLeftKey() || isPressingLeftButton) && isPlayerOffCanvas !== 'left') {
-      changePlayerDirection('left')
+      playerPaddle.changeDirection('left')
     } else if ((isPressingRightKey() || isPressingRightButton) && isPlayerOffCanvas !== 'right') {
-      changePlayerDirection('right')
+      playerPaddle.changeDirection('right')
     } else {
-      changePlayerDirection('none')
+      playerPaddle.changeDirection('none')
     }
 
-    const isBallOffCanvas = isOffCanvas(getPongBall())
+    const isBallOffCanvas = isRectOffCanvas(pongBall.getCanvasObject().rect)
+
     //Ball bounce on wall
-    const ballDirection = getPongBall().direction
+    const ballDirection = pongBall.getCanvasObject().direction
     if (isBallOffCanvas === 'left') {
-      if (ballDirection === 'down left') changeBallDirection('down right')
-      if (ballDirection === 'up left') changeBallDirection('up right')
+      if (ballDirection === 'down left') pongBall.changeDirection('down right')
+      if (ballDirection === 'up left') pongBall.changeDirection('up right')
     }
 
     if (isBallOffCanvas === 'right') {
-      if (ballDirection === 'down right') changeBallDirection('down left')
-      if (ballDirection === 'up right') changeBallDirection('up left')
+      if (ballDirection === 'down right') pongBall.changeDirection('down left')
+      if (ballDirection === 'up right') pongBall.changeDirection('up left')
     }
 
     //Ball hits game ending wall
@@ -90,18 +78,21 @@ const PongBoardView = () => {
     }
 
     //Ball hits paddles
-    const didHitPlayerPaddle = collisionDetection(getPongBall().rect, getPlayerPaddle().rect)
+    const didHitPlayerPaddle = collisionDetection(pongBall.getCanvasObject().rect, playerPaddle.getCanvasObject().rect)
     if (didHitPlayerPaddle) {
-      changeBallDirection(playerHitPaddleDirection())
+      pongBall.changeDirection(playerHitPaddleDirection())
       inGameScore += 1
       scoreChanged(inGameScore)
     }
 
-    const didHitOpponentPaddle = collisionDetection(getPongBall().rect, getOpponent().rect)
-    if (didHitOpponentPaddle) changeBallDirection(opponentHitPaddleDirection())
+    const didHitOpponentPaddle = collisionDetection(
+      pongBall.getCanvasObject().rect,
+      opponentPaddle.getCanvasObject().rect
+    )
+    if (didHitOpponentPaddle) pongBall.changeDirection(opponentHitPaddleDirection())
 
-    movePlayer(getPlayerPaddle().direction)
-    moveBall(getPongBall().direction)
+    playerPaddle.move(playerPaddle.getCanvasObject().direction)
+    pongBall.move(pongBall.getCanvasObject().direction)
 
     renderPong()
   }
@@ -123,7 +114,7 @@ const PongBoardView = () => {
   const { start, pause } = GameRunner(onFrame)
 
   const renderPong = () => {
-    render([getPlayerPaddle(), getPongBall(), getOpponent()])
+    draw([playerPaddle.getCanvasObject(), pongBall.getCanvasObject(), opponentPaddle.getCanvasObject()])
   }
 
   useEffect(() => {

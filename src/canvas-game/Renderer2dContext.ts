@@ -1,36 +1,31 @@
-import { CanvasBinding } from './useCanvas'
-import { translateRect } from './rectController'
-import { CanvasObject } from './canvasObjectController'
+import { Rect } from './rectController'
 
-export const renderer2dContext = (canvasBinding: CanvasBinding, gameUnits: number) => {
-  const getCtx = () => {
-    const canvas = canvasBinding.getCanvas()
-    if (!canvas) return
-    return canvas.getContext('2d')
-  }
+export type RenderableObject = {
+  rect: Rect
+  color: string
+}
 
-  const renderCanvasObject = (canvasObject: CanvasObject) => {
-    const ctx = getCtx()
-    if (!ctx) return
-    const translatedRect = translateRect(canvasObject.rect, canvasBinding.getCanvasSizePixels(), gameUnits)
-    const { width, height } = translatedRect.size
-    const { x, y } = translatedRect.position
+export const renderer2dContext = () => {
+  const renderObject = (renderableObject: RenderableObject, ctx: CanvasRenderingContext2D) => {
+    const { width, height } = renderableObject.rect.size
+    const { x, y } = renderableObject.rect.position
 
-    ctx.fillStyle = canvasObject.color
+    ctx.fillStyle = renderableObject.color
     ctx.fillRect(x, y, width, height)
   }
 
-  const clearCanvas = () => {
-    const ctx = getCtx()
-    if (!ctx) return
-    const { width, height } = canvasBinding.getCanvasSizePixels()
-    ctx.clearRect(0, 0, width, height)
+  const clearCanvas = (ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) => {
+    ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight)
   }
 
-  const render = (canvasObjects: CanvasObject[]) => {
-    clearCanvas()
-    canvasObjects.forEach((canvasObject) => {
-      renderCanvasObject(canvasObject)
+  const render = (renderableObjects: RenderableObject[], canvas: HTMLCanvasElement | null) => {
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    clearCanvas(ctx, canvas)
+    renderableObjects.forEach((renderableObject) => {
+      renderObject(renderableObject, ctx)
     })
   }
 
