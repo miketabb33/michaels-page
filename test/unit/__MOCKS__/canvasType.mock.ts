@@ -1,4 +1,4 @@
-import { CanvasObject } from '../canvas-game/canvasObjectController'
+import { CanvasObject } from '../../../src/canvas-game/canvasObjectController'
 
 export const makeCanvasObjectMock = (): CanvasObject => {
   return {

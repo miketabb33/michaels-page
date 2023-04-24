@@ -1,5 +1,5 @@
-import { KeyboardCode } from '../types/KeyboardCode'
-import { gameKeyboardController } from './useGameKeyboard'
+import { KeyboardCode } from '../../../src/types/KeyboardCode'
+import { gameKeyboardController } from '../../../src/canvas-game/useGameKeyboard'
 
 describe('Game Keyboard Controller', () => {
   it('should toggle is pressing left on arrow left key', () => {

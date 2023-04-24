@@ -1,6 +1,6 @@
-import { Size } from '../types/Size'
-import { Rect } from './rect'
-import { calcSquareCanvasSize, translateRect } from './relativeCanvas'
+import { Size } from '../../../src/types/Size'
+import { Rect } from '../../../src/canvas-game/rect'
+import { calcSquareCanvasSize, translateRect } from '../../../src/canvas-game/relativeCanvas'
 
 describe('Translate Rect', () => {
   it('should translate the rect into the true pixel size of the canvas', () => {

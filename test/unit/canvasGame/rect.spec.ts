@@ -1,4 +1,4 @@
-import { Rect, collisionDetection, getRectEdges } from './rect'
+import { Rect, collisionDetection, getRectEdges } from '../../../src/canvas-game/rect'
 
 describe('Get Rect Edges', () => {
   it('should get the edges of the rect', () => {

@@ -1,5 +1,5 @@
 import { makeCanvasObjectMock } from '../__MOCKS__/canvasType.mock'
-import canvasObject, { CanvasObject } from './canvasObjectController'
+import canvasObject, { CanvasObject } from '../../../src/canvas-game/canvasObjectController'
 
 describe('Use Canvas Object', () => {
   it('should return the initial object when nothing changed', () => {

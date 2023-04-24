@@ -1,4 +1,4 @@
-import { isOffCanvas } from './isOffCanvas'
+import { isOffCanvas } from '../../../src/canvas-game/isOffCanvas'
 
 const CANVAS_SIZE_MOCK = { width: 100, height: 100 }
 
