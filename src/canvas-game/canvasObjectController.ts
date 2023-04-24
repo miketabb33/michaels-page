@@ -1,6 +1,6 @@
 import { Direction } from '../types/Direction'
 import { Velocity } from '../types/Velocity'
-import { Rect } from './rectController'
+import { Rect } from './rect'
 
 export type CanvasObject = {
   rect: Rect

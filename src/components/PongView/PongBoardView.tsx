@@ -9,7 +9,7 @@ import { random } from '../../random'
 import PongControls from './PongControls'
 import canvasObject from '../../canvas-game/canvasObjectController'
 import { useGameKeyboard } from '../../canvas-game/useGameKeyboard'
-import { collisionDetection } from '../../canvas-game/rectController'
+import { collisionDetection } from '../../canvas-game/rect'
 
 const Container = styled.div`
   display: flex;
@@ -31,7 +31,12 @@ const PongBoardView = () => {
   let isPressingRightButton = false
 
   const { styles } = useStyles()
-  const { isRectOffCanvas, draw, canvasRef, widthReact } = useCanvas(0.8, pongConfig.canvasDimensionUnits)
+  const {
+    isRectOffCanvas,
+    draw,
+    canvasRef,
+    canvasWidthReactState: widthReact,
+  } = useCanvas({ sizeMultiplier: 0.8, units: pongConfig.canvasDimensionUnits })
 
   const playerPaddle = canvasObject(pongConfig.playerPaddle)
   const pongBall = canvasObject(pongConfig.pongBall)

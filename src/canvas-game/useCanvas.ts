@@ -1,49 +1,25 @@
 import { useEffect, useRef, useState } from 'react'
 import { EventConfig, eventController } from '../eventController'
 import { Size } from '../types/Size'
-import { Rect } from './rectController'
-import { offCanvasDetector } from './offCanvasDetector'
+import { Rect } from './rect'
+import { isOffCanvas } from './isOffCanvas'
 import { Direction } from '../types/Direction'
-import { RenderableObject, renderer2dContext } from './renderer2dContext'
+import { RenderableObject, render2dContext } from './render2dContext'
 import { CanvasObject } from './canvasObjectController'
+import { calcSquareCanvasSize, translateRect } from './relativeCanvas'
 
-export const useCanvas = (sizeMultiplier: number, units: number) => {
+type UseCanvas = {
+  sizeMultiplier: number
+  units: number
+}
+
+export const useCanvas = ({ units, sizeMultiplier }: UseCanvas) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
-
-  const { isOffCanvas } = offCanvasDetector()
-  const { render } = renderer2dContext()
-
-  const [widthReact, setWidthReact] = useState(0)
+  const [canvasWidthReactState, setCanvasWidthReactWidth] = useState(0)
 
   const isRectOffCanvas = (rect: Rect): Direction => {
-    const translatedRect = translateRect(rect)
+    const translatedRect = translateRect(rect, getCanvasSizePixels(), units)
     return isOffCanvas(translatedRect, getCanvasSizePixels())
-  }
-
-  const translateRect = (rect: Rect) => {
-    const translateParam = (rectParam: number, canvasParam: number) => {
-      return (rectParam / units) * canvasParam
-    }
-
-    const canvasSize = getCanvasSizePixels()
-
-    const tWidth = translateParam(rect.size.width, canvasSize.width)
-    const tHeight = translateParam(rect.size.height, canvasSize.height)
-    const tx = translateParam(rect.position.x, canvasSize.width)
-    const ty = translateParam(rect.position.y, canvasSize.height)
-
-    const translatedRect: Rect = {
-      position: { x: tx, y: ty },
-      size: { width: tWidth, height: tHeight },
-    }
-
-    return translatedRect
-  }
-
-  const getSquareCanvasSize = (parentSize: Size, multiplier: number): Size => {
-    const { width: parentWidth, height: parentHeight } = parentSize
-    const size = parentWidth >= parentHeight ? parentHeight * multiplier : parentWidth * multiplier
-    return { width: size, height: size }
   }
 
   const getCanvasSizePixels = (): Size => {
@@ -54,13 +30,13 @@ export const useCanvas = (sizeMultiplier: number, units: number) => {
 
   const draw = (canvasObjects: CanvasObject[]) => {
     const renderableObjects: RenderableObject[] = canvasObjects.map((canvasObject) => {
-      const translatedRect = translateRect(canvasObject.rect)
+      const translatedRect = translateRect(canvasObject.rect, getCanvasSizePixels(), units)
       return {
         rect: translatedRect,
         color: canvasObject.color,
       }
     })
-    render(renderableObjects, canvasRef.current)
+    render2dContext(renderableObjects, canvasRef.current)
   }
 
   const attemptToResizeCanvas = () => {
@@ -69,14 +45,14 @@ export const useCanvas = (sizeMultiplier: number, units: number) => {
     const parentElement = canvas.parentElement
     if (!parentElement) return
 
-    const squareSize = getSquareCanvasSize(
+    const squareSize = calcSquareCanvasSize(
       { width: parentElement.clientWidth, height: parentElement.clientHeight },
       sizeMultiplier
     )
 
     canvas.width = squareSize.width
     canvas.height = squareSize.height
-    setWidthReact(squareSize.width)
+    setCanvasWidthReactWidth(squareSize.width)
   }
 
   const events: EventConfig[] = [{ name: 'resize', action: attemptToResizeCanvas }]
@@ -97,6 +73,6 @@ export const useCanvas = (sizeMultiplier: number, units: number) => {
     isRectOffCanvas,
     draw,
     canvasRef,
-    widthReact,
+    canvasWidthReactState,
   }
 }
