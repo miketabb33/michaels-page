@@ -10,7 +10,12 @@ export const makeCanvasObjectMock = (): CanvasObject => {
       },
     },
     color: '',
-    speed: 0,
-    direction: 'none',
+    velocity: {
+      speed: 0,
+      directionValue: {
+        x: 0,
+        y: 0,
+      },
+    },
   }
 }

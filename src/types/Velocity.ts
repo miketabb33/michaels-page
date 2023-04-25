@@ -1,4 +1,4 @@
-import { DirectionValue } from '../canvas-game/canvasObjectController'
+import { DirectionValue } from './DirectionValue'
 
 export type Velocity = {
   directionValue: DirectionValue

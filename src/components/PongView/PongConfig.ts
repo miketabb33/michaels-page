@@ -1,5 +1,6 @@
-import { CanvasObject, DirectionValue } from '../../canvas-game/canvasObjectController'
+import { CanvasObject } from '../../canvas-game/canvasObjectController'
 import { random } from '../../random'
+import { DirectionValue } from '../../types/DirectionValue'
 import { Size } from '../../types/Size'
 
 export type PongConfig = {

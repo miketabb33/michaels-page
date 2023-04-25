@@ -1,11 +1,6 @@
-import { Direction } from '../types/Direction'
+import { DirectionValue } from '../types/DirectionValue'
 import { Velocity } from '../types/Velocity'
 import { Rect } from './rect'
-
-export type DirectionValue = {
-  x: number
-  y: number
-}
 
 export type CanvasObject = {
   rect: Rect
@@ -17,7 +12,6 @@ export type CanvasObjectController = {
   getCanvasObject: () => CanvasObject
   move: () => void
   changeDirection: (direction: DirectionValue) => void
-  addVelocity: (velocity: Velocity) => void
 }
 
 const canvasObject = (init: CanvasObject): CanvasObjectController => {
@@ -40,17 +34,6 @@ const canvasObject = (init: CanvasObject): CanvasObjectController => {
     x += xTranslation
     y += yTranslation
   }
-
-  const velocityMap = new Map<Direction, Velocity>([
-    ['up', { directionValue: { x: 0, y: -1 }, speed }],
-    ['right', { directionValue: { x: 1, y: 0 }, speed }],
-    ['down', { directionValue: { x: 0, y: 1 }, speed }],
-    ['left', { directionValue: { x: -1, y: 0 }, speed }],
-    ['up right', { directionValue: { x: 0.5, y: -0.5 }, speed }],
-    ['down right', { directionValue: { x: 0.5, y: 0.5 }, speed }],
-    ['down left', { directionValue: { x: -0.5, y: 0.5 }, speed }],
-    ['up left', { directionValue: { x: -0.5, y: -0.5 }, speed }],
-  ])
 
   const changeDirection = (newDirection: DirectionValue) => {
     directionalX = newDirection.x
@@ -78,7 +61,6 @@ const canvasObject = (init: CanvasObject): CanvasObjectController => {
     getCanvasObject,
     move,
     changeDirection,
-    addVelocity,
   }
 }
 

@@ -1,12 +1,13 @@
 import { useEffect } from 'react'
 import { getPongConfig } from './PongConfig'
 import { useCanvas } from '../../canvas-game/useCanvas'
-import canvasObject, { DirectionValue } from '../../canvas-game/canvasObjectController'
+import canvasObject from '../../canvas-game/canvasObjectController'
 import { collisionDetection } from '../../canvas-game/rect'
 import { random } from '../../random'
 import { GameRunner } from '../../canvas-game/GameRunner'
 import { useScore } from '../../canvas-game/useScore'
 import { usePongPlayerControls } from './usePongPlayerControls'
+import { DirectionValue } from '../../types/DirectionValue'
 
 const playerHitPaddleDirection = (): DirectionValue => {
   const randomNum = random(3)
