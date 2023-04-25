@@ -1,6 +1,5 @@
-import { CanvasObject } from '../../canvas-game/canvasObjectController'
+import { CanvasObject, DirectionValue } from '../../canvas-game/canvasObjectController'
 import { random } from '../../random'
-import { Direction } from '../../types/Direction'
 import { Size } from '../../types/Size'
 
 export type PongConfig = {
@@ -35,8 +34,13 @@ const makePlayerPaddle = (canvasUnits: number): CanvasObject => {
       },
     },
     color: tuftsBlue,
-    speed: 10,
-    direction: 'none',
+    velocity: {
+      speed: 10,
+      directionValue: {
+        x: 0,
+        y: 0,
+      },
+    },
   }
 }
 
@@ -50,8 +54,13 @@ const makeOpponentPaddle = (canvasUnits: number): CanvasObject => {
       },
     },
     color: tuftsBlue,
-    speed: 10,
-    direction: 'none',
+    velocity: {
+      speed: 10,
+      directionValue: {
+        x: 0,
+        y: 0,
+      },
+    },
   }
 }
 
@@ -67,19 +76,21 @@ const makePongBall = (canvasUnits: number): CanvasObject => {
       },
     },
     color: carrotOrange,
-    speed: 13,
-    direction: randomPaddleDirection(),
+    velocity: {
+      speed: 13,
+      directionValue: randomPaddleDirection(),
+    },
   }
 }
 
-const randomPaddleDirection = (): Direction => {
+const randomPaddleDirection = (): DirectionValue => {
   const randomNum = random(6)
 
-  if (randomNum === 0) return 'up'
-  if (randomNum === 1) return 'up left'
-  if (randomNum === 2) return 'up right'
-  if (randomNum === 3) return 'down'
-  if (randomNum === 4) return 'down left'
-  if (randomNum === 5) return 'down right'
-  return 'none'
+  if (randomNum === 0) return { x: 0, y: -1 }
+  if (randomNum === 1) return { x: -0.5, y: -0.5 }
+  if (randomNum === 2) return { x: 0.5, y: -0.5 }
+  if (randomNum === 3) return { x: 0, y: 1 }
+  if (randomNum === 4) return { x: -0.5, y: 0.5 }
+  if (randomNum === 5) return { x: 0.5, y: 0.5 }
+  return { x: 0, y: 0 }
 }

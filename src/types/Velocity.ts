@@ -1,5 +1,6 @@
+import { DirectionValue } from '../canvas-game/canvasObjectController'
+
 export type Velocity = {
-  x: number
-  y: number
+  directionValue: DirectionValue
   speed: number
 }
