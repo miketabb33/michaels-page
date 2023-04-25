@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { getPongConfig } from './PongConfig'
 import { useCanvas } from '../../canvas-game/useCanvas'
 import canvasObject from '../../canvas-game/canvasObjectController'
@@ -23,7 +23,12 @@ const opponentHitPaddleDirection = () => {
   return { x: 0, y: 1 }
 }
 
-export const usePong = () => {
+type UsePong = {
+  onWin: () => void
+  onLose: () => void
+}
+
+export const usePong = ({ onWin, onLose }: UsePong) => {
   const pongConfig = getPongConfig()
   const { score, incrementScore } = useScore()
 
@@ -46,7 +51,7 @@ export const usePong = () => {
     renderPong()
   }
 
-  const { start, pause } = GameRunner(onFrame)
+  const [gameRunner] = useState(GameRunner(onFrame))
 
   const movePlayerPaddle = () => {
     const isPlayerOffCanvas = isRectOffCanvas(playerPaddle.getCanvasObject().rect)
@@ -81,13 +86,11 @@ export const usePong = () => {
 
     //Ball hits game ending wall
     if (isBallOffCanvas === 'down') {
-      alert('YOU LOSE')
-      pause()
+      onLose()
     }
 
     if (isBallOffCanvas === 'up') {
-      alert('YOU WIN')
-      pause()
+      onWin()
     }
   }
 
@@ -113,8 +116,7 @@ export const usePong = () => {
 
   useEffect(() => {
     renderPong()
-    start()
   }, [])
 
-  return { score, canvasWidthReactState, canvasRef, setIsPressingLeftButton, setIsPressingRightButton }
+  return { gameRunner, score, canvasWidthReactState, canvasRef, setIsPressingLeftButton, setIsPressingRightButton }
 }

@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StylesSettings } from '../../styles/Styles'
 import styled from 'styled-components'
 import { useStyles } from '../../context/StylesContext'
 import PongControls from './PongControls'
 import { usePong } from './usePong'
+import PongMenu from './PongMenu'
 
 const Container = styled.div`
   display: flex;
@@ -19,7 +20,19 @@ const PongCanvas = styled.canvas<{ styles: StylesSettings }>`
 
 const PongBoardView = () => {
   const { styles } = useStyles()
-  const { score, canvasRef, canvasWidthReactState, setIsPressingLeftButton, setIsPressingRightButton } = usePong()
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [isLose, setIsLose] = useState(false)
+
+  const onWin = () => {
+    console.log('You Win!')
+  }
+  const onLose = () => {
+    gameRunner.stop()
+    setIsLose(true)
+  }
+
+  const { gameRunner, score, canvasRef, canvasWidthReactState, setIsPressingLeftButton, setIsPressingRightButton } =
+    usePong({ onWin, onLose })
 
   return (
     <Container>
@@ -32,6 +45,15 @@ const PongBoardView = () => {
         rightStarted={() => setIsPressingRightButton(true)}
         rightEnded={() => setIsPressingRightButton(false)}
       />
+      {!isPlaying && (
+        <PongMenu
+          onStart={() => {
+            setIsPlaying(true)
+            gameRunner.start()
+          }}
+        />
+      )}
+      {isLose && <h1>You Lose!</h1>}
     </Container>
   )
 }

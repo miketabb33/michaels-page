@@ -7,11 +7,11 @@ export const GameRunner = (onFrame: () => void) => {
     gameClock = setInterval(onFrame, fps60)
   }
 
-  const pause = () => {
+  const stop = () => {
     if (!gameClock) return
     clearInterval(gameClock)
     gameClock = null
   }
 
-  return { start, pause }
+  return { start, stop }
 }
