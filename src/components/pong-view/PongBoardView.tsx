@@ -52,7 +52,7 @@ const PongBoardView = () => {
         rightEnded={() => setIsPressingRightButton(false)}
       />
       {gameState === 'menu' && <PongMenuModal onStart={startGame} />}
-      {gameState === 'lost' && <PongLostModal onMainMenu={resetGame} />}
+      {gameState === 'lost' && <PongLostModal onMainMenu={resetGame} score={score} />}
     </Container>
   )
 }

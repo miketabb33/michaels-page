@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { ChildrenProp } from '../../types/ChildrenProp'
 
 const GameModalStyle = styled.div`
-  background-color: blue;
+  background-color: gray;
   position: absolute;
   display: flex;
   align-items: center;

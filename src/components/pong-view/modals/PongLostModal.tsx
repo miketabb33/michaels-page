@@ -4,12 +4,14 @@ import Button from '../../mblocks/Button'
 
 type PongLostModalProps = {
   onMainMenu: () => void
+  score: number
 }
 
-const PongLostModal = ({ onMainMenu }: PongLostModalProps) => {
+const PongLostModal = ({ onMainMenu, score }: PongLostModalProps) => {
   return (
     <GameModal>
-      <h1>You Lost</h1>
+      <h1>Game Over</h1>
+      <h3>You have a score {score}</h3>
       <Button onClick={onMainMenu}>Main Menu</Button>
     </GameModal>
   )
