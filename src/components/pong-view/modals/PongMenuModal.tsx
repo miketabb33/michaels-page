@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '../../mblocks/Button'
 import GameModal from '../../game-blocks/GameModal'
+import { HighScore } from '../../../types/HighScore'
+import { getHighScores } from '../../../firebase/pongDB'
 
 type PongMenuModalProps = {
   onStart: () => void
@@ -8,41 +10,17 @@ type PongMenuModalProps = {
 
 type ShowingScreen = 'main' | 'highScore'
 
-type HighScore = {
-  id: string
-  name: string
-  score: number
-}
-
-const highScores: HighScore[] = [
-  {
-    id: '1',
-    name: 'Shanna',
-    score: 10,
-  },
-  {
-    id: '2',
-    name: 'Michael',
-    score: 5,
-  },
-  {
-    id: '3',
-    name: 'Brianna',
-    score: 34,
-  },
-  {
-    id: '4',
-    name: 'Shawn',
-    score: 48,
-  },
-  {
-    id: '5',
-    name: 'Laura',
-    score: 28,
-  },
-]
-
 const PongMenuModal = ({ onStart }: PongMenuModalProps) => {
+  const [highScores, setHighScores] = useState<HighScore[]>([])
+
+  useEffect(() => {
+    getHighScores()
+      .then((results) => {
+        setHighScores(results)
+      })
+      .catch(console.error)
+  }, [])
+
   const { showingScreen, showHighScoreScreen, showMainScreen } = usePongMenuModal()
   const MainScreen = () => (
     <>

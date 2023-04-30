@@ -15,7 +15,3 @@ root.render(
     </StylesContextProvider>
   </React.StrictMode>
 )
-
-window.addEventListener('hashchange', function () {
-  console.log('location changed!')
-})
