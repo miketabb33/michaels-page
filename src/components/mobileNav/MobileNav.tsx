@@ -31,10 +31,12 @@ const MobileNavMenuItem = styled.li<{ styles: StylesSettings }>`
 
 const Logo = styled.img`
   height: 100%;
+  aspect-ratio: 1;
 `
 
 const LogoLink = styled(RouterLink)`
   height: 100%;
+  aspect-ratio: 1;
 `
 
 type MobileNavProps = {
