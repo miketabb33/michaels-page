@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useRef } from 'react'
+import React, { ReactNode, useRef } from 'react'
 import styled from 'styled-components'
 import { EventConfig, eventController } from '../../eventController'
 
@@ -40,14 +40,12 @@ const GameButton = ({ children, onPressStart, onPressEnd }: GameButtonProps) => 
     { name: 'touchend', action: pressEnded },
   ]
 
-  useEffect(() => {
-    const { addEventListeners, removeEventListeners } = eventController({
-      events,
-      target: buttonRef.current,
-    })
-    addEventListeners()
-    return () => removeEventListeners()
-  }, [buttonRef])
+  const { addEventListeners } = eventController({
+    events,
+    target: buttonRef.current,
+  })
+
+  addEventListeners()
 
   return <Container ref={buttonRef}>{children}</Container>
 }

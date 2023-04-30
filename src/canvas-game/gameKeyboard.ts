@@ -1,8 +1,8 @@
-import { useEffect } from 'react'
 import { EventConfig, eventController } from '../eventController'
 import { KeyboardCode } from '../types/KeyboardCode'
+import { removeListenersArray } from './removeListenersArray'
 
-export const useGameKeyboard = () => {
+export const gameKeyboard = () => {
   const { isPressingLeftKey, isPressingRightKey, onKeydown, onKeyup } = gameKeyboardController()
 
   const keydownListener = (e: Event) => onKeydown((e as KeyboardEvent).code)
@@ -17,12 +17,8 @@ export const useGameKeyboard = () => {
     events,
   })
 
-  useEffect(() => {
-    addEventListeners()
-    return () => {
-      removeEventListeners()
-    }
-  }, [])
+  addEventListeners()
+  removeListenersArray.push(removeEventListeners)
 
   return {
     isPressingLeftKey,

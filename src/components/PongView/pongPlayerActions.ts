@@ -1,8 +1,8 @@
-import { useGameKeyboard } from '../../canvas-game/useGameKeyboard'
+import { gameKeyboard } from '../../canvas-game/gameKeyboard'
 import { Direction } from '../../types/Direction'
 
-export const usePongPlayerControls = () => {
-  const { isPressingLeftKey, isPressingRightKey } = useGameKeyboard()
+export const pongPlayerActions = () => {
+  const { isPressingLeftKey, isPressingRightKey } = gameKeyboard()
 
   let isPressingLeftButton = false
   let isPressingRightButton = false
@@ -20,5 +20,9 @@ export const usePongPlayerControls = () => {
     }
   }
 
-  return { setIsPressingLeftButton, setIsPressingRightButton, detectPlayerControls }
+  return {
+    setIsPressingLeftButton,
+    setIsPressingRightButton,
+    detectPlayerControls,
+  }
 }

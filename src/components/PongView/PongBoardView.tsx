@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import { StylesSettings } from '../../styles/Styles'
 import styled from 'styled-components'
 import { useStyles } from '../../context/StylesContext'
 import PongControls from './PongControls'
 import { usePong } from './usePong'
-import PongMenu from './PongMenu'
+import PongMenuModal from './modals/PongMenuModal'
+import PongLostModal from './modals/PongLostModal'
+import { removeListenersArray } from '../../canvas-game/removeListenersArray'
 
 const Container = styled.div`
   display: flex;
@@ -20,40 +22,37 @@ const PongCanvas = styled.canvas<{ styles: StylesSettings }>`
 
 const PongBoardView = () => {
   const { styles } = useStyles()
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [isLose, setIsLose] = useState(false)
 
-  const onWin = () => {
-    console.log('You Win!')
-  }
-  const onLose = () => {
-    gameRunner.stop()
-    setIsLose(true)
-  }
+  useEffect(() => {
+    return () => {
+      removeListenersArray.forEach((r) => r())
+    }
+  }, [])
 
-  const { gameRunner, score, canvasRef, canvasWidthReactState, setIsPressingLeftButton, setIsPressingRightButton } =
-    usePong({ onWin, onLose })
+  const {
+    gameState,
+    startGame,
+    resetGame,
+    score,
+    canvasRef,
+    canvasWidth,
+    setIsPressingLeftButton,
+    setIsPressingRightButton,
+  } = usePong()
 
   return (
     <Container>
       <h1>Score: {score} </h1>
       <PongCanvas ref={canvasRef} styles={styles} id="PongCanvas" />
       <PongControls
-        width={canvasWidthReactState}
+        width={canvasWidth}
         leftStarted={() => setIsPressingLeftButton(true)}
         leftEnded={() => setIsPressingLeftButton(false)}
         rightStarted={() => setIsPressingRightButton(true)}
         rightEnded={() => setIsPressingRightButton(false)}
       />
-      {!isPlaying && (
-        <PongMenu
-          onStart={() => {
-            setIsPlaying(true)
-            gameRunner.start()
-          }}
-        />
-      )}
-      {isLose && <h1>You Lose!</h1>}
+      {gameState === 'menu' && <PongMenuModal onStart={startGame} />}
+      {gameState === 'lost' && <PongLostModal onMainMenu={resetGame} />}
     </Container>
   )
 }

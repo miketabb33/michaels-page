@@ -9,8 +9,14 @@ export const useScore = () => {
     setScore(inGameScore)
   }
 
+  const resetScore = () => {
+    inGameScore = 0
+    setScore(0)
+  }
+
   return {
     score,
     incrementScore,
+    resetScore,
   }
 }

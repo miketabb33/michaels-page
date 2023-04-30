@@ -15,7 +15,7 @@ type UseCanvas = {
 
 export const useCanvas = ({ units, sizeMultiplier }: UseCanvas) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
-  const [canvasWidthReactState, setCanvasWidthReactWidth] = useState(0)
+  const [canvasWidth, setCanvasWidthReactWidth] = useState(0)
 
   const isRectOffCanvas = (rect: Rect): Direction => {
     const translatedRect = translateRect(rect, getCanvasSizePixels(), units)
@@ -73,6 +73,6 @@ export const useCanvas = ({ units, sizeMultiplier }: UseCanvas) => {
     isRectOffCanvas,
     draw,
     canvasRef,
-    canvasWidthReactState,
+    canvasWidth,
   }
 }
