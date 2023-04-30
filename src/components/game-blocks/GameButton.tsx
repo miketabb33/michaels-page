@@ -22,11 +22,13 @@ type GameButtonProps = {
 const GameButton = ({ children, onPressStart, onPressEnd }: GameButtonProps) => {
   const buttonRef = useRef<HTMLDivElement | null>(null)
 
-  const pressStarted = () => {
+  const pressStarted = (/*e: Event*/) => {
+    // if (e.cancelable) e.preventDefault()
     onPressStart()
   }
 
-  const pressEnded = () => {
+  const pressEnded = (/*e: Event*/) => {
+    // if (e.cancelable) e.preventDefault()
     onPressEnd()
   }
 
