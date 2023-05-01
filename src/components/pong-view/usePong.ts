@@ -110,7 +110,7 @@ export const usePong = () => {
   }
 
   const renderPong = () => {
-    draw([playerPaddle.getCanvasObject(), pongBall.getCanvasObject(), opponentPaddle.getCanvasObject()])
+    draw([playerPaddle.getCanvasObject(), opponentPaddle.getCanvasObject(), pongBall.getCanvasObject()])
   }
 
   const startGame = () => {

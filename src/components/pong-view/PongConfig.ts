@@ -42,6 +42,7 @@ const makePlayerPaddle = (canvasUnits: number): CanvasObject => {
         y: 0,
       },
     },
+    shape: 'rectangle',
   }
 }
 
@@ -62,6 +63,7 @@ const makeOpponentPaddle = (canvasUnits: number): CanvasObject => {
         y: 0,
       },
     },
+    shape: 'rectangle',
   }
 }
 
@@ -81,6 +83,7 @@ const makePongBall = (canvasUnits: number): CanvasObject => {
       speed: 13,
       directionValue: randomPaddleDirection(),
     },
+    shape: 'circle',
   }
 }
 

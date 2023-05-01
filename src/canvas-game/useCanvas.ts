@@ -34,6 +34,7 @@ export const useCanvas = ({ units, sizeMultiplier }: UseCanvas) => {
       return {
         rect: translatedRect,
         color: canvasObject.color,
+        shape: canvasObject.shape,
       }
     })
     render2dContext(renderableObjects, canvasRef.current)

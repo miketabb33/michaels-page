@@ -17,5 +17,6 @@ export const makeCanvasObjectMock = (): CanvasObject => {
         y: 0,
       },
     },
+    shape: 'circle',
   }
 }

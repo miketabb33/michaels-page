@@ -1,8 +1,10 @@
+import { CanvasObjectShape } from './canvasObjectController'
 import { Rect } from './rect'
 
 export type RenderableObject = {
   rect: Rect
   color: string
+  shape: CanvasObjectShape
 }
 
 const renderObject = (renderableObject: RenderableObject, ctx: CanvasRenderingContext2D) => {
@@ -10,7 +12,19 @@ const renderObject = (renderableObject: RenderableObject, ctx: CanvasRenderingCo
   const { x, y } = renderableObject.rect.position
 
   ctx.fillStyle = renderableObject.color
-  ctx.fillRect(x, y, width, height)
+
+  if (renderableObject.shape === 'rectangle') {
+    ctx.fillRect(x, y, width, height)
+  }
+
+  if (renderableObject.shape === 'circle') {
+    ctx.beginPath()
+    const radius = width / 2
+    const ax = x + radius
+    const ay = y + height / 2
+    ctx.arc(ax, ay, radius, 0, 2 * Math.PI)
+    ctx.fill()
+  }
 }
 
 const clearCanvas = (ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) => {

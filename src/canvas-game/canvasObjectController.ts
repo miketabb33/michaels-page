@@ -2,10 +2,13 @@ import { DirectionValue } from '../types/DirectionValue'
 import { Velocity } from '../types/Velocity'
 import { Rect } from './rect'
 
+export type CanvasObjectShape = 'rectangle' | 'circle'
+
 export type CanvasObject = {
   rect: Rect
   color: string
   velocity: Velocity
+  shape: CanvasObjectShape
 }
 
 export type CanvasObjectController = {
@@ -23,6 +26,7 @@ const canvasObject = (init: CanvasObject): CanvasObjectController => {
   const color = init.color
   let directionalX = init.velocity.directionValue.x
   let directionalY = init.velocity.directionValue.y
+  const shape = init.shape
 
   const move = () => {
     addVelocity({ speed, directionValue: { x: directionalX, y: directionalY } })
@@ -54,6 +58,7 @@ const canvasObject = (init: CanvasObject): CanvasObjectController => {
           y: directionalY,
         },
       },
+      shape,
     }
   }
 
