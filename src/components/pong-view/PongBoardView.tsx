@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import { useStyles } from '../../context/StylesContext'
 import PongControls from './PongControls'
 import { usePong } from './usePong'
-import PongMenuModal from './modals/PongMenuModal'
-import PongLostModal from './modals/PongLostModal'
+import PongGameOverModal from './modals/PongGameOverModal'
 import { removeListenersArray } from '../../canvas-game/removeListenersArray'
+import PongMenuModal from './modals/menu-modal/PongMenuModal'
 
 const Container = styled.div`
   display: flex;
@@ -52,7 +52,7 @@ const PongBoardView = () => {
         rightEnded={() => setIsPressingRightButton(false)}
       />
       {gameState === 'menu' && <PongMenuModal onStart={startGame} />}
-      {gameState === 'lost' && <PongLostModal onMainMenu={resetGame} score={score} />}
+      {gameState === 'lost' && <PongGameOverModal clickMainMenu={resetGame} score={score} />}
     </Container>
   )
 }

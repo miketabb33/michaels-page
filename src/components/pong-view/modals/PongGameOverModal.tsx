@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
-import GameModal from '../../game-blocks/GameModal'
 import Button from '../../mblocks/Button'
 import { saveScore } from '../../../firebase/pongDB'
+import GameModal from '../../game-blocks/GameModal'
+import Input from '../../mblocks/Input'
 
-type PongLostModalProps = {
-  onMainMenu: () => void
+type PongGameOverModalProps = {
+  clickMainMenu: () => void
   score: number
 }
 
-const PongLostModal = ({ onMainMenu, score }: PongLostModalProps) => {
+const PongGameOverModal = ({ clickMainMenu: onMainMenu, score }: PongGameOverModalProps) => {
   const [name, setName] = useState('')
 
   const onSaveClick = () => {
-    saveScore({ name, score }).then().catch(console.error)
+    saveScore({ name, score }).catch(console.error)
     onMainMenu()
   }
 
@@ -20,7 +21,7 @@ const PongLostModal = ({ onMainMenu, score }: PongLostModalProps) => {
     <GameModal>
       <h1>Game Over</h1>
       <h3>You have a score {score}</h3>
-      <input
+      <Input
         placeholder="Name"
         onChange={(e) => {
           setName(e.target.value)
@@ -32,4 +33,4 @@ const PongLostModal = ({ onMainMenu, score }: PongLostModalProps) => {
   )
 }
 
-export default PongLostModal
+export default PongGameOverModal
