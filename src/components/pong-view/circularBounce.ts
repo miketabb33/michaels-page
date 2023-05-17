@@ -16,6 +16,6 @@ export const horizontalRelativeCollisionPoint = (subject: Rect, test: Rect): num
 export const convertPercentageToDirection = (percentage: number): DirectionValue => {
   const x = percentage * 2 - 1
   let y = (1 - Math.abs(x)) * -1
-  if (y >= 0) y = y - 0.08
+  if (y >= 0) y = y - 0.15
   return { x, y }
 }

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { getPongConfig } from './PongConfig'
 import { useCanvas } from '../../canvas-game/useCanvas'
-import canvasObject from '../../canvas-game/canvasObjectController'
+import canvasObject, { CanvasObjectController } from '../../canvas-game/canvasObjectController'
 import { collisionDetection } from '../../canvas-game/rect'
 import { random } from '../../random'
 import { useScore } from '../../canvas-game/useScore'
@@ -9,6 +9,7 @@ import { pongPlayerActions } from './pongPlayerActions'
 import { useGameState } from '../../canvas-game/useGameState'
 import { GameRunner } from '../../canvas-game/GameRunner'
 import { pongPlayerBallBouncer } from './pongPlayerBallBouncer'
+import { DirectionValue } from '../../types/DirectionValue'
 
 const opponentHitPaddleDirection = () => {
   const randomNum = random(3)
@@ -57,19 +58,18 @@ export const usePong = () => {
     playerPaddle.move()
   }
 
+  const pongBallBounce = (pongBall: CanvasObjectController): DirectionValue => {
+    const { x, y } = pongBall.getCanvasObject().velocity.directionValue
+    const newX = x * -1
+    return { x: newX, y }
+  }
+
   const movePongBall = () => {
     const isBallOffCanvas = isRectOffCanvas(pongBall.getCanvasObject().rect)
 
     //Ball bounce on wall
-    const { x: bx, y: by } = pongBall.getCanvasObject().velocity.directionValue
-    if (isBallOffCanvas === 'left') {
-      if (bx < 0 && by > 0) pongBall.changeDirection({ x: 0.5, y: 0.5 })
-      if (bx < 0 && by < 0) pongBall.changeDirection({ x: 0.5, y: -0.5 })
-    }
-
-    if (isBallOffCanvas === 'right') {
-      if (bx > 0 && by > 0) pongBall.changeDirection({ x: -0.5, y: 0.5 })
-      if (bx > 0 && by < 0) pongBall.changeDirection({ x: -0.5, y: -0.5 })
+    if (isBallOffCanvas === 'left' || isBallOffCanvas == 'right') {
+      pongBall.changeDirection(pongBallBounce(pongBall))
     }
 
     pongBall.move()
