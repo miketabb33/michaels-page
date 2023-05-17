@@ -6,16 +6,9 @@ import { collisionDetection } from '../../canvas-game/rect'
 import { random } from '../../random'
 import { useScore } from '../../canvas-game/useScore'
 import { pongPlayerActions } from './pongPlayerActions'
-import { DirectionValue } from '../../types/DirectionValue'
 import { useGameState } from '../../canvas-game/useGameState'
 import { GameRunner } from '../../canvas-game/GameRunner'
-
-const playerHitPaddleDirection = (): DirectionValue => {
-  const randomNum = random(3)
-  if (randomNum === 0) return { x: -0.5, y: -0.5 }
-  if (randomNum === 1) return { x: 0.5, y: -0.5 }
-  return { x: 0, y: -1 }
-}
+import { pongPlayerBallBouncer } from './pongPlayerBallBouncer'
 
 const opponentHitPaddleDirection = () => {
   const randomNum = random(3)
@@ -96,7 +89,7 @@ export const usePong = () => {
   const didPongHitPlayPaddle = () => {
     const didHitPlayerPaddle = collisionDetection(pongBall.getCanvasObject().rect, playerPaddle.getCanvasObject().rect)
     if (didHitPlayerPaddle) {
-      pongBall.changeDirection(playerHitPaddleDirection())
+      pongPlayerBallBouncer({ playerPaddle, pongBall, bounce: 'round' })
       incrementScore()
     }
   }
