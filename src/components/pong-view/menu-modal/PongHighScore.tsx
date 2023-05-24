@@ -1,8 +1,8 @@
-import { getHighScores } from '../../../../firebase/pongDB'
-import { HighScore } from '../../../../types/HighScore'
+import { getHighScores } from '../../../firebase/pongDB'
+import { HighScore } from '../../../types/HighScore'
 import React from 'react'
-import Button from '../../../mblocks/Button'
-import { useRequest } from '../../../../hooks/useRequest'
+import Button from '../../mblocks/Button'
+import { useRequest } from '../../../hooks/useRequest'
 
 type PongHighScoreProps = {
   clickBack: () => void

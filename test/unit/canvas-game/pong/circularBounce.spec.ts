@@ -2,7 +2,7 @@ import { Rect } from '../../../../src/canvas-game/rect'
 import {
   convertPercentageToDirection,
   horizontalRelativeCollisionPoint,
-} from '../../../../src/components/pong-view/circularBounce'
+} from '../../../../src/canvas-game/pong/circularBounce'
 
 describe('Convert Percentage To Direction', () => {
   it('should convert 50%', () => {

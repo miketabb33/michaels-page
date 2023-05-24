@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
-import { usePongMenu } from '../../../../../src/components/pong-view/modals/menu-modal/PongMenuModal'
+import { usePongMenu } from '../../../../../src/components/pong-view/menu-modal/PongMenuModal'
 
 describe('Use Pong Menu Modal', () => {
   it('should init as main', () => {

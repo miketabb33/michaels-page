@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import GameModal from '../../../game-blocks/GameModal'
+import GameModal from '../../game-blocks/GameModal'
 import PongHighScore from './PongHighScore'
 import PongMainMenu from './PongMainMenu'
 

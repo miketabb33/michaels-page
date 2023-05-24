@@ -1,7 +1,7 @@
 import { CanvasObjectController } from '../../canvas-game/canvasObjectController'
 import { random } from '../../random'
 import { DirectionValue } from '../../types/DirectionValue'
-import { calcCircularBounce } from './circularBounce'
+import { calcCircularBounce } from '../../canvas-game/pong/circularBounce'
 
 type PongBounceType = 'random3' | 'round'
 

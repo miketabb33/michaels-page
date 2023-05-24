@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../../../mblocks/Button'
+import Button from '../../mblocks/Button'
 
 type PongMainMenuProps = {
   clickStart: () => void

@@ -3,10 +3,10 @@ import { StylesSettings } from '../../styles/Styles'
 import styled from 'styled-components'
 import { useStyles } from '../../context/StylesContext'
 import PongControls from './PongControls'
-import { usePong } from './usePong'
-import PongGameOverModal from './modals/PongGameOverModal'
 import { removeListenersArray } from '../../canvas-game/removeListenersArray'
-import PongMenuModal from './modals/menu-modal/PongMenuModal'
+import PongMenuModal from './menu-modal/PongMenuModal'
+import { usePong } from '../../canvas-game/pong/usePong'
+import PongGameOverModal from './PongGameOverModal'
 
 const Container = styled.div`
   display: flex;

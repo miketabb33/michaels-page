@@ -1,4 +1,4 @@
-import { CanvasObject } from '../../canvas-game/canvasObjectController'
+import { CanvasObject } from '../canvasObjectController'
 import { random } from '../../random'
 import { DirectionValue } from '../../types/DirectionValue'
 import { Size } from '../../types/Size'

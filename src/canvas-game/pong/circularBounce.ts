@@ -1,5 +1,5 @@
-import { CanvasObjectController } from '../../canvas-game/canvasObjectController'
-import { Rect } from '../../canvas-game/rect'
+import { CanvasObjectController } from '../canvasObjectController'
+import { Rect } from '../rect'
 import { DirectionValue } from '../../types/DirectionValue'
 
 export const calcCircularBounce = (subject: CanvasObjectController, test: CanvasObjectController): DirectionValue => {

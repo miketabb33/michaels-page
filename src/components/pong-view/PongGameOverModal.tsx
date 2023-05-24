@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import Button from '../../mblocks/Button'
-import { saveScore } from '../../../firebase/pongDB'
-import GameModal from '../../game-blocks/GameModal'
-import Input from '../../mblocks/Input'
+import Button from '../mblocks/Button'
+import { saveScore } from '../../firebase/pongDB'
+import GameModal from '../game-blocks/GameModal'
+import Input from '../mblocks/Input'
 
 type PongGameOverModalProps = {
   clickMainMenu: () => void
