@@ -1,6 +1,6 @@
 import { Direction } from '../../types/Direction'
-import { DirectionValue } from '../../types/DirectionValue'
 import { CanvasObjectController } from '../canvasObjectController'
+import { flipDirection } from '../directionalValue'
 
 type BallMotionResult = {
   didHitTop: boolean
@@ -14,16 +14,12 @@ type PongBallMotion = {
 
 export const pongBallMotion = ({ pongBall, isBallOffCanvas }: PongBallMotion): BallMotionResult => {
   if (isBallOffCanvas === 'left' || isBallOffCanvas == 'right') {
-    pongBall.changeDirection(pongBallBounce(pongBall))
+    const newDirection = flipDirection({ value: pongBall.getCanvasObject().velocity.directionValue, flipX: true })
+    pongBall.changeDirection(newDirection)
   }
-  pongBall.move()
   if (isBallOffCanvas === 'down') return { didHitBottom: true, didHitTop: false }
   if (isBallOffCanvas === 'up') return { didHitBottom: false, didHitTop: true }
-  return { didHitBottom: false, didHitTop: false }
-}
 
-const pongBallBounce = (pongBall: CanvasObjectController): DirectionValue => {
-  const { x, y } = pongBall.getCanvasObject().velocity.directionValue
-  const newX = x * -1
-  return { x: newX, y }
+  pongBall.move()
+  return { didHitBottom: false, didHitTop: false }
 }
