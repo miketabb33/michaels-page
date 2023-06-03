@@ -1,9 +1,9 @@
 import { CanvasObjectController } from '../canvasObjectController'
 import { random } from '../../random'
-import { DirectionValue } from '../../types/DirectionValue'
 import { calcCircularBounce } from './circularBounce'
+import { calcNewBounceDirection } from '../directionalValue'
 
-type PongBounceType = 'random3' | 'round'
+type PongBounceType = 'random5' | 'round'
 
 type PlayerBallBouncerProps = {
   paddle: CanvasObjectController
@@ -15,17 +15,18 @@ export const pongPaddleBouncer = ({ paddle, pongBall, bounce }: PlayerBallBounce
   if (bounce === 'round') {
     const newDirection = calcCircularBounce(paddle, pongBall)
     pongBall.changeDirection(newDirection)
-  } else if (bounce === 'random3') {
-    pongBall.changeDirection(calcRandom5(pongBall.getCanvasObject().velocity.directionValue.y))
+  } else if (bounce === 'random5') {
+    const newX = calcNewRandomX5()
+    const newDirection = calcNewBounceDirection({ newX, oldY: pongBall.getCanvasObject().velocity.directionValue.y })
+    pongBall.changeDirection(newDirection)
   }
 }
 
-export const calcRandom5 = (currentY: number): DirectionValue => {
-  const flipY = currentY > 0 ? -1 : 1
+export const calcNewRandomX5 = (): number => {
   const randomNum = random(5)
-  if (randomNum === 0) return { x: -0.5, y: 0.5 * flipY }
-  if (randomNum === 1) return { x: 0.5, y: 0.5 * flipY }
-  if (randomNum === 2) return { x: -0.25, y: 0.75 * flipY }
-  if (randomNum === 3) return { x: 0.25, y: 0.75 * flipY }
-  return { x: 0, y: 1 * flipY }
+  if (randomNum === 0) return -0.5
+  if (randomNum === 1) return 0.5
+  if (randomNum === 2) return -0.25
+  if (randomNum === 3) return 0.25
+  return 0
 }

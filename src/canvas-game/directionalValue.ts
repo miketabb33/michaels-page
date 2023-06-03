@@ -15,3 +15,14 @@ export const flipDirection = ({ value, flipX = false, flipY = false }: FlipDirec
 
   return { x: newX, y: newY }
 }
+
+type CalcNewBounceDirection = {
+  newX: number
+  oldY: number
+}
+
+export const calcNewBounceDirection = ({ newX, oldY }: CalcNewBounceDirection): DirectionValue => {
+  const newY = 1 - Math.abs(newX)
+  const oldYDirection = oldY >= 0 ? -1 : 1
+  return { x: newX, y: newY * oldYDirection }
+}
