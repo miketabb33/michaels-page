@@ -8,7 +8,7 @@ export const didPongHitPlayPaddle = (
 ): boolean => {
   const didHitPlayerPaddle = collisionDetection(pongBall.getCanvasObject().rect, playerPaddle.getCanvasObject().rect)
   if (didHitPlayerPaddle) {
-    pongPaddleBouncer({ paddle: playerPaddle, pongBall, bounce: 'random5' })
+    pongPaddleBouncer({ paddle: playerPaddle, pongBall, bounce: 'relative' })
     return true
   }
   return false
