@@ -13,13 +13,13 @@ type PlayerBallBouncerProps = {
 
 export const pongPaddleBouncer = (props: PlayerBallBouncerProps) => {
   if (props.bounce === 'natural') {
-    const newDirection = flipDirection({ value: props.pongBall.getCanvasObject().velocity.directionValue, flipY: true })
+    const newDirection = flipDirection({ value: props.pongBall.canvasObj().velocity.directionValue, flipY: true })
     props.pongBall.changeDirection(newDirection)
     return
   }
 
   const newX = getNewX(props)
-  const oldY = props.pongBall.getCanvasObject().velocity.directionValue.y
+  const oldY = props.pongBall.canvasObj().velocity.directionValue.y
   const newDirection = calcNewBounceDirection({ newX, oldY })
   props.pongBall.changeDirection(newDirection)
 }
@@ -27,8 +27,8 @@ export const pongPaddleBouncer = (props: PlayerBallBouncerProps) => {
 const getNewX = ({ paddle, pongBall, bounce }: PlayerBallBouncerProps) => {
   if (bounce === 'relative') {
     const newX = calcNewXBasedOnCollision({
-      subject: paddle.getCanvasObject().rect,
-      test: pongBall.getCanvasObject().rect,
+      subject: paddle.canvasObj().rect,
+      test: pongBall.canvasObj().rect,
     })
     return maxEdgeXFoBounce(newX, 0.4)
   }

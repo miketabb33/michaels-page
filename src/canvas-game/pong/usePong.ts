@@ -29,12 +29,12 @@ export const usePong = () => {
   const onFrame = () => {
     playerPaddleMotion({
       playerPaddle,
-      isPlayerOffCanvas: isRectOffCanvas(playerPaddle.getCanvasObject().rect),
+      isPlayerOffCanvas: isRectOffCanvas(playerPaddle.canvasObj().rect),
       direction: detectPlayerControls(),
     })
     const { didHitBottom, didHitTop } = pongBallMotion({
       pongBall,
-      isBallOffCanvas: isRectOffCanvas(pongBall.getCanvasObject().rect),
+      isBallOffCanvas: isRectOffCanvas(pongBall.canvasObj().rect),
     })
     const hitPlayerPaddle = didPongHitPlayPaddle(pongBall, playerPaddle)
     didPongHitOpponent(pongBall, opponentPaddle)
@@ -48,7 +48,7 @@ export const usePong = () => {
   const gameRunner = GameRunner(onFrame)
 
   const renderPong = () => {
-    draw([playerPaddle.getCanvasObject(), opponentPaddle.getCanvasObject(), pongBall.getCanvasObject()])
+    draw([playerPaddle.canvasObj(), opponentPaddle.canvasObj(), pongBall.canvasObj()])
   }
 
   const lose = () => {

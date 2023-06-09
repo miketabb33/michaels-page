@@ -12,7 +12,7 @@ export type CanvasObject = {
 }
 
 export type CanvasObjectController = {
-  getCanvasObject: () => CanvasObject
+  canvasObj: () => CanvasObject
   move: () => void
   changeDirection: (direction: DirectionValue) => void
 }
@@ -44,7 +44,7 @@ const canvasObject = (init: CanvasObject): CanvasObjectController => {
     directionalY = newDirection.y
   }
 
-  const getCanvasObject = (): CanvasObject => {
+  const canvasObj = (): CanvasObject => {
     return {
       rect: {
         position: { x, y },
@@ -63,7 +63,7 @@ const canvasObject = (init: CanvasObject): CanvasObjectController => {
   }
 
   return {
-    getCanvasObject,
+    canvasObj,
     move,
     changeDirection,
   }

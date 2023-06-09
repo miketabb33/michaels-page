@@ -6,7 +6,7 @@ export const didPongHitPlayPaddle = (
   pongBall: CanvasObjectController,
   playerPaddle: CanvasObjectController
 ): boolean => {
-  const didHitPlayerPaddle = collisionDetection(pongBall.getCanvasObject().rect, playerPaddle.getCanvasObject().rect)
+  const didHitPlayerPaddle = collisionDetection(pongBall.canvasObj().rect, playerPaddle.canvasObj().rect)
   if (didHitPlayerPaddle) {
     pongPaddleBouncer({ paddle: playerPaddle, pongBall, bounce: 'relative' })
     return true
@@ -15,9 +15,8 @@ export const didPongHitPlayPaddle = (
 }
 
 export const didPongHitOpponent = (pongBall: CanvasObjectController, opponentPaddle: CanvasObjectController) => {
-  const didHitOpponentPaddle = collisionDetection(
-    pongBall.getCanvasObject().rect,
-    opponentPaddle.getCanvasObject().rect
-  )
-  if (didHitOpponentPaddle) pongPaddleBouncer({ paddle: opponentPaddle, pongBall, bounce: 'natural' })
+  const didHitOpponentPaddle = collisionDetection(pongBall.canvasObj().rect, opponentPaddle.canvasObj().rect)
+  if (didHitOpponentPaddle) {
+    pongPaddleBouncer({ paddle: opponentPaddle, pongBall, bounce: 'natural' })
+  }
 }

@@ -82,6 +82,8 @@ const makePongBall = (canvasUnits: number): CanvasObject => {
     velocity: {
       speed: 13,
       directionValue: randomPaddleDirection(),
+      // speed: 40,
+      // directionValue: { x: 0, y: -1 },
     },
     shape: 'circle',
   }

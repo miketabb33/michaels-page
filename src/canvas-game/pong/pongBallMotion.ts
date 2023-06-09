@@ -14,7 +14,7 @@ type PongBallMotion = {
 
 export const pongBallMotion = ({ pongBall, isBallOffCanvas }: PongBallMotion): BallMotionResult => {
   if (isBallOffCanvas === 'left' || isBallOffCanvas == 'right') {
-    const newDirection = flipDirection({ value: pongBall.getCanvasObject().velocity.directionValue, flipX: true })
+    const newDirection = flipDirection({ value: pongBall.canvasObj().velocity.directionValue, flipX: true })
     pongBall.changeDirection(newDirection)
   }
   if (isBallOffCanvas === 'down') return { didHitBottom: true, didHitTop: false }
