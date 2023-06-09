@@ -19,5 +19,5 @@ export const didPongHitOpponent = (pongBall: CanvasObjectController, opponentPad
     pongBall.getCanvasObject().rect,
     opponentPaddle.getCanvasObject().rect
   )
-  if (didHitOpponentPaddle) pongPaddleBouncer({ paddle: opponentPaddle, pongBall, bounce: 'random5' })
+  if (didHitOpponentPaddle) pongPaddleBouncer({ paddle: opponentPaddle, pongBall, bounce: 'natural' })
 }

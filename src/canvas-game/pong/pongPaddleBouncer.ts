@@ -1,9 +1,9 @@
 import { CanvasObjectController } from '../canvasObjectController'
 import { random } from '../../random'
 import { calcNewXBasedOnCollision } from './calcNewXBasedOnCollision'
-import { calcNewBounceDirection } from '../directionalValue'
+import { calcNewBounceDirection, flipDirection } from '../directionalValue'
 
-type PongBounceType = 'random5' | 'relative'
+type PongBounceType = 'random5' | 'relative' | 'natural'
 
 type PlayerBallBouncerProps = {
   paddle: CanvasObjectController
@@ -12,6 +12,12 @@ type PlayerBallBouncerProps = {
 }
 
 export const pongPaddleBouncer = (props: PlayerBallBouncerProps) => {
+  if (props.bounce === 'natural') {
+    const newDirection = flipDirection({ value: props.pongBall.getCanvasObject().velocity.directionValue, flipY: true })
+    props.pongBall.changeDirection(newDirection)
+    return
+  }
+
   const newX = getNewX(props)
   const oldY = props.pongBall.getCanvasObject().velocity.directionValue.y
   const newDirection = calcNewBounceDirection({ newX, oldY })
