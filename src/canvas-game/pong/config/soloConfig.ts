@@ -1,25 +1,21 @@
-import { CanvasObject } from '../canvasObjectController'
-import { random } from '../../random'
-import { DirectionValue } from '../../types/DirectionValue'
-import { Size } from '../../types/Size'
-
-export type PongConfig = {
-  pongBall: CanvasObject
-  playerPaddle: CanvasObject
-  opponentPaddle: CanvasObject
-  canvasDimensionUnits: number
-}
+import { random } from '../../../random'
+import { DirectionValue } from '../../../types/DirectionValue'
+import { Size } from '../../../types/Size'
+import { CanvasObject, CanvasObjectController } from '../../canvasObjectController'
+import { ScoreResult } from '../../pongScore'
+import { PongConfig } from './pongConfigs'
 
 const tuftsBlue = '#3C97D7'
 const carrotOrange = '#D98F25'
 
-export const getPongConfig = (): PongConfig => {
+export const getPongSoloConfig = (): PongConfig => {
   const canvasDimensionUnits = 1000
   return {
     pongBall: makePongBall(canvasDimensionUnits),
     playerPaddle: makePlayerPaddle(canvasDimensionUnits),
     opponentPaddle: makeOpponentPaddle(canvasDimensionUnits),
     canvasDimensionUnits,
+    didFireFrame,
   }
 }
 
@@ -51,7 +47,7 @@ const makeOpponentPaddle = (canvasUnits: number): CanvasObject => {
     rect: {
       size: { ...paddleSize, width: canvasUnits },
       position: {
-        x: 0, //canvasUnits / 2 - paddleSize.width / 2,
+        x: 0,
         y: 0,
       },
     },
@@ -82,8 +78,6 @@ const makePongBall = (canvasUnits: number): CanvasObject => {
     velocity: {
       speed: 13,
       directionValue: randomPaddleDirection(),
-      // speed: 40,
-      // directionValue: { x: 0, y: -1 },
     },
     shape: 'circle',
   }
@@ -99,4 +93,13 @@ const randomPaddleDirection = (): DirectionValue => {
   if (randomNum === 4) return { x: -0.5, y: 0.5 }
   if (randomNum === 5) return { x: 0.5, y: 0.5 }
   return { x: 0, y: 0 }
+}
+
+const didFireFrame = (
+  playerPaddle: CanvasObjectController,
+  pongBall: CanvasObjectController,
+  opponentPaddle: CanvasObjectController,
+  score: ScoreResult
+) => {
+  console.log(score)
 }

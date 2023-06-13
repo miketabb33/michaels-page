@@ -1,18 +1,22 @@
 import { useEffect } from 'react'
-import { getPongConfig } from './pongConfigs'
 import { useCanvas } from '../../canvas-game/useCanvas'
 import canvasObject from '../../canvas-game/canvasObjectController'
-import { useScore } from '../../canvas-game/useScore'
+import { pongScore } from '../pongScore'
 import { pongPlayerActions } from './pongPlayerActions'
 import { useGameState } from '../../canvas-game/useGameState'
 import { GameRunner } from '../../canvas-game/GameRunner'
 import { playerPaddleMotion } from './playerPaddleMotion'
 import { pongBallMotion } from './pongBallMotion'
 import { didPongHitOpponent, didPongHitPlayPaddle } from './pongCollision'
+import { getPongSoloConfig } from './config/soloConfig'
 
-export const usePong = () => {
-  const pongConfig = getPongConfig()
-  const { score, incrementScore, resetScore } = useScore()
+type UsePong = {
+  onScore: (score: number) => void
+}
+
+export const usePong = ({ onScore }: UsePong) => {
+  const pongConfig = getPongSoloConfig()
+  const { scoreResult, incrementScore, resetScore } = pongScore()
   const { gameState, setGameState } = useGameState()
 
   const { setIsPressingLeftButton, setIsPressingRightButton, detectPlayerControls } = pongPlayerActions()
@@ -42,7 +46,12 @@ export const usePong = () => {
 
     if (didHitBottom) lose()
     if (didHitTop) win()
-    if (hitPlayerPaddle) incrementScore()
+    if (hitPlayerPaddle) {
+      incrementScore()
+      onScore(scoreResult.score)
+    }
+
+    pongConfig.didFireFrame(playerPaddle, pongBall, opponentPaddle, scoreResult)
   }
 
   const gameRunner = GameRunner(onFrame)
@@ -83,7 +92,6 @@ export const usePong = () => {
     gameState,
     startGame,
     resetGame,
-    score,
     canvasWidth,
     canvasRef,
     setIsPressingLeftButton,

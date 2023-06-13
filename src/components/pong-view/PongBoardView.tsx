@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { StylesSettings } from '../../styles/Styles'
 import styled from 'styled-components'
 import { useStyles } from '../../context/StylesContext'
@@ -21,6 +21,7 @@ const PongCanvas = styled.canvas<{ styles: StylesSettings }>`
 `
 
 const PongBoardView = () => {
+  const [score, setScore] = useState(0)
   const { styles } = useStyles()
 
   useEffect(() => {
@@ -29,16 +30,8 @@ const PongBoardView = () => {
     }
   }, [])
 
-  const {
-    gameState,
-    startGame,
-    resetGame,
-    score,
-    canvasRef,
-    canvasWidth,
-    setIsPressingLeftButton,
-    setIsPressingRightButton,
-  } = usePong()
+  const { gameState, startGame, resetGame, canvasRef, canvasWidth, setIsPressingLeftButton, setIsPressingRightButton } =
+    usePong({ onScore: setScore })
 
   return (
     <Container>
