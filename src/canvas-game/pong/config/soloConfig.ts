@@ -76,7 +76,7 @@ const makePongBall = (canvasUnits: number): CanvasObject => {
     },
     color: carrotOrange,
     velocity: {
-      speed: 13,
+      speed: levels[0].speed,
       directionValue: randomPaddleDirection(),
     },
     shape: 'circle',
@@ -86,10 +86,10 @@ const makePongBall = (canvasUnits: number): CanvasObject => {
 const randomPaddleDirection = (): DirectionValue => {
   const randomNum = random(6)
 
-  if (randomNum === 0) return { x: 0, y: -1 }
+  if (randomNum === 0) return { x: 0.05, y: -0.95 }
   if (randomNum === 1) return { x: -0.5, y: -0.5 }
   if (randomNum === 2) return { x: 0.5, y: -0.5 }
-  if (randomNum === 3) return { x: 0, y: 1 }
+  if (randomNum === 3) return { x: 0.05, y: 0.95 }
   if (randomNum === 4) return { x: -0.5, y: 0.5 }
   if (randomNum === 5) return { x: 0.5, y: 0.5 }
   return { x: 0, y: 0 }
@@ -99,7 +99,54 @@ const didFireFrame = (
   playerPaddle: CanvasObjectController,
   pongBall: CanvasObjectController,
   opponentPaddle: CanvasObjectController,
-  score: ScoreResult
+  scoreResult: ScoreResult
 ) => {
-  console.log(score)
+  const calculatedLevel = Math.floor(scoreResult.score / 4)
+  const currentLevel = levels.find((pred) => pred.level === calculatedLevel) || levels[levels.length - 1]
+  const currentBallSpeed = pongBall.canvasObj().velocity.speed
+
+  if (currentBallSpeed !== currentLevel.speed) {
+    pongBall.changeSpeed(currentLevel.speed)
+    playerPaddle.changeSpeed(playerPaddle.canvasObj().velocity.speed - 0.5)
+  }
 }
+
+type pongLevel = {
+  speed: number
+  level: number
+}
+
+const levels: pongLevel[] = [
+  {
+    level: 0,
+    speed: 13,
+  },
+  {
+    level: 1,
+    speed: 14,
+  },
+  {
+    level: 2,
+    speed: 15,
+  },
+  {
+    level: 3,
+    speed: 16,
+  },
+  {
+    level: 4,
+    speed: 17,
+  },
+  {
+    level: 5,
+    speed: 18,
+  },
+  {
+    level: 6,
+    speed: 19,
+  },
+  {
+    level: 7,
+    speed: 20,
+  },
+]

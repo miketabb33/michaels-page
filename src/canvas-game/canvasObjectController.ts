@@ -15,6 +15,7 @@ export type CanvasObjectController = {
   canvasObj: () => CanvasObject
   move: () => void
   changeDirection: (direction: DirectionValue) => void
+  changeSpeed: (newSpeed: number) => void
 }
 
 const canvasObject = (init: CanvasObject): CanvasObjectController => {
@@ -22,7 +23,7 @@ const canvasObject = (init: CanvasObject): CanvasObjectController => {
   const height = init.rect.size.height
   let x = init.rect.position.x
   let y = init.rect.position.y
-  const speed = init.velocity.speed
+  let speed = init.velocity.speed
   const color = init.color
   let directionalX = init.velocity.directionValue.x
   let directionalY = init.velocity.directionValue.y
@@ -42,6 +43,10 @@ const canvasObject = (init: CanvasObject): CanvasObjectController => {
   const changeDirection = (newDirection: DirectionValue) => {
     directionalX = newDirection.x
     directionalY = newDirection.y
+  }
+
+  const changeSpeed = (newSpeed: number) => {
+    speed = newSpeed
   }
 
   const canvasObj = (): CanvasObject => {
@@ -66,6 +71,7 @@ const canvasObject = (init: CanvasObject): CanvasObjectController => {
     canvasObj,
     move,
     changeDirection,
+    changeSpeed,
   }
 }
 

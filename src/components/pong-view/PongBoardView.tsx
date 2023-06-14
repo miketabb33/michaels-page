@@ -7,6 +7,7 @@ import { removeListenersArray } from '../../canvas-game/removeListenersArray'
 import PongMenuModal from './menu-modal/PongMenuModal'
 import { usePong } from '../../canvas-game/pong/usePong'
 import PongGameOverModal from './PongGameOverModal'
+import { getPongSoloConfig } from '../../canvas-game/pong/config/soloConfig'
 
 const Container = styled.div`
   display: flex;
@@ -22,6 +23,7 @@ const PongCanvas = styled.canvas<{ styles: StylesSettings }>`
 
 const PongBoardView = () => {
   const [score, setScore] = useState(0)
+  const [pongConfig] = useState(getPongSoloConfig())
   const { styles } = useStyles()
 
   useEffect(() => {
@@ -31,7 +33,7 @@ const PongBoardView = () => {
   }, [])
 
   const { gameState, startGame, resetGame, canvasRef, canvasWidth, setIsPressingLeftButton, setIsPressingRightButton } =
-    usePong({ onScore: setScore })
+    usePong({ pongConfig, onScore: setScore })
 
   return (
     <Container>

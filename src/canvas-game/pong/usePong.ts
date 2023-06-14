@@ -8,14 +8,14 @@ import { GameRunner } from '../../canvas-game/GameRunner'
 import { playerPaddleMotion } from './playerPaddleMotion'
 import { pongBallMotion } from './pongBallMotion'
 import { didPongHitOpponent, didPongHitPlayPaddle } from './pongCollision'
-import { getPongSoloConfig } from './config/soloConfig'
+import { PongConfig } from './config/pongConfigs'
 
 type UsePong = {
+  pongConfig: PongConfig
   onScore: (score: number) => void
 }
 
-export const usePong = ({ onScore }: UsePong) => {
-  const pongConfig = getPongSoloConfig()
+export const usePong = ({ pongConfig, onScore }: UsePong) => {
   const { scoreResult, incrementScore, resetScore } = pongScore()
   const { gameState, setGameState } = useGameState()
 

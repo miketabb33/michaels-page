@@ -65,5 +65,11 @@ describe('Use Canvas Object', () => {
       move()
       expect(canvasObj().rect.position).toEqual({ x: 95, y: 95 })
     })
+    it('should change speed', () => {
+      const { changeSpeed, canvasObj } = canvasObject(CANVAS_OBJECT_MOCK)
+      expect(canvasObj().velocity.speed).toEqual(10)
+      changeSpeed(25)
+      expect(canvasObj().velocity.speed).toEqual(25)
+    })
   })
 })
