@@ -1,5 +1,6 @@
 const path = require('path')
 const CopyPlugin = require('copy-webpack-plugin')
+const { DefinePlugin } = require('webpack')
 
 module.exports = {
   entry: './src/index.tsx',
@@ -20,7 +21,10 @@ module.exports = {
       },
     ],
   },
-  plugins: [new CopyPlugin({ patterns: [{ from: 'public', to: '.' }] })],
+  plugins: [
+    new CopyPlugin({ patterns: [{ from: 'public', to: '.' }] }),
+    new DefinePlugin({ SITE_ENV: JSON.stringify(process.env.SITE_ENV) }),
+  ],
   devServer: {
     static: {
       directory: path.join(__dirname, 'public'),
