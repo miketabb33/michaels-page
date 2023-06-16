@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from '../../m-blocks/Button'
-import { trackEvent } from '../../../analytics'
+import { useAnalytics } from '../../../analytics/useAnalytics'
 
 type PongMainMenuProps = {
   clickStart: () => void
@@ -8,6 +8,7 @@ type PongMainMenuProps = {
 }
 
 const PongMainMenu = ({ clickStart, clickHighScore }: PongMainMenuProps) => {
+  const { trackEvent } = useAnalytics()
   const onStart = () => {
     clickStart()
     trackEvent('start_pong')

@@ -6,7 +6,7 @@ import Flipper from '../m-blocks/Flipper'
 import ProfileCardBack from './ProfileCardBack'
 import ProfileCardFront from './ProfileCardFront'
 import { Breakpoint, MQ } from '../../Breakpoint'
-import { trackEvent } from '../../analytics'
+import { useAnalytics } from '../../analytics/useAnalytics'
 
 const Container = styled.div<{ styles: StylesSettings }>`
   width: 95%;
@@ -22,6 +22,7 @@ const Container = styled.div<{ styles: StylesSettings }>`
 const ProfileCard = () => {
   const { styles } = useStyles()
   const [isBackShowing, setIsBackShowing] = useState(false)
+  const { trackEvent } = useAnalytics()
 
   const flipCard = () => {
     setIsBackShowing(!isBackShowing)
