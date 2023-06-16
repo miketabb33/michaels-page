@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from '../../mblocks/Button'
-import { trackEvent } from '../../../firebase/analytics'
+import { trackEvent } from '../../../analytics'
 
 type PongMainMenuProps = {
   clickStart: () => void

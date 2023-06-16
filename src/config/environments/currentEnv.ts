@@ -6,9 +6,9 @@ export type EnvConfig = {
   firebaseConfig: FirebaseOptions
 }
 
-const getEnv = (): EnvConfig => {
-  if (SITE_ENV === 'production') return productionEnv
+export const getEnv = (siteEnv: string): EnvConfig => {
+  if (siteEnv === 'production') return productionEnv
   else return developEnv
 }
 
-export const ENV: EnvConfig = getEnv()
+export const ENV: EnvConfig = getEnv(SITE_ENV)

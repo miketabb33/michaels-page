@@ -1,8 +1,7 @@
 import { addDoc, collection, getDocs, limit, orderBy, query } from 'firebase/firestore'
-import { db } from './firebaseInit'
+import { db } from '../../firebaseInit'
 
-const getPongPath = (path: string) => `games/pong/${path}`
-const scoresRef = collection(db, getPongPath('scores'))
+const scoresRef = collection(db, 'games/pong/scores')
 
 export type HighScore = {
   id: string

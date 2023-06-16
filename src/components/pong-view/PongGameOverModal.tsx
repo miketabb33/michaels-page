@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Button from '../mblocks/Button'
-import { saveScore } from '../../firebase/pongDB'
+import { saveScore } from '../../networking/pong/scores'
 import GameModal from '../game-blocks/GameModal'
 import Input from '../mblocks/Input'
 

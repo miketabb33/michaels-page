@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Get Env should match snapshot for other env 1`] = `
+{
+  "firebaseConfig": {
+    "apiKey": "AIzaSyDprPwOCjEwEYcbW4nuPxFWtEOJFMc6bek",
+    "appId": "1:855765427298:web:763f3885091a33b5231d3b",
+    "authDomain": "michael-website-19ed0.firebaseapp.com",
+    "measurementId": "G-PP96RS59JC",
+    "messagingSenderId": "855765427298",
+    "projectId": "michael-website-19ed0",
+    "storageBucket": "michael-website-19ed0.appspot.com",
+  },
+}
+`;
+
+exports[`Get Env should match snapshot for production env 1`] = `
+{
+  "firebaseConfig": {
+    "apiKey": "AIzaSyCtqRREY6znnMH19OieyldddLfkT6tftqk",
+    "appId": "1:798894266083:web:9688813c4e93d2dc7cd7d6",
+    "authDomain": "michael-website-prod.firebaseapp.com",
+    "measurementId": "G-JN9MYTGX8R",
+    "messagingSenderId": "798894266083",
+    "projectId": "michael-website-prod",
+    "storageBucket": "michael-website-prod.appspot.com",
+  },
+}
+`;
