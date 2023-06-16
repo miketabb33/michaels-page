@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useStyles } from '../../context/StylesContext'
 import { StylesSettings } from '../../styles/Styles'
-import Flipper from '../mblocks/Flipper'
+import Flipper from '../m-blocks/Flipper'
 import ProfileCardBack from './ProfileCardBack'
 import ProfileCardFront from './ProfileCardFront'
 import { Breakpoint, MQ } from '../../Breakpoint'
+import { trackEvent } from '../../analytics'
 
 const Container = styled.div<{ styles: StylesSettings }>`
   width: 95%;
@@ -24,6 +25,7 @@ const ProfileCard = () => {
 
   const flipCard = () => {
     setIsBackShowing(!isBackShowing)
+    trackEvent('flipped_profile_card')
   }
 
   return (

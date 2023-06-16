@@ -4,7 +4,7 @@ import { NavLinkConfig } from '../../config/navConfig'
 import { useStyles } from '../../context/StylesContext'
 import RouterLink from '../../router/RouterLink'
 import { StylesSettings } from '../../styles/Styles'
-import Button from '../mblocks/Button'
+import Button from '../m-blocks/Button'
 import MobileNavLink from './MobileNavLink'
 
 const MobileNavContainer = styled.nav<{ styles: StylesSettings }>`

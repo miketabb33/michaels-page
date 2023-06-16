@@ -4,7 +4,7 @@ import { useStyles } from '../../context/StylesContext'
 import SidebarLink from './SidebarLink'
 import { StylesSettings } from '../../styles/Styles'
 import { NavLinkConfig } from '../../config/navConfig'
-import Button from '../mblocks/Button'
+import Button from '../m-blocks/Button'
 import RouterLink from '../../router/RouterLink'
 
 const Container = styled.nav<{ styles: StylesSettings }>`

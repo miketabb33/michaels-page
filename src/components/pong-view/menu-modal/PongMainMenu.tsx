@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../../mblocks/Button'
+import Button from '../../m-blocks/Button'
 import { trackEvent } from '../../../analytics'
 
 type PongMainMenuProps = {

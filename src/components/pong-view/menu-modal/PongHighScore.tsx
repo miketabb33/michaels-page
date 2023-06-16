@@ -1,6 +1,6 @@
 import { HighScore, getHighScores } from '../../../networking/pong/scores'
 import React from 'react'
-import Button from '../../mblocks/Button'
+import Button from '../../m-blocks/Button'
 import { useRequest } from '../../../networking/useRequest'
 
 type PongHighScoreProps = {

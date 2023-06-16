@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import { useStyles } from '../../context/StylesContext'
 import { StylesSettings } from '../../styles/Styles'
-import Card from '../mblocks/Card'
-import Icon from '../mblocks/Icon'
-import IconButton from '../mblocks/IconButton'
-import Typography from '../mblocks/Typography'
+import Card from '../m-blocks/Card'
+import Icon from '../m-blocks/Icon'
+import IconButton from '../m-blocks/IconButton'
+import Typography from '../m-blocks/Typography'
 
 export const IconButtonWrapper = styled.div<{ styles: StylesSettings }>`
   position: absolute;
