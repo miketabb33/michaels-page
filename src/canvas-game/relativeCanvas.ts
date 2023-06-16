@@ -1,4 +1,4 @@
-import { Size } from '../types/Size'
+import { Size } from './types/Size'
 import { Rect } from './rect'
 
 export const translateRect = (rect: Rect, canvasSize: Size, units: number) => {

@@ -1,4 +1,4 @@
-import { DirectionValue } from '../types/DirectionValue'
+import { DirectionValue } from './types/DirectionValue'
 
 type FlipDirection = {
   value: DirectionValue

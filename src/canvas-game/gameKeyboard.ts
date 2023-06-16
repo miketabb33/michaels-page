@@ -1,5 +1,5 @@
 import { EventConfig, eventController } from '../eventController'
-import { KeyboardCode } from '../types/KeyboardCode'
+import { KeyboardCode } from './types/KeyboardCode'
 import { removeListenersArray } from './removeListenersArray'
 
 export const gameKeyboard = () => {

@@ -1,5 +1,4 @@
-import { getHighScores } from '../../../firebase/pongDB'
-import { HighScore } from '../../../types/HighScore'
+import { HighScore, getHighScores } from '../../../firebase/pongDB'
 import React from 'react'
 import Button from '../../mblocks/Button'
 import { useRequest } from '../../../hooks/useRequest'

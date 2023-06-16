@@ -1,6 +1,6 @@
 import { Rect, getRectEdges } from './rect'
-import { Direction } from '../types/Direction'
-import { Size } from '../types/Size'
+import { Direction } from './types/Direction'
+import { Size } from './types/Size'
 
 const isOffCanvasUp = (rect: Rect): boolean => {
   if (rect.position.y < 0) return true

@@ -1,5 +1,5 @@
 import { gameKeyboard } from '../../canvas-game/gameKeyboard'
-import { Direction } from '../../types/Direction'
+import { Direction } from '../types/Direction'
 
 export const pongPlayerActions = () => {
   const { isPressingLeftKey, isPressingRightKey } = gameKeyboard()

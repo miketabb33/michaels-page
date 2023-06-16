@@ -1,5 +1,5 @@
-import { Point } from '../types/Point'
-import { Size } from '../types/Size'
+import { Point } from './types/Point'
+import { Size } from './types/Size'
 
 export type Rect = {
   position: Point

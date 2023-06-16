@@ -1,4 +1,4 @@
-import { Size } from '../../../src/types/Size'
+import { Size } from '../../../src/canvas-game/types/Size'
 import { Rect } from '../../../src/canvas-game/rect'
 import { calcSquareCanvasSize, translateRect } from '../../../src/canvas-game/relativeCanvas'
 

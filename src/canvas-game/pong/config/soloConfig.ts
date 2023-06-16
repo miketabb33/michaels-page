@@ -1,9 +1,9 @@
 import { random } from '../../../random'
-import { DirectionValue } from '../../../types/DirectionValue'
-import { Size } from '../../../types/Size'
+import { Size } from '../../types/Size'
 import { CanvasObject, CanvasObjectController } from '../../canvasObjectController'
 import { ScoreResult } from '../../pongScore'
 import { PongConfig } from './pongConfigs'
+import { DirectionValue } from '../../types/DirectionValue'
 
 const tuftsBlue = '#3C97D7'
 const carrotOrange = '#D98F25'

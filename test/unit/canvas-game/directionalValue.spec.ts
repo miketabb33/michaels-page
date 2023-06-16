@@ -1,5 +1,5 @@
 import { calcNewBounceDirection, flipDirection } from '../../../src/canvas-game/directionalValue'
-import { DirectionValue } from '../../../src/types/DirectionValue'
+import { DirectionValue } from '../../../src/canvas-game/types/DirectionValue'
 
 describe('Flip Direction', () => {
   it('should flip X positive', () => {
