@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from '../../m-blocks/Button'
 import { useAnalytics } from '../../../analytics/useAnalytics'
+import Typography from '../../m-blocks/Typography'
 
 type PongMainMenuProps = {
   clickStart: () => void
@@ -15,7 +16,7 @@ const PongMainMenu = ({ clickStart, clickHighScore }: PongMainMenuProps) => {
   }
   return (
     <>
-      <h1>Welcome to Pong</h1>
+      <Typography kind="h1">Welcome to Pong!</Typography>
       <Button onClick={onStart}>Start</Button>
       <Button onClick={clickHighScore}>High Scores</Button>
     </>

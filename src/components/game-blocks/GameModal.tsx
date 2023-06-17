@@ -1,19 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ChildrenProp } from '../../types/ChildrenProp'
+import { useStyles } from '../../context/StylesContext'
+import { StylesSettings } from '../../styles/Styles'
 
-const GameModalStyle = styled.div`
-  background-color: gray;
+const GameModalStyle = styled.div<{ themes: StylesSettings }>`
+  background-color: ${(props) => props.themes.themeColor.secondary};
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 30px;
+  gap: ${(props) => props.themes.spacing.xSmall};
+  padding: ${(props) => props.themes.spacing.xLarge};
+  border-radius: ${(props) => props.themes.spacing.small};
+  outline: ${(props) => props.themes.themeColor.primaryDark} ${(props) => props.themes.spacing.small} solid;
 `
 
 const GameModal = ({ children }: ChildrenProp) => {
-  return <GameModalStyle>{children}</GameModalStyle>
+  const { styles: theme } = useStyles()
+  return <GameModalStyle themes={theme}>{children}</GameModalStyle>
 }
 
 export default GameModal
