@@ -3,6 +3,7 @@ import Button from '../m-blocks/Button'
 import { saveScore } from '../../networking/pong/scores'
 import GameModal from '../game-blocks/GameModal'
 import Input from '../m-blocks/Input'
+import { random } from '../../random'
 
 type PongGameOverModalProps = {
   clickMainMenu: () => void
@@ -13,8 +14,13 @@ const PongGameOverModal = ({ clickMainMenu: onMainMenu, score }: PongGameOverMod
   const [name, setName] = useState('')
 
   const onSaveClick = () => {
-    saveScore({ name, score }).catch(console.error)
+    saveScore({ name: safeName(), score }).catch(console.error)
     onMainMenu()
+  }
+
+  const safeName = (): string => {
+    if (!name) return backupNames[random(backupNames.length - 1)] || 'banana'
+    return name
   }
 
   return (
@@ -34,3 +40,21 @@ const PongGameOverModal = ({ clickMainMenu: onMainMenu, score }: PongGameOverMod
 }
 
 export default PongGameOverModal
+
+const backupNames = [
+  'shaquille.oatmeal',
+  'hanging_with_my_gnomies',
+  'hoosier-daddy',
+  'fast_and_the_curious',
+  'averagestudent',
+  'BadKarma',
+  'google_was_my_idea',
+  'cute.as.ducks',
+  'casanova',
+  'real_name_hidden',
+  'HairyPoppins',
+  'fedora_the_explorer',
+  'OP_rah',
+  'YellowSnowman',
+  'JoeNotExotic',
+]
