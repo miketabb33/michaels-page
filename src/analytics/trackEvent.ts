@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { logEvent } from 'firebase/analytics'
 import { User } from '../context/AuthContext'
-import { analytics } from '../firebaseInit'
+import { analytics } from './initAnalytics'
 
 type TrackEventArgs = {
   eventName: string
@@ -17,8 +17,6 @@ export const trackEvent = ({ eventName, params, user }: TrackEventArgs) => {
     userId: user.id,
   }
 
-  analytics.then((analytics) => {
-    if (!analytics) return
-    logEvent(analytics, eventName, { ...params, ...defaultAnalyticParams })
-  })
+  if (!analytics) return
+  logEvent(analytics, eventName, { ...params, ...defaultAnalyticParams })
 }
