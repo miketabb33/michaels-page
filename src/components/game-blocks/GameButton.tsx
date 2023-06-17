@@ -1,10 +1,15 @@
-import React, { ReactNode, useRef } from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components'
 import { EventConfig, eventController } from '../../eventController'
 
-const Container = styled.div`
-  cursor: pointer;
+const Button = styled.div`
   user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+
+  cursor: pointer;
   background-color: gray;
   aspect-ratio: 1;
   height: 100%;
@@ -14,21 +19,19 @@ const Container = styled.div`
 `
 
 type GameButtonProps = {
-  children: ReactNode
+  label: string
   onPressStart: () => void
   onPressEnd: () => void
 }
 
-const GameButton = ({ children, onPressStart, onPressEnd }: GameButtonProps) => {
+const GameButton = ({ label, onPressStart, onPressEnd }: GameButtonProps) => {
   const buttonRef = useRef<HTMLDivElement | null>(null)
 
-  const pressStarted = (/*e: Event*/) => {
-    // if (e.cancelable) e.preventDefault()
+  const pressStarted = () => {
     onPressStart()
   }
 
-  const pressEnded = (/*e: Event*/) => {
-    // if (e.cancelable) e.preventDefault()
+  const pressEnded = () => {
     onPressEnd()
   }
 
@@ -47,7 +50,7 @@ const GameButton = ({ children, onPressStart, onPressEnd }: GameButtonProps) => 
 
   addEventListeners()
 
-  return <Container ref={buttonRef}>{children}</Container>
+  return <Button ref={buttonRef}>{label}</Button>
 }
 
 export default GameButton
