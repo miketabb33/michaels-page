@@ -28,16 +28,27 @@ export const useCanvas = ({ units, sizeMultiplier }: UseCanvas) => {
     return { width: canvas.clientWidth, height: canvas.clientWidth }
   }
 
-  const draw = (canvasObjects: CanvasObject[]) => {
+  const translateCanvasObjToRenderableObj = (canvasObjects: CanvasObject[]): RenderableObject[] => {
     const renderableObjects: RenderableObject[] = canvasObjects.map((canvasObject) => {
-      const translatedRect = translateRect(canvasObject.rect, getCanvasSizePixels(), units)
       return {
-        rect: translatedRect,
+        rect: canvasObject.rect,
         color: canvasObject.color,
         shape: canvasObject.shape,
       }
     })
-    render2dContext(renderableObjects, canvasRef.current)
+    return renderableObjects
+  }
+
+  const draw = (renderableObjects: RenderableObject[]) => {
+    const translatedRectObjects: RenderableObject[] = renderableObjects.map((renderableObj) => {
+      const translatedRect = translateRect(renderableObj.rect, getCanvasSizePixels(), units)
+      return {
+        rect: translatedRect,
+        color: renderableObj.color,
+        shape: renderableObj.shape,
+      }
+    })
+    render2dContext(translatedRectObjects, canvasRef.current)
   }
 
   const attemptToResizeCanvas = () => {
@@ -75,5 +86,6 @@ export const useCanvas = ({ units, sizeMultiplier }: UseCanvas) => {
     draw,
     canvasRef,
     canvasWidth,
+    translateCanvasObjToRenderableObj,
   }
 }

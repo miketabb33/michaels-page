@@ -2,7 +2,7 @@ import { Rect } from './rect'
 import { DirectionValue } from './types/DirectionValue'
 import { Velocity } from './types/Velocity'
 
-export type CanvasObjectShape = 'rectangle' | 'circle'
+export type CanvasObjectShape = 'rectangle' | 'circle' | 'circle-outline'
 
 export type CanvasObject = {
   rect: Rect

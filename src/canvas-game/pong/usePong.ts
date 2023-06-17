@@ -9,6 +9,7 @@ import { playerPaddleMotion } from './playerPaddleMotion'
 import { pongBallMotion } from './pongBallMotion'
 import { didPongHitOpponent, didPongHitPlayPaddle } from './pongCollision'
 import { PongConfig } from './config/pongConfigs'
+import { soccerField } from './config/soccerFieldObj'
 
 type UsePong = {
   pongConfig: PongConfig
@@ -21,7 +22,7 @@ export const usePong = ({ pongConfig, onScore }: UsePong) => {
 
   const { setIsPressingLeftButton, setIsPressingRightButton, detectPlayerControls } = pongPlayerActions()
 
-  const { isRectOffCanvas, draw, canvasRef, canvasWidth } = useCanvas({
+  const { isRectOffCanvas, draw, canvasRef, canvasWidth, translateCanvasObjToRenderableObj } = useCanvas({
     sizeMultiplier: 0.8,
     units: pongConfig.canvasDimensionUnits,
   })
@@ -57,7 +58,13 @@ export const usePong = ({ pongConfig, onScore }: UsePong) => {
   const gameRunner = GameRunner(onFrame)
 
   const renderPong = () => {
-    draw([playerPaddle.canvasObj(), opponentPaddle.canvasObj(), pongBall.canvasObj()])
+    const gamePieces = translateCanvasObjToRenderableObj([
+      playerPaddle.canvasObj(),
+      opponentPaddle.canvasObj(),
+      pongBall.canvasObj(),
+    ])
+
+    draw([...soccerField(pongConfig.canvasDimensionUnits), ...gamePieces])
   }
 
   const lose = () => {

@@ -12,6 +12,14 @@ const renderObject = (renderableObject: RenderableObject, ctx: CanvasRenderingCo
   const { x, y } = renderableObject.rect.position
 
   ctx.fillStyle = renderableObject.color
+  ctx.strokeStyle = renderableObject.color
+
+  const arc = () => {
+    const radius = width / 2
+    const ax = x + radius
+    const ay = y + height / 2
+    ctx.arc(ax, ay, radius, 0, 2 * Math.PI)
+  }
 
   if (renderableObject.shape === 'rectangle') {
     ctx.fillRect(x, y, width, height)
@@ -19,11 +27,14 @@ const renderObject = (renderableObject: RenderableObject, ctx: CanvasRenderingCo
 
   if (renderableObject.shape === 'circle') {
     ctx.beginPath()
-    const radius = width / 2
-    const ax = x + radius
-    const ay = y + height / 2
-    ctx.arc(ax, ay, radius, 0, 2 * Math.PI)
+    arc()
     ctx.fill()
+  }
+
+  if (renderableObject.shape === 'circle-outline') {
+    ctx.beginPath()
+    arc()
+    ctx.stroke()
   }
 }
 
