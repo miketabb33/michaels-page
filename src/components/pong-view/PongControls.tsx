@@ -14,7 +14,7 @@ const Container = styled.div<{ width: number }>`
   display: flex;
   justify-content: space-between;
   width: ${(props) => `${props.width}px`};
-  height: 50px;
+  height: 75px;
 `
 
 const PongControls = ({ width, leftStarted, leftEnded, rightStarted, rightEnded }: PongControlsProps) => {
