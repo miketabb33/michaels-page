@@ -19,6 +19,7 @@ const Button = styled.div<{ themes: StylesSettings }>`
   align-items: center;
   border-bottom-left-radius: ${(props) => props.themes.spacing.small};
   border-bottom-right-radius: ${(props) => props.themes.spacing.small};
+  font-size: ${(props) => props.themes.spacing.xLarge};
 `
 
 type GameButtonProps = {

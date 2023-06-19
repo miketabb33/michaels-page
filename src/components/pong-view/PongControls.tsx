@@ -20,8 +20,8 @@ const Container = styled.div<{ width: number }>`
 const PongControls = ({ width, leftStarted, leftEnded, rightStarted, rightEnded }: PongControlsProps) => {
   return (
     <Container width={width}>
-      <GameButton onPressStart={leftStarted} onPressEnd={leftEnded} label="Left" />
-      <GameButton onPressStart={rightStarted} onPressEnd={rightEnded} label="Right" />
+      <GameButton onPressStart={leftStarted} onPressEnd={leftEnded} label="&larr;" />
+      <GameButton onPressStart={rightStarted} onPressEnd={rightEnded} label="&rarr;" />
     </Container>
   )
 }
