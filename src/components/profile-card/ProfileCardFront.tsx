@@ -1,35 +1,33 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useTheme } from '../../context/ThemeContext'
-import { StylesSettings } from '../../styles/Styles'
 import Card from '../m-blocks/Card'
 import Icon from '../m-blocks/Icon'
 import IconButton from '../m-blocks/IconButton'
 import Typography from '../m-blocks/Typography'
 
-export const IconButtonWrapper = styled.div<{ styles: StylesSettings }>`
+export const IconButtonWrapper = styled.div`
   position: absolute;
-  top: ${(props) => props.styles.spacing.xSmall};
-  right: ${(props) => props.styles.spacing.xSmall};
+  top: ${({ theme }) => theme.spacing.xSmall};
+  right: ${({ theme }) => theme.spacing.xSmall};
 `
 
-const CardFrontContent = styled.div<{ styles: StylesSettings }>`
+const CardFrontContent = styled.div`
   height: 100%;
-  padding: ${(props) => props.styles.spacing.medium};
+  padding: ${({ theme }) => theme.spacing.medium};
   display: grid;
   grid-template-rows: 60%;
 `
 
-const TopRow = styled.div<{ styles: StylesSettings }>`
+const TopRow = styled.div`
   display: flex;
-  gap: ${(props) => props.styles.spacing.medium};
+  gap: ${({ theme }) => theme.spacing.medium};
 `
 
-const Portrait = styled.img<{ styles: StylesSettings }>`
+const Portrait = styled.img`
   height: 100%;
   aspect-ratio: 1;
   border-radius: 50%;
-  border: 2px solid ${(props) => props.styles.themeColor.accent};
+  border: 2px solid ${({ theme }) => theme.color.accent};
 `
 
 const TextWell = styled.div`
@@ -39,9 +37,9 @@ const TextWell = styled.div`
   width: 100%;
 `
 
-const SocialMediaRow = styled.div<{ styles: StylesSettings }>`
+const SocialMediaRow = styled.div`
   display: flex;
-  gap: ${(props) => props.styles.spacing.small};
+  gap: ${({ theme }) => theme.spacing.small};
   justify-content: right;
   align-items: flex-end;
 `
@@ -52,10 +50,10 @@ const TechStackRow = styled.div`
   align-items: center;
 `
 
-const IconLink = styled.a<{ styles: StylesSettings }>`
-  width: ${(props) => props.styles.spacing.xLarge};
-  height: ${(props) => props.styles.spacing.xLarge};
-  padding: ${(props) => props.styles.spacing.small};
+const IconLink = styled.a`
+  width: ${({ theme }) => theme.spacing.xLarge};
+  height: ${({ theme }) => theme.spacing.xLarge};
+  padding: ${({ theme }) => theme.spacing.small};
 `
 
 export type ProfileCardFrontProps = {
@@ -63,15 +61,14 @@ export type ProfileCardFrontProps = {
 }
 
 const ProfileCardFront = ({ onRotateIconClick }: ProfileCardFrontProps) => {
-  const { styles } = useTheme()
   return (
     <Card>
-      <IconButtonWrapper styles={styles}>
+      <IconButtonWrapper>
         <IconButton iconName="rotate" onClick={onRotateIconClick} />
       </IconButtonWrapper>
-      <CardFrontContent styles={styles}>
-        <TopRow styles={styles}>
-          <Portrait src="./images/portrait.jpeg" styles={styles} />
+      <CardFrontContent>
+        <TopRow>
+          <Portrait src="./images/portrait.jpeg" />
           <TextWell>
             <Typography kind="h1">Michael Tabb</Typography>
             <Typography kind="p">Software Engineer</Typography>
@@ -82,16 +79,11 @@ const ProfileCardFront = ({ onRotateIconClick }: ProfileCardFrontProps) => {
         <TechStackRow>
           <Typography kind="p">React • Typescript • Swift • Xcode</Typography>
         </TechStackRow>
-        <SocialMediaRow styles={styles}>
-          <IconLink
-            href="https://www.linkedin.com/in/michael-tabb-24b34488/"
-            target="_blank"
-            rel="noreferrer"
-            styles={styles}
-          >
+        <SocialMediaRow>
+          <IconLink href="https://www.linkedin.com/in/michael-tabb-24b34488/" target="_blank" rel="noreferrer">
             <Icon iconName="linkedin" />
           </IconLink>
-          <IconLink href="https://github.com/miketabb33" target="_blank" rel="noreferrer" styles={styles}>
+          <IconLink href="https://github.com/miketabb33" target="_blank" rel="noreferrer">
             <Icon iconName="github" />
           </IconLink>
         </SocialMediaRow>

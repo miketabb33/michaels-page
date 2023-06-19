@@ -1,15 +1,18 @@
 import { DefaultTheme, ThemeProvider } from 'styled-components'
 import { ChildrenProp } from '../types/ChildrenProp'
-import { spacing, staticColor, shadow, lightThemeColor, darkThemeColor } from '../styles/Styles'
-import React from 'react'
 import { Theme, useTheme } from './ThemeContext'
+import { colorTokens } from '../styles/colorTokens'
+import { darkThemeColor, lightThemeColor } from '../styles/ThemeColor'
+import { themeSpacing } from '../styles/ThemeSpacing'
+import { themeShadow } from '../styles/ThemeShadow'
+import React from 'react'
 
 const getTheme = (theme: Theme): DefaultTheme => {
   return {
-    colors: theme === 'light' ? lightThemeColor : darkThemeColor,
-    staticColor,
-    spacing,
-    shadow,
+    color: theme === 'light' ? lightThemeColor : darkThemeColor,
+    staticColor: colorTokens,
+    spacing: themeSpacing,
+    shadow: themeShadow,
   }
 }
 

@@ -1,16 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useTheme } from '../../context/ThemeContext'
-import { StylesSettings } from '../../styles/Styles'
 import Card from '../m-blocks/Card'
 import IconButton from '../m-blocks/IconButton'
 import Spacer from '../m-blocks/Spacer'
 import Typography from '../m-blocks/Typography'
 import { IconButtonWrapper, ProfileCardFrontProps } from './ProfileCardFront'
 
-const CardBackContent = styled.div<{ styles: StylesSettings }>`
+const CardBackContent = styled.div`
   height: 100%;
-  padding: ${(props) => props.styles.spacing.large};
+  padding: ${({ theme }) => theme.spacing.large};
 `
 
 const Scroller = styled.div`
@@ -21,15 +19,13 @@ const Scroller = styled.div`
 type ProfileCardBackProps = ProfileCardFrontProps
 
 const ProfileCardBack = ({ onRotateIconClick }: ProfileCardBackProps) => {
-  const { styles } = useTheme()
-
   return (
     <Card>
-      <IconButtonWrapper styles={styles}>
+      <IconButtonWrapper>
         <IconButton iconName="rotate" onClick={onRotateIconClick} />
       </IconButtonWrapper>
 
-      <CardBackContent styles={styles}>
+      <CardBackContent>
         <Scroller>
           <Typography kind="p">
             I began my studies with computer programming in August 2017 to build a worthwhile and inspiring career. I

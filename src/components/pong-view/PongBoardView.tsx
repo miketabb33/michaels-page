@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { StylesSettings } from '../../styles/Styles'
 import styled from 'styled-components'
-import { useTheme } from '../../context/ThemeContext'
 import PongControls from './PongControls'
 import { removeListenersArray } from '../../canvas-game/removeListenersArray'
 import PongMenuModal from './menu-modal/PongMenuModal'
@@ -16,21 +14,20 @@ const Container = styled.div`
   align-items: center;
 `
 
-const PongCanvas = styled.canvas<{ styles: StylesSettings }>`
+const PongCanvas = styled.canvas`
   user-select: none;
   -moz-user-select: none;
   -khtml-user-select: none;
   -webkit-user-select: none;
   -o-user-select: none;
 
-  border: 1px solid ${(props) => props.styles.themeColor.accent};
-  background-color: ${(props) => props.styles.staticColor.black};
+  border: 1px solid ${({ theme }) => theme.color.accent};
+  background-color: ${({ theme }) => theme.staticColor.black};
 `
 
 const PongBoardView = () => {
   const [score, setScore] = useState(0)
   const [pongConfig] = useState(getPongSoloConfig())
-  const { styles } = useTheme()
 
   useEffect(() => {
     return () => {
@@ -44,7 +41,7 @@ const PongBoardView = () => {
   return (
     <Container>
       <h1>Score: {score} </h1>
-      <PongCanvas ref={canvasRef} styles={styles} id="PongCanvas" />
+      <PongCanvas ref={canvasRef} id="PongCanvas" />
       <PongControls
         width={canvasWidth}
         leftStarted={() => setIsPressingLeftButton(true)}

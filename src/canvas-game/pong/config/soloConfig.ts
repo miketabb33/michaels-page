@@ -4,9 +4,10 @@ import { CanvasObject, CanvasObjectController } from '../../canvasObjectControll
 import { ScoreResult } from '../../pongScore'
 import { PongConfig } from './pongConfigs'
 import { DirectionValue } from '../../types/DirectionValue'
+import { colorTokens } from '../../../styles/colorTokens'
 
-const tuftsBlue = '#3C97D7'
-const carrotOrange = '#D98F25'
+const tuftsBlue = colorTokens.blue_600
+const carrotOrange = colorTokens.orange_600
 
 export const getPongSoloConfig = (): PongConfig => {
   const canvasDimensionUnits = 1000

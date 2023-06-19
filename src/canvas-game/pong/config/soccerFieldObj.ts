@@ -1,3 +1,4 @@
+import { colorTokens } from '../../../styles/colorTokens'
 import { RenderableObject } from '../../render2dContext'
 
 const horizontalLine = (canvasUnits: number): RenderableObject => {
@@ -13,7 +14,7 @@ const horizontalLine = (canvasUnits: number): RenderableObject => {
         height,
       },
     },
-    color: '#FFFFFF',
+    color: colorTokens.white,
     shape: 'rectangle',
   }
 }
@@ -31,7 +32,7 @@ const middleCircle = (canvasUnits: number): RenderableObject => {
         height: size,
       },
     },
-    color: '#FFFFFF',
+    color: colorTokens.white,
     shape: 'circle-outline',
   }
 }

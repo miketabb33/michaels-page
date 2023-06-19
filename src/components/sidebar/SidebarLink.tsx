@@ -1,21 +1,19 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
-import { StylesSettings } from '../../styles/Styles'
-import { useTheme } from '../../context/ThemeContext'
 import RouterLink from '../../router/RouterLink'
 
-const Container = styled(RouterLink)<{ styles: StylesSettings }>`
+const Container = styled(RouterLink)`
   display: block;
   text-align: center;
-  padding: ${(props) => props.styles.spacing.medium} 0;
-  background-color: ${(props) => props.styles.themeColor.secondaryLight};
-  color: ${(props) => props.styles.staticColor.white};
+  padding: ${({ theme }) => theme.spacing.medium} 0;
+  background-color: ${({ theme }) => theme.color.secondaryLight};
+  color: ${({ theme }) => theme.staticColor.white};
   text-decoration: none;
   font-weight: 700;
-  letter-spacing: ${(props) => props.styles.spacing.xSmall};
+  letter-spacing: ${({ theme }) => theme.spacing.xSmall};
 
   &:hover {
-    background-color: ${(props) => props.styles.themeColor.secondaryDark};
+    background-color: ${({ theme }) => theme.color.secondaryDark};
   }
 `
 
@@ -25,12 +23,7 @@ type SidebarLinkProps = {
 }
 
 export const SidebarLink = ({ children, linkTo }: SidebarLinkProps) => {
-  const { styles } = useTheme()
-  return (
-    <Container styles={styles} linkTo={linkTo}>
-      {children}
-    </Container>
-  )
+  return <Container linkTo={linkTo}>{children}</Container>
 }
 
 export default SidebarLink

@@ -1,20 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useTheme } from '../../context/ThemeContext'
-import { StylesSettings } from '../../styles/Styles'
 import { ChildrenProp } from '../../types/ChildrenProp'
 
-const Container = styled.div<{ styles: StylesSettings }>`
+const Container = styled.div`
   height: 100%;
   width: 100%;
-  background-color: ${(props) => props.styles.staticColor.white};
-  box-shadow: ${(props) => props.styles.shadow.blur};
-  border-radius: ${(props) => props.styles.spacing.medium};
+  background-color: ${({ theme }) => theme.staticColor.white};
+  box-shadow: ${({ theme }) => theme.shadow.blur};
+  border-radius: ${({ theme }) => theme.spacing.medium};
 `
 
 const Card = ({ children }: ChildrenProp) => {
-  const { styles } = useTheme()
-  return <Container styles={styles}>{children}</Container>
+  return <Container>{children}</Container>
 }
 
 export default Card

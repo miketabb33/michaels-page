@@ -2,19 +2,18 @@ import React from 'react'
 import styled from 'styled-components'
 import { useTheme } from '../../context/ThemeContext'
 import SidebarLink from './SidebarLink'
-import { StylesSettings } from '../../styles/Styles'
 import { NavLinkConfig } from '../../config/navConfig'
 import Button from '../m-blocks/Button'
 import RouterLink from '../../router/RouterLink'
 
-const Container = styled.nav<{ styles: StylesSettings }>`
-  background-color: ${(props) => props.styles.themeColor.secondary};
-  box-shadow: ${(props) => props.styles.shadow.crisp};
+const Container = styled.nav`
+  background-color: ${({ theme }) => theme.color.secondary};
+  box-shadow: ${({ theme }) => theme.shadow.crisp};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  padding: ${(props) => props.styles.spacing.small} 0;
+  padding: ${({ theme }) => theme.spacing.small} 0;
 `
 
 const Logo = styled.img`
@@ -22,15 +21,15 @@ const Logo = styled.img`
   margin: auto;
 `
 
-const LogoLink = styled(RouterLink)<{ styles: StylesSettings }>`
+const LogoLink = styled(RouterLink)`
   display: flex;
-  padding: ${(props) => props.styles.spacing.small};
+  padding: ${({ theme }) => theme.spacing.small};
 `
 
-const SidebarMenu = styled.ul<{ styles: StylesSettings }>`
+const SidebarMenu = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: ${(props) => props.styles.spacing.xSmall};
+  gap: ${({ theme }) => theme.spacing.xSmall};
 `
 
 type SidebarProps = {
@@ -38,14 +37,14 @@ type SidebarProps = {
 }
 
 const Sidebar = ({ navConfig }: SidebarProps) => {
-  const { styles, toggleTheme } = useTheme()
+  const { theme, toggleTheme } = useTheme()
 
-  const themeButtonText = styles.id === 'light' ? 'Dark' : 'Light'
+  const themeButtonText = theme === 'light' ? 'Dark' : 'Light'
 
   return (
-    <Container styles={styles}>
-      <SidebarMenu styles={styles}>
-        <LogoLink styles={styles} linkTo="/">
+    <Container>
+      <SidebarMenu>
+        <LogoLink linkTo="/">
           <Logo src="images/logo.png" />
         </LogoLink>
         {navConfig.map(({ label, linkTo }: NavLinkConfig, i) => (

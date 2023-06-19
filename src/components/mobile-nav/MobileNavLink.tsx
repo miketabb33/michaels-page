@@ -1,21 +1,19 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
-import { useTheme } from '../../context/ThemeContext'
 import RouterLink from '../../router/RouterLink'
-import { StylesSettings } from '../../styles/Styles'
 
-const Container = styled(RouterLink)<{ styles: StylesSettings }>`
+const Container = styled(RouterLink)`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
   text-decoration: none;
-  color: ${(props) => props.styles.staticColor.white};
+  color: ${({ theme }) => theme.staticColor.white};
   font-weight: 700;
 
   &:active {
-    background-color: ${(props) => props.styles.themeColor.secondaryDark};
+    background-color: ${({ theme }) => theme.color.secondaryDark};
   }
 `
 
@@ -25,12 +23,7 @@ type MobileNavLinkProps = {
 }
 
 const MobileNavLink = ({ children, linkTo }: MobileNavLinkProps) => {
-  const { styles } = useTheme()
-  return (
-    <Container styles={styles} linkTo={linkTo}>
-      {children}
-    </Container>
-  )
+  return <Container linkTo={linkTo}>{children}</Container>
 }
 
 export default MobileNavLink

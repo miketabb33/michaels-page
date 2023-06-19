@@ -1,22 +1,20 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
-import { useTheme } from '../../context/ThemeContext'
-import { StylesSettings } from '../../styles/Styles'
 import Typography from './Typography'
 
-const Container = styled.button<{ themes: StylesSettings }>`
-  background-color: ${(props) => props.themes.themeColor.primary};
-  border: ${(props) => props.themes.themeColor.primaryDark} solid 1px;
-  padding: ${(props) => props.themes.spacing.xSmall};
-  border-radius: ${(props) => props.themes.spacing.xxSmall};
+const Container = styled.button`
+  background-color: ${({ theme }) => theme.color.primary};
+  border: ${({ theme }) => theme.color.primaryDark} solid 1px;
+  padding: ${({ theme }) => theme.spacing.xSmall};
+  border-radius: ${({ theme }) => theme.spacing.xxSmall};
   cursor: pointer;
 
-  color: ${(props) => props.themes.staticColor.white};
+  color: ${({ theme }) => theme.staticColor.white};
   text-transform: uppercase;
   font-weight: 700;
 
   :hover {
-    background-color: ${(props) => props.themes.themeColor.primaryDark};
+    background-color: ${({ theme }) => theme.color.primaryDark};
   }
 `
 
@@ -26,9 +24,8 @@ type ButtonProps = {
 }
 
 const Button = ({ children, onClick }: ButtonProps) => {
-  const { styles: theme } = useTheme()
   return (
-    <Container themes={theme} onClick={onClick}>
+    <Container onClick={onClick}>
       <Typography kind="p">{children}</Typography>
     </Container>
   )

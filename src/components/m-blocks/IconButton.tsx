@@ -1,26 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useTheme } from '../../context/ThemeContext'
-import { StylesSettings } from '../../styles/Styles'
 import Icon, { IconName } from './Icon'
 
-const Container = styled.button<{ styles: StylesSettings }>`
+const Container = styled.button`
   cursor: pointer;
   width: 3.5rem;
   height: 3.5rem;
-  padding: ${(props) => props.styles.spacing.xxSmall};
-  border-radius: ${(props) => props.styles.spacing.small};
+  padding: ${({ theme }) => theme.spacing.xxSmall};
+  border-radius: ${({ theme }) => theme.spacing.small};
   border: 0;
   background-color: transparent;
 
   &:hover {
-    background-color: ${(props) => props.styles.themeColor.secondaryLight};
-    box-shadow: ${(props) => props.styles.shadow.blur};
+    background-color: ${({ theme }) => theme.color.secondaryLight};
+    box-shadow: ${({ theme }) => theme.shadow.blur};
   }
 
   &:active {
-    background-color: ${(props) => props.styles.themeColor.secondaryDark};
-    box-shadow: ${(props) => props.styles.shadow.blur};
+    background-color: ${({ theme }) => theme.color.secondaryDark};
+    box-shadow: ${({ theme }) => theme.shadow.blur};
     transform: translateY(1px);
   }
 `
@@ -31,9 +29,8 @@ type IconButtonProps = {
 }
 
 const IconButton = ({ iconName, onClick }: IconButtonProps) => {
-  const { styles } = useTheme()
   return (
-    <Container onClick={onClick} styles={styles}>
+    <Container onClick={onClick}>
       <Icon iconName={iconName} />
     </Container>
   )

@@ -1,9 +1,7 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
-import { StylesSettings } from '../../styles/Styles'
-import { useTheme } from '../../context/ThemeContext'
 
-const Button = styled.div<{ themes: StylesSettings }>`
+const Button = styled.div`
   user-select: none;
   -moz-user-select: none;
   -khtml-user-select: none;
@@ -11,15 +9,15 @@ const Button = styled.div<{ themes: StylesSettings }>`
   -o-user-select: none;
 
   cursor: pointer;
-  background-color: ${(props) => props.themes.themeColor.accent};
+  background-color: ${({ theme }) => theme.color.accent};
   aspect-ratio: 1;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom-left-radius: ${(props) => props.themes.spacing.small};
-  border-bottom-right-radius: ${(props) => props.themes.spacing.small};
-  font-size: ${(props) => props.themes.spacing.xLarge};
+  border-bottom-left-radius: ${({ theme }) => theme.spacing.small};
+  border-bottom-right-radius: ${({ theme }) => theme.spacing.small};
+  font-size: ${({ theme }) => theme.spacing.xLarge};
 `
 
 type GameButtonProps = {
@@ -29,7 +27,6 @@ type GameButtonProps = {
 }
 
 const GameButton = ({ label, onPressStart, onPressEnd }: GameButtonProps) => {
-  const { styles: theme } = useTheme()
   const buttonRef = useRef<HTMLDivElement | null>(null)
 
   const pressStarted = (e: Event) => {
@@ -53,11 +50,7 @@ const GameButton = ({ label, onPressStart, onPressEnd }: GameButtonProps) => {
 
   addEventListeners()
 
-  return (
-    <Button themes={theme} ref={buttonRef}>
-      {label}
-    </Button>
-  )
+  return <Button ref={buttonRef}>{label}</Button>
 }
 
 export default GameButton

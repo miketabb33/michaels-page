@@ -1,18 +1,16 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { useTheme } from '../../context/ThemeContext'
-import { StylesSettings } from '../../styles/Styles'
 import Flipper from '../m-blocks/Flipper'
 import ProfileCardBack from './ProfileCardBack'
 import ProfileCardFront from './ProfileCardFront'
 import { Breakpoint, MQ } from '../../Breakpoint'
 import { useAnalytics } from '../../analytics/useAnalytics'
 
-const Container = styled.div<{ styles: StylesSettings }>`
+const Container = styled.div`
   width: 95%;
   max-width: 500px;
   aspect-ratio: 1.5;
-  color: ${(props) => props.styles.staticColor.black};
+  color: ${({ theme }) => theme.staticColor.black};
 
   @media ${MQ(Breakpoint.tablet)} {
     width: 75%;
@@ -20,7 +18,6 @@ const Container = styled.div<{ styles: StylesSettings }>`
 `
 
 const ProfileCard = () => {
-  const { styles } = useTheme()
   const [isBackShowing, setIsBackShowing] = useState(false)
   const { trackEvent } = useAnalytics()
 
@@ -30,7 +27,7 @@ const ProfileCard = () => {
   }
 
   return (
-    <Container styles={styles}>
+    <Container>
       <Flipper
         front={<ProfileCardFront onRotateIconClick={flipCard} />}
         back={<ProfileCardBack onRotateIconClick={flipCard} />}
