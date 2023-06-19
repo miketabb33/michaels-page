@@ -5,6 +5,12 @@ import { useStyles } from '../../context/StylesContext'
 import { StylesSettings } from '../../styles/Styles'
 
 const GameModalStyle = styled.div<{ themes: StylesSettings }>`
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+
   background-color: ${(props) => props.themes.themeColor.splash};
   position: absolute;
   display: flex;

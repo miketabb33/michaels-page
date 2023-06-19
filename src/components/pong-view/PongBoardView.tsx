@@ -17,6 +17,12 @@ const Container = styled.div`
 `
 
 const PongCanvas = styled.canvas<{ styles: StylesSettings }>`
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+
   border: 1px solid ${(props) => props.styles.themeColor.accent};
   background-color: ${(props) => props.styles.staticColor.black};
 `
