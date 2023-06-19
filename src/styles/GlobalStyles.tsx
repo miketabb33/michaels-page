@@ -11,6 +11,10 @@ const GlobalStyle = createGlobalStyle<{ styles: StylesSettings }>`
   box-sizing: inherit;
 }
 
+html, body, #root {
+  height: 100%;
+}
+
 html {
   font-size: 50%;
   font-family: 'lato', 'sans-serif';

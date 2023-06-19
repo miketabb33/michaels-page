@@ -8,7 +8,7 @@ import Sidebar from '../sidebar/Sidebar'
 
 const Container = styled.div`
   overflow-x: hidden;
-  height: 100vh;
+  height: 100%;
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: 40px 1fr;
