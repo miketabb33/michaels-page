@@ -1,8 +1,9 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App'
-import { StylesContextProvider } from './context/StylesContext'
+import { ThemeContextProvider } from './context/ThemeContext'
 import { AuthContextProvider } from './context/AuthContext'
+import { StyledProvider } from './context/StyledProvider'
 
 const rootElement = document.getElementById('root')
 
@@ -12,9 +13,11 @@ const root = createRoot(rootElement)
 root.render(
   <React.StrictMode>
     <AuthContextProvider>
-      <StylesContextProvider>
-        <App />
-      </StylesContextProvider>
+      <ThemeContextProvider>
+        <StyledProvider>
+          <App />
+        </StyledProvider>
+      </ThemeContextProvider>
     </AuthContextProvider>
   </React.StrictMode>
 )

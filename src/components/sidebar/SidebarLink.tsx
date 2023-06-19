@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { StylesSettings } from '../../styles/Styles'
-import { useStyles } from '../../context/StylesContext'
+import { useTheme } from '../../context/ThemeContext'
 import RouterLink from '../../router/RouterLink'
 
 const Container = styled(RouterLink)<{ styles: StylesSettings }>`
@@ -25,7 +25,7 @@ type SidebarLinkProps = {
 }
 
 export const SidebarLink = ({ children, linkTo }: SidebarLinkProps) => {
-  const { styles } = useStyles()
+  const { styles } = useTheme()
   return (
     <Container styles={styles} linkTo={linkTo}>
       {children}

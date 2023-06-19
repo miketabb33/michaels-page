@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
-import { useStyles } from '../../context/StylesContext'
+import { useTheme } from '../../context/ThemeContext'
 import { StylesSettings } from '../../styles/Styles'
 import Typography from './Typography'
 
@@ -26,7 +26,7 @@ type ButtonProps = {
 }
 
 const Button = ({ children, onClick }: ButtonProps) => {
-  const { styles: theme } = useStyles()
+  const { styles: theme } = useTheme()
   return (
     <Container themes={theme} onClick={onClick}>
       <Typography kind="p">{children}</Typography>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { useStyles } from '../../context/StylesContext'
+import { useTheme } from '../../context/ThemeContext'
 import { StylesSettings } from '../../styles/Styles'
 import Flipper from '../m-blocks/Flipper'
 import ProfileCardBack from './ProfileCardBack'
@@ -20,7 +20,7 @@ const Container = styled.div<{ styles: StylesSettings }>`
 `
 
 const ProfileCard = () => {
-  const { styles } = useStyles()
+  const { styles } = useTheme()
   const [isBackShowing, setIsBackShowing] = useState(false)
   const { trackEvent } = useAnalytics()
 

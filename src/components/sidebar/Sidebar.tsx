@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useStyles } from '../../context/StylesContext'
+import { useTheme } from '../../context/ThemeContext'
 import SidebarLink from './SidebarLink'
 import { StylesSettings } from '../../styles/Styles'
 import { NavLinkConfig } from '../../config/navConfig'
@@ -38,7 +38,7 @@ type SidebarProps = {
 }
 
 const Sidebar = ({ navConfig }: SidebarProps) => {
-  const { styles, toggleTheme } = useStyles()
+  const { styles, toggleTheme } = useTheme()
 
   const themeButtonText = styles.id === 'light' ? 'Dark' : 'Light'
 

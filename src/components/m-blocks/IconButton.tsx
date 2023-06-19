@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useStyles } from '../../context/StylesContext'
+import { useTheme } from '../../context/ThemeContext'
 import { StylesSettings } from '../../styles/Styles'
 import Icon, { IconName } from './Icon'
 
@@ -31,7 +31,7 @@ type IconButtonProps = {
 }
 
 const IconButton = ({ iconName, onClick }: IconButtonProps) => {
-  const { styles } = useStyles()
+  const { styles } = useTheme()
   return (
     <Container onClick={onClick} styles={styles}>
       <Icon iconName={iconName} />

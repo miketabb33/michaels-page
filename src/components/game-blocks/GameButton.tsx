@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
 import { StylesSettings } from '../../styles/Styles'
-import { useStyles } from '../../context/StylesContext'
+import { useTheme } from '../../context/ThemeContext'
 
 const Button = styled.div<{ themes: StylesSettings }>`
   user-select: none;
@@ -29,7 +29,7 @@ type GameButtonProps = {
 }
 
 const GameButton = ({ label, onPressStart, onPressEnd }: GameButtonProps) => {
-  const { styles: theme } = useStyles()
+  const { styles: theme } = useTheme()
   const buttonRef = useRef<HTMLDivElement | null>(null)
 
   const pressStarted = (e: Event) => {

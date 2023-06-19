@@ -1,10 +1,10 @@
 import React from 'react'
-import { useStyles } from './context/StylesContext'
+import { useTheme } from './context/ThemeContext'
 import Router from './router/Router'
 import GlobalStyle from './styles/GlobalStyles'
 
 const App = () => {
-  const { styles } = useStyles()
+  const { styles } = useTheme()
   return (
     <>
       <GlobalStyle styles={styles} />

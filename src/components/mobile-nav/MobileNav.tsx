@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { NavLinkConfig } from '../../config/navConfig'
-import { useStyles } from '../../context/StylesContext'
+import { useTheme } from '../../context/ThemeContext'
 import RouterLink from '../../router/RouterLink'
 import { StylesSettings } from '../../styles/Styles'
 import Button from '../m-blocks/Button'
@@ -44,7 +44,7 @@ type MobileNavProps = {
 }
 
 const MobileNav = ({ navConfig }: MobileNavProps) => {
-  const { styles, toggleTheme } = useStyles()
+  const { styles, toggleTheme } = useTheme()
   const themeButtonText = styles.id === 'light' ? 'Dark' : 'Light'
 
   return (

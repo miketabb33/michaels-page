@@ -8,7 +8,7 @@ const carrotOrange = '#D98F25'
 const hunyadiYellow = '#FBB13C'
 const tomato = '#FE6847'
 
-const spacing: Spacing = {
+export const spacing: ThemeSpacing = {
   xxSmall: '0.5rem',
   xSmall: '0.75rem',
   small: '1rem',
@@ -18,47 +18,51 @@ const spacing: Spacing = {
   xxLarge: '8rem',
 }
 
-const staticColor: StaticColor = {
+export const staticColor: ThemeStaticColor = {
   white: white,
   black: black,
 }
 
-const shadow: Shadow = {
+export const shadow: ThemeShadow = {
   crisp: `0 0 ${spacing.xSmall} rgba(0,0,0,0.5)`,
   blur: `0 0 ${spacing.medium} rgba(0,0,0,0.2)`,
 }
 
+export const lightThemeColor: ThemeColor = {
+  splash: white,
+  primaryLight: argentinianBlue,
+  primary: tuftsBlue,
+  primaryDark: honoluluBlue,
+  secondaryLight: hunyadiYellow,
+  secondary: carrotOrange,
+  secondaryDark: tigersEye,
+  accent: tomato,
+  text: black,
+}
+
 export const lightStyle: StylesSettings = {
   id: 'light',
-  themeColor: {
-    splash: white,
-    primaryLight: argentinianBlue,
-    primary: tuftsBlue,
-    primaryDark: honoluluBlue,
-    secondaryLight: hunyadiYellow,
-    secondary: carrotOrange,
-    secondaryDark: tigersEye,
-    accent: tomato,
-    text: black,
-  },
+  themeColor: lightThemeColor,
   staticColor,
   spacing,
   shadow,
 }
 
+export const darkThemeColor: ThemeColor = {
+  splash: black,
+  primaryLight: hunyadiYellow,
+  primary: carrotOrange,
+  primaryDark: tigersEye,
+  secondaryLight: argentinianBlue,
+  secondary: tuftsBlue,
+  secondaryDark: honoluluBlue,
+  accent: tomato,
+  text: white,
+}
+
 export const darkStyle: StylesSettings = {
   id: 'dark',
-  themeColor: {
-    splash: black,
-    primaryLight: hunyadiYellow,
-    primary: carrotOrange,
-    primaryDark: tigersEye,
-    secondaryLight: argentinianBlue,
-    secondary: tuftsBlue,
-    secondaryDark: honoluluBlue,
-    accent: tomato,
-    text: white,
-  },
+  themeColor: darkThemeColor,
   staticColor,
   spacing,
   shadow,
@@ -69,12 +73,12 @@ export type Theme = 'light' | 'dark'
 export type StylesSettings = {
   id: Theme
   themeColor: ThemeColor
-  staticColor: StaticColor
-  spacing: Spacing
-  shadow: Shadow
+  staticColor: ThemeStaticColor
+  spacing: ThemeSpacing
+  shadow: ThemeShadow
 }
 
-type ThemeColor = {
+export type ThemeColor = {
   splash: string
   primaryLight: string
   primary: string
@@ -86,12 +90,12 @@ type ThemeColor = {
   text: string
 }
 
-type StaticColor = {
+export type ThemeStaticColor = {
   white: string
   black: string
 }
 
-type Spacing = {
+export type ThemeSpacing = {
   xxSmall: string
   xSmall: string
   small: string
@@ -101,7 +105,7 @@ type Spacing = {
   xxLarge: string
 }
 
-type Shadow = {
+export type ThemeShadow = {
   crisp: string
   blur: string
 }

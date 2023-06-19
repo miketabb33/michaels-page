@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useStyles } from '../../context/StylesContext'
+import { useTheme } from '../../context/ThemeContext'
 import { StylesSettings } from '../../styles/Styles'
 import { ChildrenProp } from '../../types/ChildrenProp'
 
@@ -13,7 +13,7 @@ const Container = styled.div<{ styles: StylesSettings }>`
 `
 
 const Card = ({ children }: ChildrenProp) => {
-  const { styles } = useStyles()
+  const { styles } = useTheme()
   return <Container styles={styles}>{children}</Container>
 }
 

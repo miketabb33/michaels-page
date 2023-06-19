@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
-import { useStyles } from '../../context/StylesContext'
+import { useTheme } from '../../context/ThemeContext'
 import RouterLink from '../../router/RouterLink'
 import { StylesSettings } from '../../styles/Styles'
 
@@ -25,7 +25,7 @@ type MobileNavLinkProps = {
 }
 
 const MobileNavLink = ({ children, linkTo }: MobileNavLinkProps) => {
-  const { styles } = useStyles()
+  const { styles } = useTheme()
   return (
     <Container styles={styles} linkTo={linkTo}>
       {children}

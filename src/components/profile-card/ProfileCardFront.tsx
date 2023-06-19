@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useStyles } from '../../context/StylesContext'
+import { useTheme } from '../../context/ThemeContext'
 import { StylesSettings } from '../../styles/Styles'
 import Card from '../m-blocks/Card'
 import Icon from '../m-blocks/Icon'
@@ -63,7 +63,7 @@ export type ProfileCardFrontProps = {
 }
 
 const ProfileCardFront = ({ onRotateIconClick }: ProfileCardFrontProps) => {
-  const { styles } = useStyles()
+  const { styles } = useTheme()
   return (
     <Card>
       <IconButtonWrapper styles={styles}>

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ChildrenProp } from '../../types/ChildrenProp'
-import { useStyles } from '../../context/StylesContext'
+import { useTheme } from '../../context/ThemeContext'
 import { StylesSettings } from '../../styles/Styles'
 
 const GameModalStyle = styled.div<{ themes: StylesSettings }>`
@@ -25,7 +25,7 @@ const GameModalStyle = styled.div<{ themes: StylesSettings }>`
 `
 
 const GameModal = ({ children }: ChildrenProp) => {
-  const { styles: theme } = useStyles()
+  const { styles: theme } = useTheme()
   return <GameModalStyle themes={theme}>{children}</GameModalStyle>
 }
 

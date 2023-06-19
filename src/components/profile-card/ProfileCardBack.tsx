@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useStyles } from '../../context/StylesContext'
+import { useTheme } from '../../context/ThemeContext'
 import { StylesSettings } from '../../styles/Styles'
 import Card from '../m-blocks/Card'
 import IconButton from '../m-blocks/IconButton'
@@ -21,7 +21,7 @@ const Scroller = styled.div`
 type ProfileCardBackProps = ProfileCardFrontProps
 
 const ProfileCardBack = ({ onRotateIconClick }: ProfileCardBackProps) => {
-  const { styles } = useStyles()
+  const { styles } = useTheme()
 
   return (
     <Card>
