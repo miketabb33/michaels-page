@@ -12,14 +12,14 @@ const Button = styled.div<{ themes: StylesSettings }>`
   -o-user-select: none;
 
   cursor: pointer;
-  background-color: ${(props) => props.themes.themeColor.secondary};
+  background-color: ${(props) => props.themes.themeColor.accent};
   aspect-ratio: 1;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: ${(props) => props.themes.themeColor.accent} ${(props) => props.themes.spacing.xxSmall} solid;
-  border-radius: ${(props) => props.themes.spacing.xxSmall};
+  border-bottom-left-radius: ${(props) => props.themes.spacing.small};
+  border-bottom-right-radius: ${(props) => props.themes.spacing.small};
 `
 
 type GameButtonProps = {
