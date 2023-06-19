@@ -1,4 +1,3 @@
-import { EventConfig, eventController } from '../eventController'
 import { KeyboardCode } from './types/KeyboardCode'
 import { removeListenersArray } from './removeListenersArray'
 
@@ -8,14 +7,15 @@ export const gameKeyboard = () => {
   const keydownListener = (e: Event) => onKeydown((e as KeyboardEvent).code)
   const keyupListener = (e: Event) => onKeyup((e as KeyboardEvent).code)
 
-  const events: EventConfig[] = [
-    { name: 'keydown', action: keydownListener },
-    { name: 'keyup', action: keyupListener },
-  ]
+  const addEventListeners = () => {
+    addEventListener('keydown', keydownListener)
+    addEventListener('keyup', keyupListener)
+  }
 
-  const { addEventListeners, removeEventListeners } = eventController({
-    events,
-  })
+  const removeEventListeners = () => {
+    removeEventListener('keydown', keydownListener)
+    removeEventListener('keyup', keyupListener)
+  }
 
   addEventListeners()
   removeListenersArray.push(removeEventListeners)

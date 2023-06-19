@@ -1,6 +1,5 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
-import { EventConfig, eventController } from '../../eventController'
 import { StylesSettings } from '../../styles/Styles'
 import { useStyles } from '../../context/StylesContext'
 
@@ -32,7 +31,9 @@ const GameButton = ({ label, onPressStart, onPressEnd }: GameButtonProps) => {
   const { styles: theme } = useStyles()
   const buttonRef = useRef<HTMLDivElement | null>(null)
 
-  const pressStarted = () => {
+  const pressStarted = (e: Event) => {
+    if (!e.cancelable) return
+    e.preventDefault()
     onPressStart()
   }
 
@@ -40,18 +41,14 @@ const GameButton = ({ label, onPressStart, onPressEnd }: GameButtonProps) => {
     onPressEnd()
   }
 
-  const events: EventConfig[] = [
-    { name: 'mousedown', action: pressStarted },
-    { name: 'mouseup', action: pressEnded },
-    { name: 'mouseleave', action: pressEnded },
-    { name: 'touchstart', action: pressStarted },
-    { name: 'touchend', action: pressEnded },
-  ]
-
-  const { addEventListeners } = eventController({
-    events,
-    target: buttonRef.current,
-  })
+  const addEventListeners = () => {
+    if (!buttonRef.current) return
+    buttonRef.current.addEventListener('mousedown', pressStarted)
+    buttonRef.current.addEventListener('mouseup', pressEnded)
+    buttonRef.current.addEventListener('mouseleave', pressEnded)
+    buttonRef.current.addEventListener('touchstart', pressStarted)
+    buttonRef.current.addEventListener('touchend', pressEnded)
+  }
 
   addEventListeners()
 

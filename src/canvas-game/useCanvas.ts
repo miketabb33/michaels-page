@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { EventConfig, eventController } from '../eventController'
 import { Size } from './types/Size'
 import { Rect } from './rect'
 import { isOffCanvas } from './isOffCanvas'
@@ -67,17 +66,11 @@ export const useCanvas = ({ units, sizeMultiplier }: UseCanvas) => {
     setCanvasWidthReactWidth(squareSize.width)
   }
 
-  const events: EventConfig[] = [{ name: 'resize', action: attemptToResizeCanvas }]
-
   useEffect(() => {
-    const { addEventListeners, removeEventListeners } = eventController({
-      events,
-    })
-
     attemptToResizeCanvas()
-    addEventListeners()
+    addEventListener('resize', attemptToResizeCanvas)
     return () => {
-      removeEventListeners()
+      removeEventListener('resize', attemptToResizeCanvas)
     }
   }, [])
 
