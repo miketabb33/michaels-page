@@ -1,11 +1,11 @@
 import React from 'react'
-import Button from '../m-blocks/Button'
-import { saveScore } from '../../networking/pong/scores'
-import GameModal from '../game-blocks/GameModal'
-import Input, { useWithInput } from '../m-blocks/Input'
-import { randomlyPick } from '../../random'
-import H2 from '../m-blocks/typography/H2'
-import H3 from '../m-blocks/typography/H3'
+import Button from '../../m-blocks/Button'
+import { saveScore } from '../../../networking/pong/scores'
+import GameModal from '../../game-blocks/GameModal'
+import Input, { useWithInput } from '../../m-blocks/Input'
+import { randomlyPick } from '../../../random'
+import H2 from '../../m-blocks/typography/H2'
+import H3 from '../../m-blocks/typography/H3'
 
 type PongGameOverModalProps = {
   clickMainMenu: () => void

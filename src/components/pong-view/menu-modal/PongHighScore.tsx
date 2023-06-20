@@ -4,6 +4,7 @@ import Button from '../../m-blocks/Button'
 import { useRequest } from '../../../networking/useRequest'
 import H1 from '../../m-blocks/typography/H1'
 import H3 from '../../m-blocks/typography/H3'
+import GameModal from '../../game-blocks/GameModal'
 
 type PongHighScoreProps = {
   clickBack: () => void
@@ -13,7 +14,7 @@ const PongHighScore = ({ clickBack }: PongHighScoreProps) => {
   const { data: highScores, isLoading } = useRequest<HighScore[]>({ request: getHighScores })
 
   return (
-    <>
+    <GameModal>
       <H1>High Scores!</H1>
       {isLoading && <H3>Loading...</H3>}
       <ul>
@@ -22,7 +23,7 @@ const PongHighScore = ({ clickBack }: PongHighScoreProps) => {
         ))}
       </ul>
       <Button onClick={clickBack}>Back</Button>
-    </>
+    </GameModal>
   )
 }
 

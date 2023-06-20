@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import PongControls from './PongControls'
 import { removeListenersArray } from '../../canvas-game/removeListenersArray'
-import PongMenuModal from './menu-modal/PongMenuModal'
 import { usePong } from '../../canvas-game/pong/usePong'
-import PongGameOverModal from './PongGameOverModal'
 import { getPongSoloConfig } from '../../canvas-game/pong/config/soloConfig'
 import H1 from '../m-blocks/typography/H1'
+import PongMenu from './menu-modal/PongMenu'
 
 const Container = styled.div`
   display: flex;
@@ -27,7 +26,6 @@ const PongCanvas = styled.canvas`
 `
 
 const PongBoardView = () => {
-  const [score, setScore] = useState(0)
   const [pongConfig] = useState(getPongSoloConfig())
 
   useEffect(() => {
@@ -36,12 +34,22 @@ const PongBoardView = () => {
     }
   }, [])
 
-  const { gameState, startGame, resetGame, canvasRef, canvasWidth, setIsPressingLeftButton, setIsPressingRightButton } =
-    usePong({ pongConfig, onScore: setScore })
+  const {
+    gameState,
+    startGame,
+    score,
+    resetGame,
+    canvasRef,
+    canvasWidth,
+    setIsPressingLeftButton,
+    setIsPressingRightButton,
+  } = usePong({ pongConfig })
+
+  const shouldShowMenu = gameState === 'menu' || gameState === 'lost' || gameState === 'won'
 
   return (
     <Container>
-      <H1>Score: {score} </H1>
+      <H1>Score: {score}</H1>
       <PongCanvas ref={canvasRef} id="PongCanvas" />
       <PongControls
         width={canvasWidth}
@@ -50,8 +58,7 @@ const PongBoardView = () => {
         rightStarted={() => setIsPressingRightButton(true)}
         rightEnded={() => setIsPressingRightButton(false)}
       />
-      {gameState === 'menu' && <PongMenuModal onStart={startGame} />}
-      {gameState === 'lost' && <PongGameOverModal clickMainMenu={resetGame} score={score} />}
+      {shouldShowMenu && <PongMenu gameState={gameState} score={score} startGame={startGame} resetGame={resetGame} />}
     </Container>
   )
 }

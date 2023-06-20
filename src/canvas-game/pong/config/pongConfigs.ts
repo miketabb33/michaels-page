@@ -1,5 +1,4 @@
 import { CanvasObject, CanvasObjectController } from '../../canvasObjectController'
-import { ScoreResult } from '../../pongScore'
 
 export type PongConfig = {
   pongBall: CanvasObject
@@ -10,6 +9,6 @@ export type PongConfig = {
     playerPaddle: CanvasObjectController,
     pongBall: CanvasObjectController,
     opponentPaddle: CanvasObjectController,
-    score: ScoreResult
+    score: number
   ) => void
 }

@@ -1,7 +1,6 @@
 import { random } from '../../../random'
 import { Size } from '../../types/Size'
 import { CanvasObject, CanvasObjectController } from '../../canvasObjectController'
-import { ScoreResult } from '../../pongScore'
 import { PongConfig } from './pongConfigs'
 import { DirectionValue } from '../../types/DirectionValue'
 import { colorTokens } from '../../../styles/colorTokens'
@@ -100,9 +99,9 @@ const didFireFrame = (
   playerPaddle: CanvasObjectController,
   pongBall: CanvasObjectController,
   opponentPaddle: CanvasObjectController,
-  scoreResult: ScoreResult
+  score: number
 ) => {
-  const calculatedLevel = Math.floor(scoreResult.score / 4)
+  const calculatedLevel = Math.floor(score / 4)
   const currentLevel = levels.find((pred) => pred.level === calculatedLevel) || levels[levels.length - 1]
   const currentBallSpeed = pongBall.canvasObj().velocity.speed
 
