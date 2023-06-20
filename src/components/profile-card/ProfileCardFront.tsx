@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import Card from '../m-blocks/Card'
 import Icon from '../m-blocks/Icon'
 import IconButton from '../m-blocks/IconButton'
-import Typography from '../m-blocks/Typography'
+import H1 from '../m-blocks/typography/H1'
+import P from '../m-blocks/typography/P'
 
 export const IconButtonWrapper = styled.div`
   position: absolute;
@@ -70,14 +71,14 @@ const ProfileCardFront = ({ onRotateIconClick }: ProfileCardFrontProps) => {
         <TopRow>
           <Portrait src="./images/portrait.jpeg" />
           <TextWell>
-            <Typography kind="h1">Michael Tabb</Typography>
-            <Typography kind="p">Software Engineer</Typography>
-            <Typography kind="p">miketabb33@gmail.com</Typography>
+            <H1 ignoreDarkMode>Michael Tabb</H1>
+            <P>Software Engineer</P>
+            <P>miketabb33@gmail.com</P>
           </TextWell>
         </TopRow>
 
         <TechStackRow>
-          <Typography kind="p">React • Typescript • Swift • Xcode</Typography>
+          <P>React • Typescript • Swift • Xcode</P>
         </TechStackRow>
         <SocialMediaRow>
           <IconLink href="https://www.linkedin.com/in/michael-tabb-24b34488/" target="_blank" rel="noreferrer">

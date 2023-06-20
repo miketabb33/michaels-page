@@ -6,6 +6,7 @@ import PongMenuModal from './menu-modal/PongMenuModal'
 import { usePong } from '../../canvas-game/pong/usePong'
 import PongGameOverModal from './PongGameOverModal'
 import { getPongSoloConfig } from '../../canvas-game/pong/config/soloConfig'
+import H1 from '../m-blocks/typography/H1'
 
 const Container = styled.div`
   display: flex;
@@ -40,7 +41,7 @@ const PongBoardView = () => {
 
   return (
     <Container>
-      <h1>Score: {score} </h1>
+      <H1>Score: {score} </H1>
       <PongCanvas ref={canvasRef} id="PongCanvas" />
       <PongControls
         width={canvasWidth}

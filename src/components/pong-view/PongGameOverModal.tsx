@@ -4,6 +4,8 @@ import { saveScore } from '../../networking/pong/scores'
 import GameModal from '../game-blocks/GameModal'
 import Input, { useWithInput } from '../m-blocks/Input'
 import { randomlyPick } from '../../random'
+import H2 from '../m-blocks/typography/H2'
+import H3 from '../m-blocks/typography/H3'
 
 type PongGameOverModalProps = {
   clickMainMenu: () => void
@@ -25,8 +27,8 @@ const PongGameOverModal = ({ clickMainMenu: onMainMenu, score }: PongGameOverMod
 
   return (
     <GameModal>
-      <h2>{randomlyPick(gameOverMessages)}</h2>
-      <h3>Your Score: {score}</h3>
+      <H2>{randomlyPick(gameOverMessages)}</H2>
+      <H3>Your Score: {score}</H3>
       <Input {...nameInput.bind} />
       <Button onClick={onSaveClick}>Save Score</Button>
       <Button onClick={onMainMenu}>Main Menu</Button>

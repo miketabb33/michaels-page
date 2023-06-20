@@ -1,6 +1,8 @@
+import { Theme } from '../context/ThemeContext'
 import { colorTokens } from './colorTokens'
 
 export type ThemeColor = {
+  id: Theme
   splash: string
   primaryLight: string
   primary: string
@@ -13,6 +15,7 @@ export type ThemeColor = {
 }
 
 export const lightThemeColor: ThemeColor = {
+  id: 'light',
   splash: colorTokens.gray_50,
   primaryLight: colorTokens.blue_500,
   primary: colorTokens.blue_600,
@@ -25,6 +28,7 @@ export const lightThemeColor: ThemeColor = {
 }
 
 export const darkThemeColor: ThemeColor = {
+  id: 'dark',
   splash: colorTokens.gray_950,
   primaryLight: colorTokens.orange_400,
   primary: colorTokens.orange_500,

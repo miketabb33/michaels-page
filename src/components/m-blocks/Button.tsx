@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
-import Typography from './Typography'
 
 const Container = styled.button`
   background-color: ${({ theme }) => theme.color.primary};
@@ -24,11 +23,7 @@ type ButtonProps = {
 }
 
 const Button = ({ children, onClick }: ButtonProps) => {
-  return (
-    <Container onClick={onClick}>
-      <Typography kind="p">{children}</Typography>
-    </Container>
-  )
+  return <Container onClick={onClick}>{children}</Container>
 }
 
 export default Button
