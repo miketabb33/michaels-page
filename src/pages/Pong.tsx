@@ -2,7 +2,7 @@ import React from 'react'
 import NavLayout from '../components/layouts/NavLayout'
 import PongBoardView from '../components/pong-view/PongBoardView'
 
-const Pong = () => {
+const PongPage = () => {
   return (
     <NavLayout>
       <PongBoardView />
@@ -10,4 +10,4 @@ const Pong = () => {
   )
 }
 
-export default Pong
+export default PongPage

@@ -34,6 +34,7 @@ const Logo = styled.img`
 `
 
 const LogoLink = styled(RouterLink)`
+  width: ${({ theme }) => theme.spacing.xxLarge};
   height: 100%;
   aspect-ratio: 1;
 `

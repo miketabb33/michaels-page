@@ -5,8 +5,8 @@ import Typography from './Typography'
 const Container = styled.button`
   background-color: ${({ theme }) => theme.color.primary};
   border: ${({ theme }) => theme.color.primaryDark} solid 1px;
-  padding: ${({ theme }) => theme.spacing.xSmall};
-  border-radius: ${({ theme }) => theme.spacing.xxSmall};
+  padding: ${({ theme }) => theme.spacing.small} ${({ theme }) => theme.spacing.medium};
+  border-radius: ${({ theme }) => theme.spacing.xSmall};
   cursor: pointer;
 
   color: ${({ theme }) => theme.staticColor.gray_50};

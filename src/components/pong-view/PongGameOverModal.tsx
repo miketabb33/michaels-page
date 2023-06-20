@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Button from '../m-blocks/Button'
 import { saveScore } from '../../networking/pong/scores'
 import GameModal from '../game-blocks/GameModal'
-import Input from '../m-blocks/Input'
-import { random } from '../../random'
+import Input, { useWithInput } from '../m-blocks/Input'
+import { randomlyPick } from '../../random'
 
 type PongGameOverModalProps = {
   clickMainMenu: () => void
@@ -11,7 +11,7 @@ type PongGameOverModalProps = {
 }
 
 const PongGameOverModal = ({ clickMainMenu: onMainMenu, score }: PongGameOverModalProps) => {
-  const [name, setName] = useState('')
+  const nameInput = useWithInput({ placeholder: 'Name For High Score' })
 
   const onSaveClick = () => {
     saveScore({ name: safeName(), score }).catch(console.error)
@@ -19,20 +19,15 @@ const PongGameOverModal = ({ clickMainMenu: onMainMenu, score }: PongGameOverMod
   }
 
   const safeName = (): string => {
-    if (!name) return backupNames[random(backupNames.length - 1)] || 'banana'
-    return name
+    if (!nameInput.value) return randomlyPick(backupNames)
+    return nameInput.value
   }
 
   return (
     <GameModal>
-      <h1>Game Over</h1>
-      <h3>You have a score {score}</h3>
-      <Input
-        placeholder="Name"
-        onChange={(e) => {
-          setName(e.target.value)
-        }}
-      />
+      <h2>{randomlyPick(gameOverMessages)}</h2>
+      <h3>Your Score: {score}</h3>
+      <Input {...nameInput.bind} />
       <Button onClick={onSaveClick}>Save Score</Button>
       <Button onClick={onMainMenu}>Main Menu</Button>
     </GameModal>
@@ -57,4 +52,21 @@ const backupNames = [
   'OP_rah',
   'YellowSnowman',
   'JoeNotExotic',
+]
+
+const gameOverMessages = [
+  'Nice Work!',
+  'Way to Go!',
+  'Awesome!',
+  'Brilliant!',
+  'Keep it Up!',
+  'Impressive!',
+  'Not Bad!',
+  'Stellar!',
+  'Amazing!',
+  "You're a Rock Star!",
+  'Out of This World!',
+  'How About Another?',
+  'A High Score?',
+  'Did You Rock?',
 ]

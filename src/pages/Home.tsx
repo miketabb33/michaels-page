@@ -9,7 +9,7 @@ const Container = styled.div`
   align-items: center;
 `
 
-const Home = () => {
+const HomePage = () => {
   return (
     <NavLayout>
       <Container>
@@ -19,4 +19,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default HomePage

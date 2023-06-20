@@ -1,14 +1,16 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from '../pages/Home'
-import PongPageContainer from '../pages/Pong'
+import HomePage from '../pages/Home'
+import PongPage from '../pages/Pong'
+import LandingPage from '../pages/Landing'
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Home />} />
-        <Route path="pong" element={<PongPageContainer />} />
+        <Route index element={<HomePage />} />
+        <Route path="pong" element={<PongPage />} />
+        <Route path="landing" element={<LandingPage />} />
       </Routes>
     </BrowserRouter>
   )
