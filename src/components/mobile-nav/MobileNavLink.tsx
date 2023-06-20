@@ -9,7 +9,7 @@ const Container = styled(RouterLink)`
   height: 100%;
   width: 100%;
   text-decoration: none;
-  color: ${({ theme }) => theme.staticColor.white};
+  color: ${({ theme }) => theme.staticColor.gray_50};
   font-weight: 700;
 
   &:active {

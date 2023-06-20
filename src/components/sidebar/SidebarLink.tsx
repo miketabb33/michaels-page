@@ -7,7 +7,7 @@ const Container = styled(RouterLink)`
   text-align: center;
   padding: ${({ theme }) => theme.spacing.medium} 0;
   background-color: ${({ theme }) => theme.color.secondaryLight};
-  color: ${({ theme }) => theme.staticColor.white};
+  color: ${({ theme }) => theme.staticColor.gray_50};
   text-decoration: none;
   font-weight: 700;
   letter-spacing: ${({ theme }) => theme.spacing.xSmall};

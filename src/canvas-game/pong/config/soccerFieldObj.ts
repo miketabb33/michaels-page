@@ -14,7 +14,7 @@ const horizontalLine = (canvasUnits: number): RenderableObject => {
         height,
       },
     },
-    color: colorTokens.white,
+    color: colorTokens.gray_50,
     shape: 'rectangle',
   }
 }
@@ -32,7 +32,7 @@ const middleCircle = (canvasUnits: number): RenderableObject => {
         height: size,
       },
     },
-    color: colorTokens.white,
+    color: colorTokens.gray_50,
     shape: 'circle-outline',
   }
 }

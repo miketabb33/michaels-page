@@ -9,7 +9,7 @@ const Container = styled.button`
   border-radius: ${({ theme }) => theme.spacing.xxSmall};
   cursor: pointer;
 
-  color: ${({ theme }) => theme.staticColor.white};
+  color: ${({ theme }) => theme.staticColor.gray_50};
   text-transform: uppercase;
   font-weight: 700;
 

@@ -1,4 +1,6 @@
-import { ThemeColor, ThemeShadow, ThemeSpacing } from '../styles/ThemeShadow'
+import { ThemeColor } from '../styles/ThemeColor'
+import { ThemeShadow } from '../styles/ThemeShadow'
+import { ThemeSpacing } from '../styles/ThemeSpacing'
 import { colorTokens } from '../styles/colorTokens'
 
 declare module 'styled-components' {

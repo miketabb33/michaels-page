@@ -22,7 +22,7 @@ const PongCanvas = styled.canvas`
   -o-user-select: none;
 
   border: 1px solid ${({ theme }) => theme.color.accent};
-  background-color: ${({ theme }) => theme.staticColor.black};
+  background-color: ${({ theme }) => theme.staticColor.gray_950};
 `
 
 const PongBoardView = () => {

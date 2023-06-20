@@ -10,7 +10,7 @@ const Container = styled.div`
   width: 95%;
   max-width: 500px;
   aspect-ratio: 1.5;
-  color: ${({ theme }) => theme.staticColor.black};
+  color: ${({ theme }) => theme.staticColor.gray_950};
 
   @media ${MQ(Breakpoint.tablet)} {
     width: 75%;
