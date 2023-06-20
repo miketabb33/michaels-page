@@ -5,12 +5,12 @@ import { User } from '../context/AuthContext'
 import { analytics } from './initAnalytics'
 
 type TrackEventArgs = {
-  eventName: string
+  eventKey: EventKey
   params?: { [key: string]: any }
   user: User
 }
 
-export const trackEvent = ({ eventName, params, user }: TrackEventArgs) => {
+export const trackEvent = ({ eventKey, params, user }: TrackEventArgs) => {
   const defaultAnalyticParams = {
     userAgent: window.navigator.userAgent || 'null',
     language: window.navigator.language || 'null',
@@ -18,5 +18,7 @@ export const trackEvent = ({ eventName, params, user }: TrackEventArgs) => {
   }
 
   if (!analytics) return
-  logEvent(analytics, eventName, { ...params, ...defaultAnalyticParams })
+  logEvent(analytics, eventKey, { ...params, ...defaultAnalyticParams })
 }
+
+export type EventKey = 'start_pong' | 'flipped_profile_card'
