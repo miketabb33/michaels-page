@@ -4,11 +4,13 @@ import { firebaseApp } from '../firebaseInit'
 
 export let analytics: Analytics | null = null
 
-export const initAnalytics = (userId: string) => {
+export const initAnalyticsWhenSupported = (userId: string) => {
   isSupported().then((yes) => {
-    if (yes) {
-      analytics = getAnalytics(firebaseApp)
-      setUserId(analytics, userId)
-    }
+    if (yes) initAnalytics(userId)
   })
+}
+
+const initAnalytics = (userId: string) => {
+  analytics = getAnalytics(firebaseApp)
+  setUserId(analytics, userId)
 }

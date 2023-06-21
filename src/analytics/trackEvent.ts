@@ -6,18 +6,18 @@ import { analytics } from './initAnalytics'
 
 type TrackEventArgs = {
   eventKey: EventKey
-  params?: { [key: string]: any }
   user: User
+  params?: { [key: string]: any }
 }
 
-export const trackEvent = ({ eventKey, params, user }: TrackEventArgs) => {
+export const trackEvent = ({ eventKey, user, params }: TrackEventArgs) => {
+  console.log(analytics)
+  if (!analytics) return
   const defaultAnalyticParams = {
     userAgent: window.navigator.userAgent || 'null',
     language: window.navigator.language || 'null',
     userId: user.id,
   }
-
-  if (!analytics) return
   logEvent(analytics, eventKey, { ...params, ...defaultAnalyticParams })
 }
 

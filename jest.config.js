@@ -4,4 +4,6 @@ module.exports = {
   globals: {
     SITE_ENV: 'test',
   },
+  collectCoverage: true,
+  coveragePathIgnorePatterns: ['<rootDir>/test'],
 }
