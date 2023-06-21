@@ -27,6 +27,12 @@ type GameButtonProps = {
 }
 
 const GameButton = ({ label, onPressStart, onPressEnd }: GameButtonProps) => {
+  const { buttonRef, addEventListeners } = useGameButton(onPressStart, onPressEnd)
+  addEventListeners()
+  return <Button ref={buttonRef}>{label}</Button>
+}
+
+export const useGameButton = (onPressStart: () => void, onPressEnd: () => void) => {
   const buttonRef = useRef<HTMLDivElement | null>(null)
 
   const pressStarted = (e: Event) => {
@@ -48,9 +54,7 @@ const GameButton = ({ label, onPressStart, onPressEnd }: GameButtonProps) => {
     buttonRef.current.addEventListener('touchend', pressEnded)
   }
 
-  addEventListeners()
-
-  return <Button ref={buttonRef}>{label}</Button>
+  return { buttonRef, addEventListeners }
 }
 
 export default GameButton
