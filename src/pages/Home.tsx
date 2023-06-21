@@ -4,6 +4,7 @@ import NavLayout from '../components/layouts/NavLayout'
 import ProfileCard from '../components/profile-card/ProfileCard'
 
 const Container = styled.div`
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

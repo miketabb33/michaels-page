@@ -7,13 +7,6 @@ import { getPongSoloConfig } from '../../canvas-game/pong/config/soloConfig'
 import H1 from '../m-blocks/typography/H1'
 import PongMenu from './menu-modal/PongMenu'
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
-
 const PongCanvas = styled.canvas`
   user-select: none;
   -moz-user-select: none;
@@ -48,7 +41,7 @@ const PongBoardView = () => {
   const shouldShowMenu = gameState === 'menu' || gameState === 'lost' || gameState === 'won'
 
   return (
-    <Container>
+    <>
       <H1>Score: {score}</H1>
       <PongCanvas ref={canvasRef} id="PongCanvas" />
       <PongControls
@@ -59,7 +52,7 @@ const PongBoardView = () => {
         rightEnded={() => setIsPressingRightButton(false)}
       />
       {shouldShowMenu && <PongMenu gameState={gameState} score={score} startGame={startGame} resetGame={resetGame} />}
-    </Container>
+    </>
   )
 }
 

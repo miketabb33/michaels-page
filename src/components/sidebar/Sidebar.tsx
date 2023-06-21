@@ -5,15 +5,20 @@ import SidebarLink from './SidebarLink'
 import { NavLinkConfig } from '../../config/navConfig'
 import Button from '../m-blocks/Button'
 import RouterLink from '../../router/RouterLink'
+import { Breakpoint, MQ } from '../../Breakpoint'
 
 const Container = styled.nav`
   background-color: ${({ theme }) => theme.color.secondary};
   box-shadow: ${({ theme }) => theme.shadow.crisp};
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
   padding: ${({ theme }) => theme.spacing.small} 0;
+
+  @media ${MQ(Breakpoint.tablet)} {
+    display: flex;
+  }
 `
 
 const Logo = styled.img`

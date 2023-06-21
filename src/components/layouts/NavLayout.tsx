@@ -19,33 +19,13 @@ const Container = styled.div`
   }
 `
 
-const MobileContainer = styled.div`
-  display: block;
-  @media ${MQ(Breakpoint.tablet)} {
-    display: none;
-  }
-`
-
-const SidebarContainer = styled.div`
-  display: none;
-  @media ${MQ(Breakpoint.tablet)} {
-    display: block;
-  }
-`
-
 const NavLayout = ({ children }: ChildrenProp) => {
   return (
-    <>
-      <Container>
-        <MobileContainer>
-          <MobileNav navConfig={navConfig} />
-        </MobileContainer>
-        <SidebarContainer>
-          <Sidebar navConfig={navConfig} />
-        </SidebarContainer>
-        {children}
-      </Container>
-    </>
+    <Container>
+      <MobileNav navConfig={navConfig} />
+      <Sidebar navConfig={navConfig} />
+      <main>{children}</main>
+    </Container>
   )
 }
 

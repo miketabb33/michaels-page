@@ -5,6 +5,7 @@ import { useTheme } from '../../context/ThemeContext'
 import RouterLink from '../../router/RouterLink'
 import Button from '../m-blocks/Button'
 import MobileNavLink from './MobileNavLink'
+import { Breakpoint, MQ } from '../../Breakpoint'
 
 const MobileNavContainer = styled.nav`
   background-color: ${({ theme }) => theme.color.secondary};
@@ -13,6 +14,10 @@ const MobileNavContainer = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: ${({ theme }) => theme.spacing.xSmall};
+
+  @media ${MQ(Breakpoint.tablet)} {
+    display: none;
+  }
 `
 
 const MobileNavMenu = styled.ul`
