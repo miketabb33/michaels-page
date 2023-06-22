@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { navConfig } from '../../config/navConfig'
 import { Breakpoint, MQ } from '../../Breakpoint'
 import { ChildrenProp } from '../../types/ChildrenProp'
-import MobileNav from '../mobile-nav/MobileNav'
-import Sidebar from '../sidebar/Sidebar'
+import MobileNav from '../navigation/mobile-nav/MobileNav'
+import Sidebar from '../navigation/sidebar/Sidebar'
 
 const Container = styled.div`
   overflow-x: hidden;

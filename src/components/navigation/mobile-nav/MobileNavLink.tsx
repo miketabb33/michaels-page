@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
-import RouterLink from '../../router/RouterLink'
+import RouterLink from '../../../router/RouterLink'
 
 const Container = styled(RouterLink)`
   display: flex;
