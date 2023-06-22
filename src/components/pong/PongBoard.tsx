@@ -6,6 +6,7 @@ import { usePong } from '../../canvas-game/pong/usePong'
 import { getPongSoloConfig } from '../../canvas-game/pong/config/soloConfig'
 import H1 from '../m-blocks/typography/H1'
 import PongMenu from './menu-modal/PongMenu'
+import { PongConfig } from '../../canvas-game/pong/config/pongConfigs'
 
 const PongCanvas = styled.canvas`
   user-select: none;
@@ -18,8 +19,20 @@ const PongCanvas = styled.canvas`
   background-color: ${({ theme }) => theme.staticColor.gray_950};
 `
 
-const PongBoardView = () => {
-  const [pongConfig] = useState(getPongSoloConfig())
+const PongBoard = () => {
+  const { shouldShowMenu, score, pongMenuBind, pongCanvasBind, pongControlsBind } = usePongBoard(getPongSoloConfig())
+  return (
+    <>
+      <H1>Score: {score}</H1>
+      <PongCanvas {...pongCanvasBind} />
+      <PongControls {...pongControlsBind} />
+      {shouldShowMenu && <PongMenu {...pongMenuBind} />}
+    </>
+  )
+}
+
+export const usePongBoard = (initialConfig: PongConfig) => {
+  const [pongConfig] = useState(initialConfig)
 
   useEffect(() => {
     return () => {
@@ -40,20 +53,27 @@ const PongBoardView = () => {
 
   const shouldShowMenu = gameState === 'menu' || gameState === 'lost' || gameState === 'won'
 
-  return (
-    <>
-      <H1>Score: {score}</H1>
-      <PongCanvas ref={canvasRef} id="PongCanvas" />
-      <PongControls
-        width={canvasWidth}
-        leftStarted={() => setIsPressingLeftButton(true)}
-        leftEnded={() => setIsPressingLeftButton(false)}
-        rightStarted={() => setIsPressingRightButton(true)}
-        rightEnded={() => setIsPressingRightButton(false)}
-      />
-      {shouldShowMenu && <PongMenu gameState={gameState} score={score} startGame={startGame} resetGame={resetGame} />}
-    </>
-  )
+  return {
+    shouldShowMenu,
+    score,
+    pongMenuBind: {
+      gameState,
+      score,
+      startGame,
+      resetGame,
+    },
+    pongCanvasBind: {
+      ref: canvasRef,
+      id: 'PongCanvas',
+    },
+    pongControlsBind: {
+      width: canvasWidth,
+      leftStarted: () => setIsPressingLeftButton(true),
+      leftEnded: () => setIsPressingLeftButton(false),
+      rightStarted: () => setIsPressingRightButton(true),
+      rightEnded: () => setIsPressingRightButton(false),
+    },
+  }
 }
 
-export default PongBoardView
+export default PongBoard

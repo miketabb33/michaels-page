@@ -1,6 +1,6 @@
 import React from 'react'
 import NavLayout from '../components/layouts/NavLayout'
-import PongBoardView from '../components/pong-view/PongBoardView'
+import PongBoard from '../components/pong/PongBoard'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -14,7 +14,7 @@ const PongPage = () => {
   return (
     <NavLayout>
       <Container>
-        <PongBoardView />
+        <PongBoard />
       </Container>
     </NavLayout>
   )

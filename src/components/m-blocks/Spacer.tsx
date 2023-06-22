@@ -7,7 +7,7 @@ const Container = styled.div<{ size: Size }>`
   width: ${(props) => calculateSpace(props.size, props.theme.spacing)};
 `
 
-const calculateSpace = (size: Size, themeSpacing: ThemeSpacing) => {
+export const calculateSpace = (size: Size, themeSpacing: ThemeSpacing) => {
   if (size === 'medium') return themeSpacing.medium
   return themeSpacing.small
 }

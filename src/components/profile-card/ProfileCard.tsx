@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import Flipper from '../m-blocks/Flipper'
+import Flipper, { useWithFlipper } from '../m-blocks/Flipper'
 import ProfileCardBack from './ProfileCardBack'
 import ProfileCardFront from './ProfileCardFront'
 import { Breakpoint, MQ } from '../../Breakpoint'
@@ -18,21 +18,21 @@ const Container = styled.div`
 `
 
 const ProfileCard = () => {
-  const [isBackShowing, setIsBackShowing] = useState(false)
   const { trackEvent } = useAnalytics()
 
   const flipCard = () => {
-    setIsBackShowing(!isBackShowing)
+    flipper.flip()
     trackEvent('flipped_profile_card')
   }
 
+  const flipper = useWithFlipper({
+    front: <ProfileCardFront onRotateIconClick={flipCard} />,
+    back: <ProfileCardBack onRotateIconClick={flipCard} />,
+  })
+
   return (
     <Container>
-      <Flipper
-        front={<ProfileCardFront onRotateIconClick={flipCard} />}
-        back={<ProfileCardBack onRotateIconClick={flipCard} />}
-        shouldShowBack={isBackShowing}
-      ></Flipper>
+      <Flipper {...flipper.bind} />
     </Container>
   )
 }

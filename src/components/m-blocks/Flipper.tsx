@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useState } from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -33,13 +33,13 @@ const FlipperBack = styled.div`
   transform: rotateY(180deg);
 `
 
-type FlipperProps = {
+type ExternalFlipperProps = {
   front: ReactNode
   back: ReactNode
   shouldShowBack: boolean
 }
 
-const Flipper = ({ front, back, shouldShowBack }: FlipperProps) => {
+const Flipper = ({ front, back, shouldShowBack }: ExternalFlipperProps) => {
   return (
     <Container>
       <FlipperInner shouldShowBack={shouldShowBack}>
@@ -48,6 +48,28 @@ const Flipper = ({ front, back, shouldShowBack }: FlipperProps) => {
       </FlipperInner>
     </Container>
   )
+}
+
+type UseWithFlipperArgs = {
+  front: ReactNode
+  back: ReactNode
+}
+
+export const useWithFlipper = ({ front, back }: UseWithFlipperArgs) => {
+  const [shouldShowBack, setShouldShowBack] = useState(false)
+
+  const flip = () => {
+    setShouldShowBack((prev) => !prev)
+  }
+
+  return {
+    bind: {
+      front,
+      back,
+      shouldShowBack,
+    },
+    flip,
+  }
 }
 
 export default Flipper
