@@ -1,19 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
 import Card from '../m-blocks/Card'
-import IconButton from '../m-blocks/IconButton'
-import Spacer from '../m-blocks/Spacer'
-import { IconButtonWrapper, ProfileCardFrontProps } from './ProfileCardFront'
+import { ProfileCardFrontProps } from './ProfileCardFront'
 import P from '../m-blocks/typography/P'
+import RotateCardButton from './RotateCardButton'
 
 const CardBackContent = styled.div`
   height: 100%;
-  padding: ${({ theme }) => theme.spacing.large};
+  padding: 4rem ${({ theme }) => theme.spacing.large};
 `
 
 const Scroller = styled.div`
   height: 100%;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 `
 
 type ProfileCardBackProps = ProfileCardFrontProps
@@ -21,10 +23,7 @@ type ProfileCardBackProps = ProfileCardFrontProps
 const ProfileCardBack = ({ onRotateIconClick }: ProfileCardBackProps) => {
   return (
     <Card>
-      <IconButtonWrapper>
-        <IconButton iconName="rotate" onClick={onRotateIconClick} />
-      </IconButtonWrapper>
-
+      <RotateCardButton onRotateIconClick={onRotateIconClick} />
       <CardBackContent>
         <Scroller>
           <P>
@@ -32,7 +31,6 @@ const ProfileCardBack = ({ onRotateIconClick }: ProfileCardBackProps) => {
             started with web development using JavaScript (front-end) and then moved into Ruby on Rails. In March of
             2019, I began studying IOS development with Swift.
           </P>
-          <Spacer size="medium" />
           <P>
             Since then, I have been continuing to grow as a developer and choose to always be learning. I am committed
             to the pursuit of writing high quality and well-tested software in a world with changing project

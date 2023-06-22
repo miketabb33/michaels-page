@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -34,8 +34,8 @@ const FlipperBack = styled.div`
 `
 
 type ExternalFlipperProps = {
-  front: ReactNode
-  back: ReactNode
+  front: React.ReactNode
+  back: React.ReactNode
   shouldShowBack: boolean
 }
 
@@ -51,8 +51,8 @@ const Flipper = ({ front, back, shouldShowBack }: ExternalFlipperProps) => {
 }
 
 type UseWithFlipperArgs = {
-  front: ReactNode
-  back: ReactNode
+  front: React.ReactNode
+  back: React.ReactNode
 }
 
 export const useWithFlipper = ({ front, back }: UseWithFlipperArgs) => {
