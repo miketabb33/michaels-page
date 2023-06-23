@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import NavLayout from '../components/layouts/NavLayout'
 import ProfileCard from '../components/profile-card/ProfileCard'
+import { usePage } from './usePage'
 
 const Container = styled.div`
   height: 100%;
@@ -11,6 +12,7 @@ const Container = styled.div`
 `
 
 const HomePage = () => {
+  usePage({ title: 'Home' })
   return (
     <NavLayout>
       <Container>

@@ -2,6 +2,7 @@ import React from 'react'
 import NavLayout from '../components/layouts/NavLayout'
 import PongBoard from '../components/pong/PongBoard'
 import styled from 'styled-components'
+import { usePage } from './usePage'
 
 const Container = styled.div`
   height: 100%;
@@ -11,6 +12,7 @@ const Container = styled.div`
   align-items: center;
 `
 const PongPage = () => {
+  usePage({ title: 'Pong' })
   return (
     <NavLayout>
       <Container>
