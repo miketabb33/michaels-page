@@ -18,6 +18,7 @@ type UsePong = {
 export const usePong = ({ pongConfig }: UsePong) => {
   const { score, incrementScore, resetScore } = useScore()
   const { gameState, setGameState } = useGameState()
+  const isPlayerPaddleHittable = { value: true }
 
   const { setIsPressingLeftButton, setIsPressingRightButton, detectPlayerControls } = pongPlayerActions()
 
@@ -40,17 +41,24 @@ export const usePong = ({ pongConfig }: UsePong) => {
       pongBall,
       isBallOffCanvas: isRectOffCanvas(pongBall.canvasObj().rect),
     })
-    const hitPlayerPaddle = didPongHitPlayPaddle(pongBall, playerPaddle)
-    didPongHitOpponent(pongBall, opponentPaddle)
-    renderPong()
+
+    const hitOpponentPaddle = didPongHitOpponent(pongBall, opponentPaddle)
+
+    if (isPlayerPaddleHittable.value) {
+      const hitPlayerPaddle = didPongHitPlayPaddle(pongBall, playerPaddle)
+      if (hitPlayerPaddle) {
+        incrementScore()
+        isPlayerPaddleHittable.value = false
+      }
+    }
 
     if (didHitBottom) lose()
     if (didHitTop) win()
-    if (hitPlayerPaddle) {
-      incrementScore()
-    }
+
+    if (hitOpponentPaddle) isPlayerPaddleHittable.value = true
 
     pongConfig.didFireFrame(playerPaddle, pongBall, opponentPaddle, score)
+    renderPong()
   }
 
   const gameRunner = GameRunner(onFrame)
