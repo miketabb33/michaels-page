@@ -6,22 +6,28 @@ export type Theme = 'light' | 'dark'
 
 type ThemeContextType = {
   theme: Theme
-  changeTheme: (theme: Theme) => void
   toggleTheme: () => void
 }
 
 const ThemeContext = createContext<ThemeContextType>({
   theme: 'light',
-  changeTheme: () => {},
   toggleTheme: () => {},
 })
 
-export const ThemeContextProvider = ({ children }: ChildrenProp) => {
-  const [theme, setTheme] = useState<Theme>(parseTheme(localStorage.getItem('theme') as Theme))
+export const useThemeProvider = () => {
+  const THEME_KEY = 'theme'
+
+  const getThemeFromStorage = (): Theme => {
+    const fetchedTheme = localStorage.getItem(THEME_KEY)
+    if (fetchedTheme === 'dark') return 'dark'
+    return 'light'
+  }
+
+  const [theme, setTheme] = useState<Theme>(getThemeFromStorage())
 
   const changeTheme = (theme: Theme) => {
     setTheme(theme)
-    localStorage.setItem('theme', theme)
+    localStorage.setItem(THEME_KEY, theme)
   }
 
   const toggleTheme = () => {
@@ -29,12 +35,12 @@ export const ThemeContextProvider = ({ children }: ChildrenProp) => {
     changeTheme(nextTheme)
   }
 
-  return <ThemeContext.Provider value={{ theme, changeTheme, toggleTheme }}>{children}</ThemeContext.Provider>
+  return { theme, toggleTheme }
 }
 
-const parseTheme = (theme: string): Theme => {
-  if (theme === 'dark') return 'dark'
-  return 'light'
+export const ThemeContextProvider = ({ children }: ChildrenProp) => {
+  const { theme, toggleTheme } = useThemeProvider()
+  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>
 }
 
 export const useTheme = (): ThemeContextType => {
