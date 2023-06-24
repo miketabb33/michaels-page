@@ -1,16 +1,16 @@
-import { HighScore, getHighScores } from '../../../networking/pong/scores'
+import { HighScore, getHighScores } from '../../../network/pong/scores'
 import React from 'react'
 import Button from '../../m-blocks/Button'
-import { useRequest } from '../../../networking/useRequest'
+import { useRequest } from '../../../network/useRequest'
 import H1 from '../../m-blocks/typography/H1'
 import H3 from '../../m-blocks/typography/H3'
 import GameModal from '../../game-blocks/GameModal'
 
-type PongHighScoreProps = {
+type PongHighScoreMeneProps = {
   clickBack: () => void
 }
 
-const PongHighScore = ({ clickBack }: PongHighScoreProps) => {
+const PongHighScoreMenu = ({ clickBack }: PongHighScoreMeneProps) => {
   const { data: highScores, isLoading } = useRequest<HighScore[]>({ request: getHighScores })
 
   return (
@@ -27,4 +27,4 @@ const PongHighScore = ({ clickBack }: PongHighScoreProps) => {
   )
 }
 
-export default PongHighScore
+export default PongHighScoreMenu

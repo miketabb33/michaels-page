@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from '../../m-blocks/Button'
-import { saveScore } from '../../../networking/pong/scores'
+import { saveScore } from '../../../network/pong/scores'
 import GameModal from '../../game-blocks/GameModal'
 import Input, { useWithInput } from '../../m-blocks/Input'
 import { randomlyPick } from '../../../random'
@@ -12,7 +12,7 @@ type PongGameOverModalProps = {
   score: number
 }
 
-const PongGameOverModal = ({ clickMainMenu: onMainMenu, score }: PongGameOverModalProps) => {
+const PongGameOverMenu = ({ clickMainMenu: onMainMenu, score }: PongGameOverModalProps) => {
   const nameInput = useWithInput({ placeholder: 'Name For High Score' })
 
   const onSaveClick = () => {
@@ -36,7 +36,7 @@ const PongGameOverModal = ({ clickMainMenu: onMainMenu, score }: PongGameOverMod
   )
 }
 
-export default PongGameOverModal
+export default PongGameOverMenu
 
 const backupNames = [
   'shaquille.oatmeal',

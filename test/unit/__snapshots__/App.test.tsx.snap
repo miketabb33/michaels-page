@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match snapshot 1`] = `
+<UNDEFINED>
+  <AuthContextProvider>
+    <ThemeContextProvider>
+      <StyledProvider>
+        <Memo(l) />
+        <Router />
+      </StyledProvider>
+    </ThemeContextProvider>
+  </AuthContextProvider>
+</UNDEFINED>
+`;

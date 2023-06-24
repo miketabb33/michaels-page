@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { GameState } from '../../../canvas-game/useGameState'
 import PongMainMenu from './PongMainMenu'
 import React from 'react'
-import PongHighScore from './PongHighScore'
-import PongGameOverModal from './PongGameOverModal'
+import PongHighScoreMenu from './PongHighScoreMenu'
+import PongGameOverMenu from './PongGameOverMenu'
 
 type PongMenuProps = {
   gameState: GameState
@@ -34,8 +34,8 @@ const PongMenu = ({ gameState, score, startGame, resetGame }: PongMenuProps) => 
   return (
     <>
       {menu === 'main' && <PongMainMenu clickStart={startGame} clickHighScore={showHighScore}></PongMainMenu>}
-      {menu === 'highScore' && <PongHighScore clickBack={showMain} />}
-      {menu === 'gameOver' && <PongGameOverModal clickMainMenu={clickMainMenu} score={score} />}
+      {menu === 'highScore' && <PongHighScoreMenu clickBack={showMain} />}
+      {menu === 'gameOver' && <PongGameOverMenu clickMainMenu={clickMainMenu} score={score} />}
     </>
   )
 }
