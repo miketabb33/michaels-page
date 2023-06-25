@@ -5,26 +5,42 @@ import { useRequest } from '../../../network/useRequest'
 import H1 from '../../m-blocks/typography/H1'
 import H3 from '../../m-blocks/typography/H3'
 import GameModal from '../../game-blocks/GameModal'
+import PongHighScores from './PongHighScores'
 
 type PongHighScoreMeneProps = {
-  clickBack: () => void
+  onBack: () => void
 }
 
-const PongHighScoreMenu = ({ clickBack }: PongHighScoreMeneProps) => {
-  const { data: highScores, isLoading } = useRequest<HighScore[]>({ request: getHighScores })
-
+const PongHighScoreMenu = (props: PongHighScoreMeneProps) => {
+  const { highScores, shouldShowLoading, shouldShowHighScores, shouldShowNoHighScores, onBack } =
+    usePongHighScoreMenu(props)
   return (
     <GameModal>
       <H1>High Scores!</H1>
-      {isLoading && <H3>Loading...</H3>}
-      <ul>
-        {highScores?.map((highScore) => (
-          <li key={highScore.id}>{`${highScore.name}: ${highScore.score}`}</li>
-        ))}
-      </ul>
-      <Button onClick={clickBack}>Back</Button>
+      {shouldShowLoading && <H3>Loading...</H3>}
+      {shouldShowHighScores && <PongHighScores highScores={highScores || []} />}
+      {shouldShowNoHighScores && <H3>No high scores</H3>}
+      <Button onClick={onBack}>Back</Button>
     </GameModal>
   )
+}
+
+export const usePongHighScoreMenu = ({ onBack }: PongHighScoreMeneProps) => {
+  const { data: highScores, isLoading } = useRequest<HighScore[]>({ request: getHighScores })
+
+  const highScoreLength = highScores?.length || 0
+
+  const shouldShowLoading = isLoading
+  const shouldShowNoHighScores = !isLoading && highScoreLength === 0
+  const shouldShowHighScores = !isLoading && highScoreLength > 0
+
+  return {
+    highScores,
+    shouldShowLoading,
+    shouldShowNoHighScores,
+    shouldShowHighScores,
+    onBack,
+  }
 }
 
 export default PongHighScoreMenu

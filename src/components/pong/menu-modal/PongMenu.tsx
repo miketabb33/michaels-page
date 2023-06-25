@@ -14,30 +14,41 @@ type PongMenuProps = {
 
 type MenuState = 'main' | 'gameOver' | 'highScore' | 'none'
 
-const convertToMenuState = (gameState: GameState): MenuState => {
-  if (gameState === 'lost' || gameState === 'won') return 'gameOver'
-  if (gameState === 'menu') return 'main'
-  return 'none'
+const PongMenu = (props: PongMenuProps) => {
+  const { menu, score, startGame, onGameOversMainMenu, setMenuToHighScore, setMenuToMain } = usePongMenu(props)
+  return (
+    <>
+      {menu === 'main' && <PongMainMenu clickStart={startGame} clickHighScore={setMenuToHighScore}></PongMainMenu>}
+      {menu === 'highScore' && <PongHighScoreMenu onBack={setMenuToMain} />}
+      {menu === 'gameOver' && <PongGameOverMenu onReturnToMainMenu={onGameOversMainMenu} score={score} />}
+    </>
+  )
 }
 
-const PongMenu = ({ gameState, score, startGame, resetGame }: PongMenuProps) => {
+export const usePongMenu = ({ gameState, score, startGame, resetGame }: PongMenuProps) => {
+  const convertToMenuState = (gameState: GameState): MenuState => {
+    if (gameState === 'lost' || gameState === 'won') return 'gameOver'
+    if (gameState === 'menu') return 'main'
+    return 'none'
+  }
   const [menu, setMenu] = useState(convertToMenuState(gameState))
 
-  const showHighScore = () => setMenu('highScore')
-  const showMain = () => setMenu('main')
+  const setMenuToHighScore = () => setMenu('highScore')
+  const setMenuToMain = () => setMenu('main')
 
-  const clickMainMenu = () => {
-    showMain()
+  const onGameOversMainMenu = () => {
+    setMenuToMain()
     resetGame()
   }
 
-  return (
-    <>
-      {menu === 'main' && <PongMainMenu clickStart={startGame} clickHighScore={showHighScore}></PongMainMenu>}
-      {menu === 'highScore' && <PongHighScoreMenu clickBack={showMain} />}
-      {menu === 'gameOver' && <PongGameOverMenu clickMainMenu={clickMainMenu} score={score} />}
-    </>
-  )
+  return {
+    menu,
+    score,
+    startGame,
+    onGameOversMainMenu,
+    setMenuToHighScore,
+    setMenuToMain,
+  }
 }
 
 export default PongMenu
