@@ -20,7 +20,7 @@ export const usePong = ({ pongConfig }: UsePong) => {
   const { gameState, setGameState } = useGameState()
   const isPlayerPaddleHittable = { value: true }
 
-  const { setIsPressingLeftButton, setIsPressingRightButton, detectPlayerControls } = pongPlayerActions()
+  const { detectPlayerControls } = pongPlayerActions()
 
   const { isRectOffCanvas, draw, canvasRef, canvasWidth, translateCanvasObjToRenderableObj } = useCanvas({
     sizeMultiplier: 0.8,
@@ -108,7 +108,5 @@ export const usePong = ({ pongConfig }: UsePong) => {
     score,
     canvasWidth,
     canvasRef,
-    setIsPressingLeftButton,
-    setIsPressingRightButton,
   }
 }

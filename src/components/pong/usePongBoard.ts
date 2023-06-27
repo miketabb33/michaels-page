@@ -10,16 +10,7 @@ export const usePongBoard = (initialConfig: PongConfig) => {
     KeyboardListener.removeListeners()
   }
 
-  const {
-    gameState,
-    startGame,
-    score,
-    resetGame,
-    canvasRef,
-    canvasWidth,
-    setIsPressingLeftButton,
-    setIsPressingRightButton,
-  } = usePong({ pongConfig })
+  const { gameState, startGame, score, resetGame, canvasRef, canvasWidth } = usePong({ pongConfig })
 
   const shouldShowMenu = gameState === 'menu' || gameState === 'lost' || gameState === 'won'
 
@@ -39,10 +30,6 @@ export const usePongBoard = (initialConfig: PongConfig) => {
     },
     pongControlsBind: {
       width: canvasWidth,
-      leftStarted: () => setIsPressingLeftButton(true),
-      leftEnded: () => setIsPressingLeftButton(false),
-      rightStarted: () => setIsPressingRightButton(true),
-      rightEnded: () => setIsPressingRightButton(false),
     },
   }
 }

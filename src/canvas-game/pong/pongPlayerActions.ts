@@ -1,19 +1,15 @@
 import { gameKeyboard } from '../../canvas-game/gameKeyboard'
+import { PongController } from '../GameClickController'
+
 import { Direction } from '../types/Direction'
 
 export const pongPlayerActions = () => {
   const { isPressingLeftKey, isPressingRightKey } = gameKeyboard()
 
-  let isPressingLeftButton = false
-  let isPressingRightButton = false
-
-  const setIsPressingLeftButton = (value: boolean) => (isPressingLeftButton = value)
-  const setIsPressingRightButton = (value: boolean) => (isPressingRightButton = value)
-
   const detectPlayerControls = (): Direction => {
-    if (isPressingLeftKey() || isPressingLeftButton) {
+    if (isPressingLeftKey() || PongController.isPressingLeft()) {
       return 'left'
-    } else if (isPressingRightKey() || isPressingRightButton) {
+    } else if (isPressingRightKey() || PongController.isPressingRight()) {
       return 'right'
     } else {
       return 'none'
@@ -21,8 +17,6 @@ export const pongPlayerActions = () => {
   }
 
   return {
-    setIsPressingLeftButton,
-    setIsPressingRightButton,
     detectPlayerControls,
   }
 }

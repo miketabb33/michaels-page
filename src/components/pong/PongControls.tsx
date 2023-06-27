@@ -1,13 +1,10 @@
 import React from 'react'
 import GameButton from '../game-blocks/GameButton'
 import styled from 'styled-components'
+import { PongController } from '../../canvas-game/GameClickController'
 
 type PongControlsProps = {
   width: number
-  leftStarted: () => void
-  leftEnded: () => void
-  rightStarted: () => void
-  rightEnded: () => void
 }
 
 const Container = styled.div<{ width: number }>`
@@ -17,11 +14,19 @@ const Container = styled.div<{ width: number }>`
   height: 75px;
 `
 
-const PongControls = ({ width, leftStarted, leftEnded, rightStarted, rightEnded }: PongControlsProps) => {
+const PongControls = ({ width }: PongControlsProps) => {
   return (
     <Container width={width}>
-      <GameButton onPressStart={leftStarted} onPressEnd={leftEnded} label="&larr;" />
-      <GameButton onPressStart={rightStarted} onPressEnd={rightEnded} label="&rarr;" />
+      <GameButton
+        onPressStart={PongController.leftPressStarted}
+        onPressEnd={PongController.leftPressEnded}
+        label="&larr;"
+      />
+      <GameButton
+        onPressStart={PongController.rightPressStarted}
+        onPressEnd={PongController.rightPressEnded}
+        label="&rarr;"
+      />
     </Container>
   )
 }
