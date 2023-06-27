@@ -1,24 +1,14 @@
+import { KeyboardListener } from './KeyboardEventListener'
 import { KeyboardCode } from './types/KeyboardCode'
-import { removeListenersArray } from './removeListenersArray'
 
 export const gameKeyboard = () => {
   const { isPressingLeftKey, isPressingRightKey, onKeydown, onKeyup } = gameKeyboardController()
 
-  const keydownListener = (e: Event) => onKeydown((e as KeyboardEvent).code)
-  const keyupListener = (e: Event) => onKeyup((e as KeyboardEvent).code)
+  const keydownListener = (e: KeyboardEvent) => onKeydown(e.code)
+  const keyupListener = (e: KeyboardEvent) => onKeyup(e.code)
 
-  const addEventListeners = () => {
-    addEventListener('keydown', keydownListener)
-    addEventListener('keyup', keyupListener)
-  }
-
-  const removeEventListeners = () => {
-    removeEventListener('keydown', keydownListener)
-    removeEventListener('keyup', keyupListener)
-  }
-
-  addEventListeners()
-  removeListenersArray.push(removeEventListeners)
+  KeyboardListener.addListener('keydown', keydownListener)
+  KeyboardListener.addListener('keyup', keyupListener)
 
   return {
     isPressingLeftKey,

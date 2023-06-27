@@ -11,7 +11,6 @@ type TrackEventArgs = {
 }
 
 export const trackEvent = ({ eventKey, user, params }: TrackEventArgs) => {
-  console.log(analytics)
   if (!analytics) return
   const defaultAnalyticParams = {
     userAgent: window.navigator.userAgent || 'null',
