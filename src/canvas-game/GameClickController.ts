@@ -1,4 +1,4 @@
-class GameClickController {
+export class GameClickController {
   private pressingRight = false
   private pressingLeft = false
 

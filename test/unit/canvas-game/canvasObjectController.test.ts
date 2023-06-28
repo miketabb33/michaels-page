@@ -1,4 +1,4 @@
-import { makeCanvasObjectMock } from '../__MOCKS__/canvasType.mock'
+import { makeCanvasObjectMock } from '../__MOCKS__/canvasObject.mock'
 import canvasObject, { CanvasObject } from '../../../src/canvas-game/canvasObjectController'
 
 describe('Use Canvas Object', () => {

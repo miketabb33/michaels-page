@@ -9,7 +9,7 @@ import { playerPaddleMotion } from './playerPaddleMotion'
 import { pongBallMotion } from './pongBallMotion'
 import { didPongHitOpponent, didPongHitPlayPaddle } from './pongCollision'
 import { PongConfig } from './config/pongConfigs'
-import { soccerField } from './config/soccerFieldObj'
+import { soccerField } from './config/soccerFieldConfig'
 
 type UsePong = {
   pongConfig: PongConfig

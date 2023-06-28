@@ -1,5 +1,5 @@
 type KeyboardEventType = 'keydown' | 'keyup' | 'keypress'
-class KeyboardEventListener {
+export class KeyboardEventListener {
   private removeListenersArray: (() => void)[] = []
 
   addListener = (type: KeyboardEventType, listener: (e: KeyboardEvent) => void) => {
@@ -10,7 +10,10 @@ class KeyboardEventListener {
 
   removeListeners = () => {
     this.removeListenersArray.forEach((r) => r())
+    this.removeListenersArray = []
   }
+
+  getRemoveListeners = () => this.removeListenersArray
 }
 
 export const KeyboardListener = new KeyboardEventListener()

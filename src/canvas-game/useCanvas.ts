@@ -12,19 +12,19 @@ type UseCanvas = {
   units: number
 }
 
-export const useCanvas = ({ units, sizeMultiplier }: UseCanvas) => {
+export const useCanvasController = ({ units, sizeMultiplier }: UseCanvas) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const [canvasWidth, setCanvasWidthReactWidth] = useState(0)
-
-  const isRectOffCanvas = (rect: Rect): Direction => {
-    const translatedRect = translateRect(rect, getCanvasSizePixels(), units)
-    return isOffCanvas(translatedRect, getCanvasSizePixels())
-  }
 
   const getCanvasSizePixels = (): Size => {
     const canvas = canvasRef.current
     if (!canvas) return { width: 0, height: 0 }
     return { width: canvas.clientWidth, height: canvas.clientWidth }
+  }
+
+  const isRectOffCanvas = (rect: Rect): Direction => {
+    const translatedRect = translateRect(rect, getCanvasSizePixels(), units)
+    return isOffCanvas(translatedRect, getCanvasSizePixels())
   }
 
   const translateCanvasObjToRenderableObj = (canvasObjects: CanvasObject[]): RenderableObject[] => {
@@ -65,6 +65,20 @@ export const useCanvas = ({ units, sizeMultiplier }: UseCanvas) => {
     canvas.height = squareSize.height
     setCanvasWidthReactWidth(squareSize.width)
   }
+
+  return {
+    isRectOffCanvas,
+    draw,
+    canvasRef,
+    canvasWidth,
+    translateCanvasObjToRenderableObj,
+    attemptToResizeCanvas,
+  }
+}
+
+export const useCanvas = (props: UseCanvas) => {
+  const { isRectOffCanvas, draw, canvasRef, canvasWidth, translateCanvasObjToRenderableObj, attemptToResizeCanvas } =
+    useCanvasController(props)
 
   useEffect(() => {
     attemptToResizeCanvas()
