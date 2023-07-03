@@ -1,38 +1,37 @@
-import { CanvasObjectController } from '../canvasObjectController'
+import { CanvasObject } from '../canvasObjectController'
 import { random } from '../../random'
 import { calcNewXBasedOnCollision } from './calcNewXBasedOnCollision'
 import { calcNewBounceDirection, flipDirection } from '../directionalValue'
+import { DirectionValue } from '../types/DirectionValue'
 
 type PongBounceType = 'random5' | 'relative' | 'natural'
 
 type PlayerBallBouncerProps = {
-  paddle: CanvasObjectController
-  pongBall: CanvasObjectController
+  paddle: CanvasObject
+  pongBall: CanvasObject
   bounce: PongBounceType
 }
 
-export const pongPaddleBouncer = (props: PlayerBallBouncerProps) => {
-  if (props.bounce === 'natural') {
-    const newDirection = flipDirection({ value: props.pongBall.canvasObj().velocity.directionValue, flipY: true })
-    props.pongBall.changeDirection(newDirection)
-    return
-  }
+export const pongPaddleBouncer = ({ paddle, pongBall, bounce }: PlayerBallBouncerProps): DirectionValue => {
+  if (bounce === 'natural') return flipDirection({ value: pongBall.velocity.directionValue, flipY: true })
 
-  const newX = getNewX(props)
-  const oldY = props.pongBall.canvasObj().velocity.directionValue.y
-  const newDirection = calcNewBounceDirection({ newX, oldY })
-  props.pongBall.changeDirection(newDirection)
-}
-
-const getNewX = ({ paddle, pongBall, bounce }: PlayerBallBouncerProps) => {
   if (bounce === 'relative') {
     const newX = calcNewXBasedOnCollision({
-      subject: paddle.canvasObj().rect,
-      test: pongBall.canvasObj().rect,
+      subject: paddle.rect,
+      test: pongBall.rect,
     })
-    return maxEdgeXFoBounce(newX, 0.4)
+    const safeNewX = maxEdgeXFoBounce(newX, 0.4)
+    const oldY = pongBall.velocity.directionValue.y
+    return calcNewBounceDirection({ newX: safeNewX, oldY })
   }
-  return calcNewRandomX5()
+
+  if (bounce === 'random5') {
+    const newX = calcNewRandomX5()
+    const oldY = pongBall.velocity.directionValue.y
+    return calcNewBounceDirection({ newX, oldY })
+  }
+
+  throw new Error('Unhandled bounce type')
 }
 
 const calcNewRandomX5 = (): number => {

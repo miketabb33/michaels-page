@@ -5,11 +5,12 @@ import { useScore } from '../useScore'
 import { pongPlayerActions } from './pongPlayerActions'
 import { useGameState } from '../../canvas-game/useGameState'
 import { GameRunner } from '../../canvas-game/GameRunner'
-import { playerPaddleMotion } from './playerPaddleMotion'
-import { pongBallMotion } from './pongBallMotion'
-import { didPongHitOpponent, didPongHitPlayPaddle } from './pongCollision'
+import { getUserPaddleDirection } from './getUserPaddleDirection'
 import { PongConfig } from './config/pongConfigs'
 import { soccerField } from './config/soccerFieldConfig'
+import { flipDirection } from '../directionalValue'
+import { collisionDetection } from '../rect'
+import { pongPaddleBouncer } from './pongPaddleBouncer'
 
 type UsePong = {
   pongConfig: PongConfig
@@ -32,33 +33,68 @@ export const usePong = ({ pongConfig }: UsePong) => {
   let opponentPaddle = canvasObject(pongConfig.opponentPaddle)
 
   const onFrame = () => {
-    playerPaddleMotion({
-      playerPaddle,
+    paddleMotion()
+    pongBallMotion()
+    handlePaddleCollision()
+    pongConfig.didFireFrame(playerPaddle, pongBall, opponentPaddle, score)
+    renderPong()
+  }
+
+  const paddleMotion = () => {
+    const paddleDirection = getUserPaddleDirection({
       isPlayerOffCanvas: isRectOffCanvas(playerPaddle.canvasObj().rect),
       direction: detectPlayerControls(),
     })
-    const { didHitBottom, didHitTop } = pongBallMotion({
-      pongBall,
-      isBallOffCanvas: isRectOffCanvas(pongBall.canvasObj().rect),
-    })
+    playerPaddle.changeDirection(paddleDirection)
+    playerPaddle.move()
+  }
 
-    const hitOpponentPaddle = didPongHitOpponent(pongBall, opponentPaddle)
+  const pongBallMotion = () => {
+    const isBallOffCanvas = isRectOffCanvas(pongBall.canvasObj().rect)
 
-    if (isPlayerPaddleHittable.value) {
-      const hitPlayerPaddle = didPongHitPlayPaddle(pongBall, playerPaddle)
-      if (hitPlayerPaddle) {
-        incrementScore()
-        isPlayerPaddleHittable.value = false
-      }
+    if (isBallOffCanvas === 'left' || isBallOffCanvas == 'right') {
+      const newDirection = flipDirection({ value: pongBall.canvasObj().velocity.directionValue, flipX: true })
+      pongBall.changeDirection(newDirection)
     }
 
-    if (didHitBottom) lose()
-    if (didHitTop) win()
+    if (isBallOffCanvas === 'down') lose()
+    if (isBallOffCanvas === 'up') win()
 
-    if (hitOpponentPaddle) isPlayerPaddleHittable.value = true
+    pongBall.move()
+  }
 
-    pongConfig.didFireFrame(playerPaddle, pongBall, opponentPaddle, score)
-    renderPong()
+  const handlePaddleCollision = () => {
+    handleOpponentPaddleCollision()
+    if (isPlayerPaddleHittable.value) {
+      handlePlayerPaddleCollision()
+    }
+  }
+
+  const handleOpponentPaddleCollision = () => {
+    const didHitOpponentPaddle = collisionDetection(pongBall.canvasObj().rect, opponentPaddle.canvasObj().rect)
+    if (didHitOpponentPaddle) {
+      const newDirection = pongPaddleBouncer({
+        paddle: opponentPaddle.canvasObj(),
+        pongBall: pongBall.canvasObj(),
+        bounce: 'natural',
+      })
+      pongBall.changeDirection(newDirection)
+      isPlayerPaddleHittable.value = true
+    }
+  }
+
+  const handlePlayerPaddleCollision = () => {
+    const didHitPlayerPaddle = collisionDetection(pongBall.canvasObj().rect, playerPaddle.canvasObj().rect)
+    if (didHitPlayerPaddle) {
+      const newDirection = pongPaddleBouncer({
+        paddle: playerPaddle.canvasObj(),
+        pongBall: pongBall.canvasObj(),
+        bounce: 'relative',
+      })
+      pongBall.changeDirection(newDirection)
+      incrementScore()
+      isPlayerPaddleHittable.value = false
+    }
   }
 
   const gameRunner = GameRunner(onFrame)

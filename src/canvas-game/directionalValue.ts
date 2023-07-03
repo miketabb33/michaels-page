@@ -6,7 +6,7 @@ type FlipDirection = {
   flipY?: boolean
 }
 
-export const flipDirection = ({ value, flipX = false, flipY = false }: FlipDirection) => {
+export const flipDirection = ({ value, flipX = false, flipY = false }: FlipDirection): DirectionValue => {
   let newX = value.x
   let newY = value.y
 
