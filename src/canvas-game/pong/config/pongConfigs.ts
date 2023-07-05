@@ -5,10 +5,12 @@ export type PongConfig = {
   playerPaddle: CanvasObject
   opponentPaddle: CanvasObject
   canvasDimensionUnits: number
-  didFireFrame: (
-    playerPaddle: CanvasObjectController,
-    pongBall: CanvasObjectController,
-    opponentPaddle: CanvasObjectController,
-    score: number
-  ) => void
+  didFireFrame: (args: DidFireFrameArgs) => void
+}
+
+export type DidFireFrameArgs = {
+  playerPaddle: CanvasObjectController
+  pongBall: CanvasObjectController
+  opponentPaddle: CanvasObjectController
+  score: number
 }

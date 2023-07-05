@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { CanvasObjectController } from '../../../src/canvas-game/canvasObjectController'
-import { PongConfig } from '../../../src/canvas-game/pong/config/pongConfigs'
+import { DidFireFrameArgs, PongConfig } from '../../../src/canvas-game/pong/config/pongConfigs'
 
 export const PONG_CONFIG_MOCK: PongConfig = {
   pongBall: {
@@ -67,12 +66,7 @@ export const PONG_CONFIG_MOCK: PongConfig = {
     shape: 'rectangle',
   },
   canvasDimensionUnits: 0,
-  didFireFrame: function (
-    playerPaddle: CanvasObjectController,
-    pongBall: CanvasObjectController,
-    opponentPaddle: CanvasObjectController,
-    score: number
-  ): void {
+  didFireFrame: function (args: DidFireFrameArgs): void {
     throw new Error('Function not implemented.')
   },
 }

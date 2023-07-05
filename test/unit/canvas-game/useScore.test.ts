@@ -5,6 +5,7 @@ describe('Use Score', () => {
   it('should start at 0', () => {
     const { result } = renderHook(() => useScore())
     expect(result.current.score).toEqual(0)
+    expect(result.current.inGameScore.value).toEqual(0)
   })
 
   it('should increment', () => {

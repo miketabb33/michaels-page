@@ -17,7 +17,7 @@ type UsePong = {
 }
 
 export const usePong = ({ pongConfig }: UsePong) => {
-  const { score, incrementScore, resetScore } = useScore()
+  const { score, inGameScore, incrementScore, resetScore } = useScore()
   const { gameState, setGameState } = useGameState()
   const isPlayerPaddleHittable = { value: true }
 
@@ -36,7 +36,7 @@ export const usePong = ({ pongConfig }: UsePong) => {
     paddleMotion()
     pongBallMotion()
     handlePaddleCollision()
-    pongConfig.didFireFrame(playerPaddle, pongBall, opponentPaddle, score)
+    pongConfig.didFireFrame({ playerPaddle, pongBall, opponentPaddle, score: inGameScore.value })
     renderPong()
   }
 
