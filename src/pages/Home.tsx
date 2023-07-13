@@ -2,18 +2,18 @@ import React from 'react'
 import styled from 'styled-components'
 import NavLayout from '../components/layouts/NavLayout'
 import { usePage } from './usePage'
-import ProfileInfo from '../components/profile-info/ProfileInfo'
+import Profile from '../components/profile/Profile'
 
 const Flex = styled.div`
   display: flex;
   height: 100%;
 `
 
-const ContentWell = styled.div`
+const CenterSection = styled.section`
   width: 100%;
   overflow-y: auto;
 `
-const ProfileAside = styled.div`
+const Aside = styled.aside`
   width: 45rem;
 `
 
@@ -22,7 +22,7 @@ const HomePage = () => {
   return (
     <NavLayout>
       <Flex>
-        <ContentWell>
+        <CenterSection>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Id diam maecenas ultricies mi eget mauris. In eu mi bibendum neque egestas congue quisque
           egestas diam. Faucibus purus in massa tempor nec feugiat. Quisque id diam vel quam elementum pulvinar etiam
@@ -97,10 +97,10 @@ const HomePage = () => {
           Sapien faucibus et molestie ac feugiat sed. Eget mi proin sed libero enim sed faucibus. Ut tellus elementum
           sagittis vitae. Vehicula ipsum a arcu cursus. Quis risus sed vulputate odio ut. Eget gravida cum sociis
           natoque.
-        </ContentWell>
-        <ProfileAside>
-          <ProfileInfo />
-        </ProfileAside>
+        </CenterSection>
+        <Aside>
+          <Profile />
+        </Aside>
       </Flex>
     </NavLayout>
   )

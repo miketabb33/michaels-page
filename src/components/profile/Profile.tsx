@@ -23,7 +23,7 @@ const Content = styled.div`
   gap: ${({ theme }) => theme.spacing.large};
 `
 
-const ProfileInfo = () => {
+const Profile = () => {
   return (
     <Container>
       <PortraitImage />
@@ -35,4 +35,4 @@ const ProfileInfo = () => {
   )
 }
 
-export default ProfileInfo
+export default Profile
