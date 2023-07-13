@@ -30,8 +30,8 @@ exports[`App should match snapshot 1`] = `
       ]
     }
   />
-  <main>
+  <styled.main>
     AnyLayout
-  </main>
+  </styled.main>
 </styled.div>
 `;

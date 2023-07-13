@@ -11,12 +11,17 @@ const Container = styled.div`
   height: 100%;
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 40px 1fr;
+  grid-template-rows: 5rem 1fr;
 
   @media ${MQ(Breakpoint.tablet)} {
-    grid-template-columns: 120px 1fr;
+    grid-template-columns: 12rem 1fr;
     grid-template-rows: auto;
   }
+`
+
+const Main = styled.main`
+  height: 100%;
+  overflow-y: auto;
 `
 
 const NavLayout = ({ children }: ChildrenProp) => {
@@ -24,7 +29,7 @@ const NavLayout = ({ children }: ChildrenProp) => {
     <Container>
       <MobileNav navConfig={navConfig} />
       <Sidebar navConfig={navConfig} />
-      <main>{children}</main>
+      <Main>{children}</Main>
     </Container>
   )
 }
