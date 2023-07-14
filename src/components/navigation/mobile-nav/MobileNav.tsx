@@ -7,9 +7,11 @@ import MobileNavMenu from './MobileNavMenu'
 import LogoLink from '../LogoLink'
 import { useNavigationTheme } from '../useNavigationTheme'
 
+export const MOBILE_NAV_HEIGHT = '5rem'
+
 const MobileNavContainer = styled.nav`
   background-color: ${({ theme }) => theme.color.secondary};
-  height: 5rem;
+  height: ${MOBILE_NAV_HEIGHT};
   display: flex;
   justify-content: space-between;
   align-items: center;
