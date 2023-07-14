@@ -1,21 +1,32 @@
 import React from 'react'
 import Profile from './profile/Profile'
-import HomeLayout from './HomeLayout'
+import HomeDesktopLayout from './HomeDesktopLayout'
 import { IndustryKnowledgeHome, TechnicalExpertiseHome, WhatIDoHome, WhatIValueHome } from './HomeSections'
+import ProfileMobile from './profile-mobile/ProfileMobile'
+import HomeMobileLayout from './HomeMobileLayout'
 
 const Home = () => {
   return (
-    <HomeLayout
-      centerSection={
-        <>
-          <WhatIDoHome />
-          <IndustryKnowledgeHome />
-          <TechnicalExpertiseHome />
-          <WhatIValueHome />
-        </>
-      }
-      aside={<Profile />}
-    />
+    <>
+      <HomeDesktopLayout
+        centerSection={
+          <>
+            <WhatIDoHome />
+            <IndustryKnowledgeHome />
+            <TechnicalExpertiseHome />
+            <WhatIValueHome />
+          </>
+        }
+        aside={<Profile />}
+      />
+      <HomeMobileLayout>
+        <ProfileMobile />
+        <WhatIDoHome />
+        <IndustryKnowledgeHome />
+        <TechnicalExpertiseHome />
+        <WhatIValueHome />
+      </HomeMobileLayout>
+    </>
   )
 }
 

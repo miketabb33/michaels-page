@@ -1,12 +1,17 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
+import { Breakpoint, MQ } from '../../Breakpoint'
 
-const Flex = styled.div`
-  display: flex;
+const Container = styled.div`
+  display: none;
   height: 100%;
+
+  @media ${MQ(Breakpoint.tablet)} {
+    display: flex;
+  }
 `
 
-const CenterContainer = styled.div`
+const ViewPort = styled.div`
   width: 100%;
   overflow-y: auto;
   padding: ${({ theme }) => theme.spacing.xLarge} ${({ theme }) => theme.spacing.large};
@@ -23,13 +28,13 @@ type HomeLayoutProps = {
   aside: ReactNode
 }
 
-const HomeLayout = ({ centerSection, aside }: HomeLayoutProps) => {
+const HomeDesktopLayout = ({ centerSection, aside }: HomeLayoutProps) => {
   return (
-    <Flex>
-      <CenterContainer>{centerSection}</CenterContainer>
+    <Container>
+      <ViewPort>{centerSection}</ViewPort>
       <Aside>{aside}</Aside>
-    </Flex>
+    </Container>
   )
 }
 
-export default HomeLayout
+export default HomeDesktopLayout
