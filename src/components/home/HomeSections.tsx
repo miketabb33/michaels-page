@@ -15,7 +15,8 @@ const Section = styled.section<{ delay: number }>`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.small};
 
-  animation: slide 0.6s;
+  animation-name: slide;
+  animation-duration: 0.6s;
   animation-fill-mode: forwards;
   animation-delay: ${({ delay }) => `${delay}s`};
   animation-timing-function: cubic-bezier(0.23, 0.23, 0.37, 1.32);
