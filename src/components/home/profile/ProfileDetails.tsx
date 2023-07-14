@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import H1 from '../m-blocks/typography/H1'
-import H3 from '../m-blocks/typography/H3'
+import H1 from '../../m-blocks/typography/H1'
+import H3 from '../../m-blocks/typography/H3'
 
 const DetailsWell = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Image from '../m-blocks/Image'
+import Image from '../../m-blocks/Image'
 import SocialMediaLinks from './SocialProfileLinks'
 import ProfileDetails from './ProfileDetails'
 

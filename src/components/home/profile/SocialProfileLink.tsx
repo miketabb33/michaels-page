@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import Icon, { IconName } from '../m-blocks/Icon'
-import P from '../m-blocks/typography/P'
+import Icon, { IconName } from '../../m-blocks/Icon'
+import P from '../../m-blocks/typography/P'
 import React from 'react'
 
 const SocialIcon = styled(Icon)`
