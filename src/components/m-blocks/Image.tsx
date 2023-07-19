@@ -5,7 +5,9 @@ type ImageProps = {
   className?: string
 }
 
-const Image = ({ imageName, className }: ImageProps) => <img src={imageMap.get(imageName)} className={className} />
+const Image = ({ imageName, className }: ImageProps) => (
+  <img src={imageMap.get(imageName)} alt={`${imageName}-image`} className={className} />
+)
 
 export default Image
 
