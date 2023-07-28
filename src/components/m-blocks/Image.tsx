@@ -1,4 +1,10 @@
 import React from 'react'
+import styled from 'styled-components'
+
+const ImageStyle = styled.img`
+  width: 100%;
+  height: 100%;
+`
 
 type ImageProps = {
   imageName: ImageName
@@ -6,7 +12,7 @@ type ImageProps = {
 }
 
 const Image = ({ imageName, className }: ImageProps) => (
-  <img src={imageMap.get(imageName)} alt={`${imageName}-image`} className={className} />
+  <ImageStyle src={imageMap.get(imageName)} alt={`${imageName}-image`} className={className} />
 )
 
 export default Image

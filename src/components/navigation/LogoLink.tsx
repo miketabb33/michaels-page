@@ -3,19 +3,14 @@ import RouterLink from '../../router/RouterLink'
 import React from 'react'
 import Image from '../m-blocks/Image'
 
-const LogoLinkElement = styled(RouterLink)<{ size: LogoSize }>`
-  width: ${(props) => (props.size === 'large' ? '6rem' : '4rem')};
-  aspect-ratio: 1;
+const LogoLinkElement = styled(RouterLink)`
+  display: block;
+  height: 100%;
+  aspect-ratio: 1/1;
 `
 
-type LogoSize = 'small' | 'large'
-
-type LogoLinkProps = {
-  size: LogoSize
-}
-
-const LogoLink = ({ size }: LogoLinkProps) => (
-  <LogoLinkElement linkTo="/" size={size}>
+const LogoLink = () => (
+  <LogoLinkElement linkTo="/">
     <Image imageName="logo" />
   </LogoLinkElement>
 )

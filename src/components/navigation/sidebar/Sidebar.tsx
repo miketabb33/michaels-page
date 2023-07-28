@@ -42,7 +42,7 @@ const Sidebar = ({ navConfig }: SidebarProps) => {
     <Container>
       <SidebarTopContent>
         <LogoWell>
-          <LogoLink size="small" />
+          <LogoLink />
         </LogoWell>
         <SidebarMenu navConfig={navConfig} />
       </SidebarTopContent>

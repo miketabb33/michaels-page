@@ -15,11 +15,16 @@ const MobileNavContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: ${({ theme }) => theme.spacing.xSmall};
+  padding: ${({ theme }) => theme.spacing.xxSmall};
 
   @media ${tabletAndUp} {
     display: none;
   }
+`
+
+const Side = styled.div`
+  width: 10rem;
+  height: 100%;
 `
 
 type MobileNavProps = {
@@ -31,9 +36,14 @@ const MobileNav = ({ navConfig }: MobileNavProps) => {
 
   return (
     <MobileNavContainer>
-      <LogoLink size="small" />
+      <Side>
+        <LogoLink />
+      </Side>
+
       <MobileNavMenu navConfig={navConfig} />
-      <Button onClick={toggleTheme}>{themeButtonText}</Button>
+      <Side>
+        <Button onClick={toggleTheme}>{themeButtonText}</Button>
+      </Side>
     </MobileNavContainer>
   )
 }

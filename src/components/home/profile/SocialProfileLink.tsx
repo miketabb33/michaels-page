@@ -12,6 +12,7 @@ const Anchor = styled.a`
   display: flex;
   gap: ${({ theme }) => theme.spacing.xSmall};
   text-decoration: none;
+  color: ${({ theme }) => theme.color.text};
 
   &:hover {
     text-decoration: underline;

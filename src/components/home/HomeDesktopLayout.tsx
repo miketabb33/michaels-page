@@ -14,6 +14,7 @@ const Container = styled(PageContainer)`
 
 const ViewPort = styled.div`
   padding-top: ${({ theme }) => theme.spacing.large};
+  padding-bottom: 6rem;
   width: 100%;
   overflow-y: auto;
   display: flex;
