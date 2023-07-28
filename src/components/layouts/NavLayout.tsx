@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { navConfig } from '../../config/navConfig'
-import { Breakpoint, MQ } from '../../Breakpoint'
+import { tabletAndUp } from '../../Breakpoint'
 import { ChildrenProp } from '../../types/ChildrenProp'
 import MobileNav, { MOBILE_NAV_HEIGHT } from '../navigation/mobile-nav/MobileNav'
 import Sidebar from '../navigation/sidebar/Sidebar'
@@ -13,7 +13,7 @@ const Container = styled.div`
   grid-template-columns: auto;
   grid-template-rows: ${MOBILE_NAV_HEIGHT} 1fr;
 
-  @media ${MQ(Breakpoint.tablet)} {
+  @media ${tabletAndUp} {
     grid-template-columns: 12rem 1fr;
     grid-template-rows: auto;
   }

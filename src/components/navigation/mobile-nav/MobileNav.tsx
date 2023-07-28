@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { NavLinkConfig } from '../../../config/navConfig'
 import Button from '../../m-blocks/Button'
-import { Breakpoint, MQ } from '../../../Breakpoint'
+import { tabletAndUp } from '../../../Breakpoint'
 import MobileNavMenu from './MobileNavMenu'
 import LogoLink from '../LogoLink'
 import { useNavigationTheme } from '../useNavigationTheme'
@@ -17,7 +17,7 @@ const MobileNavContainer = styled.nav`
   align-items: center;
   padding: ${({ theme }) => theme.spacing.xSmall};
 
-  @media ${MQ(Breakpoint.tablet)} {
+  @media ${tabletAndUp} {
     display: none;
   }
 `

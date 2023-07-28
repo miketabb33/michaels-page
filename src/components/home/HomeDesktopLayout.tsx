@@ -1,20 +1,21 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
-import { Breakpoint, MQ } from '../../Breakpoint'
+import { PageContainer } from '../m-blocks/Layout'
+import { tabletAndUp } from '../../Breakpoint'
 
-const Container = styled.div`
+const Container = styled(PageContainer)`
   display: none;
   height: 100%;
 
-  @media ${MQ(Breakpoint.tablet)} {
+  @media ${tabletAndUp} {
     display: flex;
   }
 `
 
 const ViewPort = styled.div`
+  padding-top: ${({ theme }) => theme.spacing.large};
   width: 100%;
   overflow-y: auto;
-  padding: ${({ theme }) => theme.spacing.xLarge} ${({ theme }) => theme.spacing.large};
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.xLarge};

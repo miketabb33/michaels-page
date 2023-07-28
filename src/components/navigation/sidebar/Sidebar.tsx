@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { NavLinkConfig } from '../../../config/navConfig'
 import Button from '../../m-blocks/Button'
-import { Breakpoint, MQ } from '../../../Breakpoint'
+import { tabletAndUp } from '../../../Breakpoint'
 import LogoLink from '../LogoLink'
 import SidebarMenu from './SidebarMenu'
 import { useNavigationTheme } from '../useNavigationTheme'
@@ -16,7 +16,7 @@ const Container = styled.nav`
   height: 100%;
   padding: ${({ theme }) => theme.spacing.small} 0;
 
-  @media ${MQ(Breakpoint.tablet)} {
+  @media ${tabletAndUp} {
     display: flex;
   }
 `

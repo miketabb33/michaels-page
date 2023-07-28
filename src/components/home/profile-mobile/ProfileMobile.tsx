@@ -5,7 +5,7 @@ import ProfileMobileSocialMedia from './ProfileMobileSocialMedia'
 import ProfileMobileTechStack from './ProfileMobileTechStack'
 
 const Container = styled.aside`
-  padding: ${({ theme }) => theme.spacing.xSmall};
+  padding-top: ${({ theme }) => theme.spacing.large};
   display: flex;
   flex-direction: column;
   align-items: center;

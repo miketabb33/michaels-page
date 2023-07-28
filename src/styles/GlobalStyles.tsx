@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import { Breakpoint, MQ } from '../Breakpoint'
+import { tabletAndUp } from '../Breakpoint'
 
 const GlobalStyle = createGlobalStyle`
 *,
@@ -21,7 +21,7 @@ html {
   color: ${({ theme }) => theme.color.text};
   box-sizing: border-box;
 
-  @media ${MQ(Breakpoint.mobileL)} {
+  @media ${tabletAndUp} {
     font-size: 62.5%; 
   }
 }

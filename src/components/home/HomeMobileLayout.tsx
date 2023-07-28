@@ -1,16 +1,16 @@
 import React from 'react'
 import { ChildrenProp } from '../../types/ChildrenProp'
 import styled from 'styled-components'
-import { Breakpoint, MQ } from '../../Breakpoint'
+import { tabletAndUp } from '../../Breakpoint'
+import { PageContainer } from '../m-blocks/Layout'
 
-const Container = styled.div`
+const Container = styled(PageContainer)`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.large};
-  padding: ${({ theme }) => theme.spacing.small};
   padding-bottom: 6rem;
 
-  @media ${MQ(Breakpoint.tablet)} {
+  @media ${tabletAndUp} {
     display: none;
   }
 `
