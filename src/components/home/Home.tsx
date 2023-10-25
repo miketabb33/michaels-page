@@ -7,6 +7,7 @@ import HomeMobileLayout from './HomeMobileLayout'
 import { useRequest } from '../../network/useRequest'
 import { Article, fetchArticleManifest } from '../../network/articleClient'
 import ArticleCard from '../article/ArticleCard'
+import { ENV } from '../../config/environments/currentEnv'
 
 const Home = () => {
   const { data: articles } = useRequest<Article[]>({ request: fetchArticleManifest })
@@ -15,7 +16,7 @@ const Home = () => {
       <HomeDesktopLayout
         centerSection={
           <>
-            {articles && <ArticleCard article={articles[0]} />}
+            {ENV.id === 'develop' && articles && <ArticleCard article={articles[0]} />}
             <WhatIDoHome />
             <IndustryKnowledgeHome />
             <TechnicalExpertiseHome />

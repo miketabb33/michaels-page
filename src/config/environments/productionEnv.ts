@@ -12,4 +12,5 @@ const firebaseConfig_Prod = {
 
 export const productionEnv: EnvConfig = {
   firebaseConfig: firebaseConfig_Prod,
+  id: 'production',
 }

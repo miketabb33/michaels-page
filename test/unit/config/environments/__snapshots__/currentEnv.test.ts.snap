@@ -11,6 +11,7 @@ exports[`Get Env should match snapshot for other env 1`] = `
     "projectId": "michael-website-19ed0",
     "storageBucket": "michael-website-19ed0.appspot.com",
   },
+  "id": "develop",
 }
 `;
 
@@ -25,5 +26,6 @@ exports[`Get Env should match snapshot for production env 1`] = `
     "projectId": "michael-website-prod",
     "storageBucket": "michael-website-prod.appspot.com",
   },
+  "id": "production",
 }
 `;

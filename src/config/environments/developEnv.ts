@@ -12,4 +12,5 @@ const firebaseConfig_Dev = {
 
 export const developEnv: EnvConfig = {
   firebaseConfig: firebaseConfig_Dev,
+  id: 'develop',
 }

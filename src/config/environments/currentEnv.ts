@@ -4,6 +4,7 @@ import { developEnv } from './developEnv'
 
 export type EnvConfig = {
   firebaseConfig: FirebaseOptions
+  id: 'production' | 'develop'
 }
 
 export const getEnv = (siteEnv: string): EnvConfig => {
