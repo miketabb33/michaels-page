@@ -10,10 +10,12 @@ describe('Fetch Article Manifest', () => {
   const TITLE_2 = 'any-title-2'
   const PATH_1 = 'test/path.md'
   const PATH_2 = 'other/path.md'
+  const SLUG_1 = 'any-slug-1'
+  const SLUG_2 = 'any-slug-2'
 
   const json = () => [
-    { title: TITLE_1, path: PATH_1 },
-    { title: TITLE_2, path: PATH_2 },
+    { title: TITLE_1, path: PATH_1, slug: SLUG_1 },
+    { title: TITLE_2, path: PATH_2, slug: SLUG_2 },
   ]
 
   it('should call method with correct params', async () => {
@@ -30,8 +32,10 @@ describe('Fetch Article Manifest', () => {
 
     expect(results[0].title).toEqual(TITLE_1)
     expect(results[0].path).toEqual(PATH_1)
+    expect(results[0].slug).toEqual(SLUG_1)
     expect(results[1].title).toEqual(TITLE_2)
     expect(results[1].path).toEqual(PATH_2)
+    expect(results[1].slug).toEqual(SLUG_2)
   })
 })
 

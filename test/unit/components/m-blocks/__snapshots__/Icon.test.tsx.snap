@@ -4,7 +4,7 @@ exports[`Icon should match snapshot 1`] = `
 <DocumentFragment>
   <img
     alt="rotate-icon"
-    src="images/icons/rotate.png"
+    src="/images/icons/rotate.png"
   />
 </DocumentFragment>
 `;

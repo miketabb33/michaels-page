@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 
 type UsePageArgs = {
   title?: string
+  deps?: React.DependencyList | undefined
 }
 
 export const usePageController = ({ title }: UsePageArgs) => {
@@ -14,9 +15,9 @@ export const usePageController = ({ title }: UsePageArgs) => {
   return { getDocumentTitle }
 }
 
-export const usePage = ({ title }: UsePageArgs) => {
+export const usePage = ({ title, deps = [] }: UsePageArgs) => {
   const { getDocumentTitle } = usePageController({ title })
   useEffect(() => {
     document.title = getDocumentTitle()
-  }, [])
+  }, deps)
 }

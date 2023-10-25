@@ -20,6 +20,6 @@ export default Image
 type ImageName = 'logo' | 'portrait'
 
 const imageMap = new Map<ImageName, string>([
-  ['logo', 'images/logo.png'],
-  ['portrait', 'images/portrait.jpeg'],
+  ['logo', '/images/logo.png'],
+  ['portrait', '/images/portrait.jpeg'],
 ])

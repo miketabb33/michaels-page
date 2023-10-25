@@ -1,8 +1,9 @@
 const articleRepoPath = 'https://raw.githubusercontent.com/miketabb33/michaels-articles/master'
 
-type Article = {
+export type Article = {
   title: string
   path: string
+  slug: string
 }
 
 export const fetchArticleManifest = async (): Promise<Article[]> => {
@@ -11,6 +12,7 @@ export const fetchArticleManifest = async (): Promise<Article[]> => {
   return data.map((d: Article) => {
     const article: Article = {
       title: d.title || '',
+      slug: d.slug || '',
       path: d.path || '',
     }
     return article
