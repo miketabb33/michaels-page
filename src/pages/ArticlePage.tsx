@@ -10,14 +10,14 @@ import SpinnerView from '../components/m-blocks/SpinnerView'
 
 const ArticlePage = () => {
   const { article, isLoading } = useInArticlePage()
-  return <NavLayout>{isLoading ? <SpinnerView /> : <ArticleSuccess article={article} />}</NavLayout>
+  return <NavLayout>{isLoading ? <SpinnerView /> : <ArticleLoaded article={article} />}</NavLayout>
 }
 
 type ArticleSuccessProps = {
   article?: Article
 }
 
-const ArticleSuccess = ({ article }: ArticleSuccessProps) => {
+const ArticleLoaded = ({ article }: ArticleSuccessProps) => {
   return (
     <PageContainer>
       {article ? (
@@ -32,7 +32,7 @@ const ArticleSuccess = ({ article }: ArticleSuccessProps) => {
   )
 }
 
-const useInArticlePage = () => {
+export const useInArticlePage = () => {
   const { useParams } = useRouter()
   const { slug } = useParams()
 

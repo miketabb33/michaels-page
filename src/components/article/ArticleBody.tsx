@@ -1,6 +1,7 @@
 import React from 'react'
 import { fetchArticle } from '../../network/articleClient'
 import { useRequest } from '../../network/useRequest'
+import MarkdownToArticleBody from './MarkdownToArticleBody'
 
 type ArticleBodyProps = {
   path: string
@@ -9,7 +10,7 @@ type ArticleBodyProps = {
 const ArticleBody = ({ path }: ArticleBodyProps) => {
   const { data: articleBody } = useRequest<string>({ request: () => fetchArticle(path) })
 
-  return <p>{articleBody}</p>
+  return <>{articleBody ? <MarkdownToArticleBody markdown={articleBody} /> : <p>...</p>}</>
 }
 
 export default ArticleBody
