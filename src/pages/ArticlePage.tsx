@@ -5,12 +5,21 @@ import { Article, fetchArticleManifest } from '../network/articleClient'
 import { useRequest } from '../network/useRequest'
 import ArticleBody from '../components/article/ArticleBody'
 import { usePage } from './usePage'
+import { PageContainer } from '../components/m-blocks/Layout'
+import SpinnerView from '../components/m-blocks/SpinnerView'
 
 const ArticlePage = () => {
-  const { article } = useInArticlePage()
+  const { article, isLoading } = useInArticlePage()
+  return <NavLayout>{isLoading ? <SpinnerView /> : <ArticleSuccess article={article} />}</NavLayout>
+}
 
+type ArticleSuccessProps = {
+  article?: Article
+}
+
+const ArticleSuccess = ({ article }: ArticleSuccessProps) => {
   return (
-    <NavLayout>
+    <PageContainer>
       {article ? (
         <>
           <h1>{article.title}</h1>
@@ -19,7 +28,7 @@ const ArticlePage = () => {
       ) : (
         <h1>No Article Found</h1>
       )}
-    </NavLayout>
+    </PageContainer>
   )
 }
 
@@ -27,12 +36,12 @@ const useInArticlePage = () => {
   const { useParams } = useRouter()
   const { slug } = useParams()
 
-  const { data: articles } = useRequest<Article[]>({ request: fetchArticleManifest })
+  const { data: articles, isLoading } = useRequest<Article[]>({ request: fetchArticleManifest })
   const article = articles?.find((article) => article.slug === slug)
 
   usePage({ title: article?.title || '', deps: [article] })
 
-  return { article }
+  return { article, isLoading }
 }
 
 export default ArticlePage
