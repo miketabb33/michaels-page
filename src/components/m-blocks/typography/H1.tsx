@@ -1,13 +1,22 @@
 import React, { ReactNode } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { Spacing, SpacingArgs, spacingController } from '../spacingController'
 
-const H1Element = styled.h1<{ ignoreDarkMode: boolean }>`
-  color: ${(props) => {
-    const lightModeColor = props.theme.staticColor.blue_800
-    if (props.ignoreDarkMode) return lightModeColor
-    return props.theme.color.id === 'light' ? lightModeColor : props.theme.staticColor.blue_50
-  }};
-  font-weight: 600;
+type StyledH1Props = {
+  ignoreDarkMode: boolean
+  spacing?: SpacingArgs
+}
+
+const H1Element = styled.h1<StyledH1Props>`
+  ${(props) => css`
+    color: ${() => {
+      const lightModeColor = props.theme.staticColor.blue_800
+      if (props.ignoreDarkMode) return lightModeColor
+      return props.theme.color.id === 'light' ? lightModeColor : props.theme.staticColor.blue_50
+    }};
+    font-weight: 600;
+    ${spacingController(props.spacing)}
+  `}
 `
 
 type H1Props = {
@@ -15,8 +24,12 @@ type H1Props = {
   ignoreDarkMode?: boolean
 }
 
-const H1 = ({ children, ignoreDarkMode = false }: H1Props) => {
-  return <H1Element ignoreDarkMode={ignoreDarkMode}>{children}</H1Element>
+const H1 = ({ children, ignoreDarkMode = false, spacing }: H1Props & Spacing) => {
+  return (
+    <H1Element ignoreDarkMode={ignoreDarkMode} spacing={spacing}>
+      {children}
+    </H1Element>
+  )
 }
 
 export default H1

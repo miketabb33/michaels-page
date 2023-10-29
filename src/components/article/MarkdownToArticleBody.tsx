@@ -13,8 +13,8 @@ export const MarkdownToArticleBody = ({ markdown }: MarkdownToArticleBodyProps) 
     <Markdown
       options={{
         overrides: {
-          h1: { component: H1 },
-          h2: { component: H2 },
+          h1: { component: H1, props: { spacing: { marginBottom: 'l' } } },
+          h2: { component: H2, props: { spacing: { marginBottom: 'm', marginTop: 'm' } } },
           p: { component: P },
         },
       }}

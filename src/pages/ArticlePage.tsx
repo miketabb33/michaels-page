@@ -7,6 +7,7 @@ import ArticleBody from '../components/article/ArticleBody'
 import { usePage } from './usePage'
 import { PageContainer } from '../components/m-blocks/Layout'
 import SpinnerView from '../components/m-blocks/SpinnerView'
+import H1 from '../components/m-blocks/typography/H1'
 
 const ArticlePage = () => {
   const { article, isLoading } = useInArticlePage()
@@ -22,11 +23,11 @@ const ArticleLoaded = ({ article }: ArticleSuccessProps) => {
     <PageContainer>
       {article ? (
         <>
-          <h1>{article.title}</h1>
+          <H1>{article.title}</H1>
           <ArticleBody path={article.path} />
         </>
       ) : (
-        <h1>No Article Found</h1>
+        <H1>No Article Found</H1>
       )}
     </PageContainer>
   )
