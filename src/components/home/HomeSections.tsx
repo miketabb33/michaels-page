@@ -2,7 +2,7 @@ import React from 'react'
 import H1 from '../m-blocks/typography/H1'
 import H3 from '../m-blocks/typography/H3'
 import styled from 'styled-components'
-import List, { ListItem } from '../m-blocks/List'
+import UnorderedList from '../m-blocks/UnorderedList'
 import Spacer from '../m-blocks/Spacer'
 
 const Bold = styled.strong`
@@ -54,16 +54,16 @@ export const IndustryKnowledgeHome = () => {
         Throughout my career, I have successfully delivered software solutions and provided consulting services across a
         diverse range of industries.
       </H3>
-      <List>
-        <ListItem>Communications</ListItem>
-        <ListItem>Digital Art Creation</ListItem>
-        <ListItem>E-Commerce</ListItem>
-        <ListItem>Education</ListItem>
-        <ListItem>Entertainment</ListItem>
-        <ListItem>Finance</ListItem>
-        <ListItem>Fitness</ListItem>
-        <ListItem>Medical</ListItem>
-      </List>
+      <UnorderedList>
+        <li>Communications</li>
+        <li>Digital Art Creation</li>
+        <li>E-Commerce</li>
+        <li>Education</li>
+        <li>Entertainment</li>
+        <li>Finance</li>
+        <li>Fitness</li>
+        <li>Medical</li>
+      </UnorderedList>
     </Section>
   )
 }
@@ -85,38 +85,38 @@ export const WhatIValueHome = () => {
     <Section delay={0.6}>
       <H1>What I value:</H1>
       <H3>Collaboration and Teamwork</H3>
-      <List>
-        <ListItem>Lean Management</ListItem>
-        <ListItem>Customer Collaboration</ListItem>
-        <ListItem>Extreme Programming</ListItem>
-        <ListItem>Agile Principles</ListItem>
-        <ListItem>Setting Expectations</ListItem>
-        <ListItem>Crucial Conversations</ListItem>
-      </List>
+      <UnorderedList>
+        <li>Lean Management</li>
+        <li>Customer Collaboration</li>
+        <li>Extreme Programming</li>
+        <li>Agile Principles</li>
+        <li>Setting Expectations</li>
+        <li>Crucial Conversations</li>
+      </UnorderedList>
       <Spacer size="small" />
       <H3>Code Quality</H3>
-      <List>
-        <ListItem>Scalability (Extensibility)</ListItem>
-        <ListItem>Reliability</ListItem>
-        <ListItem>Code Reusability</ListItem>
-        <ListItem>Maintainability (Readability)</ListItem>
-        <ListItem>Performance Optimization</ListItem>
-      </List>
+      <UnorderedList>
+        <li>Scalability (Extensibility)</li>
+        <li>Reliability</li>
+        <li>Code Reusability</li>
+        <li>Maintainability (Readability)</li>
+        <li>Performance Optimization</li>
+      </UnorderedList>
       <Spacer size="small" />
       <H3>Monitoring and Visibility</H3>
-      <List>
-        <ListItem>Analytics and Error Logging</ListItem>
-        <ListItem>Agile Metrics and Team Performance</ListItem>
-        <ListItem>User Feedback</ListItem>
-      </List>
+      <UnorderedList>
+        <li>Analytics and Error Logging</li>
+        <li>Agile Metrics and Team Performance</li>
+        <li>User Feedback</li>
+      </UnorderedList>
       <Spacer size="small" />
       <H3>Healthy Mindset</H3>
-      <List>
-        <ListItem>Flow State</ListItem>
-        <ListItem>Fun</ListItem>
-        <ListItem>1% gains</ListItem>
-        <ListItem>Structured work day</ListItem>
-      </List>
+      <UnorderedList>
+        <li>Flow State</li>
+        <li>Fun</li>
+        <li>1% gains</li>
+        <li>Structured work day</li>
+      </UnorderedList>
     </Section>
   )
 }

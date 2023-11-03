@@ -3,22 +3,21 @@ import { ChildrenProp } from '../../../types/ChildrenProp'
 import styled, { css } from 'styled-components'
 import { Spacing, SpacingArgs, spacingController } from '../spacingController'
 
-type StyledH3Props = {
+type StyledH4Props = {
   $spacing?: SpacingArgs
 }
 
-const H3Element = styled.h3<StyledH3Props>`
+const H4Element = styled.h4<StyledH4Props>`
   ${({ theme, $spacing }) => css`
-    font-size: 2.4rem;
+    font-size: 1.8rem;
     font-weight: 500;
     color: ${theme.color.id === 'light' ? theme.staticColor.blue_950 : theme.staticColor.blue_50};
-
     ${spacingController($spacing)}
   `}
 `
 
-const H3 = ({ children, spacing }: ChildrenProp & Spacing) => {
-  return <H3Element $spacing={spacing}>{children}</H3Element>
+const H4 = ({ children, spacing }: ChildrenProp & Spacing) => {
+  return <H4Element $spacing={spacing}>{children}</H4Element>
 }
 
-export default H3
+export default H4

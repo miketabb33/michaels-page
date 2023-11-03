@@ -4,18 +4,19 @@ import { Spacing, SpacingArgs, spacingController } from '../spacingController'
 
 type StyledH1Props = {
   ignoreDarkMode: boolean
-  spacing?: SpacingArgs
+  $spacing?: SpacingArgs
 }
 
 const H1Element = styled.h1<StyledH1Props>`
   ${(props) => css`
+    font-size: 3.6rem;
+    font-weight: 600;
     color: ${() => {
       const lightModeColor = props.theme.staticColor.blue_800
       if (props.ignoreDarkMode) return lightModeColor
       return props.theme.color.id === 'light' ? lightModeColor : props.theme.staticColor.blue_50
     }};
-    font-weight: 600;
-    ${spacingController(props.spacing)}
+    ${spacingController(props.$spacing)}
   `}
 `
 
@@ -26,7 +27,7 @@ type H1Props = {
 
 const H1 = ({ children, ignoreDarkMode = false, spacing }: H1Props & Spacing) => {
   return (
-    <H1Element ignoreDarkMode={ignoreDarkMode} spacing={spacing}>
+    <H1Element ignoreDarkMode={ignoreDarkMode} $spacing={spacing}>
       {children}
     </H1Element>
   )
