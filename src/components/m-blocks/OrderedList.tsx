@@ -19,6 +19,8 @@ const OrderedListStyle = styled.ul<OlStyleProps>`
 
   li {
     font-size: 1.8rem;
+    line-height: 3rem;
+
     list-style: decimal;
 
     ::before {

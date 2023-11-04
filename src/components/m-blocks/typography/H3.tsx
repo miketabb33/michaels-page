@@ -10,7 +10,8 @@ type StyledH3Props = {
 const H3Element = styled.h3<StyledH3Props>`
   ${({ theme, $spacing }) => css`
     font-size: 2.4rem;
-    font-weight: 500;
+    line-height: 4.2rem;
+    font-weight: 600;
     color: ${theme.color.id === 'light' ? theme.staticColor.blue_950 : theme.staticColor.blue_50};
 
     ${spacingController($spacing)}

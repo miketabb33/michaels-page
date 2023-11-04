@@ -27,6 +27,7 @@ const Home = () => {
       />
       <HomeMobileLayout>
         <ProfileMobile />
+        {ENV.id === 'develop' && articles && <ArticleCard article={articles[0]} />}
         <WhatIDoHome />
         <IndustryKnowledgeHome />
         <TechnicalExpertiseHome />

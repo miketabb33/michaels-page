@@ -10,6 +10,7 @@ type StyledH1Props = {
 const H1Element = styled.h1<StyledH1Props>`
   ${(props) => css`
     font-size: 3.6rem;
+    line-height: 6rem;
     font-weight: 600;
     color: ${() => {
       const lightModeColor = props.theme.staticColor.blue_800

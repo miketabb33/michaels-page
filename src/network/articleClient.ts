@@ -4,6 +4,9 @@ export type Article = {
   title: string
   path: string
   slug: string
+  description: string
+  thumbnailUrl: string
+  createdOn: string
 }
 
 export const fetchArticleManifest = async (): Promise<Article[]> => {
@@ -14,6 +17,9 @@ export const fetchArticleManifest = async (): Promise<Article[]> => {
       title: d.title || '',
       slug: d.slug || '',
       path: d.path || '',
+      description: d.description || '',
+      thumbnailUrl: d.thumbnailUrl || '',
+      createdOn: d.createdOn || '',
     }
     return article
   })

@@ -5,11 +5,12 @@ import React from 'react'
 
 const SocialIcon = styled(Icon)`
   width: 2rem;
-  aspect-ratio: 1;
+  height: 2rem;
 `
 
 const Anchor = styled.a`
   display: flex;
+  align-items: center;
   gap: ${({ theme }) => theme.spacing.xSmall};
   text-decoration: none;
   color: ${({ theme }) => theme.color.text};
