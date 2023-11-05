@@ -5,9 +5,10 @@ import { Article, fetchArticleManifest } from '../network/articleClient'
 import { useRequest } from '../network/useRequest'
 import ArticleBody from '../components/article/ArticleBody'
 import { usePage } from './usePage'
-import { PageContainer } from '../components/m-blocks/Layout'
+import { ArticleLayout } from '../components/m-blocks/Layout'
 import SpinnerView from '../components/m-blocks/SpinnerView'
 import H1 from '../components/m-blocks/typography/H1'
+import ArticleHeader from '../components/article/ArticleHeader'
 
 const ArticlePage = () => {
   const { article, isLoading } = useInArticlePage()
@@ -20,16 +21,16 @@ type ArticleSuccessProps = {
 
 const ArticleLoaded = ({ article }: ArticleSuccessProps) => {
   return (
-    <PageContainer>
+    <ArticleLayout>
       {article ? (
         <>
-          <H1>{article.title}</H1>
+          <ArticleHeader article={article} />
           <ArticleBody path={article.path} />
         </>
       ) : (
         <H1>No Article Found</H1>
       )}
-    </PageContainer>
+    </ArticleLayout>
   )
 }
 

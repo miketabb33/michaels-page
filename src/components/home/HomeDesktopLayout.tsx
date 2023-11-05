@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
-import { PageContainer } from '../m-blocks/Layout'
+import { PageLayout } from '../m-blocks/Layout'
 import { tabletAndUp } from '../../Breakpoint'
 
-const Container = styled(PageContainer)`
+const Container = styled(PageLayout)`
   display: none;
   height: 100%;
 

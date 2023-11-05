@@ -5,6 +5,7 @@ import styled from 'styled-components'
 const ListItem = styled.li`
   padding: 0.25rem;
   list-style: decimal;
+  color: ${({ theme }) => theme.color.text};
 
   &:first-child {
     font-weight: bold;

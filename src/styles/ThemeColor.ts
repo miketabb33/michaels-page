@@ -24,7 +24,7 @@ export const lightThemeColor: ThemeColor = {
   secondary: colorTokens.orange_500,
   secondaryDark: colorTokens.orange_600,
   accent: colorTokens.red_500,
-  text: colorTokens.gray_950,
+  text: colorTokens.gray_900,
 }
 
 export const darkThemeColor: ThemeColor = {

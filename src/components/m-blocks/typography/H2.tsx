@@ -11,7 +11,7 @@ const H2Element = styled.h2<StyledH2Props>`
   font-size: 3rem;
   line-height: 5rem;
   font-weight: 600;
-  color: ${({ theme }) => (theme.color.id === 'light' ? theme.staticColor.blue_950 : theme.staticColor.blue_50)};
+  color: ${({ theme }) => theme.color.text};
   ${({ $spacing }) => spacingController($spacing)}
 `
 

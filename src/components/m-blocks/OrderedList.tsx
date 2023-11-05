@@ -18,6 +18,7 @@ const OrderedListStyle = styled.ul<OlStyleProps>`
   }
 
   li {
+    color: ${({ theme }) => theme.color.text};
     font-size: 1.8rem;
     line-height: 3rem;
 

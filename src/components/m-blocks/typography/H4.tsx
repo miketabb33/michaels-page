@@ -12,7 +12,7 @@ const H4Element = styled.h4<StyledH4Props>`
     font-size: 1.8rem;
     line-height: 3rem;
     font-weight: 700;
-    color: ${theme.color.id === 'light' ? theme.staticColor.blue_950 : theme.staticColor.blue_50};
+    color: ${theme.color.text};
     ${spacingController($spacing)}
   `}
 `

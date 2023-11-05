@@ -17,6 +17,7 @@ const UnorderedListStyle = styled.ul<UlStyleProps>`
   li {
     font-size: 1.8rem;
     line-height: 3rem;
+    color: ${({ theme }) => theme.color.text};
 
     &::before {
       display: inline-block;

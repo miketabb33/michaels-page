@@ -12,8 +12,7 @@ const H3Element = styled.h3<StyledH3Props>`
     font-size: 2.4rem;
     line-height: 4.2rem;
     font-weight: 600;
-    color: ${theme.color.id === 'light' ? theme.staticColor.blue_950 : theme.staticColor.blue_50};
-
+    color: ${theme.color.text};
     ${spacingController($spacing)}
   `}
 `

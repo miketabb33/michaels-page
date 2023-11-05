@@ -2,9 +2,9 @@ import React from 'react'
 import { ChildrenProp } from '../../types/ChildrenProp'
 import styled from 'styled-components'
 import { tabletAndUp } from '../../Breakpoint'
-import { PageContainer } from '../m-blocks/Layout'
+import { PageLayout } from '../m-blocks/Layout'
 
-const Container = styled(PageContainer)`
+const Container = styled(PageLayout)`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.large};

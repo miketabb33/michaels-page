@@ -14,10 +14,18 @@ const layout = css`
   }
 `
 
-export const Section = styled.section`
+export const ArticleLayout = styled.div`
+  ${layout}
+
+  @media ${tabletAndUp} {
+    max-width: 80rem;
+  }
+`
+
+export const SectionLayout = styled.section`
   ${layout}
 `
 
-export const PageContainer = styled.div`
+export const PageLayout = styled.div`
   ${layout}
 `

@@ -7,6 +7,7 @@ export type Article = {
   description: string
   thumbnailUrl: string
   createdOn: string
+  readingTime: number
 }
 
 export const fetchArticleManifest = async (): Promise<Article[]> => {
@@ -20,6 +21,7 @@ export const fetchArticleManifest = async (): Promise<Article[]> => {
       description: d.description || '',
       thumbnailUrl: d.thumbnailUrl || '',
       createdOn: d.createdOn || '',
+      readingTime: d.readingTime || 0,
     }
     return article
   })

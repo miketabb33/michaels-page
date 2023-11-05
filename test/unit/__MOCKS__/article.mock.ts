@@ -7,6 +7,7 @@ export const ARTICLE_MOCK_1: Article = {
   description: 'article1 description',
   thumbnailUrl: 'article1.jpg',
   createdOn: 'February 13th, 1990',
+  readingTime: 1,
 }
 export const ARTICLE_MOCK_2: Article = {
   title: 'Article 2',
@@ -15,6 +16,7 @@ export const ARTICLE_MOCK_2: Article = {
   description: 'article2 description',
   thumbnailUrl: 'article2.jpg',
   createdOn: 'February 14th, 1990',
+  readingTime: 2,
 }
 export const ARTICLE_MOCK_3: Article = {
   title: 'Article 3',
@@ -23,6 +25,7 @@ export const ARTICLE_MOCK_3: Article = {
   description: 'article2 description',
   thumbnailUrl: 'article2.jpg',
   createdOn: 'February 15th, 1990',
+  readingTime: 3,
 }
 
 export const ARTICLES_MOCK = [ARTICLE_MOCK_1, ARTICLE_MOCK_2, ARTICLE_MOCK_3]

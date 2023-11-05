@@ -7,6 +7,7 @@ import H3 from '../m-blocks/typography/H3'
 import UnorderedList from '../m-blocks/UnorderedList'
 import OrderedList from '../m-blocks/OrderedList'
 import H4 from '../m-blocks/typography/H4'
+import TextLink from '../m-blocks/TextLink'
 
 type MarkdownToArticleBodyProps = {
   markdown: string
@@ -24,6 +25,7 @@ export const MarkdownToArticleBody = ({ markdown }: MarkdownToArticleBodyProps) 
           p: { component: P, props: { spacing: { marginTop: 's' } } },
           ul: { component: UnorderedList, props: { spacing: { marginTop: 'm' } } },
           ol: { component: OrderedList, props: { spacing: { marginTop: 'm' } } },
+          a: { component: TextLink },
         },
       }}
     >

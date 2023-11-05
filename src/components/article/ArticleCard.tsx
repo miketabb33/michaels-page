@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import H4 from '../m-blocks/typography/H4'
 import P from '../m-blocks/typography/P'
 import H1 from '../m-blocks/typography/H1'
+import Small from '../m-blocks/typography/Small'
 
 type ArticleCardProps = {
   article: Article
@@ -17,13 +18,6 @@ const ArticleImage = styled.img`
 
 const Container = styled.div`
   margin: 3rem;
-`
-
-const Date = styled.p`
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: ${({ theme }) => theme.color.accent};
-  margin-top: ${({ theme }) => theme.spacing.medium};
 `
 
 const ArticleContainer = styled.div`
@@ -38,6 +32,13 @@ const ArticleContainer = styled.div`
 `
 
 const ArticleCard = ({ article }: ArticleCardProps) => {
+  const createdOnDate = new Date(article.createdOn)
+  const formattedCreatedOn = createdOnDate.toLocaleDateString('default', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  })
+
   return (
     <Container>
       <H1>Articles:</H1>
@@ -48,7 +49,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
             <CardContent>
               <H4>{article.title}</H4>
               <P>{article.description}</P>
-              <Date>{article.createdOn}</Date>
+              <Small spacing={{ marginTop: 'm' }}>{formattedCreatedOn}</Small>
             </CardContent>
           </Card>
         </RouterLink>
