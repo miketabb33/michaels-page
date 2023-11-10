@@ -28,8 +28,8 @@ export const useInArticleView = (articleMeta: ArticleMeta) => {
     const AVG_WORD_SIZE = 4.7
     const AVG_WORDS_READ_PER_MINUTE = 283
 
-    const charactorCount = articleBody.length
-    const amountOfWords = Math.round(charactorCount / AVG_WORD_SIZE)
+    const characterCount = articleBody.length
+    const amountOfWords = Math.round(characterCount / AVG_WORD_SIZE)
     const readingTime = Math.round(amountOfWords / AVG_WORDS_READ_PER_MINUTE)
 
     return readingTime

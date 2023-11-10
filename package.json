@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/miketabb33/michaels-page#readme",
   "scripts": {
-    "dev": "SITE_ENV=develop webpack server --mode=development",
+    "dev": "webpack server --mode=development",
     "build": "SITE_ENV=production webpack --mode=production",
     "test": "jest",
     "test:watch": "jest --watch",
