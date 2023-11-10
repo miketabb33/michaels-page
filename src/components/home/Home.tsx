@@ -5,12 +5,12 @@ import { IndustryKnowledgeHome, TechnicalExpertiseHome, WhatIDoHome, WhatIValueH
 import ProfileMobile from './profile-mobile/ProfileMobile'
 import HomeMobileLayout from './HomeMobileLayout'
 import { useRequest } from '../../network/useRequest'
-import { Article, fetchArticleManifest } from '../../network/articleClient'
+import { ArticleMeta, fetchArticleManifest } from '../../network/articleClient'
 import ArticleCard from '../article/ArticleCard'
 import { ENV } from '../../config/environments/currentEnv'
 
 const Home = () => {
-  const { data: articles } = useRequest<Article[]>({ request: fetchArticleManifest })
+  const { data: articles } = useRequest<ArticleMeta[]>({ request: fetchArticleManifest })
   return (
     <>
       <HomeDesktopLayout

@@ -1,36 +1,20 @@
 import React from 'react'
 import NavLayout from '../components/layouts/NavLayout'
 import { useRouter } from '../router/useRouter'
-import { Article, fetchArticleManifest } from '../network/articleClient'
+import { ArticleMeta, fetchArticleManifest } from '../network/articleClient'
 import { useRequest } from '../network/useRequest'
-import ArticleBody from '../components/article/ArticleBody'
 import { usePage } from './usePage'
-import { ArticleLayout } from '../components/m-blocks/Layout'
 import SpinnerView from '../components/m-blocks/SpinnerView'
-import H1 from '../components/m-blocks/typography/H1'
-import ArticleHeader from '../components/article/ArticleHeader'
+import ArticleView, { ArticleNotFound } from '../components/article/ArticleView'
 
 const ArticlePage = () => {
-  const { article, isLoading } = useInArticlePage()
-  return <NavLayout>{isLoading ? <SpinnerView /> : <ArticleLoaded article={article} />}</NavLayout>
-}
-
-type ArticleSuccessProps = {
-  article?: Article
-}
-
-const ArticleLoaded = ({ article }: ArticleSuccessProps) => {
+  const { article, showLoading, showArticle, showNoArtilcle } = useInArticlePage()
   return (
-    <ArticleLayout>
-      {article ? (
-        <>
-          <ArticleHeader article={article} />
-          <ArticleBody path={article.path} />
-        </>
-      ) : (
-        <H1>No Article Found</H1>
-      )}
-    </ArticleLayout>
+    <NavLayout>
+      {showLoading && <SpinnerView />}
+      {showArticle && article && <ArticleView articleMeta={article} />}
+      {showNoArtilcle && <ArticleNotFound />}
+    </NavLayout>
   )
 }
 
@@ -38,12 +22,17 @@ export const useInArticlePage = () => {
   const { useParams } = useRouter()
   const { slug } = useParams()
 
-  const { data: articles, isLoading } = useRequest<Article[]>({ request: fetchArticleManifest })
+  const { data: articles, isLoading } = useRequest<ArticleMeta[]>({ request: fetchArticleManifest })
   const article = articles?.find((article) => article.slug === slug)
 
   usePage({ title: article?.title || '', deps: [article] })
 
-  return { article, isLoading }
+  return {
+    article,
+    showLoading: isLoading,
+    showArticle: !isLoading && !!article,
+    showNoArtilcle: !isLoading && !article,
+  }
 }
 
 export default ArticlePage

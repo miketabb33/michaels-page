@@ -1,5 +1,5 @@
 import React from 'react'
-import { Article } from '../../network/articleClient'
+import { ArticleMeta } from '../../network/articleClient'
 import H1 from '../m-blocks/typography/H1'
 import styled from 'styled-components'
 import H4 from '../m-blocks/typography/H4'
@@ -17,6 +17,7 @@ const Row = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: end;
+  height: 3.1rem;
 `
 
 const ArticleLine = styled.div`
@@ -27,11 +28,12 @@ const ArticleLine = styled.div`
 `
 
 type ArticleHeaderProps = {
-  article: Article
+  articleMeta: ArticleMeta
+  readingTime: number | null
 }
 
-const ArticleHeader = ({ article }: ArticleHeaderProps) => {
-  const createdOnDate = new Date(article.createdOn)
+const ArticleHeader = ({ articleMeta, readingTime }: ArticleHeaderProps) => {
+  const createdOnDate = new Date(articleMeta.createdOn)
   const formattedCreatedOn = createdOnDate.toLocaleDateString('default', {
     month: 'long',
     day: 'numeric',
@@ -40,13 +42,13 @@ const ArticleHeader = ({ article }: ArticleHeaderProps) => {
 
   return (
     <Container>
-      <H1>{article.title}</H1>
-      <H4>{article.description}</H4>
+      <H1>{articleMeta.title}</H1>
+      <H4>{articleMeta.description}</H4>
       <Row>
         <Small>{formattedCreatedOn}</Small>
-        <P>{article.readingTime} min read</P>
+        {readingTime && <P>{readingTime} min read</P>}
       </Row>
-      <img src={article.thumbnailUrl} />
+      <img src={articleMeta.thumbnailUrl} />
       <ArticleLine />
     </Container>
   )

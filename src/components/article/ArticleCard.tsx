@@ -1,5 +1,5 @@
 import React from 'react'
-import { Article } from '../../network/articleClient'
+import { ArticleMeta } from '../../network/articleClient'
 import RouterLink from '../../router/RouterLink'
 import Card, { CardContent } from '../m-blocks/Card'
 import styled from 'styled-components'
@@ -9,7 +9,7 @@ import H1 from '../m-blocks/typography/H1'
 import Small from '../m-blocks/typography/Small'
 
 type ArticleCardProps = {
-  article: Article
+  article: ArticleMeta
 }
 
 const ArticleImage = styled.img`
