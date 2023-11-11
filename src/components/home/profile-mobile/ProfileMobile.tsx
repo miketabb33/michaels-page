@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import ProfileMobileTop from './ProfileMobileTop'
-import ProfileMobileSocialMedia from './ProfileMobileSocialMedia'
+import ProfileMobileIconLinks from './ProfileMobileIconLinks'
 import ProfileMobileTechStack from './ProfileMobileTechStack'
 
 const Container = styled.aside`
@@ -17,7 +17,7 @@ const ProfileMobile = () => {
     <Container>
       <ProfileMobileTop />
       <ProfileMobileTechStack />
-      <ProfileMobileSocialMedia />
+      <ProfileMobileIconLinks />
     </Container>
   )
 }

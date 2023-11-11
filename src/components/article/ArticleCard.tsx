@@ -3,10 +3,10 @@ import { ArticleMeta } from '../../network/articleClient'
 import RouterLink from '../../router/RouterLink'
 import Card, { CardContent } from '../m-blocks/Card'
 import styled from 'styled-components'
-import H4 from '../m-blocks/typography/H4'
 import P from '../m-blocks/typography/P'
 import H1 from '../m-blocks/typography/H1'
 import Small from '../m-blocks/typography/Small'
+import H3 from '../m-blocks/typography/H3'
 
 type ArticleCardProps = {
   article: ArticleMeta
@@ -47,7 +47,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
           <Card>
             <ArticleImage src={article.thumbnailUrl} />
             <CardContent>
-              <H4>{article.title}</H4>
+              <H3>{article.title}</H3>
               <P>{article.description}</P>
               <Small spacing={{ marginTop: 'm' }}>{formattedCreatedOn}</Small>
             </CardContent>

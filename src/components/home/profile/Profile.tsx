@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Image from '../../m-blocks/Image'
-import SocialMediaLinks from './SocialProfileLinks'
+import ProfileIconTitles from './ProfileIconTitles'
 import ProfileDetails from './ProfileDetails'
 
 const Container = styled.div`
@@ -29,7 +29,7 @@ const Profile = () => {
       <PortraitImage />
       <Content>
         <ProfileDetails />
-        <SocialMediaLinks />
+        <ProfileIconTitles />
       </Content>
     </Container>
   )
