@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from '../../m-blocks/Button'
 import { saveScore } from '../../../network/pong/scores'
 import GameModal from '../../game-blocks/GameModal'
@@ -27,9 +27,8 @@ const PongGameOverMenu = (props: PongGameOverModalProps) => {
 }
 
 export const usePongGameOverMenu = ({ onReturnToMainMenu, score }: PongGameOverModalProps) => {
+  const [gameOverTitle] = useState(randomlyPick(pongGameOverMenuGameOverTitles))
   const nameInput = useWithInput({ placeholder: 'Name For High Score' })
-
-  const gameOverTitle = randomlyPick(pongGameOverMenuGameOverTitles)
 
   const onSave = () => {
     saveScore({ name: safeName(), score }).catch(console.error)

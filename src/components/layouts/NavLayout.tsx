@@ -1,7 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { navConfig } from '../../config/navConfig'
-import { tabletAndUp } from '../../Breakpoint'
+import { tabLandAndUp } from '../../styles/Responsive'
 import { ChildrenProp } from '../../types/ChildrenProp'
 import MobileNav, { MOBILE_NAV_HEIGHT } from '../navigation/mobile-nav/MobileNav'
 import Sidebar from '../navigation/sidebar/Sidebar'
@@ -13,10 +13,10 @@ const Container = styled.div`
   grid-template-columns: auto;
   grid-template-rows: ${MOBILE_NAV_HEIGHT} 1fr;
 
-  @media ${tabletAndUp} {
+  ${tabLandAndUp(css`
     grid-template-columns: 12rem 1fr;
     grid-template-rows: auto;
-  }
+  `)}
 `
 
 const Main = styled.main`

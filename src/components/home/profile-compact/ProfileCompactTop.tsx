@@ -23,7 +23,7 @@ const TextWell = styled.div`
   width: 100%;
 `
 
-const ProfileMobileTop = () => (
+const ProfileCompactTop = () => (
   <Container>
     <Portrait imageName="portrait" />
     <TextWell>
@@ -34,4 +34,4 @@ const ProfileMobileTop = () => (
   </Container>
 )
 
-export default ProfileMobileTop
+export default ProfileCompactTop

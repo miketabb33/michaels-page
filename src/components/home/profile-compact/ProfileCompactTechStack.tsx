@@ -7,7 +7,7 @@ const TechStackRow = styled.div`
   align-items: center;
 `
 
-const ProfileMobileTechStack = () => {
+const ProfileCompactTechStack = () => {
   return (
     <TechStackRow>
       <H3>React • Typescript • Swift • Xcode</H3>
@@ -15,4 +15,4 @@ const ProfileMobileTechStack = () => {
   )
 }
 
-export default ProfileMobileTechStack
+export default ProfileCompactTechStack

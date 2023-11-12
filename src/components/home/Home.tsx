@@ -1,39 +1,65 @@
 import React from 'react'
 import Profile from './profile/Profile'
-import HomeDesktopLayout from './HomeDesktopLayout'
 import { IndustryKnowledgeHome, TechnicalExpertiseHome, WhatIDoHome, WhatIValueHome } from './HomeSections'
-import ProfileMobile from './profile-mobile/ProfileMobile'
-import HomeMobileLayout from './HomeMobileLayout'
 import { useRequest } from '../../network/useRequest'
 import { ArticleMeta, fetchArticleManifest } from '../../network/articleClient'
 import ArticleCard from '../article/ArticleCard'
 import { ENV } from '../../config/environments/currentEnv'
+import styled, { css } from 'styled-components'
+import { PageLayout } from '../m-blocks/Layout'
+import { hideOnAndUp, showOnAndUp, tabLandAndUp } from '../../styles/Responsive'
+import ProfileCompact from './profile-compact/ProfileCompact'
+
+const Container = styled(PageLayout)`
+  display: flex;
+
+  ${tabLandAndUp(css`
+    height: 100%;
+  `)}
+`
+
+const ViewPort = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    gap: ${theme.spacing.large};
+    padding-top: 3rem;
+    padding-bottom: 6rem;
+
+    ${tabLandAndUp(css`
+      overflow-y: auto;
+    `)}
+  `}
+`
+
+const ProfileMobile = styled.div`
+  ${hideOnAndUp('tablet-landscape')}
+`
+
+const Aside = styled.aside`
+  max-width: 27rem;
+  min-width: 27rem;
+  ${showOnAndUp('tablet-landscape')}
+`
 
 const Home = () => {
   const { data: articles } = useRequest<ArticleMeta[]>({ request: fetchArticleManifest })
   return (
-    <>
-      <HomeDesktopLayout
-        centerSection={
-          <>
-            {ENV.id === 'develop' && articles && <ArticleCard article={articles[0]} />}
-            <WhatIDoHome />
-            <IndustryKnowledgeHome />
-            <TechnicalExpertiseHome />
-            <WhatIValueHome />
-          </>
-        }
-        aside={<Profile />}
-      />
-      <HomeMobileLayout>
-        <ProfileMobile />
+    <Container>
+      <ViewPort>
+        <ProfileMobile>
+          <ProfileCompact />
+        </ProfileMobile>
         {ENV.id === 'develop' && articles && <ArticleCard article={articles[0]} />}
         <WhatIDoHome />
         <IndustryKnowledgeHome />
         <TechnicalExpertiseHome />
         <WhatIValueHome />
-      </HomeMobileLayout>
-    </>
+      </ViewPort>
+      <Aside>
+        <Profile />
+      </Aside>
+    </Container>
   )
 }
 

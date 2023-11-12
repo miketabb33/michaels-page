@@ -13,7 +13,7 @@ const Row = styled.div`
   gap: ${({ theme }) => theme.spacing.medium};
 `
 
-const ProfileMobileIconLinks = () => (
+const ProfileCompactIconLinks = () => (
   <Row>
     <IconLink href="https://www.linkedin.com/in/michael-tabb-24b34488/">
       <Icon iconName="linkedin" />
@@ -28,4 +28,4 @@ const ProfileMobileIconLinks = () => (
   </Row>
 )
 
-export default ProfileMobileIconLinks
+export default ProfileCompactIconLinks

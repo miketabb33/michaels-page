@@ -16,13 +16,10 @@ const ArticleImage = styled.img`
   object-fit: cover;
 `
 
-const Container = styled.div`
-  margin: 3rem;
-`
-
 const ArticleContainer = styled.div`
   transition: all 0.15s;
   border-radius: ${({ theme }) => theme.spacing.medium};
+  margin: 0 3rem;
 
   &:hover {
     transform: translateY(-0.2rem);
@@ -40,7 +37,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
   })
 
   return (
-    <Container>
+    <div>
       <H1>Articles:</H1>
       <ArticleContainer>
         <RouterLink linkTo={`article/${article.slug}`}>
@@ -54,7 +51,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
           </Card>
         </RouterLink>
       </ArticleContainer>
-    </Container>
+    </div>
   )
 }
 

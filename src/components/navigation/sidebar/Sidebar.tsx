@@ -1,8 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { NavLinkConfig } from '../../../config/navConfig'
 import Button from '../../m-blocks/Button'
-import { tabletAndUp } from '../../../Breakpoint'
+import { tabLandAndUp } from '../../../styles/Responsive'
 import LogoLink from '../LogoLink'
 import SidebarMenu from './SidebarMenu'
 import { useNavigationTheme } from '../useNavigationTheme'
@@ -10,15 +10,15 @@ import { useNavigationTheme } from '../useNavigationTheme'
 const Container = styled.nav`
   background-color: ${({ theme }) => theme.color.secondary};
   box-shadow: ${({ theme }) => theme.shadow.crisp};
-  display: none;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
   padding: ${({ theme }) => theme.spacing.small} 0;
+  display: none;
 
-  @media ${tabletAndUp} {
+  ${tabLandAndUp(css`
     display: flex;
-  }
+  `)}
 `
 
 const SidebarTopContent = styled.ul`

@@ -8,12 +8,12 @@ import SpinnerView from '../components/m-blocks/SpinnerView'
 import ArticleView, { ArticleNotFound } from '../components/article/ArticleView'
 
 const ArticlePage = () => {
-  const { article, showLoading, showArticle, showNoArtilcle } = useInArticlePage()
+  const { article, showLoading, showArticle, showNoArticle } = useInArticlePage()
   return (
     <NavLayout>
       {showLoading && <SpinnerView />}
       {showArticle && article && <ArticleView articleMeta={article} />}
-      {showNoArtilcle && <ArticleNotFound />}
+      {showNoArticle && <ArticleNotFound />}
     </NavLayout>
   )
 }
@@ -31,7 +31,7 @@ export const useInArticlePage = () => {
     article,
     showLoading: isLoading,
     showArticle: !isLoading && !!article,
-    showNoArtilcle: !isLoading && !article,
+    showNoArticle: !isLoading && !article,
   }
 }
 

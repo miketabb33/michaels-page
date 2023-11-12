@@ -1,25 +1,29 @@
 import styled, { css } from 'styled-components'
-import { desktopAndUp, tabletAndUp } from '../../Breakpoint'
+import { desktopAndUp, tabPortAndUp } from '../../styles/Responsive'
 
 const layout = css`
   width: 100%;
-  padding: 0 1.9rem;
+  padding-left: 1.9rem;
+  padding-right: 1.9rem;
 
-  @media ${tabletAndUp} {
-    padding: 0 3rem;
-  }
-  @media ${desktopAndUp} {
+  ${tabPortAndUp(css`
+    padding-left: 3rem;
+    padding-right: 3rem;
+  `)}
+
+  ${desktopAndUp(css`
     max-width: 125.4rem;
     margin: auto;
-  }
+  `)}
 `
 
 export const ArticleLayout = styled.div`
   ${layout}
 
-  @media ${tabletAndUp} {
+  ${tabPortAndUp(css`
     max-width: 80rem;
-  }
+    margin: auto;
+  `)}
 `
 
 export const SectionLayout = styled.section`

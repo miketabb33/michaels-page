@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components'
-import { tabletAndUp } from '../Breakpoint'
+import { createGlobalStyle, css } from 'styled-components'
+import { tabPortAndUp } from './Responsive'
 
 const GlobalStyle = createGlobalStyle`
 *,
@@ -21,9 +21,9 @@ html {
   color: ${({ theme }) => theme.color.text};
   box-sizing: border-box;
 
-  @media ${tabletAndUp} {
-    font-size: 62.5%; 
-  }
+  ${tabPortAndUp(css`
+    font-size: 62.5%;
+  `)}
 }
 
 body {
