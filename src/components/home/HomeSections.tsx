@@ -4,11 +4,7 @@ import styled from 'styled-components'
 import UnorderedList from '../m-blocks/UnorderedList'
 import Spacer from '../m-blocks/Spacer'
 import H4 from '../m-blocks/typography/H4'
-
-const Bold = styled.strong`
-  font-weight: 700;
-  color: ${({ theme }) => theme.staticColor.blue_600};
-`
+import Bold from '../m-blocks/typography/Bold'
 
 const Section = styled.section<{ delay: number }>`
   display: flex;

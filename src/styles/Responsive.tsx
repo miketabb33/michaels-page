@@ -3,7 +3,7 @@ import { FlattenSimpleInterpolation, css } from 'styled-components'
 export const tabPortAndUp = (styles: FlattenSimpleInterpolation) =>
   // 600px
   css`
-    @media (min-width: 37.5em) {
+    @media only screen and (min-width: 37.5em) {
       ${styles}
     }
   `
@@ -11,7 +11,7 @@ export const tabPortAndUp = (styles: FlattenSimpleInterpolation) =>
 export const tabLandAndUp = (styles: FlattenSimpleInterpolation) =>
   // 900px
   css`
-    @media (min-width: 56.25em) {
+    @media only screen and (min-width: 56.25em) {
       ${styles}
     }
   `
@@ -19,7 +19,7 @@ export const tabLandAndUp = (styles: FlattenSimpleInterpolation) =>
 export const desktopAndUp = (styles: FlattenSimpleInterpolation) =>
   // 1200px
   css`
-    @media (min-width: 75em) {
+    @media only screen and (min-width: 75em) {
       ${styles}
     }
   `
@@ -27,7 +27,7 @@ export const desktopAndUp = (styles: FlattenSimpleInterpolation) =>
 export const bigDesktop = (styles: FlattenSimpleInterpolation) =>
   // 1800px
   css`
-    @media (min-width: 112.5em) {
+    @media only screen and (min-width: 112.5em) {
       ${styles}
     }
   `

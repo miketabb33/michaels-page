@@ -65,6 +65,13 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+::selection {
+  ${({ theme }) => css`
+    background-color: ${theme.color.primary};
+    color: ${theme.staticColor.blue_50};
+  `}
+}
 `
 
 export default GlobalStyle
