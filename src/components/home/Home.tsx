@@ -4,7 +4,6 @@ import { IndustryKnowledgeHome, TechnicalExpertiseHome, WhatIDoHome, WhatIValueH
 import { useRequest } from '../../network/useRequest'
 import { ArticleMeta, fetchArticleManifest } from '../../network/articleClient'
 import ArticleCard from '../article/ArticleCard'
-import { ENV } from '../../config/environments/currentEnv'
 import styled, { css } from 'styled-components'
 import { PageLayout } from '../m-blocks/Layout'
 import { hideOnAndUp, showOnAndUp, tabLandAndUp } from '../../styles/Responsive'
@@ -50,7 +49,7 @@ const Home = () => {
         <ProfileMobile>
           <ProfileCompact />
         </ProfileMobile>
-        {ENV.id === 'develop' && articles && <ArticleCard article={articles[0]} />}
+        {articles && <ArticleCard article={articles[0]} />}
         <WhatIDoHome />
         <IndustryKnowledgeHome />
         <TechnicalExpertiseHome />

@@ -11,7 +11,7 @@ const OrderedListStyle = styled.ul<OlStyleProps>`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.xSmall};
-  margin-left: ${({ theme }) => theme.spacing.medium};
+  margin-left: ${({ theme }) => theme.spacing.large};
   ${({ $spacing }) => spacingController($spacing)}
   ::before {
     display: none;
@@ -21,8 +21,8 @@ const OrderedListStyle = styled.ul<OlStyleProps>`
     color: ${({ theme }) => theme.color.text};
     font-size: 1.8rem;
     line-height: 3rem;
-
     list-style: decimal;
+    padding-left: ${({ theme }) => theme.spacing.small};
 
     ::before {
       display: none;

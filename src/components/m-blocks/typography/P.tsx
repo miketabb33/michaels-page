@@ -10,6 +10,7 @@ type StyledPProps = {
 const PElement = styled.p<StyledPProps>`
   font-size: 1.8rem;
   line-height: 3rem;
+  letter-spacing: 0.05rem;
   color: ${({ theme }) => theme.color.text};
   ${({ $spacing }) => spacingController($spacing)}
 `
