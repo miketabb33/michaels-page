@@ -5,7 +5,7 @@ import ProfileIconTitles from './ProfileIconTitles'
 import ProfileDetails from './ProfileDetails'
 
 const Container = styled.div`
-  padding: ${({ theme }) => theme.spacing.medium};
+  padding: ${({ theme }) => theme.spacing.small};
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.small};
