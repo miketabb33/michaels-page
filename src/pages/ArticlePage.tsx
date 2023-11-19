@@ -25,7 +25,11 @@ export const useInArticlePage = () => {
   const { data: articles, isLoading } = useRequest<ArticleMeta[]>({ request: fetchArticleManifest })
   const article = articles?.find((article) => article.slug === slug)
 
-  usePage({ title: article?.title || '', deps: [article] })
+  const title = article?.title || ''
+  const image = article?.thumbnailUrl || ''
+  const description = article?.description || ''
+
+  usePage({ title, image, description, deps: [article] })
 
   return {
     article,

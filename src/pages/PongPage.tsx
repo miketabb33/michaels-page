@@ -12,7 +12,7 @@ const Container = styled.div`
   align-items: center;
 `
 const PongPage = () => {
-  usePage({ title: 'Pong' })
+  usePage({ title: 'Pong', description: 'Can you reach the high scores for this take on the classic game "Pong"?' })
   return (
     <NavLayout>
       <Container>

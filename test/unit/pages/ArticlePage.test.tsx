@@ -28,11 +28,13 @@ describe('Use In Article Page', () => {
     const { result } = renderHook(useInArticlePage)
     expect(result.current.article).toEqual(ARTICLE_META_MOCK_2)
   })
-  it('should invoke page title with article title when exists', () => {
+  it('should invoke page data with article data when exists', () => {
     renderHook(useInArticlePage)
     expect(USE_PAGE).toHaveBeenCalledWith({
       deps: [ARTICLE_META_MOCK_2],
       title: ARTICLE_META_MOCK_2.title,
+      image: ARTICLE_META_MOCK_2.thumbnailUrl,
+      description: ARTICLE_META_MOCK_2.description,
     })
   })
   it('should show loading when is loading is true', () => {
