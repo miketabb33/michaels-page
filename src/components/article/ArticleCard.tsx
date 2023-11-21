@@ -4,13 +4,8 @@ import RouterLink from '../../router/RouterLink'
 import Card, { CardContent } from '../m-blocks/Card'
 import styled from 'styled-components'
 import P from '../m-blocks/typography/P'
-import H1 from '../m-blocks/typography/H1'
 import Small from '../m-blocks/typography/Small'
 import H3 from '../m-blocks/typography/H3'
-
-type ArticleCardProps = {
-  article: ArticleMeta
-}
 
 const ArticleImage = styled.img`
   object-fit: cover;
@@ -19,7 +14,6 @@ const ArticleImage = styled.img`
 const ArticleContainer = styled.div`
   transition: all 0.15s;
   border-radius: ${({ theme }) => theme.spacing.medium};
-  margin: 0 3rem;
 
   &:hover {
     transform: translateY(-0.2rem);
@@ -28,8 +22,12 @@ const ArticleContainer = styled.div`
   }
 `
 
-const ArticleCard = ({ article }: ArticleCardProps) => {
-  const createdOnDate = new Date(article.createdOn)
+type ArticleCardProps = {
+  articleMeta: ArticleMeta
+}
+
+const ArticleCard = ({ articleMeta }: ArticleCardProps) => {
+  const createdOnDate = new Date(articleMeta.createdOn)
   const formattedCreatedOn = createdOnDate.toLocaleDateString('default', {
     month: 'long',
     day: 'numeric',
@@ -38,14 +36,13 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
 
   return (
     <div>
-      <H1>Articles:</H1>
       <ArticleContainer>
-        <RouterLink linkTo={`article/${article.slug}`}>
+        <RouterLink linkTo={`article/${articleMeta.slug}`}>
           <Card>
-            <ArticleImage src={article.thumbnailUrl} />
+            <ArticleImage src={articleMeta.thumbnailUrl} />
             <CardContent>
-              <H3>{article.title}</H3>
-              <P>{article.description}</P>
+              <H3>{articleMeta.title}</H3>
+              <P>{articleMeta.description}</P>
               <Small spacing={{ marginTop: 'm' }}>{formattedCreatedOn}</Small>
             </CardContent>
           </Card>

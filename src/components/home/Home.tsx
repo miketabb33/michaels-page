@@ -3,11 +3,11 @@ import Profile from './profile/Profile'
 import { IndustryKnowledgeHome, TechnicalExpertiseHome, WhatIDoHome, WhatIValueHome } from './HomeSections'
 import { useRequest } from '../../network/useRequest'
 import { ArticleMeta, fetchArticleManifest } from '../../network/articleClient'
-import ArticleCard from '../article/ArticleCard'
 import styled, { css } from 'styled-components'
 import { PageLayout } from '../m-blocks/Layout'
 import { hideOnAndUp, showOnAndUp, tabLandAndUp } from '../../styles/Responsive'
 import ProfileCompact from './profile-compact/ProfileCompact'
+import ArticlesList from '../article/ArticlesList'
 
 const Container = styled(PageLayout)`
   display: flex;
@@ -49,7 +49,7 @@ const Home = () => {
         <ProfileMobile>
           <ProfileCompact />
         </ProfileMobile>
-        {articles && <ArticleCard article={articles[0]} />}
+        {articles && <ArticlesList articles={articles} />}
         <WhatIDoHome />
         <IndustryKnowledgeHome />
         <TechnicalExpertiseHome />
