@@ -42,7 +42,7 @@ const Aside = styled.aside`
 `
 
 const Home = () => {
-  const { data: articles } = useRequest<ArticleMeta[]>({ request: fetchArticleManifest })
+  const { articles } = useInHome()
   return (
     <Container>
       <ViewPort>
@@ -60,6 +60,16 @@ const Home = () => {
       </Aside>
     </Container>
   )
+}
+
+export const useInHome = () => {
+  const { data: articles } = useRequest<ArticleMeta[]>({ request: fetchArticleManifest })
+
+  const byNewestDate = (a: ArticleMeta, b: ArticleMeta) => {
+    return new Date(b.createdOn).getTime() - new Date(a.createdOn).getTime()
+  }
+
+  return { articles: articles?.sort(byNewestDate) }
 }
 
 export default Home

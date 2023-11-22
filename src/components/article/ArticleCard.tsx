@@ -2,24 +2,29 @@ import React from 'react'
 import { ArticleMeta } from '../../network/articleClient'
 import RouterLink from '../../router/RouterLink'
 import Card, { CardContent } from '../m-blocks/Card'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import P from '../m-blocks/typography/P'
 import Small from '../m-blocks/typography/Small'
 import H3 from '../m-blocks/typography/H3'
-
-const ArticleImage = styled.img`
-  object-fit: cover;
-`
+import { desktopAndUp } from '../../styles/Responsive'
 
 const ArticleContainer = styled.div`
   transition: all 0.15s;
   border-radius: ${({ theme }) => theme.spacing.medium};
+
+  ${desktopAndUp(css`
+    height: 55rem;
+  `)}
 
   &:hover {
     transform: translateY(-0.2rem);
     box-shadow: ${({ theme }) => theme.shadow.blur};
     outline: ${({ theme }) => `solid ${theme.color.accent} 0.2rem`};
   }
+`
+
+const ArticleImage = styled.img`
+  object-fit: cover;
 `
 
 type ArticleCardProps = {
@@ -41,9 +46,11 @@ const ArticleCard = ({ articleMeta }: ArticleCardProps) => {
           <Card>
             <ArticleImage src={articleMeta.thumbnailUrl} />
             <CardContent>
-              <H3>{articleMeta.title}</H3>
-              <P>{articleMeta.description}</P>
-              <Small spacing={{ marginTop: 'm' }}>{formattedCreatedOn}</Small>
+              <H3 lineLimit={2} spacing={{ marginBottom: 's' }}>
+                {articleMeta.title}
+              </H3>
+              <P lineLimit={5}>{articleMeta.description}</P>
+              <Small spacing={{ marginTop: 's' }}>{formattedCreatedOn}</Small>
             </CardContent>
           </Card>
         </RouterLink>

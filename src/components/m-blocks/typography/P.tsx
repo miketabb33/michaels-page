@@ -1,21 +1,30 @@
 import React from 'react'
 import { ChildrenProp } from '../../../types/ChildrenProp'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Spacing, SpacingArgs, spacingController } from '../spacingController'
+import { LineLimitCount, lineCountLimiter } from './lineCountLimiter'
 
 type StyledPProps = {
   $spacing?: SpacingArgs
+  $lineLimit?: number
 }
 
 const PElement = styled.p<StyledPProps>`
-  font-size: 1.8rem;
-  line-height: 3rem;
-  letter-spacing: 0.05rem;
-  color: ${({ theme }) => theme.color.text};
-  ${({ $spacing }) => spacingController($spacing)}
+  ${({ theme, $spacing, $lineLimit }) => css`
+    font-size: 1.8rem;
+    line-height: 3rem;
+    letter-spacing: 0.05rem;
+    color: ${theme.color.text};
+    ${spacingController($spacing)}
+    ${lineCountLimiter($lineLimit)}
+  `}
 `
-const P = ({ children, spacing }: ChildrenProp & Spacing) => {
-  return <PElement $spacing={spacing}>{children}</PElement>
+const P = ({ children, spacing, lineLimit }: ChildrenProp & Spacing & LineLimitCount) => {
+  return (
+    <PElement $spacing={spacing} $lineLimit={lineLimit}>
+      {children}
+    </PElement>
+  )
 }
 
 export default P

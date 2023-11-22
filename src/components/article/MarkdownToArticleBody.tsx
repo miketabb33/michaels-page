@@ -23,7 +23,7 @@ export const MarkdownToArticleBody = ({ markdown }: MarkdownToArticleBodyProps) 
           h2: { component: H2, props: { spacing: { marginTop: 'm' } } },
           h3: { component: H3, props: { spacing: { marginTop: 'm' } } },
           h4: { component: H4, props: { spacing: { marginTop: 'm' } } },
-          p: { component: P, props: { spacing: { marginTop: 's' } } },
+          p: { component: P, props: { spacing: { marginTop: 'm' } } },
           ul: { component: UnorderedList, props: { spacing: { marginTop: 'm' } } },
           ol: { component: OrderedList, props: { spacing: { marginTop: 'm' } } },
           a: { component: TextLink },
