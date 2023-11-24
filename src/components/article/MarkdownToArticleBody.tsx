@@ -9,10 +9,16 @@ import OrderedList from '../m-blocks/OrderedList'
 import H4 from '../m-blocks/typography/H4'
 import TextLink from '../m-blocks/TextLink'
 import Bold from '../m-blocks/typography/Bold'
+import styled from 'styled-components'
 
 type MarkdownToArticleBodyProps = {
   markdown: string
 }
+
+const CenteredImage = styled.img`
+  display: block;
+  margin: auto;
+`
 
 export const MarkdownToArticleBody = ({ markdown }: MarkdownToArticleBodyProps) => {
   return (
@@ -28,6 +34,7 @@ export const MarkdownToArticleBody = ({ markdown }: MarkdownToArticleBodyProps) 
           ol: { component: OrderedList, props: { spacing: { marginTop: 'm' } } },
           a: { component: TextLink },
           strong: { component: Bold },
+          img: { component: CenteredImage },
         },
       }}
     >
