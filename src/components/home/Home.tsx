@@ -7,7 +7,8 @@ import styled, { css } from 'styled-components'
 import { PageLayout } from '../m-blocks/Layout'
 import { hideOnAndUp, showOnAndUp, tabLandAndUp } from '../../styles/Responsive'
 import ProfileCompact from './profile-compact/ProfileCompact'
-import ArticlesList from '../article/ArticlesList'
+import ArticlesList, { ArticleListSkeleton } from '../article/ArticlesList'
+import H1 from '../m-blocks/typography/H1'
 
 const Container = styled(PageLayout)`
   display: flex;
@@ -42,13 +43,15 @@ const Aside = styled.aside`
 `
 
 const Home = () => {
-  const { articles } = useInHome()
+  const { articles, isArticlesLoading } = useInHome()
   return (
     <Container>
       <ViewPort>
         <ProfileMobile>
           <ProfileCompact />
         </ProfileMobile>
+        <H1>Articles:</H1>
+        {isArticlesLoading && <ArticleListSkeleton count={4} />}
         {articles && <ArticlesList articles={articles} />}
         <WhatIDoHome />
         <IndustryKnowledgeHome />
@@ -63,13 +66,13 @@ const Home = () => {
 }
 
 export const useInHome = () => {
-  const { data: articles } = useRequest<ArticleMeta[]>({ request: fetchArticleManifest })
+  const { data: articles, isLoading: isArticlesLoading } = useRequest<ArticleMeta[]>({ request: fetchArticleManifest })
 
   const byNewestDate = (a: ArticleMeta, b: ArticleMeta) => {
     return new Date(b.createdOn).getTime() - new Date(a.createdOn).getTime()
   }
 
-  return { articles: articles?.sort(byNewestDate) }
+  return { articles: articles?.sort(byNewestDate), isArticlesLoading }
 }
 
 export default Home

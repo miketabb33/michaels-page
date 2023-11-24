@@ -8,12 +8,14 @@ import Small from '../m-blocks/typography/Small'
 import H3 from '../m-blocks/typography/H3'
 import { desktopAndUp } from '../../styles/Responsive'
 
+export const ARTICLE_CARD_HEIGHT = '55rem'
+
 const ArticleContainer = styled.div`
   transition: all 0.15s;
   border-radius: ${({ theme }) => theme.spacing.medium};
 
   ${desktopAndUp(css`
-    height: 55rem;
+    height: ${ARTICLE_CARD_HEIGHT};
   `)}
 
   &:hover {
@@ -25,6 +27,8 @@ const ArticleContainer = styled.div`
 
 const ArticleImage = styled.img`
   object-fit: cover;
+  width: 100%;
+  aspect-ratio: 1.7799;
 `
 
 type ArticleCardProps = {
