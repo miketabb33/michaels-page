@@ -51,7 +51,7 @@ const Home = () => {
           <ProfileCompact />
         </ProfileMobile>
         <H1>Articles:</H1>
-        {isArticlesLoading && <ArticleListSkeleton count={4} />}
+        {isArticlesLoading && <ArticleListSkeleton count={6} />}
         {articles && <ArticlesList articles={articles} />}
         <WhatIDoHome />
         <IndustryKnowledgeHome />
