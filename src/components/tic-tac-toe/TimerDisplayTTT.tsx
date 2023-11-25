@@ -1,8 +1,10 @@
 import React from 'react'
-import PlayerMarkerTTT, { MarkerColor, MarkerTTT } from './PlayerMarkerTTT'
 import styled, { css } from 'styled-components'
+import { OMarker, XMarker } from './MarkersTTT'
 // import PlayerMarkerImage from '../images/player-marker-image'
 // import topBarStyles from '../styles/TopBarStyles.module.css'
+
+type MarkerTTT = 'X' | 'O'
 
 type StyledTimerDisplayProps = {
   $marker: MarkerTTT
@@ -14,6 +16,7 @@ const O_COLOR = '#61C278'
 
 const TimerDisplay = styled.div<StyledTimerDisplayProps>`
   display: flex;
+  align-items: center;
   gap: 1.5rem;
 
   padding: 0.2rem 2.2rem;
@@ -47,10 +50,9 @@ type TimerDisplayTTTProps = {
 }
 
 const TimerDisplayTTT = ({ marker }: TimerDisplayTTTProps) => {
-  const playerColor: MarkerColor = marker === 'X' ? 'teal' : 'green'
   return (
     <TimerDisplay $marker={marker} $isActive={false}>
-      <PlayerMarkerTTT marker={marker} color={playerColor} size={25} location={'timer-view'} />
+      {marker === 'X' ? <XMarker color={X_COLOR} size="3rem" /> : <OMarker color={O_COLOR} size="3rem" />}
       <p>00:10.00</p>
     </TimerDisplay>
   )
