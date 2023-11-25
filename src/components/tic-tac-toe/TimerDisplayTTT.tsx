@@ -1,18 +1,18 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { OMarker, XMarker } from './MarkersTTT'
 // import PlayerMarkerImage from '../images/player-marker-image'
 // import topBarStyles from '../styles/TopBarStyles.module.css'
 
 type MarkerTTT = 'X' | 'O'
 
-type StyledTimerDisplayProps = {
-  $marker: MarkerTTT
-  $isActive: boolean
-}
-
 const X_COLOR = '#1FA889'
 const O_COLOR = '#61C278'
+const INACTIVE_BORDER_COLOR = '#2d2d2d'
+
+type StyledTimerDisplayProps = {
+  $borderColor: string
+}
 
 const TimerDisplay = styled.div<StyledTimerDisplayProps>`
   display: flex;
@@ -21,22 +21,18 @@ const TimerDisplay = styled.div<StyledTimerDisplayProps>`
 
   padding: 0.2rem 2.2rem;
   background: #484848;
-  border: 0.4rem solid #2d2d2d;
+  border: ${({ $borderColor }) => `0.4rem solid ${$borderColor}`};
   box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.25);
   border-radius: 3rem;
+`
+
+type StyledTimerTextProps = {
+  $color: string
+}
+
+const TimerText = styled.p<StyledTimerTextProps>`
+  color: ${({ $color }) => $color};
   font-size: 2em;
-
-  ${({ $marker }) => css`
-    ${$marker === 'X' &&
-    css`
-      border-color: ${X_COLOR};
-    `}
-
-    ${$marker === 'O' &&
-    css`
-      border-color: ${O_COLOR};
-    `}
-  `}
 `
 
 // interface TimerViewProps {
@@ -51,9 +47,9 @@ type TimerDisplayTTTProps = {
 
 const TimerDisplayTTT = ({ marker }: TimerDisplayTTTProps) => {
   return (
-    <TimerDisplay $marker={marker} $isActive={false}>
+    <TimerDisplay $borderColor={INACTIVE_BORDER_COLOR}>
       {marker === 'X' ? <XMarker color={X_COLOR} size="3rem" /> : <OMarker color={O_COLOR} size="3rem" />}
-      <p>00:10.00</p>
+      <TimerText $color={marker === 'X' ? X_COLOR : O_COLOR}>00:10.00</TimerText>
     </TimerDisplay>
   )
 }
