@@ -5,6 +5,7 @@ import PongPage from '../pages/PongPage'
 import LandingPage from '../pages/LandingPage'
 import ArticlePage from '../pages/ArticlePage'
 import TicTacToePage from '../pages/TicTacToePage'
+import NotFoundPage from '../pages/NotFoundPage'
 
 const Router = () => {
   return (
@@ -15,6 +16,7 @@ const Router = () => {
         <Route path="tic-tac-toe" element={<TicTacToePage />} />
         <Route path="landing" element={<LandingPage />} />
         <Route path="article/:slug" element={<ArticlePage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   )
