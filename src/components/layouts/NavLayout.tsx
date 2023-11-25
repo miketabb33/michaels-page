@@ -27,8 +27,8 @@ const Main = styled.main`
 const NavLayout = ({ children }: ChildrenProp) => {
   return (
     <Container>
-      <MobileNav navConfig={navConfig} />
-      <Sidebar navConfig={navConfig} />
+      <MobileNav navConfig={navConfig()} />
+      <Sidebar navConfig={navConfig()} />
       <Main>{children}</Main>
     </Container>
   )

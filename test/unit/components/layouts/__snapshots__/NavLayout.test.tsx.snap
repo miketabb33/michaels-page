@@ -13,6 +13,10 @@ exports[`App should match snapshot 1`] = `
           "label": "Pong",
           "linkTo": "/pong",
         },
+        {
+          "label": "T T T",
+          "linkTo": "/tic-tac-toe",
+        },
       ]
     }
   />
@@ -26,6 +30,10 @@ exports[`App should match snapshot 1`] = `
         {
           "label": "Pong",
           "linkTo": "/pong",
+        },
+        {
+          "label": "T T T",
+          "linkTo": "/tic-tac-toe",
         },
       ]
     }
