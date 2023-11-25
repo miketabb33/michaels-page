@@ -1,5 +1,6 @@
 import React from 'react'
-import TimerDisplayTTT from './TimerDisplayTTT'
+import TimerDisplayTTT from './timer-display/TimerDisplayTTT'
+import { OPlayer, XPlayer } from './player-ttt/PlayerTTT'
 // import TimerView from './timer-view'
 // import TextDisplayView from './text-display-view'
 // import topBarStyles from '../styles/TopBarStyles.module.css'
@@ -11,11 +12,14 @@ import TimerDisplayTTT from './TimerDisplayTTT'
 //   oRemainingTimeInHundredthsOfSeconds: number
 // }
 
+// const activePlayer = XPlayer
+const activePlayer = OPlayer
+
 const InfoBarTTT = () => {
   return (
     <>
-      <TimerDisplayTTT marker="X" />
-      <TimerDisplayTTT marker="O" />
+      <TimerDisplayTTT player={XPlayer} activePlayer={activePlayer} remainingTimeInHundredthsOfSeconds={0} />
+      <TimerDisplayTTT player={OPlayer} activePlayer={activePlayer} remainingTimeInHundredthsOfSeconds={300} />
     </>
     // <div className={topBarStyles.topBar}>
     //   <TimerView

@@ -12,7 +12,7 @@ const SVG = styled.svg<StyledSVG>`
   `}
 `
 
-type MarkerTTTProps = {
+export type MarkerTTTProps = {
   color: string
   size: string
   id?: string
