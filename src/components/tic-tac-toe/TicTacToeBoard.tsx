@@ -1,4 +1,5 @@
 import React from 'react'
+import InfoBarTTT from './InfoBarTTT'
 // import Head from 'next/head'
 // import GameState from '../game/game-state'
 // import Board3DView from './board-3D-view'
@@ -18,7 +19,17 @@ import React from 'react'
 // }
 
 const TicTacToeBoard = () => {
-  return <>Tic Tac Toe Board</>
+  return (
+    <>
+      <InfoBarTTT
+      // textDisplay={this.state.textDisplay}
+      // activePlayer={this.state.currentPlayer}
+      // xRemainingTimeInHundredthsOfSeconds={this.state.xRemainingTimeInHundredthsOfSeconds}
+      // oRemainingTimeInHundredthsOfSeconds={this.state.oRemainingTimeInHundredthsOfSeconds}
+      />
+      Tic Tac Toe Board
+    </>
+  )
   // game: Game
   // constructor(props: any) {
   //   super(props)
