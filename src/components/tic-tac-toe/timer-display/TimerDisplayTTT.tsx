@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { PlayerTTT } from '../player-ttt/PlayerTTT'
 import { MarkerTTTProps } from '../player-ttt/MarkersTTT'
 import { formatTimerDisplay } from './formatTimerDisplay'
+import { colorTokens } from '../../../styles/colorTokens'
 
 type StyledTimerDisplayProps = {
   $borderColor: string
@@ -14,9 +15,9 @@ const TimerDisplay = styled.div<StyledTimerDisplayProps>`
   gap: 1.5rem;
 
   padding: 0.2rem 2.2rem;
-  background: #484848;
+  background: ${({ theme }) => theme.staticColor.gray_850};
   border: ${({ $borderColor }) => `0.4rem solid ${$borderColor}`};
-  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.25);
+  box-shadow: ${({ theme }) => theme.shadow.blur};
   border-radius: 3rem;
 `
 
@@ -47,7 +48,7 @@ const TimerDisplayTTT = (props: TimerDisplayTTTProps) => {
 }
 
 const useInTimerDisplayTTT = ({ player, activePlayer, remainingTimeInHundredthsOfSeconds }: TimerDisplayTTTProps) => {
-  const INACTIVE_BORDER_COLOR = '#2d2d2d'
+  const INACTIVE_BORDER_COLOR = colorTokens.gray_950
   const RED_COLOR = 'red'
 
   const hasNoTimeLeft = remainingTimeInHundredthsOfSeconds <= 0

@@ -1,9 +1,21 @@
 import React from 'react'
 import TimerDisplayTTT from './timer-display/TimerDisplayTTT'
 import { OPlayer, XPlayer } from './player-ttt/PlayerTTT'
-// import TimerView from './timer-view'
-// import TextDisplayView from './text-display-view'
-// import topBarStyles from '../styles/TopBarStyles.module.css'
+import AnnouncementTTT, { announcementTextTTT } from './AnnouncementTTT'
+import styled from 'styled-components'
+
+const Container = styled.div`
+  background-color: ${({ theme }) => theme.staticColor.gray_300};
+  border-bottom: 0.2rem solid ${({ theme }) => theme.staticColor.gray_850};
+  box-shadow: ${({ theme }) => theme.shadow.crisp};
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0.5rem;
+`
+
+// const activePlayer = XPlayer
+const activePlayer = OPlayer
 
 // interface InfoBarViewProps {
 //   activePlayer: string
@@ -12,28 +24,13 @@ import { OPlayer, XPlayer } from './player-ttt/PlayerTTT'
 //   oRemainingTimeInHundredthsOfSeconds: number
 // }
 
-// const activePlayer = XPlayer
-const activePlayer = OPlayer
-
 const InfoBarTTT = () => {
   return (
-    <>
-      <TimerDisplayTTT player={XPlayer} activePlayer={activePlayer} remainingTimeInHundredthsOfSeconds={0} />
+    <Container>
+      <TimerDisplayTTT player={XPlayer} activePlayer={activePlayer} remainingTimeInHundredthsOfSeconds={1} />
+      <AnnouncementTTT announcement={announcementTextTTT.first(XPlayer.markerID)} />
       <TimerDisplayTTT player={OPlayer} activePlayer={activePlayer} remainingTimeInHundredthsOfSeconds={300} />
-    </>
-    // <div className={topBarStyles.topBar}>
-    //   <TimerView
-    //     player={'x'}
-    //     activePlayer={this.props.activePlayer}
-    //     remainingTimeInHundredthsOfSeconds={this.props.xRemainingTimeInHundredthsOfSeconds}
-    //   />
-    //   <TextDisplayView value={this.props.textDisplay} />
-    //   <TimerView
-    //     player={'o'}
-    //     activePlayer={this.props.activePlayer}
-    //     remainingTimeInHundredthsOfSeconds={this.props.oRemainingTimeInHundredthsOfSeconds}
-    //   />
-    // </div>
+    </Container>
   )
 }
 
