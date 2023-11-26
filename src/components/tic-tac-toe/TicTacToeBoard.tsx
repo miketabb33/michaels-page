@@ -1,5 +1,6 @@
 import React from 'react'
 import InfoBarTTT from './InfoBarTTT'
+import TimeInputTTT, { useWithTimeInputTTT } from './timer-display/TimeInputTTT'
 // import Head from 'next/head'
 // import GameState from '../game/game-state'
 // import Board3DView from './board-3D-view'
@@ -19,6 +20,8 @@ import InfoBarTTT from './InfoBarTTT'
 // }
 
 const TicTacToeBoard = () => {
+  const timeInput = useWithTimeInputTTT(false)
+
   return (
     <>
       <InfoBarTTT
@@ -27,6 +30,7 @@ const TicTacToeBoard = () => {
       // xRemainingTimeInHundredthsOfSeconds={this.state.xRemainingTimeInHundredthsOfSeconds}
       // oRemainingTimeInHundredthsOfSeconds={this.state.oRemainingTimeInHundredthsOfSeconds}
       />
+      <TimeInputTTT {...timeInput.bind} />
       Tic Tac Toe Board
     </>
   )

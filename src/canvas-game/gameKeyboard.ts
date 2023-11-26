@@ -1,5 +1,5 @@
 import { KeyboardListener } from './KeyboardEventListener'
-import { KeyboardCode } from './types/KeyboardCode'
+import { KeyboardCode } from '../types/KeyboardCode'
 
 export const gameKeyboard = () => {
   const { isPressingLeftKey, isPressingRightKey, onKeydown, onKeyup } = gameKeyboardController()

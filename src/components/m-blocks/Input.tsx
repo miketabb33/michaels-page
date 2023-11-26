@@ -7,17 +7,21 @@ const InputWrapper = styled.input`
   border: 1px solid ${({ theme }) => theme.staticColor.gray_300};
 `
 
-type ExternalInputProps = {
-  placeholder?: string
+export type ExternalInputProps = {
+  value: string
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
+  placeholder?: string
+  maxLength?: number
 }
 
-const Input = ({ placeholder, onChange }: ExternalInputProps) => {
-  return <InputWrapper placeholder={placeholder} onChange={onChange} />
+const Input = ({ value, placeholder, onChange, maxLength }: ExternalInputProps) => {
+  return <InputWrapper value={value} placeholder={placeholder} onChange={onChange} maxLength={maxLength} />
 }
 
 type UseWithInput = {
   placeholder?: string
+  validationOnChange?: (e: ChangeEvent<HTMLInputElement>) => boolean
+  maxLength?: number
 }
 
 type UseWithInputReturn = {
@@ -25,17 +29,24 @@ type UseWithInputReturn = {
   value: string
 }
 
-export const useWithInput = ({ placeholder = '' }: UseWithInput): UseWithInputReturn => {
+export const useWithInput = ({
+  placeholder = '',
+  validationOnChange = () => true,
+  maxLength,
+}: UseWithInput): UseWithInputReturn => {
   const [value, setValue] = useState('')
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value)
+    const isValid = validationOnChange(e)
+    if (isValid) setValue(e.target.value)
   }
 
   return {
     bind: {
       placeholder,
       onChange,
+      maxLength,
+      value,
     },
     value,
   }

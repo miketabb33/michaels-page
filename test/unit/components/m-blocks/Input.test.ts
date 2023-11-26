@@ -16,4 +16,11 @@ describe('Use With Input', () => {
     act(() => result.current.bind.onChange(event))
     expect(result.current.value).toEqual(VALUE)
   })
+  it('should NOT change value on change when validation fails', () => {
+    const VALUE = 'VALUE'
+    const { result } = renderHook(() => useWithInput({ validationOnChange: () => false }))
+    const event = { target: { value: VALUE } } as ChangeEvent<HTMLInputElement>
+    act(() => result.current.bind.onChange(event))
+    expect(result.current.value).toEqual('')
+  })
 })

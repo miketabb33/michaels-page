@@ -1,4 +1,4 @@
-import { KeyboardCode } from '../../../src/canvas-game/types/KeyboardCode'
+import { KeyboardCode } from '../../../src/types/KeyboardCode'
 import { gameKeyboardController } from '../../../src/canvas-game/gameKeyboard'
 
 describe('Game Keyboard Controller', () => {
