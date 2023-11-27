@@ -2,6 +2,7 @@ import React, { ChangeEvent, useState } from 'react'
 import styled from 'styled-components'
 
 const InputWrapper = styled.input`
+  width: 100%;
   padding: ${({ theme }) => theme.spacing.small} ${({ theme }) => theme.spacing.medium};
   border-radius: ${({ theme }) => theme.spacing.medium};
   border: 1px solid ${({ theme }) => theme.staticColor.gray_300};

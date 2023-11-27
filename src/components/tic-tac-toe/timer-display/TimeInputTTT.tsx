@@ -12,6 +12,10 @@ const Container = styled.div<{ $isHidden: boolean }>`
   gap: 1rem;
 `
 
+const InputWrapper = styled.div`
+  width: 9rem;
+`
+
 type TimeInputTTTProps = {
   isHidden: boolean
   inputBind: ExternalInputProps
@@ -20,8 +24,10 @@ type TimeInputTTTProps = {
 const TimeInputTTT = ({ isHidden, inputBind }: TimeInputTTTProps) => {
   return (
     <Container id="time-input-view" $isHidden={isHidden}>
-      <P>Starting Time</P>
-      <Input {...inputBind} />
+      <P>Starting Time:</P>
+      <InputWrapper>
+        <Input {...inputBind} />
+      </InputWrapper>
     </Container>
   )
 }
