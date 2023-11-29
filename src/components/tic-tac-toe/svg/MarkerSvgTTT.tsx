@@ -1,16 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
-
-type StyledSVG = {
-  $size: string
-}
-
-const SVG = styled.svg<StyledSVG>`
-  ${({ $size }) => css`
-    width: ${$size};
-    height: ${$size};
-  `}
-`
+import SvgTTT from './SvgTTT'
 
 export type MarkerTTTProps = {
   color: string
@@ -18,8 +7,8 @@ export type MarkerTTTProps = {
   id?: string
 }
 
-export const OMarker = ({ color, size, id }: MarkerTTTProps) => (
-  <SVG
+export const OMarkerSvg = ({ color, size, id }: MarkerTTTProps) => (
+  <SvgTTT
     $size={size}
     id={id}
     width="131"
@@ -29,11 +18,11 @@ export const OMarker = ({ color, size, id }: MarkerTTTProps) => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <circle cx="65.5" cy="65.5" r="58.4724" stroke={color} strokeWidth="14.0551" />
-  </SVG>
+  </SvgTTT>
 )
 
-export const XMarker = ({ color, size, id }: MarkerTTTProps) => (
-  <SVG
+export const XMarkerSvg = ({ color, size, id }: MarkerTTTProps) => (
+  <SvgTTT
     $size={size}
     id={id}
     width="131"
@@ -52,5 +41,5 @@ export const XMarker = ({ color, size, id }: MarkerTTTProps) => (
       transform="rotate(45 121.191 0.170288)"
       fill={color}
     />
-  </SVG>
+  </SvgTTT>
 )

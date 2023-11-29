@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { PlayerTTT } from '../player-ttt/PlayerTTT'
-import { MarkerTTTProps } from '../player-ttt/MarkersTTT'
+import { PlayerTTT } from '../PlayerTTT'
+import { MarkerTTTProps } from '../svg/MarkerSvgTTT'
 import { formatTimerDisplay } from './formatTimerDisplay'
 import { colorTokens } from '../../../styles/colorTokens'
 
@@ -32,7 +32,7 @@ const TimerText = styled.p<StyledTimerTextProps>`
 
 type TimerDisplayTTTProps = {
   player: PlayerTTT
-  activePlayer: PlayerTTT
+  isActive: boolean
   remainingTimeInHundredthsOfSeconds: number
 }
 
@@ -41,13 +41,13 @@ const TimerDisplayTTT = (props: TimerDisplayTTTProps) => {
 
   return (
     <TimerDisplay $borderColor={borderColor}>
-      {props.player.component(markerProps)}
+      {props.player.makeComponent(markerProps)}
       <TimerText {...timerTextProps}>{timeText}</TimerText>
     </TimerDisplay>
   )
 }
 
-const useInTimerDisplayTTT = ({ player, activePlayer, remainingTimeInHundredthsOfSeconds }: TimerDisplayTTTProps) => {
+const useInTimerDisplayTTT = ({ player, isActive, remainingTimeInHundredthsOfSeconds }: TimerDisplayTTTProps) => {
   const INACTIVE_BORDER_COLOR = colorTokens.gray_950
   const RED_COLOR = 'red'
 
@@ -55,7 +55,7 @@ const useInTimerDisplayTTT = ({ player, activePlayer, remainingTimeInHundredthsO
 
   const calculateBorderColor = () => {
     if (hasNoTimeLeft) return RED_COLOR
-    return player.markerID === activePlayer.markerID ? player.color : INACTIVE_BORDER_COLOR
+    return isActive ? player.color : INACTIVE_BORDER_COLOR
   }
 
   const timerTextProps = {

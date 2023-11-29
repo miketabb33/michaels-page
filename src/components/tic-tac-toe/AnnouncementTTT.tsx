@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { MarkerTTT } from './player-ttt/PlayerTTT'
+import { MarkerIdTTT } from './PlayerTTT'
 
 const Announcement = styled.p`
   font-size: 4rem;
-  color: ${({ theme }) => theme.staticColor.gray_850};
+  color: ${({ theme }) => theme.color.text};
 `
 
 type AnnouncementTTTProps = {
@@ -12,10 +12,10 @@ type AnnouncementTTTProps = {
 }
 
 export const announcementTextTTT = {
-  first: (marker: MarkerTTT) => `${marker} Goes First`,
+  first: (marker: MarkerIdTTT) => `${marker} Goes First`,
   draw: 'Draw',
-  turn: (marker: MarkerTTT) => `${marker}'s Turn`,
-  winner: (marker: MarkerTTT) => `${marker} is the Winner!`,
+  turn: (marker: MarkerIdTTT) => `${marker}'s Turn`,
+  winner: (marker: MarkerIdTTT) => `${marker} is the Winner!`,
 }
 
 const AnnouncementTTT = ({ announcement }: AnnouncementTTTProps) => {

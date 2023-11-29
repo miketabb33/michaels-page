@@ -1,6 +1,10 @@
 import React from 'react'
 import InfoBarTTT from './InfoBarTTT'
 import TimeInputTTT, { useWithTimeInputTTT } from './timer-display/TimeInputTTT'
+import { announcementTextTTT } from './AnnouncementTTT'
+import { OPlayer, XPlayer } from './PlayerTTT'
+import SquareViewTTT from './SquareTTT'
+import BoardViewTTT from './BoardViewTTT'
 // import Head from 'next/head'
 // import GameState from '../game/game-state'
 // import Board3DView from './board-3D-view'
@@ -19,19 +23,25 @@ import TimeInputTTT, { useWithTimeInputTTT } from './timer-display/TimeInputTTT'
 //   hideTimeInputView: boolean
 // }
 
+const player1 = XPlayer
+const player2 = OPlayer
+
 const TicTacToeBoard = () => {
   const timeInput = useWithTimeInputTTT(false)
 
   return (
     <>
       <InfoBarTTT
-      // textDisplay={this.state.textDisplay}
-      // activePlayer={this.state.currentPlayer}
-      // xRemainingTimeInHundredthsOfSeconds={this.state.xRemainingTimeInHundredthsOfSeconds}
-      // oRemainingTimeInHundredthsOfSeconds={this.state.oRemainingTimeInHundredthsOfSeconds}
+        activePlayer={player1}
+        player1={player1}
+        player2={player2}
+        announcement={announcementTextTTT.first(XPlayer.markerID)}
+        player1RemainingTimeInHundredthsOfSeconds={300}
+        player2RemainingTimeInHundredthsOfSeconds={200}
       />
       <TimeInputTTT {...timeInput.bind} />
-      Tic Tac Toe Board
+      <BoardViewTTT />
+      <SquareViewTTT owner={player1} isWinningSquare={true} indexPath={{ board: 0, square: 0 }} />
     </>
   )
   // game: Game
