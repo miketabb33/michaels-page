@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { logEvent } from 'firebase/analytics'
 import { User } from '../context/AuthContext'
-import { analytics } from './initAnalytics'
+import posthog from 'posthog-js'
 
 type TrackEventArgs = {
   eventKey: EventKey
@@ -11,13 +9,12 @@ type TrackEventArgs = {
 }
 
 export const trackEvent = ({ eventKey, user, params }: TrackEventArgs) => {
-  if (!analytics) return
   const defaultAnalyticParams = {
     userAgent: window.navigator.userAgent || 'null',
     language: window.navigator.language || 'null',
     userId: user.id,
   }
-  logEvent(analytics, eventKey, { ...params, ...defaultAnalyticParams })
+  posthog.capture(eventKey, { ...params, ...defaultAnalyticParams })
 }
 
 export type EventKey = 'start_pong' | 'flipped_profile_card'

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { createContext, useContext } from 'react'
 import { ChildrenProp } from '../types/ChildrenProp'
-import { initAnalyticsWhenSupported } from '../analytics/initAnalytics'
+import { initAnalytics } from '../analytics/initAnalytics'
 
 export type User = {
   id: string
@@ -30,7 +30,7 @@ export const useAuthProvider = () => {
   const loadUser = () => {
     const userId = getUserId()
     setUser({ id: userId })
-    initAnalyticsWhenSupported(userId)
+    initAnalytics(userId)
   }
 
   return {

@@ -1,16 +1,9 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
-import { Analytics, getAnalytics, isSupported, setUserId } from 'firebase/analytics'
-import { firebaseApp } from '../firebaseInit'
+import posthog from 'posthog-js'
+import { ENV } from '../config/environments/currentEnv'
 
-export let analytics: Analytics | null = null
-
-export const initAnalyticsWhenSupported = (userId: string) => {
-  isSupported().then((yes) => {
-    if (yes) initAnalytics(userId)
-  })
-}
-
-const initAnalytics = (userId: string) => {
-  analytics = getAnalytics(firebaseApp)
-  setUserId(analytics, userId)
+export const initAnalytics = (userId: string) => {
+  if (ENV.id === 'production') {
+    posthog.init('phc_Ja4C1BqXHkf2RwSdx5VSlWQDvzWJmGuWuUnqwgGc4BL', { api_host: 'https://app.posthog.com' })
+    posthog.identify(userId)
+  }
 }
