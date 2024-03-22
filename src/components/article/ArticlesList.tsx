@@ -4,6 +4,7 @@ import ArticleCard from './ArticleCard'
 import styled, { css } from 'styled-components'
 import { desktopAndUp } from '../../styles/Responsive'
 import ArticleCardSkeleton from './ArticleCardSkeleton'
+import { ENV } from '../../config/environments/currentEnv'
 
 const Articles = styled.div`
   margin: 0 3rem;
@@ -24,9 +25,11 @@ type ArticlesListProps = {
 }
 
 const ArticlesList = ({ articles }: ArticlesListProps) => {
+  const articlesToDisplay = ENV.id === 'production' ? articles.filter((article) => !article.hideInProd) : articles
+
   return (
     <Articles>
-      {articles.map((article) => (
+      {articlesToDisplay.map((article) => (
         <ArticleCard key={article.slug} articleMeta={article} />
       ))}
     </Articles>

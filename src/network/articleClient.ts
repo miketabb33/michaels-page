@@ -7,6 +7,7 @@ export type ArticleMeta = {
   description: string
   thumbnailUrl: string
   createdOn: string
+  hideInProd: boolean
 }
 
 export const fetchArticleManifest = async (): Promise<ArticleMeta[]> => {
@@ -20,6 +21,7 @@ export const fetchArticleManifest = async (): Promise<ArticleMeta[]> => {
       description: d.description || '',
       thumbnailUrl: d.thumbnailUrl || '',
       createdOn: d.createdOn || '',
+      hideInProd: d.hideInProd || false,
     }
     return article
   })

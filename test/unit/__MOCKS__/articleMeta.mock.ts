@@ -7,6 +7,7 @@ export const ARTICLE_META_MOCK_1: ArticleMeta = {
   description: 'article1 description',
   thumbnailUrl: 'article1.jpg',
   createdOn: 'February 13th, 1990',
+  hideInProd: false,
 }
 export const ARTICLE_META_MOCK_2: ArticleMeta = {
   title: 'Article 2',
@@ -15,6 +16,7 @@ export const ARTICLE_META_MOCK_2: ArticleMeta = {
   description: 'article2 description',
   thumbnailUrl: 'article2.jpg',
   createdOn: 'February 14th, 1990',
+  hideInProd: false,
 }
 export const ARTICLE_META_MOCK_3: ArticleMeta = {
   title: 'Article 3',
@@ -23,6 +25,7 @@ export const ARTICLE_META_MOCK_3: ArticleMeta = {
   description: 'article2 description',
   thumbnailUrl: 'article2.jpg',
   createdOn: 'February 15th, 1990',
+  hideInProd: false,
 }
 
 export const ARTICLES_META_MOCK = [ARTICLE_META_MOCK_1, ARTICLE_META_MOCK_2, ARTICLE_META_MOCK_3]
