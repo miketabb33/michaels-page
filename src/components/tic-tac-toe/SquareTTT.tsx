@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { PlayerTTT } from './PlayerTTT'
+import { MarkerIdTTT, PlayerTTT } from './PlayerTTT'
 import { MarkerTTTProps } from './svg/MarkerSvgTTT'
 
 const Square = styled.button<{ $isWinningSquare?: boolean }>`
   display: block;
   background-color: rgba(0, 0, 0, 0);
-  border: 2px solid black;
+  border: none;
   width: 20rem;
   height: 20rem;
   cursor: pointer;
@@ -31,40 +31,68 @@ const Square = styled.button<{ $isWinningSquare?: boolean }>`
   }
 `
 
-type IndexPathTTT = {
-  board: number
-  square: number
+export type SquareTTTProps = {
+  owner?: PlayerTTT | undefined
+  isWinning: boolean
+  marker: MarkerTTTProps
+  onClick: () => void
 }
 
-type SquareTTT = {
-  owner?: PlayerTTT
-  isWinningSquare: boolean
-  indexPath: IndexPathTTT
-}
-
-const SquareViewTTT = (square: SquareTTT) => {
-  const { markerProps } = useInSquareViewTTT(square)
+const SquareTTT = ({ owner, isWinning, marker, onClick }: SquareTTTProps) => {
   return (
-    <Square $isWinningSquare={square.isWinningSquare} onClick={() => console.log('clicked')}>
-      {square.owner?.makeComponent(markerProps)}
+    <Square $isWinningSquare={isWinning} onClick={onClick}>
+      {owner?.makeComponent(marker)}
     </Square>
   )
 }
 
-const useInSquareViewTTT = ({ owner, isWinningSquare }: SquareTTT) => {
-  const WINNING_COLOR = '#D7E725'
-
-  if (!owner) {
-    const defaultMarkerProps: MarkerTTTProps = { size: '', color: '' }
-    return { markerProps: defaultMarkerProps }
-  }
-
-  const markerColor = isWinningSquare ? WINNING_COLOR : owner.color
-  const markerProps: MarkerTTTProps = { size: '100%', color: markerColor }
-  return { markerProps }
+export type UseWithSquareTTTReturn = {
+  bind: SquareTTTProps
+  setWinner: () => void
+  ownerMarker?: MarkerIdTTT
 }
 
-export default SquareViewTTT
+export const useWithSquareTTT = (currentPlayer: PlayerTTT, onTurnEnd: () => void): UseWithSquareTTTReturn => {
+  const WINNING_COLOR = '#D7E725'
+
+  const [isWinning, setIsWinning] = useState(false)
+  const [owner, setOwner] = useState<PlayerTTT | undefined>(undefined)
+
+  useEffect(() => {
+    onTurnEnd()
+  }, [owner])
+
+  const setWinner = () => {
+    setIsWinning(true)
+  }
+
+  const onClick = () => {
+    if (owner) return
+    setOwner(currentPlayer)
+  }
+
+  let marker: MarkerTTTProps
+
+  if (!owner) {
+    marker = { size: '', color: '' }
+  } else {
+    const markerColor = isWinning ? WINNING_COLOR : owner.color
+    marker = { size: '100%', color: markerColor }
+  }
+
+  return {
+    bind: {
+      marker,
+      isWinning,
+      owner,
+      onClick,
+    },
+    setWinner,
+    ownerMarker: owner?.markerID,
+  }
+}
+
+export default SquareTTT
 
 // interface SquareViewProps {
 // 	boardIndex: number

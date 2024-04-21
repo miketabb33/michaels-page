@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import InfoBarTTT from './InfoBarTTT'
 import TimeInputTTT, { useWithTimeInputTTT } from './timer-display/TimeInputTTT'
 import { announcementTextTTT } from './AnnouncementTTT'
-import { OPlayer, XPlayer } from './PlayerTTT'
-import SquareViewTTT from './SquareTTT'
-import BoardViewTTT from './BoardViewTTT'
+import { OPlayer, PlayerTTT, XPlayer } from './PlayerTTT'
+import BoardTTT, { useWithBoardTTT } from './BoardViewTTT'
+import { checkForWinner } from './winnerTTT'
 // import Head from 'next/head'
 // import GameState from '../game/game-state'
 // import Board3DView from './board-3D-view'
@@ -27,7 +27,20 @@ const player1 = XPlayer
 const player2 = OPlayer
 
 const TicTacToeBoard = () => {
+  const [currentPlayer, setCurrentPlayer] = useState<PlayerTTT>(player1)
   const timeInput = useWithTimeInputTTT(false)
+
+  const nextPlayer = () => {
+    setCurrentPlayer((prev) => (prev === XPlayer ? OPlayer : XPlayer))
+  }
+
+  const onTurnEnd = () => {
+    const isWinner = checkForWinner(board.squares)
+    if (isWinner) console.log('winner')
+    else nextPlayer()
+  }
+
+  const board = useWithBoardTTT(currentPlayer, onTurnEnd)
 
   return (
     <>
@@ -40,8 +53,7 @@ const TicTacToeBoard = () => {
         player2RemainingTimeInHundredthsOfSeconds={200}
       />
       <TimeInputTTT {...timeInput.bind} />
-      <BoardViewTTT />
-      <SquareViewTTT owner={player1} isWinningSquare={true} indexPath={{ board: 0, square: 0 }} />
+      <BoardTTT {...board.bind} />
     </>
   )
   // game: Game

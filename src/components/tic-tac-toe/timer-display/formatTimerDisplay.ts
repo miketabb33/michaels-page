@@ -1,25 +1,13 @@
 export const formatTimerDisplay = (timeInHundredthsOfSeconds: number) => {
-  if (timeInHundredthsOfSeconds <= 0) {
-    return get0TimeFormat()
-  } else {
-    return getOver0TimeFormat(timeInHundredthsOfSeconds)
-  }
+  if (timeInHundredthsOfSeconds <= 0) return '00:00.00'
+  return getOver0TimeFormat(timeInHundredthsOfSeconds)
 }
 
 const addPrefixWhenNeeded = (time: string) => {
-  if (time.length == 2) {
-    return time
-  } else if (time.length == 1) {
-    return '0' + time
-  } else if (time.length == 0) {
-    return '00'
-  } else {
-    return '++'
-  }
-}
-
-const get0TimeFormat = () => {
-  return '00:00.00'
+  if (time.length == 2) return time
+  if (time.length == 1) return '0' + time
+  if (time.length == 0) return '00'
+  return '++'
 }
 
 const getOver0TimeFormat = (timeInHundredthsOfSeconds: number) => {

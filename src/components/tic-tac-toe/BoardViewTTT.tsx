@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import BoardSvgTTT from './svg/BoardSvgTTT'
 import styled from 'styled-components'
+import SquareTTT, { SquareTTTProps, UseWithSquareTTTReturn, useWithSquareTTT } from './SquareTTT'
+import { PlayerTTT, XPlayer } from './PlayerTTT'
+import { XMarkerSvg } from './svg/MarkerSvgTTT'
 // import SquareView from './square-view'
 // import BoardImage from '../images/board-image'
 // import gameStyles from '../styles/GameStyles.module.css'
@@ -15,25 +18,53 @@ const Container = styled.div`
 const SquareGrid = styled.div`
   top: 0;
   left: 0;
-  opacity: 0.5;
   position: absolute;
-  background-color: red;
   width: 100%;
   height: 100%;
 
   display: grid;
+  grid-template-columns: repeat(3, 1fr);
 `
 
-const BoardViewTTT = () => {
+type BoardTTTProps = {
+  squareBinds: SquareTTTProps[]
+}
+
+const BoardTTT = ({ squareBinds }: BoardTTTProps) => {
   return (
     <Container>
       <BoardSvgTTT size="100%" />
-      <SquareGrid></SquareGrid>
+      <SquareGrid>
+        {squareBinds.map((bind, i) => (
+          <SquareTTT key={i} {...bind} />
+        ))}
+      </SquareGrid>
     </Container>
   )
 }
 
-export default BoardViewTTT
+export const useWithBoardTTT = (currentPlayer: PlayerTTT, onTurnEnd: () => void) => {
+  const squares = [
+    useWithSquareTTT(currentPlayer, onTurnEnd),
+    useWithSquareTTT(currentPlayer, onTurnEnd),
+    useWithSquareTTT(currentPlayer, onTurnEnd),
+    useWithSquareTTT(currentPlayer, onTurnEnd),
+    useWithSquareTTT(currentPlayer, onTurnEnd),
+    useWithSquareTTT(currentPlayer, onTurnEnd),
+    useWithSquareTTT(currentPlayer, onTurnEnd),
+    useWithSquareTTT(currentPlayer, onTurnEnd),
+    useWithSquareTTT(currentPlayer, onTurnEnd),
+  ]
+
+  return {
+    bind: {
+      squareBinds: squares.map((s) => s.bind),
+    },
+    squares,
+  }
+}
+
+export default BoardTTT
 
 // interface BoardViewProps {
 // 	squares: Square[]
