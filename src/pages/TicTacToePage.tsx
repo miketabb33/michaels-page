@@ -2,6 +2,7 @@ import React from 'react'
 import NavLayout from '../components/layouts/NavLayout'
 import { usePage } from './usePage'
 import TicTacToeBoard from '../components/tic-tac-toe/TicTacToeBoard'
+import { TicTacToeProvider } from '../components/tic-tac-toe/TicTacToeProvider'
 
 const TicTacToePage = () => {
   usePage({
@@ -10,7 +11,9 @@ const TicTacToePage = () => {
   })
   return (
     <NavLayout>
-      <TicTacToeBoard />
+      <TicTacToeProvider>
+        <TicTacToeBoard />
+      </TicTacToeProvider>
     </NavLayout>
   )
 }

@@ -11,19 +11,18 @@ const winningVariations = [
   [2, 4, 6],
 ]
 
-export const checkForWinner = (squares: UseWithSquareTTTReturn[]): boolean => {
+export const checkForWinner = (squares: UseWithSquareTTTReturn[]) => {
   for (let i = 0; i < winningVariations.length; i++) {
     const [a, b, c] = winningVariations[i]
     if (
-      squares[a].ownerMarker &&
-      squares[a].ownerMarker === squares[b].ownerMarker &&
-      squares[a].ownerMarker === squares[c].ownerMarker
+      squares[a].owner?.markerID &&
+      squares[a].owner?.markerID === squares[b].owner?.markerID &&
+      squares[a].owner?.markerID === squares[c].owner?.markerID
     ) {
       squares[a].setWinner()
       squares[b].setWinner()
       squares[c].setWinner()
-      return true
+      return squares[a].owner
     }
   }
-  return false
 }
