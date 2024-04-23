@@ -1,7 +1,5 @@
 import React from 'react'
-import InfoBarTTT from './InfoBarTTT'
-import TimeInputTTT, { useWithTimeInputTTT } from './timer-display/TimeInputTTT'
-import { announcementTextTTT } from './AnnouncementTTT'
+import AnnouncementTTT, { announcementTextTTT } from './AnnouncementTTT'
 import BoardTTT, { useWithBoardTTT } from './BoardTTT'
 import { checkForWinner } from './winnerTTT'
 import { useTicTacToe } from './TicTacToeProvider'
@@ -17,9 +15,8 @@ const BoardPosition = styled.div`
   padding: 1.5rem;
 `
 
-const TicTacToeBoard = () => {
-  const { isGameOver, currentPlayer, players, winner, gameOver, nextPlayer, setWinner, reset } = useTicTacToe()
-  const timeInput = useWithTimeInputTTT(false)
+const TicTacToeRegular = () => {
+  const { isGameOver, currentPlayer, winner, gameOver, nextPlayer, setWinner, reset } = useTicTacToe()
 
   const onTurnEnd = () => {
     const winner = checkForWinner(board.squares)
@@ -47,15 +44,7 @@ const TicTacToeBoard = () => {
 
   return (
     <>
-      <InfoBarTTT
-        activePlayer={currentPlayer}
-        player1={players[0]}
-        player2={players[1]}
-        announcement={getAnnouncement()}
-        player1RemainingTimeInHundredthsOfSeconds={300}
-        player2RemainingTimeInHundredthsOfSeconds={200}
-      />
-      {/* <TimeInputTTT {...timeInput.bind} /> */}
+      <AnnouncementTTT announcement={getAnnouncement()} />
       <BoardPosition>
         <BoardTTT {...board.bind} />
         {isGameOver && <Button onClick={resetGame}>Play Again</Button>}
@@ -64,4 +53,4 @@ const TicTacToeBoard = () => {
   )
 }
 
-export default TicTacToeBoard
+export default TicTacToeRegular

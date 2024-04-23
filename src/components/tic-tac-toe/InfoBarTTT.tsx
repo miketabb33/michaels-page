@@ -42,17 +42,17 @@ const InfoBarTTT = ({
 }: InfoBarTTTProps) => {
   return (
     <Container>
-      {/* <TimerDisplayTTT
+      <TimerDisplayTTT
         player={player1}
         isActive={isActivePlayer(player1, activePlayer)}
         remainingTimeInHundredthsOfSeconds={player1RemainingTimeInHundredthsOfSeconds}
-      /> */}
+      />
       <AnnouncementTTT announcement={announcement} />
-      {/* <TimerDisplayTTT
+      <TimerDisplayTTT
         player={player2}
         isActive={isActivePlayer(player2, activePlayer)}
         remainingTimeInHundredthsOfSeconds={player2RemainingTimeInHundredthsOfSeconds}
-      /> */}
+      />
     </Container>
   )
 }
