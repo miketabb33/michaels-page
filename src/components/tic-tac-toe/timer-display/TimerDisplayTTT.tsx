@@ -4,6 +4,7 @@ import { PlayerTTT } from '../PlayerTTT'
 import { MarkerTTTProps } from '../svg/MarkerSvgTTT'
 import { formatTimerDisplay } from './formatTimerDisplay'
 import { colorTokens } from '../../../styles/colorTokens'
+import { useTicTacToe } from '../TicTacToeProvider'
 
 type StyledTimerDisplayProps = {
   $borderColor: string
@@ -32,7 +33,6 @@ const TimerText = styled.p<StyledTimerTextProps>`
 
 type TimerDisplayTTTProps = {
   player: PlayerTTT
-  isActive: boolean
   remainingTimeInHundredthsOfSeconds: number
 }
 
@@ -47,7 +47,9 @@ const TimerDisplayTTT = (props: TimerDisplayTTTProps) => {
   )
 }
 
-const useInTimerDisplayTTT = ({ player, isActive, remainingTimeInHundredthsOfSeconds }: TimerDisplayTTTProps) => {
+const useInTimerDisplayTTT = ({ player, remainingTimeInHundredthsOfSeconds }: TimerDisplayTTTProps) => {
+  const { currentPlayer } = useTicTacToe()
+
   const INACTIVE_BORDER_COLOR = colorTokens.gray_950
   const RED_COLOR = 'red'
 
@@ -55,6 +57,7 @@ const useInTimerDisplayTTT = ({ player, isActive, remainingTimeInHundredthsOfSec
 
   const calculateBorderColor = () => {
     if (hasNoTimeLeft) return RED_COLOR
+    const isActive = currentPlayer === player
     return isActive ? player.color : INACTIVE_BORDER_COLOR
   }
 

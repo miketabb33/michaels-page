@@ -5,6 +5,7 @@ import { checkForWinner } from './winnerTTT'
 import { useTicTacToe } from './TicTacToeProvider'
 import styled from 'styled-components'
 import Button from '../m-blocks/Button'
+import InfoBarTTT from './InfoBarTTT'
 
 const BoardPosition = styled.div`
   display: flex;
@@ -44,7 +45,9 @@ const TicTacToeRegular = () => {
 
   return (
     <>
-      <AnnouncementTTT announcement={getAnnouncement()} />
+      <InfoBarTTT>
+        <AnnouncementTTT announcement={getAnnouncement()} />
+      </InfoBarTTT>
       <BoardPosition>
         <BoardTTT {...board.bind} />
         {isGameOver && <Button onClick={resetGame}>Play Again</Button>}

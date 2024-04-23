@@ -1,12 +1,13 @@
 import React from 'react'
-import InfoBarTTT from './InfoBarTTT'
 import TimeInputTTT, { useWithTimeInputTTT } from './timer-display/TimeInputTTT'
-import { announcementTextTTT } from './AnnouncementTTT'
+import AnnouncementTTT, { announcementTextTTT } from './AnnouncementTTT'
 import BoardTTT, { useWithBoardTTT } from './BoardTTT'
 import { checkForWinner } from './winnerTTT'
 import { useTicTacToe } from './TicTacToeProvider'
 import styled from 'styled-components'
 import Button from '../m-blocks/Button'
+import TimerDisplayTTT from './timer-display/TimerDisplayTTT'
+import InfoBarTTT from './InfoBarTTT'
 
 const BoardPosition = styled.div`
   display: flex;
@@ -47,14 +48,11 @@ const TicTacToeTimed = () => {
 
   return (
     <>
-      <InfoBarTTT
-        activePlayer={currentPlayer}
-        player1={players[0]}
-        player2={players[1]}
-        announcement={getAnnouncement()}
-        player1RemainingTimeInHundredthsOfSeconds={300}
-        player2RemainingTimeInHundredthsOfSeconds={200}
-      />
+      <InfoBarTTT>
+        <TimerDisplayTTT player={players[0]} remainingTimeInHundredthsOfSeconds={300} />
+        <AnnouncementTTT announcement={getAnnouncement()} />
+        <TimerDisplayTTT player={players[1]} remainingTimeInHundredthsOfSeconds={200} />
+      </InfoBarTTT>
       <TimeInputTTT {...timeInput.bind} />
       <BoardPosition>
         <BoardTTT {...board.bind} />
