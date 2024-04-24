@@ -48,10 +48,12 @@ const TimerDisplayTTT = ({ borderColor, timerTextProps, timeText, markerProps, p
   )
 }
 
+export const DEFAULT_START_TIME_TIMED_TTT = 1000
+
 export const useWithTimerDisplayTTT = (player: PlayerTTT, timerDidHit0: () => void) => {
   const decrementingMillisecondInterval = 5
   const [isRunningTimer, setIsRunningTimer] = useState(false)
-  const [totalTime, setTotalTime] = useState(1000)
+  const [totalTime, setTotalTime] = useState(DEFAULT_START_TIME_TIMED_TTT)
   const [usedTime, setUsedTime] = useState(0)
   const remainingTime = totalTime - usedTime
   const hasNoTimeLeft = remainingTime <= 0

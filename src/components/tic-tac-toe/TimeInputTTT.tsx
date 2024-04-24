@@ -33,30 +33,38 @@ const TimeInputTTT = ({ isHidden, inputBind }: TimeInputTTTProps) => {
 }
 
 type UseWithTimeInputTTTReturnArgs = {
-  value: string
+  bind: TimeInputTTTProps
   hide: () => void
   show: () => void
-  bind: TimeInputTTTProps
+  clear: () => void
 }
 
-export const useWithTimeInputTTT = (initIsHidden: boolean): UseWithTimeInputTTTReturnArgs => {
-  const [isHidden, setIsHidden] = useState(initIsHidden)
+export const useWithTimeInputTTT = (onChange: (value: number) => void): UseWithTimeInputTTTReturnArgs => {
+  const [isHidden, setIsHidden] = useState(false)
 
   const validateNumber = (event: React.ChangeEvent<HTMLInputElement>) => {
     const numberRegex = new RegExp('^[0-9]*$')
     return numberRegex.test(event.target.value)
   }
 
-  const input = useWithInput({ validationOnChange: validateNumber, maxLength: 5 })
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = +e.target.value
+    let time = value * 100
+    if (time < 90) time = 100
+    onChange(time)
+  }
+
+  const input = useWithInput({ validationOnChange: validateNumber, maxLength: 5, onChange: onInputChange })
 
   const hide = () => setIsHidden(true)
   const show = () => setIsHidden(false)
+  const clear = () => input.clear()
 
   return {
-    value: input.value,
+    bind: { inputBind: input.bind, isHidden },
     hide,
     show,
-    bind: { inputBind: input.bind, isHidden },
+    clear,
   }
 }
 

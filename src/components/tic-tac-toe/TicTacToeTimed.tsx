@@ -6,7 +6,7 @@ import { checkForWinner } from './winnerTTT'
 import { useTicTacToe } from './TicTacToeProvider'
 import styled from 'styled-components'
 import Button from '../m-blocks/Button'
-import TimerDisplayTTT, { useWithTimerDisplayTTT } from './timer-display/TimerDisplayTTT'
+import TimerDisplayTTT, { DEFAULT_START_TIME_TIMED_TTT, useWithTimerDisplayTTT } from './timer-display/TimerDisplayTTT'
 import InfoBarTTT from './InfoBarTTT'
 
 const BoardPosition = styled.div`
@@ -52,9 +52,10 @@ const TicTacToeTimed = () => {
   const resetGame = () => {
     board.reset()
     engine.reset()
+    timeInput.clear()
     timeInput.show()
-    player1Timer.setTime(1000)
-    player2Timer.setTime(1000)
+    player1Timer.setTime(DEFAULT_START_TIME_TIMED_TTT)
+    player2Timer.setTime(DEFAULT_START_TIME_TIMED_TTT)
   }
 
   const timerHit0 = () => {
@@ -63,9 +64,14 @@ const TicTacToeTimed = () => {
     engine.setWinner(winner)
   }
 
+  const setTimers = (value: number) => {
+    player1Timer.setTime(value)
+    player2Timer.setTime(value)
+  }
+
   const engine = useTicTacToe()
   const board = useWithBoardTTT(onTurnEnd)
-  const timeInput = useWithTimeInputTTT(false)
+  const timeInput = useWithTimeInputTTT(setTimers)
   const player1Timer = useWithTimerDisplayTTT(engine.players[0], timerHit0)
   const player2Timer = useWithTimerDisplayTTT(engine.players[1], timerHit0)
 

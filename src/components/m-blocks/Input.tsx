@@ -21,35 +21,42 @@ const Input = ({ value, placeholder, onChange, maxLength }: ExternalInputProps) 
 
 type UseWithInput = {
   placeholder?: string
-  validationOnChange?: (e: ChangeEvent<HTMLInputElement>) => boolean
   maxLength?: number
+  validationOnChange?: (e: ChangeEvent<HTMLInputElement>) => boolean
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 type UseWithInputReturn = {
   bind: ExternalInputProps
   value: string
+  clear: () => void
 }
 
 export const useWithInput = ({
   placeholder = '',
-  validationOnChange = () => true,
   maxLength,
+  validationOnChange = () => true,
+  onChange = () => {},
 }: UseWithInput): UseWithInputReturn => {
   const [value, setValue] = useState('')
 
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const isValid = validationOnChange(e)
-    if (isValid) setValue(e.target.value)
+    if (isValid) {
+      onChange(e)
+      setValue(e.target.value)
+    }
   }
 
   return {
     bind: {
       placeholder,
-      onChange,
+      onChange: onInputChange,
       maxLength,
       value,
     },
     value,
+    clear: () => setValue(''),
   }
 }
 
