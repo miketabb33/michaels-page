@@ -10,25 +10,6 @@ const Square = styled.button<{ $isWinningSquare?: boolean }>`
   border: none;
   padding: 1rem;
   cursor: pointer;
-  animation: ${({ $isWinningSquare }) => $isWinningSquare && 'flash 2s infinite'};
-
-  @keyframes flash {
-    0% {
-      transform: rotate(0);
-    }
-
-    10% {
-      transform: rotate(10deg);
-    }
-
-    20% {
-      transform: rotate(-15deg);
-    }
-
-    30% {
-      transform: rotate(0);
-    }
-  }
 `
 
 export type SquareTTTProps = {
@@ -83,9 +64,10 @@ export const useWithSquareTTT = (onTurnEnd: () => void): UseWithSquareTTTReturn 
 
   if (!owner) {
     marker = { size: '', color: '' }
+  } else if (isWinning) {
+    marker = { size: '100%', color: WINNING_COLOR, isAnimating: true }
   } else {
-    const markerColor = isWinning ? WINNING_COLOR : owner.color
-    marker = { size: '100%', color: markerColor }
+    marker = { size: '100%', color: owner.color }
   }
 
   return {
