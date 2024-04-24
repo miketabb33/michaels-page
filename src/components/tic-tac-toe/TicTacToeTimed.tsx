@@ -1,12 +1,12 @@
 import React from 'react'
-import TimeInputTTT, { useWithTimeInputTTT } from './timer-display/TimeInputTTT'
+import TimeInputTTT, { useWithTimeInputTTT } from './TimeInputTTT'
 import AnnouncementTTT, { announcementTextTTT } from './AnnouncementTTT'
 import BoardTTT, { useWithBoardTTT } from './BoardTTT'
 import { checkForWinner } from './winnerTTT'
 import { useTicTacToe } from './TicTacToeProvider'
 import styled from 'styled-components'
 import Button from '../m-blocks/Button'
-import TimerDisplayTTT from './timer-display/TimerDisplayTTT'
+import TimerDisplayTTT, { useWithTimerDisplayTTT } from './timer-display/TimerDisplayTTT'
 import InfoBarTTT from './InfoBarTTT'
 
 const BoardPosition = styled.div`
@@ -19,44 +19,67 @@ const BoardPosition = styled.div`
 `
 
 const TicTacToeTimed = () => {
-  const { isGameOver, currentPlayer, players, winner, gameOver, nextPlayer, setWinner, reset } = useTicTacToe()
-  const timeInput = useWithTimeInputTTT(false)
-
   const onTurnEnd = () => {
+    if (board.isMove(1)) timeInput.hide()
+
+    if (engine.currentPlayer === engine.players[0]) {
+      player2Timer.startTimer()
+      player1Timer.stopTimer()
+    } else {
+      player2Timer.stopTimer()
+      player1Timer.startTimer()
+    }
+
     const winner = checkForWinner(board.squares)
     if (winner) {
-      setWinner(winner)
-      gameOver()
+      engine.setWinner(winner)
+      engine.gameOver()
+      player1Timer.stopTimer()
+      player2Timer.stopTimer()
     }
-    if (board.isFull()) gameOver()
-    if (!isGameOver) nextPlayer()
+    if (board.isFull()) engine.gameOver()
+
+    if (!engine.isGameOver) engine.nextPlayer()
   }
 
-  const board = useWithBoardTTT(onTurnEnd)
-
   const getAnnouncement = () => {
-    if (winner) return announcementTextTTT.winner(winner.markerID)
-    if (board.isEmpty()) return announcementTextTTT.first(currentPlayer.markerID)
+    if (engine.winner) return announcementTextTTT.winner(engine.winner.markerID)
+    if (board.isEmpty()) return announcementTextTTT.first(engine.currentPlayer.markerID)
     if (board.isFull()) return announcementTextTTT.draw
-    return announcementTextTTT.turn(currentPlayer.markerID)
+    return announcementTextTTT.turn(engine.currentPlayer.markerID)
   }
 
   const resetGame = () => {
     board.reset()
-    reset()
+    engine.reset()
+    timeInput.show()
+    player1Timer.setTime(1000)
+    player2Timer.setTime(1000)
   }
+
+  const timerHit0 = () => {
+    engine.gameOver()
+    const winner = engine.players.filter((p) => p !== engine.currentPlayer)[0]
+    engine.setWinner(winner)
+  }
+
+  const engine = useTicTacToe()
+  const board = useWithBoardTTT(onTurnEnd)
+  const timeInput = useWithTimeInputTTT(false)
+  const player1Timer = useWithTimerDisplayTTT(engine.players[0], timerHit0)
+  const player2Timer = useWithTimerDisplayTTT(engine.players[1], timerHit0)
 
   return (
     <>
       <InfoBarTTT>
-        <TimerDisplayTTT player={players[0]} remainingTimeInHundredthsOfSeconds={300} />
+        <TimerDisplayTTT {...player1Timer.bind} />
         <AnnouncementTTT announcement={getAnnouncement()} />
-        <TimerDisplayTTT player={players[1]} remainingTimeInHundredthsOfSeconds={200} />
+        <TimerDisplayTTT {...player2Timer.bind} />
       </InfoBarTTT>
       <TimeInputTTT {...timeInput.bind} />
       <BoardPosition>
         <BoardTTT {...board.bind} />
-        {isGameOver && <Button onClick={resetGame}>Play Again</Button>}
+        {engine.isGameOver && <Button onClick={resetGame}>Play Again</Button>}
       </BoardPosition>
     </>
   )

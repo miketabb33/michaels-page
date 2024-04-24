@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import P from '../../m-blocks/typography/P'
-import Input, { ExternalInputProps, useWithInput } from '../../m-blocks/Input'
+import P from '../m-blocks/typography/P'
+import Input, { ExternalInputProps, useWithInput } from '../m-blocks/Input'
 
 const Container = styled.div<{ $isHidden: boolean }>`
   visibility: ${({ $isHidden }) => ($isHidden ? 'hidden' : 'visible')};

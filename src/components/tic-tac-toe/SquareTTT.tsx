@@ -62,7 +62,7 @@ export const useWithSquareTTT = (onTurnEnd: () => void): UseWithSquareTTTReturn 
   const [owner, setOwner] = useState<PlayerTTT | undefined>(undefined)
 
   useEffect(() => {
-    onTurnEnd()
+    if (owner) onTurnEnd()
   }, [owner])
 
   const setWinner = () => {

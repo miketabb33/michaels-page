@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react'
-import { useWithTimeInputTTT } from '../../../../../src/components/tic-tac-toe/timer-display/TimeInputTTT'
+import { useWithTimeInputTTT } from '../../../../../src/components/tic-tac-toe/TimeInputTTT'
 import { ChangeEvent } from 'react'
 
 describe('Use With Time Input TTT', () => {

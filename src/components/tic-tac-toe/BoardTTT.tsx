@@ -56,16 +56,18 @@ export const useWithBoardTTT = (onTurnEnd: () => void) => {
     useWithSquareTTT(onTurnEnd),
   ]
 
-  const isEmpty = squares.filter((s) => s.owner?.markerID !== undefined).length === 0
-  const isFull = squares.filter((s) => s.owner?.markerID === undefined).length === 0
+  const isEmpty = () => squares.filter((s) => s.owner?.markerID !== undefined).length === 0
+  const isFull = () => squares.filter((s) => s.owner?.markerID === undefined).length === 0
+  const isMove = (amount: number) => squares.filter((s) => s.owner?.markerID !== undefined).length === amount
 
   return {
     bind: {
       squareBinds: squares.map((s) => s.bind),
     },
     squares,
-    isEmpty: () => isEmpty,
-    isFull: () => isFull,
+    isEmpty,
+    isFull,
+    isMove,
     reset: () => squares.forEach((s) => s.reset()),
   }
 }

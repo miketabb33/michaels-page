@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { PlayerTTT } from '../PlayerTTT'
 import { MarkerTTTProps } from '../svg/MarkerSvgTTT'
 import { formatTimerDisplay } from './formatTimerDisplay'
-import { colorTokens } from '../../../styles/colorTokens'
 import { useTicTacToe } from '../TicTacToeProvider'
+import { calculateTimerUI } from './calculateTimerUI'
 
 type StyledTimerDisplayProps = {
   $borderColor: string
@@ -32,51 +32,77 @@ const TimerText = styled.p<StyledTimerTextProps>`
 `
 
 type TimerDisplayTTTProps = {
+  borderColor: string
+  timerTextProps: { $color: string; id: string }
+  timeText: string
+  markerProps: MarkerTTTProps
   player: PlayerTTT
-  remainingTimeInHundredthsOfSeconds: number
 }
 
-const TimerDisplayTTT = (props: TimerDisplayTTTProps) => {
-  const { borderColor, markerProps, timerTextProps, timeText } = useInTimerDisplayTTT(props)
-
+const TimerDisplayTTT = ({ borderColor, timerTextProps, timeText, markerProps, player }: TimerDisplayTTTProps) => {
   return (
     <TimerDisplay $borderColor={borderColor}>
-      {props.player.makeComponent(markerProps)}
+      {player.makeComponent(markerProps)}
       <TimerText {...timerTextProps}>{timeText}</TimerText>
     </TimerDisplay>
   )
 }
 
-const useInTimerDisplayTTT = ({ player, remainingTimeInHundredthsOfSeconds }: TimerDisplayTTTProps) => {
+export const useWithTimerDisplayTTT = (player: PlayerTTT, timerDidHit0: () => void) => {
+  const decrementingMillisecondInterval = 5
+  const [isRunningTimer, setIsRunningTimer] = useState(false)
+  const [totalTime, setTotalTime] = useState(1000)
+  const [usedTime, setUsedTime] = useState(0)
+  const remainingTime = totalTime - usedTime
+  const hasNoTimeLeft = remainingTime <= 0
+
+  useEffect(() => {
+    if (isRunningTimer) {
+      const timerInterval = decrementingMillisecondInterval * 10
+      const interval = setInterval(updateTime, timerInterval)
+
+      return () => clearInterval(interval)
+    }
+  }, [isRunningTimer])
+
+  useEffect(() => {
+    if (hasNoTimeLeft) {
+      timerDidHit0()
+      stopTimer()
+    }
+  }, [remainingTime])
+
+  const updateTime = () => {
+    setUsedTime((val) => val + decrementingMillisecondInterval)
+  }
+
+  const startTimer = () => {
+    setIsRunningTimer(true)
+  }
+
+  const stopTimer = () => {
+    setIsRunningTimer(false)
+  }
+
+  const setTime = (amount: number) => {
+    setUsedTime(0)
+    setTotalTime(amount)
+  }
+
   const { currentPlayer } = useTicTacToe()
-
-  const INACTIVE_BORDER_COLOR = colorTokens.gray_950
-  const RED_COLOR = 'red'
-
-  const hasNoTimeLeft = remainingTimeInHundredthsOfSeconds <= 0
-
-  const calculateBorderColor = () => {
-    if (hasNoTimeLeft) return RED_COLOR
-    const isActive = currentPlayer === player
-    return isActive ? player.color : INACTIVE_BORDER_COLOR
-  }
-
-  const timerTextProps = {
-    $color: hasNoTimeLeft ? RED_COLOR : player.color,
-    id: `${player.markerID}-player-remaining-time`,
-  }
-
-  const markerProps: MarkerTTTProps = {
-    size: '3rem',
-    color: hasNoTimeLeft ? RED_COLOR : player.color,
-    id: `${player.markerID}-timer-display`,
-  }
+  const { calculateBorderColor, getMarkerProps, getTimerTextProps } = calculateTimerUI(player, hasNoTimeLeft)
 
   return {
-    borderColor: calculateBorderColor(),
-    markerProps,
-    timerTextProps,
-    timeText: formatTimerDisplay(remainingTimeInHundredthsOfSeconds),
+    bind: {
+      borderColor: calculateBorderColor(currentPlayer),
+      timerTextProps: getTimerTextProps(),
+      markerProps: getMarkerProps(),
+      timeText: formatTimerDisplay(remainingTime),
+      player,
+    },
+    setTime,
+    startTimer,
+    stopTimer,
   }
 }
 

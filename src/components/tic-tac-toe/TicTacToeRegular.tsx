@@ -17,31 +17,30 @@ const BoardPosition = styled.div`
 `
 
 const TicTacToeRegular = () => {
-  const { isGameOver, currentPlayer, winner, gameOver, nextPlayer, setWinner, reset } = useTicTacToe()
-
   const onTurnEnd = () => {
     const winner = checkForWinner(board.squares)
     if (winner) {
-      setWinner(winner)
-      gameOver()
+      engine.setWinner(winner)
+      engine.gameOver()
     }
-    if (board.isFull()) gameOver()
-    if (!isGameOver) nextPlayer()
+    if (board.isFull()) engine.gameOver()
+    if (!engine.isGameOver) engine.nextPlayer()
   }
 
-  const board = useWithBoardTTT(onTurnEnd)
-
   const getAnnouncement = () => {
-    if (winner) return announcementTextTTT.winner(winner.markerID)
-    if (board.isEmpty()) return announcementTextTTT.first(currentPlayer.markerID)
+    if (engine.winner) return announcementTextTTT.winner(engine.winner.markerID)
+    if (board.isEmpty()) return announcementTextTTT.first(engine.currentPlayer.markerID)
     if (board.isFull()) return announcementTextTTT.draw
-    return announcementTextTTT.turn(currentPlayer.markerID)
+    return announcementTextTTT.turn(engine.currentPlayer.markerID)
   }
 
   const resetGame = () => {
     board.reset()
-    reset()
+    engine.reset()
   }
+
+  const engine = useTicTacToe()
+  const board = useWithBoardTTT(onTurnEnd)
 
   return (
     <>
@@ -50,7 +49,7 @@ const TicTacToeRegular = () => {
       </InfoBarTTT>
       <BoardPosition>
         <BoardTTT {...board.bind} />
-        {isGameOver && <Button onClick={resetGame}>Play Again</Button>}
+        {engine.isGameOver && <Button onClick={resetGame}>Play Again</Button>}
       </BoardPosition>
     </>
   )
