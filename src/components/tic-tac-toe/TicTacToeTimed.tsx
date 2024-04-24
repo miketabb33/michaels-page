@@ -7,7 +7,7 @@ import { useTicTacToe } from './TicTacToeProvider'
 import styled from 'styled-components'
 import Button from '../m-blocks/Button'
 import TimerDisplayTTT, { DEFAULT_START_TIME_TIMED_TTT, useWithTimerDisplayTTT } from './timer-display/TimerDisplayTTT'
-import InfoBarTTT from './InfoBarTTT'
+import LayoutTTT from './LayoutTTT'
 
 const BoardPosition = styled.div`
   display: flex;
@@ -15,7 +15,6 @@ const BoardPosition = styled.div`
   align-items: center;
   gap: 4rem;
   margin-top: 3rem;
-  padding: 1.5rem;
 `
 
 const TicTacToeTimed = () => {
@@ -76,18 +75,21 @@ const TicTacToeTimed = () => {
   const player2Timer = useWithTimerDisplayTTT(engine.players[1], timerHit0)
 
   return (
-    <>
-      <InfoBarTTT>
-        <TimerDisplayTTT {...player1Timer.bind} />
-        <AnnouncementTTT announcement={getAnnouncement()} />
-        <TimerDisplayTTT {...player2Timer.bind} />
-      </InfoBarTTT>
+    <LayoutTTT
+      InfoBarContent={
+        <>
+          <TimerDisplayTTT {...player1Timer.bind} />
+          <AnnouncementTTT announcement={getAnnouncement()} />
+          <TimerDisplayTTT {...player2Timer.bind} />
+        </>
+      }
+    >
       <TimeInputTTT {...timeInput.bind} />
       <BoardPosition>
         <BoardTTT {...board.bind} />
         {engine.isGameOver && <Button onClick={resetGame}>Play Again</Button>}
       </BoardPosition>
-    </>
+    </LayoutTTT>
   )
 }
 

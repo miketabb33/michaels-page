@@ -5,7 +5,6 @@ import Input, { ExternalInputProps, useWithInput } from '../m-blocks/Input'
 
 const Container = styled.div<{ $isHidden: boolean }>`
   visibility: ${({ $isHidden }) => ($isHidden ? 'hidden' : 'visible')};
-  margin-top: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
