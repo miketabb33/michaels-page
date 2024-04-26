@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { PlayerTTT } from '../PlayerTTT'
-import { MarkerTTTProps } from '../svg/MarkerSvgTTT'
+import { MarkerSvgTTTProps } from '../svg/MarkerSvgTTT'
 import { formatTimerDisplay } from './formatTimerDisplay'
 import { useTicTacToe } from '../TicTacToeProvider'
 import { calculateTimerUI } from './calculateTimerUI'
@@ -35,7 +35,7 @@ type TimerDisplayTTTProps = {
   borderColor: string
   timerTextProps: { $color: string; id: string }
   timeText: string
-  markerProps: MarkerTTTProps
+  markerProps: MarkerSvgTTTProps
   player: PlayerTTT
 }
 

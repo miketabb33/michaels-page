@@ -2,9 +2,9 @@ import React from 'react'
 import SvgTTT from './SvgTTT'
 import styled from 'styled-components'
 
-export type MarkerTTTProps = {
+export type MarkerSvgTTTProps = {
   color: string
-  size: string
+  size?: string
   id?: string
   isAnimating?: boolean
 }
@@ -31,7 +31,7 @@ const OMarkerContainer = styled.div<{ $isAnimating: boolean }>`
   }
 `
 
-export const OMarkerSvg = ({ color, size, id, isAnimating = false }: MarkerTTTProps) => (
+export const OMarkerSvg = ({ color, size = '100%', id, isAnimating = false }: MarkerSvgTTTProps) => (
   <OMarkerContainer $isAnimating={isAnimating}>
     <SvgTTT
       $size={size}
@@ -68,7 +68,7 @@ const XMarkerContainer = styled.div<{ $isAnimating: boolean }>`
   }
 `
 
-export const XMarkerSvg = ({ color, size, id, isAnimating = false }: MarkerTTTProps) => (
+export const XMarkerSvg = ({ color, size = '100%', id, isAnimating = false }: MarkerSvgTTTProps) => (
   <XMarkerContainer $isAnimating={isAnimating}>
     <SvgTTT
       $size={size}

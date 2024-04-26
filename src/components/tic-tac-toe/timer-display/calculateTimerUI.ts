@@ -1,6 +1,6 @@
 import { colorTokens } from '../../../styles/colorTokens'
 import { PlayerTTT } from '../PlayerTTT'
-import { MarkerTTTProps } from '../svg/MarkerSvgTTT'
+import { MarkerSvgTTTProps } from '../svg/MarkerSvgTTT'
 
 const INACTIVE_BORDER_COLOR = colorTokens.gray_950
 const RED_COLOR = 'red'
@@ -17,7 +17,7 @@ export const calculateTimerUI = (player: PlayerTTT, hasNoTimeLeft: boolean) => {
     id: `${player.markerID}-player-remaining-time`,
   })
 
-  const getMarkerProps = (): MarkerTTTProps => ({
+  const getMarkerProps = (): MarkerSvgTTTProps => ({
     size: '3rem',
     color: hasNoTimeLeft ? RED_COLOR : player.color,
     id: `${player.markerID}-timer-display`,

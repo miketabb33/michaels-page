@@ -1,12 +1,12 @@
 import { ReactNode } from 'react'
-import { MarkerTTTProps, OMarkerSvg, XMarkerSvg } from './svg/MarkerSvgTTT'
+import { MarkerSvgTTTProps, OMarkerSvg, XMarkerSvg } from './svg/MarkerSvgTTT'
 
 export type MarkerIdTTT = 'X' | 'O'
 
 export type PlayerTTT = {
   markerID: MarkerIdTTT
   color: string
-  makeComponent: (props: MarkerTTTProps) => ReactNode
+  makeComponent: (props: MarkerSvgTTTProps) => ReactNode
 }
 
 export const XPlayer: PlayerTTT = {
