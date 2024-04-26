@@ -1,13 +1,7 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
-type StyledSVG = {
-  $size: string
-}
-
-const SvgTTT = styled.svg<StyledSVG>`
-  ${({ $size }) => css`
-    width: ${$size};
-    height: ${$size};
-  `}
+const SvgTTT = styled.svg`
+  width: 100%;
+  height: 100%;
 `
 export default SvgTTT

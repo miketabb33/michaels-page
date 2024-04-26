@@ -18,9 +18,6 @@ const TicTacToeContext = createContext<TicTacToeContextType>({
   currentPlayer: {
     markerID: 'X',
     color: '',
-    makeComponent: () => {
-      throw new Error('Function not implemented.')
-    },
   },
   players: [],
   winner: undefined,

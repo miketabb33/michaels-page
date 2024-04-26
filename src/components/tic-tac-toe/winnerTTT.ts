@@ -19,9 +19,9 @@ export const checkForWinner = (squares: UseWithSquareTTTReturn[]) => {
       squares[a].owner?.markerID === squares[b].owner?.markerID &&
       squares[a].owner?.markerID === squares[c].owner?.markerID
     ) {
-      squares[a].setWinner()
-      squares[b].setWinner()
-      squares[c].setWinner()
+      squares[a].setWinner(0)
+      squares[b].setWinner(0.1)
+      squares[c].setWinner(0.2)
       return squares[a].owner
     }
   }

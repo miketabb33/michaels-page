@@ -33,7 +33,7 @@ const BoardTTT = ({ squareBinds }: BoardTTTProps) => {
   const boardColor = theme === 'light' ? colorTokens.gray_800 : colorTokens.gray_100
   return (
     <Container>
-      <BoardSvgTTT size="100%" color={boardColor} />
+      <BoardSvgTTT color={boardColor} />
       <SquareGrid>
         {squareBinds.map((bind, i) => (
           <SquareTTT key={i} {...bind} />

@@ -4,13 +4,16 @@ import styled from 'styled-components'
 
 export type MarkerSvgTTTProps = {
   color: string
-  size?: string
   id?: string
   isAnimating?: boolean
+  animationDelay?: number
 }
 
-const OMarkerContainer = styled.div<{ $isAnimating: boolean }>`
+const OMarkerContainer = styled.div<{ $isAnimating: boolean; $delay: number }>`
+  width: 100%;
+  height: 100%;
   animation: ${({ $isAnimating }) => $isAnimating && 'jiggle 2s infinite'};
+  animation-delay: ${({ $delay }) => `${$delay}s`};
 
   @keyframes jiggle {
     0% {
@@ -31,25 +34,21 @@ const OMarkerContainer = styled.div<{ $isAnimating: boolean }>`
   }
 `
 
-export const OMarkerSvg = ({ color, size = '100%', id, isAnimating = false }: MarkerSvgTTTProps) => (
-  <OMarkerContainer $isAnimating={isAnimating}>
-    <SvgTTT
-      $size={size}
-      id={id}
-      width="131"
-      height="131"
-      viewBox="0 0 131 131"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+export const OMarkerSvg = ({ color, id, isAnimating = false, animationDelay = 0 }: MarkerSvgTTTProps) => (
+  <OMarkerContainer $isAnimating={isAnimating} $delay={animationDelay}>
+    <SvgTTT id={id} width="131" height="131" viewBox="0 0 131 131" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="65.5" cy="65.5" r="58.4724" stroke={color} strokeWidth="14.0551" />
     </SvgTTT>
   </OMarkerContainer>
 )
 
-const XMarkerContainer = styled.div<{ $isAnimating: boolean }>`
-  animation: ${({ $isAnimating }) => $isAnimating && 'flash 2s infinite'};
-  @keyframes flash {
+const XMarkerContainer = styled.div<{ $isAnimating: boolean; $delay: number }>`
+  width: 100%;
+  height: 100%;
+  animation: ${({ $isAnimating }) => $isAnimating && 'spin 2s infinite'};
+  animation-delay: ${({ $delay }) => `${$delay}s`};
+
+  @keyframes spin {
     0% {
       transform: initial;
     }
@@ -68,17 +67,9 @@ const XMarkerContainer = styled.div<{ $isAnimating: boolean }>`
   }
 `
 
-export const XMarkerSvg = ({ color, size = '100%', id, isAnimating = false }: MarkerSvgTTTProps) => (
-  <XMarkerContainer $isAnimating={isAnimating}>
-    <SvgTTT
-      $size={size}
-      id={id}
-      width="131"
-      height="131"
-      viewBox="0 0 131 131"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+export const XMarkerSvg = ({ color, id, isAnimating = false, animationDelay = 0 }: MarkerSvgTTTProps) => (
+  <XMarkerContainer $isAnimating={isAnimating} $delay={animationDelay}>
+    <SvgTTT id={id} width="131" height="131" viewBox="0 0 131 131" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="1" y="10.6066" width="15" height="170" rx="7.5" transform="rotate(-45 1 10.6066)" fill={color} />
       <rect
         x="121.191"

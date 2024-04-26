@@ -28,7 +28,7 @@ const SquareTTT = ({ markerBind, onClick }: SquareTTTProps) => {
 export type UseWithSquareTTTReturn = {
   bind: SquareTTTProps
   owner: PlayerTTT | null
-  setWinner: () => void
+  setWinner: (delay: number) => void
   reset: () => void
 }
 
@@ -41,12 +41,12 @@ export const useWithSquareTTT = (onTurnEnd: () => void): UseWithSquareTTTReturn 
     if (owner) onTurnEnd()
   }, [owner])
 
-  const setWinner = () => {
-    marker.setWinning()
+  const setWinner = (delay: number) => {
+    marker.setWinning(delay)
   }
 
   const reset = () => {
-    marker.resetWinning()
+    marker.reset()
     setOwner(null)
   }
 
