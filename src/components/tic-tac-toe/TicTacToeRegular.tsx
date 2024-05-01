@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import Button from '../m-blocks/Button'
 import LayoutTTT from './LayoutTTT'
 
-const BoardPosition = styled.div`
+const ContentPosition = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,10 +44,10 @@ const TicTacToeRegular = () => {
   return (
     <>
       <LayoutTTT InfoBarContent={<AnnouncementTTT announcement={getAnnouncement()} />}>
-        <BoardPosition>
+        <ContentPosition>
           <BoardTTT {...board.bind} />
           {engine.isGameOver && <Button onClick={resetGame}>Play Again</Button>}
-        </BoardPosition>
+        </ContentPosition>
       </LayoutTTT>
     </>
   )

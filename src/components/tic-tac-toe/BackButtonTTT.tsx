@@ -2,6 +2,8 @@ import React from 'react'
 import { useRouter } from '../../router/useRouter'
 import styled from 'styled-components'
 import BackButtonSvgTTT from './svg/BackButtonSvgTTT'
+import { useTheme } from '../../context/ThemeContext'
+import { colorTokens } from '../../styles/colorTokens'
 
 const Button = styled.button`
   background-color: transparent;
@@ -20,18 +22,21 @@ const Button = styled.button`
 `
 
 const BackButtonTTT = () => {
-  const { navigateBack } = useInBackButtonTTT()
+  const { navigateBack, theme } = useInBackButtonTTT()
+  const buttonColor = theme === 'light' ? colorTokens.gray_800 : colorTokens.gray_100
   return (
     <Button onClick={navigateBack}>
-      <BackButtonSvgTTT />
+      <BackButtonSvgTTT color={buttonColor} />
     </Button>
   )
 }
 
 const useInBackButtonTTT = () => {
   const { navigateTo } = useRouter()
+  const { theme } = useTheme()
 
   return {
+    theme,
     navigateBack: () => navigateTo('/tic-tac-toe'),
   }
 }

@@ -8,6 +8,7 @@ import TicTacToePage from '../pages/TicTacToe/TicTacToePage'
 import NotFoundPage from '../pages/NotFoundPage'
 import TicTacToeRegularPage from '../pages/TicTacToe/TicTacToeRegularPage'
 import TicTacToeTimedPage from '../pages/TicTacToe/TicTacToeTimedPage'
+import TicTacToe3dPage from '../pages/TicTacToe/TicTacToe3dPage'
 
 const Router = () => {
   return (
@@ -19,6 +20,7 @@ const Router = () => {
           <Route index element={<TicTacToePage />} />
           <Route path="regular" element={<TicTacToeRegularPage />} />
           <Route path="timed" element={<TicTacToeTimedPage />} />
+          <Route path="3d" element={<TicTacToe3dPage />} />
         </Route>
         <Route path="landing" element={<LandingPage />} />
         <Route path="article/:slug" element={<ArticlePage />} />

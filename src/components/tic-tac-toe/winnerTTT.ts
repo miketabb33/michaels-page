@@ -1,3 +1,4 @@
+import { PlayerTTT } from './PlayerTTT'
 import { UseWithSquareTTTReturn } from './SquareTTT'
 
 const winningVariations = [
@@ -11,7 +12,7 @@ const winningVariations = [
   [2, 4, 6],
 ]
 
-export const checkForWinner = (squares: UseWithSquareTTTReturn[]) => {
+export const checkForWinner = (squares: UseWithSquareTTTReturn[]): PlayerTTT | null => {
   for (let i = 0; i < winningVariations.length; i++) {
     const [a, b, c] = winningVariations[i]
     if (
@@ -25,4 +26,5 @@ export const checkForWinner = (squares: UseWithSquareTTTReturn[]) => {
       return squares[a].owner
     }
   }
+  return null
 }

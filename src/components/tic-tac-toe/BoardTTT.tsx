@@ -23,7 +23,7 @@ const SquareGrid = styled.div`
   grid-template-rows: repeat(3, 1fr);
 `
 
-type BoardTTTProps = {
+export type BoardTTTProps = {
   squareBinds: SquareTTTProps[]
 }
 
@@ -58,7 +58,7 @@ export const useWithBoardTTT = (onTurnEnd: () => void) => {
 
   const isEmpty = () => squares.filter((s) => s.owner?.markerID !== undefined).length === 0
   const isFull = () => squares.filter((s) => s.owner?.markerID === undefined).length === 0
-  const isMove = (amount: number) => squares.filter((s) => s.owner?.markerID !== undefined).length === amount
+  const spacesOwned = () => squares.filter((s) => s.owner?.markerID !== undefined).length
 
   return {
     bind: {
@@ -67,7 +67,7 @@ export const useWithBoardTTT = (onTurnEnd: () => void) => {
     squares,
     isEmpty,
     isFull,
-    isMove,
+    spacesOwned,
     reset: () => squares.forEach((s) => s.reset()),
   }
 }

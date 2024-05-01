@@ -1,10 +1,20 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { MarkerIdTTT } from './PlayerTTT'
+import { tabLandAndUp } from '../../styles/Responsive'
 
 const Announcement = styled.p`
   font-size: 4rem;
   color: ${({ theme }) => theme.color.text};
+  text-align: center;
+
+  grid-row: 1/2;
+  grid-column: 1/3;
+
+  ${tabLandAndUp(css`
+    grid-row: auto;
+    grid-column: auto;
+  `)}
 `
 
 type AnnouncementTTTProps = {

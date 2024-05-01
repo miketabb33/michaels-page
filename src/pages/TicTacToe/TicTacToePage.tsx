@@ -20,13 +20,14 @@ const TicTacToePage = () => {
     description: 'A two person 3D timed tic tac toe game designed to be played on the same computer.',
   })
 
-  const { navigateToRegular, navigateToTimed } = useInTicTacToePage()
+  const { navigateToRegular, navigateToTimed, navigateTo3d } = useInTicTacToePage()
   return (
     <NavLayout>
       <Container>
         <H1>Tic Tac Toe Games</H1>
         <Button onClick={() => navigateToRegular()}>Regular Tic Tac Toe</Button>
         <Button onClick={() => navigateToTimed()}>Timed Tic Tac Toe</Button>
+        <Button onClick={() => navigateTo3d()}>3D Tic Tac Toe</Button>
       </Container>
     </NavLayout>
   )
@@ -34,7 +35,11 @@ const TicTacToePage = () => {
 
 const useInTicTacToePage = () => {
   const { navigateTo } = useRouter()
-  return { navigateToRegular: () => navigateTo('regular'), navigateToTimed: () => navigateTo('timed') }
+  return {
+    navigateToRegular: () => navigateTo('regular'),
+    navigateToTimed: () => navigateTo('timed'),
+    navigateTo3d: () => navigateTo('3d'),
+  }
 }
 
 export default TicTacToePage
