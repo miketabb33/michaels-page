@@ -7,6 +7,7 @@ import P from '../m-blocks/typography/P'
 import Small from '../m-blocks/typography/Small'
 import H3 from '../m-blocks/typography/H3'
 import { desktopAndUp } from '../../styles/Responsive'
+import { PATH_VALUES } from '../../router/pathValues'
 
 export const ARTICLE_CARD_HEIGHT = '55rem'
 
@@ -46,7 +47,7 @@ const ArticleCard = ({ articleMeta }: ArticleCardProps) => {
   return (
     <div>
       <ArticleContainer>
-        <RouterLink linkTo={`article/${articleMeta.slug}`}>
+        <RouterLink linkTo={PATH_VALUES.article(articleMeta.slug)}>
           <Card>
             <ArticleImage src={articleMeta.thumbnailUrl} />
             <CardContent>

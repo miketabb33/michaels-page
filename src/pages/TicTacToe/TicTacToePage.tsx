@@ -5,6 +5,7 @@ import Button from '../../components/m-blocks/Button'
 import { useRouter } from '../../router/useRouter'
 import H1 from '../../components/m-blocks/typography/H1'
 import styled from 'styled-components'
+import { PATH_VALUES } from '../../router/pathValues'
 
 const Container = styled.div`
   margin-top: 5rem;
@@ -33,12 +34,12 @@ const TicTacToePage = () => {
   )
 }
 
-const useInTicTacToePage = () => {
+export const useInTicTacToePage = () => {
   const { navigateTo } = useRouter()
   return {
-    navigateToRegular: () => navigateTo('regular'),
-    navigateToTimed: () => navigateTo('timed'),
-    navigateTo3d: () => navigateTo('3d'),
+    navigateToRegular: () => navigateTo(PATH_VALUES.ticTacToe.regular),
+    navigateToTimed: () => navigateTo(PATH_VALUES.ticTacToe.timed),
+    navigateTo3d: () => navigateTo(PATH_VALUES.ticTacToe.threeD),
   }
 }
 

@@ -5,7 +5,7 @@ import { formatTimerDisplay } from './formatTimerDisplay'
 import { useTicTacToe } from '../TicTacToeProvider'
 import { calculateTimerUI } from './calculateTimerUI'
 import MarkerTTT, { MarkerTTTProps, useWithMarker } from '../MarkerTTT'
-import { UseEffectType } from '../../../types/UseEffectTyper'
+import { UseEffectType } from '../../../types/UseEffectType'
 
 type StyledTimerDisplayProps = {
   $borderColor: string

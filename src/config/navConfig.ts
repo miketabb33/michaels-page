@@ -1,3 +1,5 @@
+import { PATH_VALUES } from '../router/pathValues'
+
 export type NavLinkConfig = {
   linkTo: string
   label: string
@@ -5,9 +7,9 @@ export type NavLinkConfig = {
 
 export const navConfig = (): NavLinkConfig[] => {
   const config = [
-    { linkTo: '/', label: 'Home' },
-    { linkTo: '/pong', label: 'Pong' },
-    { linkTo: '/tic-tac-toe', label: 'T T T' },
+    { linkTo: PATH_VALUES.home, label: 'Home' },
+    { linkTo: PATH_VALUES.pong, label: 'Pong' },
+    { linkTo: PATH_VALUES.ticTacToe.base, label: 'T T T' },
   ]
 
   return config

@@ -1,11 +1,12 @@
 import React from 'react'
-import { useRouter } from '../../router/useRouter'
 import styled from 'styled-components'
 import BackButtonSvgTTT from './svg/BackButtonSvgTTT'
 import { useTheme } from '../../context/ThemeContext'
 import { colorTokens } from '../../styles/colorTokens'
+import { PATH_VALUES } from '../../router/pathValues'
+import RouterLink from '../../router/RouterLink'
 
-const Button = styled.button`
+const Button = styled(RouterLink)`
   background-color: transparent;
   border: none;
   border-radius: 1rem;
@@ -22,23 +23,14 @@ const Button = styled.button`
 `
 
 const BackButtonTTT = () => {
-  const { navigateBack, theme } = useInBackButtonTTT()
+  const { theme } = useTheme()
   const buttonColor = theme === 'light' ? colorTokens.gray_800 : colorTokens.gray_100
+
   return (
-    <Button onClick={navigateBack}>
+    <Button linkTo={PATH_VALUES.ticTacToe.base}>
       <BackButtonSvgTTT color={buttonColor} />
     </Button>
   )
-}
-
-const useInBackButtonTTT = () => {
-  const { navigateTo } = useRouter()
-  const { theme } = useTheme()
-
-  return {
-    theme,
-    navigateBack: () => navigateTo('/tic-tac-toe'),
-  }
 }
 
 export default BackButtonTTT
