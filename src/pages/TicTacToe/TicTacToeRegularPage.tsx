@@ -7,7 +7,7 @@ import { usePage } from '../usePage'
 const TicTacToeRegularPage = () => {
   usePage({
     title: 'Tic Tac Toe',
-    description: 'A two person 3D timed tic tac toe game designed to be played on the same computer.',
+    description: 'A two person tic tac toe game designed to be played on the same computer.',
   })
 
   return (

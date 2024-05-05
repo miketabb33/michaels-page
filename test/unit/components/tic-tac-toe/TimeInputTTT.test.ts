@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react'
-import { useWithTimeInputTTT } from '../../../../../src/components/tic-tac-toe/TimeInputTTT'
+import { useWithTimeInputTTT } from '../../../../src/components/tic-tac-toe/TimeInputTTT'
 import { ChangeEvent } from 'react'
 
 const ON_CHANGE = jest.fn()

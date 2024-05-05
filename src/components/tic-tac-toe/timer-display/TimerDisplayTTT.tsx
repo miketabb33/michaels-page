@@ -5,6 +5,7 @@ import { formatTimerDisplay } from './formatTimerDisplay'
 import { useTicTacToe } from '../TicTacToeProvider'
 import { calculateTimerUI } from './calculateTimerUI'
 import MarkerTTT, { MarkerTTTProps, useWithMarker } from '../MarkerTTT'
+import { UseEffectType } from '../../../types/UseEffectTyper'
 
 type StyledTimerDisplayProps = {
   $borderColor: string
@@ -49,10 +50,10 @@ const TimerDisplayTTT = ({ borderColor, timerTextProps, timeText, markerBind }: 
   )
 }
 
-const DEFAULT_START_TIME_TIMED_TTT = 1000
-
-export const useWithTimerDisplayTTT = (player: PlayerTTT, timerDidHit0: () => void) => {
+export const useWithTimeDisplayTTTController = (player: PlayerTTT, timerDidHit0: () => void) => {
+  const DEFAULT_START_TIME_TIMED_TTT = 1000
   const decrementingMillisecondInterval = 5
+
   const [isRunningTimer, setIsRunningTimer] = useState(false)
   const [totalTime, setTotalTime] = useState(DEFAULT_START_TIME_TIMED_TTT)
   const [usedTime, setUsedTime] = useState(0)
@@ -60,23 +61,31 @@ export const useWithTimerDisplayTTT = (player: PlayerTTT, timerDidHit0: () => vo
   const hasNoTimeLeft = remainingTime <= 0
 
   const marker = useWithMarker(player)
+  const { currentPlayer } = useTicTacToe()
+  const { calculateBorderColor, getTimerTextProps } = calculateTimerUI(player, hasNoTimeLeft)
 
-  useEffect(() => {
-    if (isRunningTimer) {
-      const timerInterval = decrementingMillisecondInterval * 10
-      const interval = setInterval(updateTime, timerInterval)
+  const timerEffect: UseEffectType = {
+    effect: () => {
+      if (isRunningTimer) {
+        const timerInterval = decrementingMillisecondInterval * 10
+        const interval = setInterval(updateTime, timerInterval)
 
-      return () => clearInterval(interval)
-    }
-  }, [isRunningTimer])
+        return () => clearInterval(interval)
+      }
+    },
+    deps: [isRunningTimer],
+  }
 
-  useEffect(() => {
-    if (hasNoTimeLeft) {
-      timerDidHit0()
-      stopTimer()
-      marker.setRed()
-    }
-  }, [remainingTime])
+  const noTimeLeftEffect: UseEffectType = {
+    effect: () => {
+      if (hasNoTimeLeft) {
+        timerDidHit0()
+        stopTimer()
+        marker.setRed()
+      }
+    },
+    deps: [remainingTime],
+  }
 
   const updateTime = () => {
     setUsedTime((val) => val + decrementingMillisecondInterval)
@@ -100,9 +109,6 @@ export const useWithTimerDisplayTTT = (player: PlayerTTT, timerDidHit0: () => vo
     setTime(DEFAULT_START_TIME_TIMED_TTT)
   }
 
-  const { currentPlayer } = useTicTacToe()
-  const { calculateBorderColor, getTimerTextProps } = calculateTimerUI(player, hasNoTimeLeft)
-
   return {
     bind: {
       borderColor: calculateBorderColor(currentPlayer),
@@ -111,6 +117,25 @@ export const useWithTimerDisplayTTT = (player: PlayerTTT, timerDidHit0: () => vo
       timeText: formatTimerDisplay(remainingTime),
       player,
     },
+    setTime,
+    startTimer,
+    stopTimer,
+    reset,
+    updateTime,
+    noTimeLeftEffect,
+    timerEffect,
+  }
+}
+
+export const useWithTimerDisplayTTT = (player: PlayerTTT, timerDidHit0: () => void) => {
+  const { bind, setTime, startTimer, stopTimer, reset, noTimeLeftEffect, timerEffect } =
+    useWithTimeDisplayTTTController(player, timerDidHit0)
+
+  useEffect(timerEffect.effect, timerEffect.deps)
+  useEffect(noTimeLeftEffect.effect, noTimeLeftEffect.deps)
+
+  return {
+    bind,
     setTime,
     startTimer,
     stopTimer,

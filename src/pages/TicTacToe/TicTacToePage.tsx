@@ -16,8 +16,8 @@ const Container = styled.div`
 
 const TicTacToePage = () => {
   usePage({
-    title: 'Tic Tac Toe',
-    description: 'A two person 3D timed tic tac toe game designed to be played on the same computer.',
+    title: 'Tic Tac Toe Menu',
+    description: 'A menu of tic tac toe games.',
   })
 
   const { navigateToRegular, navigateToTimed, navigateTo3d } = useInTicTacToePage()
