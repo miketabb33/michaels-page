@@ -1,12 +1,13 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { ChildrenProp } from '../../types/ChildrenProp'
 import { OPlayer, PlayerTTT, XPlayer } from './PlayerTTT'
+import { UseEffectType } from '../../types/UseEffectType'
 
-type TicTacToeContextType = {
+export type TicTacToeContextType = {
   isGameOver: boolean
   currentPlayer: PlayerTTT
   players: PlayerTTT[]
-  winner?: PlayerTTT
+  winner: PlayerTTT | null
   nextPlayer: () => void
   gameOver: () => void
   setWinner: (winner: PlayerTTT) => void
@@ -20,7 +21,7 @@ const TicTacToeContext = createContext<TicTacToeContextType>({
     color: '',
   },
   players: [],
-  winner: undefined,
+  winner: null,
   nextPlayer: () => {},
   gameOver: () => {},
   setWinner: () => {},
@@ -29,7 +30,7 @@ const TicTacToeContext = createContext<TicTacToeContextType>({
 
 export const useTicTacToeProvider = (players: PlayerTTT[]) => {
   const [isGameOver, setIsGameOver] = useState(false)
-  const [winner, setWinner] = useState<PlayerTTT | undefined>(undefined)
+  const [winner, setWinner] = useState<PlayerTTT | null>(null)
   const [currentPlayer, setCurrentPlayer] = useState<PlayerTTT>(players[0])
 
   const gameOver = () => {
@@ -48,27 +49,35 @@ export const useTicTacToeProvider = (players: PlayerTTT[]) => {
     setIsGameOver(false)
   }
 
-  useEffect(() => {
-    if (!isGameOver) {
-      setCurrentPlayer(players[0])
-      setWinner(undefined)
-    }
-  }, [isGameOver])
+  const resetGameEffect: UseEffectType = {
+    effect: () => {
+      if (!isGameOver) {
+        setCurrentPlayer(players[0])
+        setWinner(null)
+      }
+    },
+    deps: [isGameOver],
+  }
 
   return {
-    isGameOver,
-    currentPlayer,
-    players,
-    winner,
-    gameOver,
-    nextPlayer,
-    setWinner,
-    reset,
+    value: {
+      isGameOver,
+      currentPlayer,
+      players,
+      winner,
+      gameOver,
+      nextPlayer,
+      setWinner,
+      reset,
+    },
+    resetGameEffect,
   }
 }
 
 export const TicTacToeProvider = ({ children }: ChildrenProp) => {
-  const value = useTicTacToeProvider([XPlayer, OPlayer])
+  const { value, resetGameEffect } = useTicTacToeProvider([XPlayer, OPlayer])
+
+  useEffect(resetGameEffect.effect, resetGameEffect.deps)
 
   return <TicTacToeContext.Provider value={value}>{children}</TicTacToeContext.Provider>
 }
