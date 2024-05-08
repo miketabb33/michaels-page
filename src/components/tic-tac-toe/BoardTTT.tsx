@@ -59,6 +59,7 @@ export const useWithBoardTTT = (onTurnEnd: () => void) => {
   const isEmpty = () => squares.filter((s) => s.owner?.markerID !== undefined).length === 0
   const isFull = () => squares.filter((s) => s.owner?.markerID === undefined).length === 0
   const spacesOwned = () => squares.filter((s) => s.owner?.markerID !== undefined).length
+  const reset = () => squares.forEach((s) => s.reset())
 
   return {
     bind: {
@@ -68,7 +69,7 @@ export const useWithBoardTTT = (onTurnEnd: () => void) => {
     isEmpty,
     isFull,
     spacesOwned,
-    reset: () => squares.forEach((s) => s.reset()),
+    reset,
   }
 }
 
