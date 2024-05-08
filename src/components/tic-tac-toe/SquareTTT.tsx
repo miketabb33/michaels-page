@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { PlayerTTT } from './PlayerTTT'
 import { useTicTacToe } from './TicTacToeProvider'
-import MarkerTTT, { MarkerTTTProps, useWithMarker } from './MarkerTTT'
+import MarkerTTT, { MarkerTTTProps, useWithMarkerTTT } from './MarkerTTT'
 
 const Square = styled.button`
   display: block;
@@ -35,7 +35,7 @@ export type UseWithSquareTTTReturn = {
 export const useWithSquareTTT = (onTurnEnd: () => void): UseWithSquareTTTReturn => {
   const { isGameOver, currentPlayer } = useTicTacToe()
   const [owner, setOwner] = useState<PlayerTTT | null>(null)
-  const marker = useWithMarker(owner)
+  const marker = useWithMarkerTTT(owner)
 
   useEffect(() => {
     if (owner) onTurnEnd()

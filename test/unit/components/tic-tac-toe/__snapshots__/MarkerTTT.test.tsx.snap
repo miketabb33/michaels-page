@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Marker TTT should match snapshot for O 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-guDLRT fFPSgt"
+  >
+    <svg
+      class="sc-beySbM gDCLnZ"
+      fill="none"
+      height="131"
+      viewBox="0 0 131 131"
+      width="131"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="65.5"
+        cy="65.5"
+        r="58.4724"
+        stroke="red"
+        stroke-width="14.0551"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Marker TTT should match snapshot for X 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-dmyDGi eFWgFx"
+  >
+    <svg
+      class="sc-beySbM gDCLnZ"
+      fill="none"
+      height="131"
+      viewBox="0 0 131 131"
+      width="131"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        fill="red"
+        height="170"
+        rx="7.5"
+        transform="rotate(-45 1 10.6066)"
+        width="15"
+        x="1"
+        y="10.6066"
+      />
+      <rect
+        fill="red"
+        height="170"
+        rx="7.5"
+        transform="rotate(45 121.191 0.170288)"
+        width="15"
+        x="121.191"
+        y="0.170288"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;

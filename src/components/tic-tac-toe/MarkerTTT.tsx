@@ -12,7 +12,14 @@ const MarkerTTT = ({ markerId, markerSvgBind }: MarkerTTTProps) => {
   return <XMarkerSvg {...markerSvgBind} />
 }
 
-export const useWithMarker = (player: PlayerTTT | null) => {
+export type UseWithMarkerTTTReturn = {
+  bind: MarkerTTTProps
+  setWinning: (delay: number) => void
+  setRed: () => void
+  reset: () => void
+}
+
+export const useWithMarkerTTT = (player: PlayerTTT | null): UseWithMarkerTTTReturn => {
   const WINNING_COLOR = '#D7E725'
   const [isWinning, setIsWinning] = useState(false)
   const [delay, setDelay] = useState(0)

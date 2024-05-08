@@ -4,7 +4,7 @@ import { PlayerTTT } from '../PlayerTTT'
 import { formatTimerDisplay } from './formatTimerDisplay'
 import { useTicTacToe } from '../TicTacToeProvider'
 import { calculateTimerUI } from './calculateTimerUI'
-import MarkerTTT, { MarkerTTTProps, useWithMarker } from '../MarkerTTT'
+import MarkerTTT, { MarkerTTTProps, useWithMarkerTTT } from '../MarkerTTT'
 import { UseEffectType } from '../../../types/UseEffectType'
 
 type StyledTimerDisplayProps = {
@@ -60,7 +60,7 @@ export const useWithTimeDisplayTTTController = (player: PlayerTTT, timerDidHit0:
   const remainingTime = totalTime - usedTime
   const hasNoTimeLeft = remainingTime <= 0
 
-  const marker = useWithMarker(player)
+  const marker = useWithMarkerTTT(player)
   const { currentPlayer } = useTicTacToe()
   const { calculateBorderColor, getTimerTextProps } = calculateTimerUI(player, hasNoTimeLeft)
 

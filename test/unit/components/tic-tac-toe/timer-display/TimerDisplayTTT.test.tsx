@@ -14,7 +14,7 @@ const CLEAR_INTERVAL = jest.spyOn(window, 'clearInterval')
 
 const MARKER_RESET = jest.fn()
 const MARKER_SET_RED = jest.fn()
-jest.spyOn(MarkerTTTModule, 'useWithMarker').mockReturnValue({
+jest.spyOn(MarkerTTTModule, 'useWithMarkerTTT').mockReturnValue({
   reset: MARKER_RESET,
   bind: { markerId: 'X', markerSvgBind: { color: '' } },
   setWinning: () => {},
