@@ -37,7 +37,11 @@ const checkFor3DDiagonalWin = (squares: UseWithSquareTTTReturn[][]): PlayerTTT |
       const indexPath = winVariation[j]
       cache.push(squares[indexPath[1]][indexPath[0]])
     }
-    if (cache[0].owner && cache[0].owner == cache[1].owner && cache[0].owner == cache[2].owner) {
+    if (
+      cache[0].owner?.markerID &&
+      cache[0].owner.markerID == cache[1].owner?.markerID &&
+      cache[0].owner?.markerID == cache[2].owner?.markerID
+    ) {
       cache[0].setWinner(0)
       cache[1].setWinner(0.1)
       cache[2].setWinner(0.2)
