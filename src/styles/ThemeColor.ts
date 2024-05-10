@@ -12,6 +12,7 @@ export type ThemeColor = {
   secondaryDark: string
   accent: string
   text: string
+  hover: string
 }
 
 export const lightThemeColor: ThemeColor = {
@@ -25,6 +26,7 @@ export const lightThemeColor: ThemeColor = {
   secondaryDark: colorTokens.orange_600,
   accent: colorTokens.red_500,
   text: colorTokens.gray_900,
+  hover: colorTokens.blue_100,
 }
 
 export const darkThemeColor: ThemeColor = {
@@ -38,4 +40,5 @@ export const darkThemeColor: ThemeColor = {
   secondaryDark: colorTokens.blue_700,
   accent: colorTokens.red_500,
   text: colorTokens.gray_50,
+  hover: colorTokens.blue_900,
 }

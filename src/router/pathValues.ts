@@ -11,4 +11,5 @@ export const PATH_VALUES = {
   },
   landing: '/landing',
   article: (slug: string) => `/article/${slug}`,
+  recommendedBooks: '/recommended-books',
 }
