@@ -1,12 +1,19 @@
-import styled from 'styled-components'
-import { ChildrenProp } from '../../../types/ChildrenProp'
-import React from 'react'
+import styled, { css } from 'styled-components'
+import { SpacingArgs, spacingController } from '../spacingController'
+import { lineCountLimiter } from './lineCountLimiter'
 
-const BoldStyle = styled.strong`
-  font-weight: 700;
-  color: ${({ theme }) => theme.staticColor.blue_600};
+type BoldProps = {
+  $spacing?: SpacingArgs
+  $lineLimit?: number
+}
+
+const Bold = styled.strong<BoldProps>`
+  ${({ theme, $spacing, $lineLimit }) => css`
+    font-weight: 700;
+    color: ${theme.staticColor.blue_600};
+    ${spacingController($spacing)}
+    ${lineCountLimiter($lineLimit)}
+  `}
 `
-
-const Bold = ({ children }: ChildrenProp) => <BoldStyle>{children}</BoldStyle>
 
 export default Bold

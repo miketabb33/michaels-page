@@ -51,11 +51,11 @@ const ArticleCard = ({ articleMeta }: ArticleCardProps) => {
           <Card>
             <ArticleImage src={articleMeta.thumbnailUrl} />
             <CardContent>
-              <H3 lineLimit={2} spacing={{ marginBottom: 's' }}>
+              <H3 $lineLimit={2} $spacing={{ marginBottom: 's' }}>
                 {articleMeta.title}
               </H3>
-              <P lineLimit={5}>{articleMeta.description}</P>
-              <Small spacing={{ marginTop: 's' }}>{formattedCreatedOn}</Small>
+              <P $lineLimit={5}>{articleMeta.description}</P>
+              <Small $spacing={{ marginTop: 's' }}>{formattedCreatedOn}</Small>
             </CardContent>
           </Card>
         </RouterLink>

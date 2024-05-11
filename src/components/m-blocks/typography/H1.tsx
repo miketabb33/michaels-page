@@ -1,37 +1,26 @@
-import React, { ReactNode } from 'react'
 import styled, { css } from 'styled-components'
-import { Spacing, SpacingArgs, spacingController } from '../spacingController'
+import { SpacingArgs, spacingController } from '../spacingController'
+import { lineCountLimiter } from './lineCountLimiter'
 
-type StyledH1Props = {
-  ignoreDarkMode: boolean
+type H1Props = {
+  ignoreDarkMode?: boolean
   $spacing?: SpacingArgs
+  $lineLimit?: number
 }
 
-const H1Element = styled.h1<StyledH1Props>`
-  ${(props) => css`
+const H1 = styled.h1<H1Props>`
+  ${({ theme, ignoreDarkMode, $spacing, $lineLimit }) => css`
     font-size: 3.6rem;
     line-height: 6rem;
     font-weight: 600;
     color: ${() => {
-      const lightModeColor = props.theme.staticColor.blue_800
-      if (props.ignoreDarkMode) return lightModeColor
-      return props.theme.color.id === 'light' ? lightModeColor : props.theme.staticColor.blue_50
+      const lightModeColor = theme.staticColor.blue_800
+      if (ignoreDarkMode) return lightModeColor
+      return theme.color.id === 'light' ? lightModeColor : theme.staticColor.blue_50
     }};
-    ${spacingController(props.$spacing)}
+    ${spacingController($spacing)}
+    ${lineCountLimiter($lineLimit)}
   `}
 `
-
-type H1Props = {
-  children: ReactNode
-  ignoreDarkMode?: boolean
-}
-
-const H1 = ({ children, ignoreDarkMode = false, spacing }: H1Props & Spacing) => {
-  return (
-    <H1Element ignoreDarkMode={ignoreDarkMode} $spacing={spacing}>
-      {children}
-    </H1Element>
-  )
-}
 
 export default H1

@@ -1,24 +1,21 @@
-import React from 'react'
-import { ChildrenProp } from '../../../types/ChildrenProp'
 import styled, { css } from 'styled-components'
-import { Spacing, SpacingArgs, spacingController } from '../spacingController'
+import { SpacingArgs, spacingController } from '../spacingController'
+import { lineCountLimiter } from './lineCountLimiter'
 
-type StyledH4Props = {
+type H4Props = {
   $spacing?: SpacingArgs
+  $lineLimit?: number
 }
 
-const H4Element = styled.h4<StyledH4Props>`
-  ${({ theme, $spacing }) => css`
+const H4 = styled.h4<H4Props>`
+  ${({ theme, $spacing, $lineLimit }) => css`
     font-size: 1.8rem;
     line-height: 3rem;
     font-weight: 700;
     color: ${theme.color.text};
     ${spacingController($spacing)}
+    ${lineCountLimiter($lineLimit)}
   `}
 `
-
-const H4 = ({ children, spacing }: ChildrenProp & Spacing) => {
-  return <H4Element $spacing={spacing}>{children}</H4Element>
-}
 
 export default H4
