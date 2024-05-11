@@ -13,45 +13,48 @@ const Container = styled.div`
 
   ${tabPortAndUp(css`
     flex-direction: row;
-    height: 36rem;
   `)}
 `
 
 const PhotoWell = styled.div`
+  flex: 0 0 50%;
+  min-height: 100%;
+  padding: 1rem;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
-  padding: 1rem;
+
   background-color: ${({ theme }) => theme.color.primaryDark};
 `
 
-const ScreenShoot = styled.img`
-  object-fit: cover;
-  object-position: top;
-  height: 30rem;
-  min-width: 75%;
-  border-radius: 0.5rem;
+const TextWell = styled.div`
+  ${({ theme }) => css`
+    flex: 0 0 50%;
+    min-height: 100%;
+    padding: 2rem;
 
-  ${tabPortAndUp(css`
-    height: 100%;
-    aspect-ratio: 1.5666;
-  `)}
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+
+    border-top: ${`3px solid ${theme.color.accent}`};
+
+    ${tabPortAndUp(css`
+      border-right: ${`3px solid ${theme.color.accent}`};
+      border-top: none;
+    `)}
+  `}
 `
 
-const TextWell = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 2rem;
-  width: 100%;
-
-  ${tabPortAndUp(css`
-    height: 100%;
-    border-right: 1px solid black;
-  `)}
+const ScreenShoot = styled.img`
+  display: block;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 0.5rem;
+  min-height: 100%;
+  box-shadow: ${({ theme }) => theme.shadow.blur};
 `
 
 export type TicTacToeCardProps = {
@@ -68,9 +71,7 @@ const TicTacToeCard = ({ data, onClick }: TicTacToeCardProps) => {
           <P>{data.description}</P>
           <Button onClick={onClick}>Play</Button>
         </TextWell>
-        <PhotoWell>
-          <ScreenShoot src={data.imageSource} />
-        </PhotoWell>
+        <PhotoWell>{<ScreenShoot src={data.imageSource} />}</PhotoWell>
       </Container>
     </Card>
   )
