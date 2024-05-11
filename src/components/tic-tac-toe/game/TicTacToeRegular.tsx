@@ -4,7 +4,7 @@ import BoardTTT, { useWithBoardTTT } from './BoardTTT'
 import { checkForWinner } from './winnerTTT'
 import { useTicTacToe } from './TicTacToeProvider'
 import styled from 'styled-components'
-import Button from '../m-blocks/Button'
+import Button from '../../m-blocks/Button'
 import LayoutTTT from './LayoutTTT'
 
 const ContentPosition = styled.div`

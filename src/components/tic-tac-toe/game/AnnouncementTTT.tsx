@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { MarkerIdTTT } from './PlayerTTT'
-import { tabLandAndUp } from '../../styles/Responsive'
+import { tabLandAndUp } from '../../../styles/Responsive'
 
 const Announcement = styled.p`
   font-size: 4rem;

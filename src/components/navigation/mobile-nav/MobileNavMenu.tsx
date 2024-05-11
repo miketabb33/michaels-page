@@ -7,7 +7,7 @@ const MobileNavMenuElement = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing.large};
+  gap: ${({ theme }) => theme.spacing.medium};
   height: inherit;
 `
 

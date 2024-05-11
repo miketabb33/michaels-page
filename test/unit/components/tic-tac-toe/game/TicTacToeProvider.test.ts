@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react'
-import { useTicTacToeProvider } from '../../../../src/components/tic-tac-toe/TicTacToeProvider'
-import { PlayerTTT } from '../../../../src/components/tic-tac-toe/PlayerTTT'
+import { useTicTacToeProvider } from '../../../../../src/components/tic-tac-toe/game/TicTacToeProvider'
+import { PlayerTTT } from '../../../../../src/components/tic-tac-toe/game/PlayerTTT'
 
 const X_PLAYER: PlayerTTT = {
   markerID: 'X',

@@ -1,4 +1,4 @@
-import { colorTokens } from '../../../styles/colorTokens'
+import { colorTokens } from '../../../../styles/colorTokens'
 import { PlayerTTT } from '../PlayerTTT'
 
 const INACTIVE_BORDER_COLOR = colorTokens.gray_950

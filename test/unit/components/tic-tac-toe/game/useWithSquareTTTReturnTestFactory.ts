@@ -1,5 +1,5 @@
-import { MarkerIdTTT, PlayerTTT } from '../../../../src/components/tic-tac-toe/PlayerTTT'
-import { UseWithSquareTTTReturn } from '../../../../src/components/tic-tac-toe/SquareTTT'
+import { MarkerIdTTT, PlayerTTT } from '../../../../../src/components/tic-tac-toe/game/PlayerTTT'
+import { UseWithSquareTTTReturn } from '../../../../../src/components/tic-tac-toe/game/SquareTTT'
 
 export const useWithSquareTTTReturnTestFactory = (setWinner: () => void) => {
   const makeSquare = (ownerMarker: MarkerIdTTT | null): UseWithSquareTTTReturn => {

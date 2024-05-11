@@ -1,8 +1,8 @@
 import React from 'react'
 import BoardTTT, { BoardTTTProps, useWithBoardTTT } from './BoardTTT'
 import styled, { css } from 'styled-components'
-import { tabLandAndUp } from '../../styles/Responsive'
-import H4 from '../m-blocks/typography/H4'
+import { tabLandAndUp } from '../../../styles/Responsive'
+import H4 from '../../m-blocks/typography/H4'
 
 const Boards = styled.div`
   display: flex;

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { tabLandAndUp } from '../../styles/Responsive'
+import { tabLandAndUp } from '../../../styles/Responsive'
 
 export const InfoBarTTT = styled.div`
   background-color: ${({ theme }) => theme.color.secondary};

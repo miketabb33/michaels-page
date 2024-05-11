@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react'
-import { useWithBoard3dTTT } from '../../../../src/components/tic-tac-toe/Board3dTTT'
-import * as BoardTTTModule from '../../../../src/components/tic-tac-toe/BoardTTT'
-import { SquareTTTProps } from '../../../../src/components/tic-tac-toe/SquareTTT'
+import { useWithBoard3dTTT } from '../../../../../src/components/tic-tac-toe/game/Board3dTTT'
+import * as BoardTTTModule from '../../../../../src/components/tic-tac-toe/game/BoardTTT'
+import { SquareTTTProps } from '../../../../../src/components/tic-tac-toe/game/SquareTTT'
 
 const ON_TURN_END = jest.fn()
 const IS_EMPTY = jest.fn()

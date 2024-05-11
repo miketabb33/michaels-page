@@ -1,8 +1,8 @@
 import React from 'react'
 import NavLayout from '../../components/layouts/NavLayout'
-import { TicTacToeProvider } from '../../components/tic-tac-toe/TicTacToeProvider'
+import { TicTacToeProvider } from '../../components/tic-tac-toe/game/TicTacToeProvider'
 import { usePage } from '../usePage'
-import TicTacToe3d from '../../components/tic-tac-toe/TicTacToe3d'
+import TicTacToe3d from '../../components/tic-tac-toe/game/TicTacToe3d'
 
 const TicTacToe3dPage = () => {
   usePage({

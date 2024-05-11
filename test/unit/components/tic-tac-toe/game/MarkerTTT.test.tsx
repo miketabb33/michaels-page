@@ -1,6 +1,6 @@
 import { act, render, renderHook } from '@testing-library/react'
-import MarkerTTT, { useWithMarkerTTT } from '../../../../src/components/tic-tac-toe/MarkerTTT'
-import { PlayerTTT } from '../../../../src/components/tic-tac-toe/PlayerTTT'
+import MarkerTTT, { useWithMarkerTTT } from '../../../../../src/components/tic-tac-toe/game/MarkerTTT'
+import { PlayerTTT } from '../../../../../src/components/tic-tac-toe/game/PlayerTTT'
 import React from 'react'
 
 const PLAYER_COLOR = 'blue'

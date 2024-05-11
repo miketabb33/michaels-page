@@ -2,8 +2,8 @@ import React from 'react'
 import BoardSvgTTT from './svg/BoardSvgTTT'
 import styled from 'styled-components'
 import SquareTTT, { SquareTTTProps, useWithSquareTTT } from './SquareTTT'
-import { useTheme } from '../../context/ThemeContext'
-import { colorTokens } from '../../styles/colorTokens'
+import { useTheme } from '../../../context/ThemeContext'
+import { colorTokens } from '../../../styles/colorTokens'
 
 const Container = styled.div`
   position: relative;

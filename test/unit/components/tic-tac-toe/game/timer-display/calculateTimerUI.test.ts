@@ -1,5 +1,5 @@
-import { PlayerTTT } from '../../../../../src/components/tic-tac-toe/PlayerTTT'
-import { calculateTimerUI } from '../../../../../src/components/tic-tac-toe/timer-display/calculateTimerUI'
+import { PlayerTTT } from '../../../../../../src/components/tic-tac-toe/game/PlayerTTT'
+import { calculateTimerUI } from '../../../../../../src/components/tic-tac-toe/game/timer-display/calculateTimerUI'
 
 const currentPlayerColor = 'blue'
 const otherPlayerColor = 'green'

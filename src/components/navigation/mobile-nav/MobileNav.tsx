@@ -27,6 +27,11 @@ const Side = styled.div`
   height: 100%;
 `
 
+const ButtonWell = styled(Side)`
+  display: flex;
+  justify-content: flex-end;
+`
+
 type MobileNavProps = {
   navConfig: NavLinkConfig[]
 }
@@ -41,9 +46,9 @@ const MobileNav = ({ navConfig }: MobileNavProps) => {
       </Side>
 
       <MobileNavMenu navConfig={navConfig} />
-      <Side>
+      <ButtonWell>
         <Button onClick={toggleTheme}>{themeButtonText}</Button>
-      </Side>
+      </ButtonWell>
     </MobileNavContainer>
   )
 }

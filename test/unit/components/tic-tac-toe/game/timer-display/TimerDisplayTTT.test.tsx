@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react'
-import { useWithTimeDisplayTTTController } from '../../../../../src/components/tic-tac-toe/timer-display/TimerDisplayTTT'
-import { PlayerTTT } from '../../../../../src/components/tic-tac-toe/PlayerTTT'
-import * as MarkerTTTModule from '../../../../../src/components/tic-tac-toe/MarkerTTT'
+import { useWithTimeDisplayTTTController } from '../../../../../../src/components/tic-tac-toe/game/timer-display/TimerDisplayTTT'
+import { PlayerTTT } from '../../../../../../src/components/tic-tac-toe/game/PlayerTTT'
+import * as MarkerTTTModule from '../../../../../../src/components/tic-tac-toe/game/MarkerTTT'
 
 const PLAYER: PlayerTTT = {
   markerID: 'X',

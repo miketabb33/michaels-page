@@ -1,4 +1,4 @@
-import { formatTimerDisplay } from '../../../../../src/components/tic-tac-toe/timer-display/formatTimerDisplay'
+import { formatTimerDisplay } from '../../../../../../src/components/tic-tac-toe/game/timer-display/formatTimerDisplay'
 
 describe('format timer display', () => {
   it('should return 0', () => {

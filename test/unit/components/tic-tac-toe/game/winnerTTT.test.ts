@@ -1,5 +1,5 @@
-import { MarkerIdTTT } from '../../../../src/components/tic-tac-toe/PlayerTTT'
-import { checkForWinner } from '../../../../src/components/tic-tac-toe/winnerTTT'
+import { MarkerIdTTT } from '../../../../../src/components/tic-tac-toe/game/PlayerTTT'
+import { checkForWinner } from '../../../../../src/components/tic-tac-toe/game/winnerTTT'
 import { useWithSquareTTTReturnTestFactory } from './useWithSquareTTTReturnTestFactory'
 
 const SET_WINNER = jest.fn()

@@ -1,5 +1,5 @@
-import { announcementTextTTT } from '../../../../src/components/tic-tac-toe/AnnouncementTTT'
-import { MarkerIdTTT } from '../../../../src/components/tic-tac-toe/PlayerTTT'
+import { announcementTextTTT } from '../../../../../src/components/tic-tac-toe/game/AnnouncementTTT'
+import { MarkerIdTTT } from '../../../../../src/components/tic-tac-toe/game/PlayerTTT'
 
 const MARKER_ID: MarkerIdTTT = 'X'
 

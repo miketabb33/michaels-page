@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import { ChildrenProp } from '../../types/ChildrenProp'
+import { ChildrenProp } from '../../../types/ChildrenProp'
 import { OPlayer, PlayerTTT, XPlayer } from './PlayerTTT'
-import { UseEffectType } from '../../types/UseEffectType'
+import { UseEffectType } from '../../../types/UseEffectType'
 
 export type TicTacToeContextType = {
   isGameOver: boolean

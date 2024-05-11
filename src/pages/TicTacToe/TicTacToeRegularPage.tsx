@@ -1,7 +1,7 @@
 import React from 'react'
 import NavLayout from '../../components/layouts/NavLayout'
-import { TicTacToeProvider } from '../../components/tic-tac-toe/TicTacToeProvider'
-import TicTacToeRegular from '../../components/tic-tac-toe/TicTacToeRegular'
+import { TicTacToeProvider } from '../../components/tic-tac-toe/game/TicTacToeProvider'
+import TicTacToeRegular from '../../components/tic-tac-toe/game/TicTacToeRegular'
 import { usePage } from '../usePage'
 
 const TicTacToeRegularPage = () => {

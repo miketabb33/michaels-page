@@ -1,5 +1,5 @@
-import { checkFor3dWinner } from '../../../../src/components/tic-tac-toe/winner3dTTT'
-import * as WinnerTTTModule from '../../../../src/components/tic-tac-toe/winnerTTT'
+import { checkFor3dWinner } from '../../../../../src/components/tic-tac-toe/game/winner3dTTT'
+import * as WinnerTTTModule from '../../../../../src/components/tic-tac-toe/game/winnerTTT'
 import { useWithSquareTTTReturnTestFactory } from './useWithSquareTTTReturnTestFactory'
 
 const SET_WINNER = jest.fn()

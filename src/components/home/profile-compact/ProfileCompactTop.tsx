@@ -10,7 +10,7 @@ const Container = styled.div`
 `
 
 const Portrait = styled(Image)`
-  height: 16rem;
+  height: 15rem;
   aspect-ratio: 1;
   border-radius: 50%;
   border: 2px solid ${({ theme }) => theme.color.accent};

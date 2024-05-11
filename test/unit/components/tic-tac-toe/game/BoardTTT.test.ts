@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react'
-import { useWithBoardTTT } from '../../../../src/components/tic-tac-toe/BoardTTT'
-import * as SquareTTTModule from '../../../../src/components/tic-tac-toe/SquareTTT'
+import { useWithBoardTTT } from '../../../../../src/components/tic-tac-toe/game/BoardTTT'
+import * as SquareTTTModule from '../../../../../src/components/tic-tac-toe/game/SquareTTT'
 
 const ON_TURN_END = jest.fn()
 const RESET = jest.fn()

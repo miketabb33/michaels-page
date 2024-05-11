@@ -1,8 +1,8 @@
 import { act, renderHook } from '@testing-library/react'
-import { useWithSquareTTT } from '../../../../src/components/tic-tac-toe/SquareTTT'
-import * as MarkerTTTModule from '../../../../src/components/tic-tac-toe/MarkerTTT'
-import * as TicTacToeContextModule from '../../../../src/components/tic-tac-toe/TicTacToeProvider'
-import { PlayerTTT } from '../../../../src/components/tic-tac-toe/PlayerTTT'
+import { useWithSquareTTT } from '../../../../../src/components/tic-tac-toe/game/SquareTTT'
+import * as MarkerTTTModule from '../../../../../src/components/tic-tac-toe/game/MarkerTTT'
+import * as TicTacToeContextModule from '../../../../../src/components/tic-tac-toe/game/TicTacToeProvider'
+import { PlayerTTT } from '../../../../../src/components/tic-tac-toe/game/PlayerTTT'
 
 const ON_TURN_END = jest.fn()
 const SET_WINNING = jest.fn()

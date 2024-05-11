@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import BackButtonSvgTTT from './svg/BackButtonSvgTTT'
-import { useTheme } from '../../context/ThemeContext'
-import { colorTokens } from '../../styles/colorTokens'
-import { PATH_VALUES } from '../../router/pathValues'
-import RouterLink from '../../router/RouterLink'
+import { useTheme } from '../../../context/ThemeContext'
+import { colorTokens } from '../../../styles/colorTokens'
+import { PATH_VALUES } from '../../../router/pathValues'
+import RouterLink from '../../../router/RouterLink'
 
 const Button = styled(RouterLink)`
   background-color: transparent;
