@@ -6,6 +6,8 @@ import { Bold, H4, P } from '../m-blocks/typography'
 const BookCell = styled.a`
   display: flex;
   max-height: 21.5rem;
+  min-height: 21.5rem;
+  height: 21.5rem;
   padding: 1rem;
   border: none;
   border-radius: 0.2rem;
