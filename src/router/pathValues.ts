@@ -10,6 +10,7 @@ export const PATH_VALUES = {
     threeD: `${ticTacToeBase}/3d`,
   },
   landing: '/landing',
+  myTradingCardWorth: '/my-trading-card-worth',
   article: (slug: string) => `/article/${slug}`,
   recommendedBooks: '/recommended-books',
 }

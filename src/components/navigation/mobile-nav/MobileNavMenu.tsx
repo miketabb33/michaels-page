@@ -20,14 +20,17 @@ type MobileNavMenuProps = {
   navConfig: NavLinkConfig[]
 }
 
-const MobileNavMenu = ({ navConfig }: MobileNavMenuProps) => (
-  <MobileNavMenuElement>
-    {navConfig.map(({ label, linkTo }: NavLinkConfig, i) => (
-      <MobileNavMenuItem key={i}>
-        <MobileNavLink linkTo={linkTo}>{label}</MobileNavLink>
-      </MobileNavMenuItem>
-    ))}
-  </MobileNavMenuElement>
-)
+const MobileNavMenu = ({ navConfig }: MobileNavMenuProps) => {
+  const mobileConfig = [navConfig[0], navConfig[1], navConfig[2], navConfig[3]]
+  return (
+    <MobileNavMenuElement>
+      {mobileConfig.map(({ label, linkTo }: NavLinkConfig, i) => (
+        <MobileNavMenuItem key={i}>
+          <MobileNavLink linkTo={linkTo}>{label}</MobileNavLink>
+        </MobileNavMenuItem>
+      ))}
+    </MobileNavMenuElement>
+  )
+}
 
 export default MobileNavMenu
