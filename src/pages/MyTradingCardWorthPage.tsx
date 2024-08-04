@@ -47,19 +47,19 @@ const MyTradingCardWorthPage = () => {
           complete my collection!
         </Paragraph>
         <Paragraph>
-          In my hunt, I learned that the Pokemon Creating team had been hard at work over the last 20 years. The Pokemon
+          In my hunt, I learned that the Pokemon Creating Team had been hard at work over the last 20 years. The Pokemon
           count was no longer a mere 151, oh no. The count was well over 1000. To catch em&apos; all would mean that I
           would be embarking on a journey much greater than my childhood self would have ever known. It&apos;s been
           about 6 months since I was reintroduced to my collection and I have acquired MANY MORE Pokemon cards.
         </Paragraph>
         <Paragraph>
           So where am I going with this story? After months of collecting I started to wonder. How much are my Pokemon
-          cards worth? I decided to build a full scale website that had my pokemon card collection and would monitor the
-          markets for prices their prices. I&apos;m proud to say my endeavors were successful. May I present,{' '}
+          cards worth? I decided to build a full scale website that had my Pokemon card collection and would monitor the
+          markets for their prices. I&apos;m proud to say my endeavors were successful. May I present,{' '}
           <TextLink href="https://my-trading-card-worth-server-amd.onrender.com/">My Trading Card Worth!</TextLink>
         </Paragraph>
         <Paragraph>
-          My Trading Card Worth is made up of 2 main concepts. The Catalog and Collection. The Catalog is split by
+          My Trading Card Worth is made up of two main concepts. The Catalog and Collection. The Catalog is split by
           Pokemon card expansions. The Catalog is used to add each card thats in your real life Pokemon Collection. The
           Collection is a digital representation of your real collection and is used to see how much your cards are
           worth!
