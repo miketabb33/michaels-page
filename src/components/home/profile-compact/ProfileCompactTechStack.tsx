@@ -4,13 +4,14 @@ import H3 from '../../m-blocks/typography/H3'
 
 const TechStackRow = styled.div`
   display: flex;
+  text-align: center;
   align-items: center;
 `
 
 const ProfileCompactTechStack = () => {
   return (
     <TechStackRow>
-      <H3>React • Typescript • Swift • Xcode</H3>
+      <H3>React • Typescript • Node • C# • Swift • Xcode • Polyglot</H3>
     </TechStackRow>
   )
 }

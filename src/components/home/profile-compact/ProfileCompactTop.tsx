@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import Image from '../../m-blocks/Image'
-import H1 from '../../m-blocks/typography/H1'
-import H3 from '../../m-blocks/typography/H3'
+import { MichaelTabb } from '../Profile'
+import { H1, H4 } from '../../m-blocks/typography'
 
 const Container = styled.div`
   display: flex;
@@ -11,9 +11,10 @@ const Container = styled.div`
 
 const Portrait = styled(Image)`
   height: 15rem;
-  aspect-ratio: 1;
+  aspect-ratio: 1/1;
   border-radius: 50%;
   border: 2px solid ${({ theme }) => theme.color.accent};
+  flex: 0 0;
 `
 
 const TextWell = styled.div`
@@ -27,9 +28,9 @@ const ProfileCompactTop = () => (
   <Container>
     <Portrait imageName="portrait" />
     <TextWell>
-      <H1 ignoreDarkMode>Michael Tabb</H1>
-      <H3>Software Engineer</H3>
-      <H3>miketabb33@gmail.com</H3>
+      <H1 ignoreDarkMode>{MichaelTabb.name}</H1>
+      <H4>{MichaelTabb.title}</H4>
+      <H4>{MichaelTabb.email}</H4>
     </TextWell>
   </Container>
 )
