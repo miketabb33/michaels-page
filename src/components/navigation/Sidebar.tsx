@@ -1,11 +1,11 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { NavLinkConfig } from '../../../config/navConfig'
-import Button from '../../m-blocks/Button'
-import { tabLandAndUp } from '../../../styles/Responsive'
-import LogoLink from '../LogoLink'
-import SidebarMenu from './SidebarMenu'
-import { useNavigationTheme } from '../useNavigationTheme'
+import { NavLinkConfig } from '../../config/navConfig'
+import Button from '../m-blocks/Button'
+import { tabLandAndUp } from '../../styles/Responsive'
+import LogoLink from './LogoLink'
+import NavigationMenu from './navigation-menu/NavigationMenu'
+import { useNavigationTheme } from './useNavigationTheme'
 
 const Container = styled.nav`
   background-color: ${({ theme }) => theme.color.secondary};
@@ -44,7 +44,7 @@ const Sidebar = ({ navConfig }: SidebarProps) => {
         <LogoWell>
           <LogoLink />
         </LogoWell>
-        <SidebarMenu navConfig={navConfig} />
+        <NavigationMenu navConfig={navConfig} />
       </SidebarTopContent>
       <Button onClick={toggleTheme}>{themeButtonText}</Button>
     </Container>

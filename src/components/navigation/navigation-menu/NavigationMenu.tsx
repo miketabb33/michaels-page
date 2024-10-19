@@ -1,19 +1,19 @@
 import React from 'react'
 import { NavLinkConfig } from '../../../config/navConfig'
-import SidebarLink from './SidebarLink'
+import NavMenuLink from './NavMenuLink'
 
-type SidebarMenuProps = {
+type NavigationMenuProps = {
   navConfig: NavLinkConfig[]
 }
 
-const SidebarMenu = ({ navConfig }: SidebarMenuProps) => (
+const NavigationMenu = ({ navConfig }: NavigationMenuProps) => (
   <>
     {navConfig.map(({ label, linkTo }: NavLinkConfig, i) => (
       <li key={i}>
-        <SidebarLink linkTo={linkTo}>{label}</SidebarLink>
+        <NavMenuLink linkTo={linkTo}>{label}</NavMenuLink>
       </li>
     ))}
   </>
 )
 
-export default SidebarMenu
+export default NavigationMenu

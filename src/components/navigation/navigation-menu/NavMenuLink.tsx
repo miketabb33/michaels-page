@@ -3,27 +3,27 @@ import styled from 'styled-components'
 import RouterLink from '../../../router/RouterLink'
 
 const Container = styled(RouterLink)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  text-decoration: none;
+  display: block;
+  text-align: center;
+  padding: ${({ theme }) => theme.spacing.medium} 0;
+  background-color: ${({ theme }) => theme.color.secondaryLight};
   color: ${({ theme }) => theme.staticColor.gray_50};
+  text-decoration: none;
   font-weight: 700;
+  letter-spacing: ${({ theme }) => theme.spacing.xSmall};
 
-  &:active {
+  &:hover {
     background-color: ${({ theme }) => theme.color.secondaryDark};
   }
 `
 
-type MobileNavLinkProps = {
+type NavMenuLinkProps = {
   children: ReactNode
   linkTo: string
 }
 
-const MobileNavLink = ({ children, linkTo }: MobileNavLinkProps) => {
+export const NavMenuLink = ({ children, linkTo }: NavMenuLinkProps) => {
   return <Container linkTo={linkTo}>{children}</Container>
 }
 
-export default MobileNavLink
+export default NavMenuLink

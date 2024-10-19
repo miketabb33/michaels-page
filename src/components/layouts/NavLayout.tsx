@@ -3,15 +3,15 @@ import styled, { css } from 'styled-components'
 import { navConfig } from '../../config/navConfig'
 import { tabLandAndUp } from '../../styles/Responsive'
 import { ChildrenProp } from '../../types/ChildrenProp'
-import MobileNav, { MOBILE_NAV_HEIGHT } from '../navigation/mobile-nav/MobileNav'
-import Sidebar from '../navigation/sidebar/Sidebar'
+import Sidebar from '../navigation/Sidebar'
+import MobileHeader, { MOBILE_HEADER_HEIGHT } from '../navigation/MobileHeader'
 
 const Container = styled.div`
   overflow-x: hidden;
   height: 100%;
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: ${MOBILE_NAV_HEIGHT} 1fr;
+  grid-template-rows: ${MOBILE_HEADER_HEIGHT} 1fr;
 
   ${tabLandAndUp(css`
     grid-template-columns: 12rem 1fr;
@@ -25,10 +25,11 @@ const Main = styled.main`
 `
 
 const NavLayout = ({ children }: ChildrenProp) => {
+  const nav = navConfig()
   return (
     <Container>
-      <MobileNav navConfig={navConfig()} />
-      <Sidebar navConfig={navConfig()} />
+      <MobileHeader navConfig={nav} />
+      <Sidebar navConfig={nav} />
       <Main>{children}</Main>
     </Container>
   )
