@@ -12,6 +12,7 @@ const Container = styled(RouterLink)<{ $selected: boolean }>`
   text-decoration: none;
   font-weight: 700;
   letter-spacing: ${({ theme }) => theme.spacing.xSmall};
+  transition: all 0.3s;
 
   &:hover {
     background-color: ${({ theme }) => theme.color.secondaryDark};
