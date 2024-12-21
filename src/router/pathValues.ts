@@ -13,4 +13,5 @@ export const PATH_VALUES = {
   myTradingCardWorth: '/my-trading-card-worth',
   article: (slug: string) => `/article/${slug}`,
   recommendedBooks: '/recommended-books',
+  aboutMe: '/about-me',
 }

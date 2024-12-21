@@ -1,5 +1,15 @@
 import { ArticleMeta } from '../../../src/network/articleClient'
 
+export const ARTICLE_META_MOCK: ArticleMeta = {
+  title: '',
+  path: '',
+  slug: '',
+  description: '',
+  thumbnailUrl: '',
+  createdOn: '',
+  hideInProd: false,
+}
+
 export const ARTICLE_META_MOCK_1: ArticleMeta = {
   title: 'Article 1',
   path: 'article1.md',

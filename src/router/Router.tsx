@@ -11,6 +11,7 @@ import TicTacToeTimedPage from '../pages/TicTacToe/TicTacToeTimedPage'
 import TicTacToe3dPage from '../pages/TicTacToe/TicTacToe3dPage'
 import RecommendedBooksPage from '../pages/RecommendedBooksPage'
 import MyTradingCardWorthPage from '../pages/MyTradingCardWorthPage'
+import AboutMePage from '../pages/AboutMePage'
 
 const Router = () => {
   return (
@@ -28,6 +29,7 @@ const Router = () => {
         <Route path="my-trading-card-worth" element={<MyTradingCardWorthPage />} />
         <Route path="article/:slug" element={<ArticlePage />} />
         <Route path="recommended-books" element={<RecommendedBooksPage />} />
+        <Route path="about-me" element={<AboutMePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>

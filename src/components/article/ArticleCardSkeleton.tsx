@@ -62,8 +62,6 @@ const ArticleCardSkeleton = () => {
           </TitleContainer>
           <DescriptionContainer>
             <DescriptionSkeleton $width="100%" />
-            <DescriptionSkeleton $width="100%" />
-            <DescriptionSkeleton $width="100%" />
             <DescriptionSkeleton $width="69%" />
           </DescriptionContainer>
           <DateSkeleton />

@@ -79,7 +79,7 @@ export const TechnicalExpertiseHome = () => {
 export const WhatIValueHome = () => {
   return (
     <Section delay={0.6}>
-      <H1>What I value:</H1>
+      <H1>What I Value:</H1>
       <H4>Collaboration and Teamwork</H4>
       <UnorderedList>
         <li>Lean Management</li>

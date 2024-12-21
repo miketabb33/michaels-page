@@ -8,6 +8,7 @@ export type NavLinkConfig = {
 export const navConfig = (): NavLinkConfig[] => {
   const config = [
     { linkTo: PATH_VALUES.home, label: 'Home' },
+    { linkTo: PATH_VALUES.aboutMe, label: 'Me' },
     { linkTo: PATH_VALUES.recommendedBooks, label: 'Books' },
     { linkTo: PATH_VALUES.myTradingCardWorth, label: 'Trading' },
     { linkTo: PATH_VALUES.pong, label: 'Pong' },

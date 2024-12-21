@@ -1,7 +1,7 @@
 import React from 'react'
 import NavLayout from '../components/layouts/NavLayout'
 import { usePage } from './usePage'
-import { H1, H2, P } from '../components/m-blocks/typography'
+import { H1, H2, H3, P } from '../components/m-blocks/typography'
 import TextLink from '../components/m-blocks/TextLink'
 import styled from 'styled-components'
 
@@ -23,6 +23,10 @@ const Title = styled(H1)`
   text-align: center;
 `
 
+const Strong = styled(H3)`
+  text-align: center;
+`
+
 const LinkText = styled(H2)`
   text-align: center;
 `
@@ -32,8 +36,14 @@ const MyTradingCardWorthPage = () => {
   return (
     <NavLayout>
       <Container>
-        <LinkToMyTradingCardWorth />
-        <Title>The Origin Story of My Trading Card Worth</Title>
+        <Title>My Trading Card Worth</Title>
+        <Strong>An application that calculates the dollar amount worth of all of your pokemon cards.</Strong>
+        <LinkText>
+          <TextLink href="https://my-trading-card-worth-server-amd.onrender.com/collection/auth0|66532576f4306b7b1fa27e04">
+            Check out my collection here!
+          </TextLink>
+        </LinkText>
+        <Title>Origin Story</Title>
         <Paragraph>
           During an early 2024 California visit to see family, my Mother invited me to go through my childhood relics
           that she had been storing for over 20 years. Despite the initial reluctance to rummage through my old
@@ -64,19 +74,11 @@ const MyTradingCardWorthPage = () => {
           Collection is a digital representation of your real collection and is used to see how much your cards are
           worth!
         </Paragraph>
-        <LinkToMyTradingCardWorth />
+        <LinkText>
+          <TextLink href="https://my-trading-card-worth-server-amd.onrender.com/">My Trading Card Worth</TextLink>
+        </LinkText>
       </Container>
     </NavLayout>
-  )
-}
-
-const LinkToMyTradingCardWorth = () => {
-  return (
-    <LinkText>
-      <TextLink href="https://my-trading-card-worth-server-amd.onrender.com/">
-        Take me to My Trading Card Worth!
-      </TextLink>
-    </LinkText>
   )
 }
 
