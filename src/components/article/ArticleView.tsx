@@ -5,23 +5,36 @@ import H1 from '../m-blocks/typography/H1'
 import ArticleBody from './ArticleBody'
 import ArticleHeader from './ArticleHeader'
 import { useRequest } from '../../network/useRequest'
+import Spinner from '../m-blocks/Spinner'
+import styled from 'styled-components'
+
+const SpinnerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+`
 
 type ArticleSuccessProps = {
   articleMeta: ArticleMeta
 }
 
 const ArticleView = ({ articleMeta }: ArticleSuccessProps) => {
-  const { articleBody, readingTime } = useInArticleView(articleMeta)
+  const { articleBody, readingTime, showArticleBody, showLoading } = useInArticleView(articleMeta)
   return (
     <ArticleLayout>
       <ArticleHeader articleMeta={articleMeta} readingTime={readingTime} />
-      <ArticleBody articleBody={articleBody} />
+      {showArticleBody && <ArticleBody articleBody={articleBody} />}
+      {showLoading && (
+        <SpinnerContainer>
+          <Spinner />
+        </SpinnerContainer>
+      )}
     </ArticleLayout>
   )
 }
 
 export const useInArticleView = (articleMeta: ArticleMeta) => {
-  const { data: articleBody } = useRequest<string>({ request: () => fetchArticle(articleMeta.path) })
+  const { data: articleBody, isLoading } = useRequest<string>({ request: () => fetchArticle(articleMeta.path) })
 
   const getReadingTime = () => {
     if (!articleBody) return null
@@ -35,7 +48,12 @@ export const useInArticleView = (articleMeta: ArticleMeta) => {
     return readingTime
   }
 
-  return { articleBody, readingTime: getReadingTime() }
+  return {
+    articleBody,
+    readingTime: getReadingTime(),
+    showLoading: isLoading,
+    showArticleBody: !isLoading && !!articleBody,
+  }
 }
 
 export const ArticleNotFound = () => (
