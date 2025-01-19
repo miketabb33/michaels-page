@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { createContext, useContext } from 'react'
 import { ChildrenProp } from '../types/ChildrenProp'
 import { initAnalytics } from '../analytics/initAnalytics'
+import { uuid } from '../uuid'
 
 export type User = {
   id: string
@@ -22,7 +23,7 @@ export const useAuthProvider = () => {
   const getUserId = () => {
     const userId = localStorage.getItem(USER_ID_KEY)
     if (userId) return userId
-    const newUserId = create_UUID()
+    const newUserId = uuid()
     localStorage.setItem(USER_ID_KEY, newUserId)
     return newUserId
   }
@@ -47,14 +48,4 @@ export const AuthContextProvider = ({ children }: ChildrenProp) => {
 
 export const useAuth = (): AuthContextType => {
   return useContext(AuthContext)
-}
-
-const create_UUID = () => {
-  let dateTime = new Date().getTime()
-  const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    const random = (dateTime + Math.random() * 16) % 16 | 0
-    dateTime = Math.floor(dateTime / 16)
-    return (c == 'x' ? random : (random & 0x3) | 0x8).toString(16)
-  })
-  return uuid
 }
