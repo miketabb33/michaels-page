@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Image from '../../m-blocks/Image'
 import { MichaelTabb } from '../Profile'
 import { H1, H4 } from '../../m-blocks/typography'
+import TextLink from '../../m-blocks/TextLink'
 
 const Container = styled.div`
   display: flex;
@@ -30,7 +31,11 @@ const ProfileCompactTop = () => (
     <TextWell>
       <H1 ignoreDarkMode>{MichaelTabb.name}</H1>
       <H4>{MichaelTabb.title}</H4>
-      <H4>{MichaelTabb.email}</H4>
+      <H4>
+        <TextLink href={`mailto:${MichaelTabb.email}`} openInNewWindow={false}>
+          {MichaelTabb.email}
+        </TextLink>
+      </H4>
     </TextWell>
   </Container>
 )

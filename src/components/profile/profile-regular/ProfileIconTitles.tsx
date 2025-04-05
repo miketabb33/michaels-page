@@ -16,7 +16,7 @@ const ProfileIconTitles = () => {
         iconName="linkedin"
         href="https://www.linkedin.com/in/michael-tabb-24b34488/"
       />
-      <ProfileIconTitle title="Works At Pragmint" iconName="pragmint" href="https://www.pragmint.com/" />
+      <ProfileIconTitle title="Works At Humaniz" iconName="humaniz" href="https://humaniz.io/" />
       <ProfileIconTitle title="Github" iconName="github" href="https://github.com/miketabb33" />
       <ProfileIconTitle title="This Website" iconName="github" href="https://github.com/miketabb33/michaels-page" />
       <ProfileIconTitle title="Greater Boston Area, MA" iconName="pin" />

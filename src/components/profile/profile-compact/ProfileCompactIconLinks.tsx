@@ -22,8 +22,8 @@ const ProfileCompactIconLinks = () => (
       <Icon iconName="github" />
     </IconLink>
 
-    <IconLink href="https://www.pragmint.com/">
-      <Icon iconName="pragmint" />
+    <IconLink href="https://humaniz.io/">
+      <Icon iconName="humaniz" />
     </IconLink>
   </Row>
 )

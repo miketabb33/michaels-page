@@ -11,7 +11,7 @@ const TechStackRow = styled.div`
 const ProfileCompactTechStack = () => {
   return (
     <TechStackRow>
-      <H3>React • Typescript • Node • C# • Swift • Xcode • Polyglot</H3>
+      <H3>React • Vue • Typescript • Node • Ruby on Rails • C# • Swift • Xcode • Polyglot</H3>
     </TechStackRow>
   )
 }

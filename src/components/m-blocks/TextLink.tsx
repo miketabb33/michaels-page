@@ -13,12 +13,14 @@ const Link = styled.a`
 
 type TextLinkProps = {
   href: string
+  openInNewWindow?: boolean
   children: ReactNode
 }
 
-const TextLink = ({ href, children }: TextLinkProps) => {
+const TextLink = ({ href, openInNewWindow = true, children }: TextLinkProps) => {
+  const props = openInNewWindow ? { target: '_blank' } : {}
   return (
-    <Link href={href} target="_blank">
+    <Link href={href} {...props}>
       {children}
     </Link>
   )
