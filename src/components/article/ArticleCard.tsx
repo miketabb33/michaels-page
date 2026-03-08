@@ -4,25 +4,22 @@ import RouterLink from '../../router/RouterLink'
 import Card, { CardContent } from '../m-blocks/Card'
 import styled, { css } from 'styled-components'
 import P from '../m-blocks/typography/P'
-import Small from '../m-blocks/typography/Small'
 import H3 from '../m-blocks/typography/H3'
 import { desktopAndUp } from '../../styles/Responsive'
 import { PATH_VALUES } from '../../router/pathValues'
 
-export const ARTICLE_CARD_HEIGHT = '55rem'
+export const ARTICLE_CARD_HEIGHT = '52rem'
 
 const ArticleContainer = styled.div`
-  transition: all 0.15s;
-  border-radius: ${({ theme }) => theme.spacing.medium};
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 
   ${desktopAndUp(css`
     height: ${ARTICLE_CARD_HEIGHT};
   `)}
 
   &:hover {
-    transform: translateY(-0.2rem);
-    box-shadow: ${({ theme }) => theme.shadow.blur};
-    outline: ${({ theme }) => `solid ${theme.color.accent} 0.2rem`};
+    transform: translateY(-0.4rem);
+    box-shadow: 0 12px 40px rgba(124, 58, 237, 0.15);
   }
 `
 
@@ -32,6 +29,17 @@ const ArticleImage = styled.img`
   aspect-ratio: 1.7799;
 `
 
+const DateLabel = styled.span`
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: ${({ theme }) => theme.color.primary};
+  opacity: 0.6;
+  margin-bottom: 0.8rem;
+`
+
 type ArticleCardProps = {
   articleMeta: ArticleMeta
 }
@@ -39,7 +47,7 @@ type ArticleCardProps = {
 const ArticleCard = ({ articleMeta }: ArticleCardProps) => {
   const createdOnDate = new Date(articleMeta.createdOn)
   const formattedCreatedOn = createdOnDate.toLocaleDateString('default', {
-    month: 'long',
+    month: 'short',
     day: 'numeric',
     year: 'numeric',
   })
@@ -51,11 +59,11 @@ const ArticleCard = ({ articleMeta }: ArticleCardProps) => {
           <Card>
             <ArticleImage src={articleMeta.thumbnailUrl} />
             <CardContent>
-              <H3 $lineLimit={2} $spacing={{ marginBottom: 's' }}>
+              <DateLabel>{formattedCreatedOn}</DateLabel>
+              <H3 $lineLimit={2} $spacing={{ marginBottom: 'xs' }}>
                 {articleMeta.title}
               </H3>
-              <P $lineLimit={5}>{articleMeta.description}</P>
-              <Small $spacing={{ marginTop: 's' }}>{formattedCreatedOn}</Small>
+              <P $lineLimit={4}>{articleMeta.description}</P>
             </CardContent>
           </Card>
         </RouterLink>

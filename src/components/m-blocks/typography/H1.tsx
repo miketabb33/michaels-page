@@ -8,16 +8,16 @@ type H1Props = {
   $lineLimit?: number
 }
 
-const H1 = styled.h1<H1Props>`
-  ${({ theme, ignoreDarkMode, $spacing, $lineLimit }) => css`
-    font-size: 3.6rem;
-    line-height: 6rem;
-    font-weight: 600;
-    color: ${() => {
-      const lightModeColor = theme.staticColor.blue_800
-      if (ignoreDarkMode) return lightModeColor
-      return theme.color.id === 'light' ? lightModeColor : theme.staticColor.blue_50
-    }};
+const H1 = styled.h1.withConfig({
+  shouldForwardProp: (prop) => !['ignoreDarkMode'].includes(prop),
+})<H1Props>`
+  ${({ theme, $spacing, $lineLimit }) => css`
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 3.2rem;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: ${theme.color.primary};
     ${spacingController($spacing)}
     ${lineCountLimiter($lineLimit)}
   `}

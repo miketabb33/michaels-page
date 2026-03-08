@@ -1,11 +1,10 @@
 import styled, { css } from 'styled-components'
 import { ChildrenProp } from '../../types/ChildrenProp'
-import { hideOnAndUp, showOnAndUp, tabLandAndUp } from '../../styles/Responsive'
+import { hideOnAndUp, tabLandAndUp } from '../../styles/Responsive'
 import React from 'react'
 
 import { PageLayout } from '../m-blocks/Layout'
 import ProfileCompact from '../profile/profile-compact/ProfileCompact'
-import Profile from '../profile/profile-regular/Profile'
 
 const Container = styled(PageLayout)`
   display: flex;
@@ -34,12 +33,6 @@ const ProfileMobile = styled.div`
   ${hideOnAndUp('tablet-landscape')}
 `
 
-const Aside = styled.aside`
-  max-width: 27rem;
-  min-width: 27rem;
-  ${showOnAndUp('tablet-landscape')}
-`
-
 const ProfileAndContentLayout = ({ children }: ChildrenProp) => {
   return (
     <Container>
@@ -49,9 +42,6 @@ const ProfileAndContentLayout = ({ children }: ChildrenProp) => {
         </ProfileMobile>
         {children}
       </ViewPort>
-      <Aside>
-        <Profile />
-      </Aside>
     </Container>
   )
 }

@@ -9,9 +9,11 @@ type H3Props = {
 
 const H3 = styled.h3<H3Props>`
   ${({ theme, $spacing, $lineLimit }) => css`
-    font-size: 2.4rem;
-    line-height: 4.2rem;
-    font-weight: 600;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 2rem;
+    line-height: 1.3;
+    font-weight: 700;
+    letter-spacing: -0.02em;
     color: ${theme.color.text};
     ${spacingController($spacing)}
     ${lineCountLimiter($lineLimit)}

@@ -16,7 +16,7 @@ html, body, #root {
 
 html {
   font-size: 50%;
-  font-family: 'lato', 'sans-serif';
+  font-family: 'DM Sans', 'sans-serif';
   font-weight: 400;
   color: ${({ theme }) => theme.color.text};
   box-sizing: border-box;
@@ -31,29 +31,24 @@ body {
   font-size: 1.6rem;
 }
 
-body,
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
+h6 {
+  font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif;
+  font-weight: 700;
+  color: ${({ theme }) => theme.color.text};
+}
+
+body,
 p,
 ol,
 ul {
   margin: 0;
   padding: 0;
   font-weight: normal;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  color: ${({ theme }) => theme.staticColor.gray_900}
 }
 
 ol,
@@ -69,7 +64,7 @@ img {
 ::selection {
   ${({ theme }) => css`
     background-color: ${theme.color.primary};
-    color: ${theme.staticColor.blue_50};
+    color: #ffffff;
   `}
 }
 `

@@ -4,27 +4,35 @@ import RouterLink from '../../../router/RouterLink'
 import { useRouter } from '../../../router/useRouter'
 
 const Container = styled(RouterLink)<{ $selected: boolean }>`
-  display: block;
-  text-align: center;
-  padding: ${({ theme }) => theme.spacing.medium} 0;
-  background-color: ${({ theme }) => theme.color.secondaryLight};
-  color: ${({ theme }) => theme.staticColor.gray_50};
+  display: flex;
+  align-items: center;
+  padding: 0.9rem 2rem;
   text-decoration: none;
-  font-weight: 700;
-  letter-spacing: ${({ theme }) => theme.spacing.xSmall};
-  transition: all 0.3s;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: 0.03rem;
+  color: rgba(255, 255, 255, 0.5);
+  border-left: 2px solid transparent;
+  transition: all 0.15s ease;
 
   &:hover {
-    background-color: ${({ theme }) => theme.color.secondaryDark};
+    background-color: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.9);
+    border-left-color: rgba(167, 139, 250, 0.5);
   }
 
-  ${({ $selected }) =>
+  ${({ $selected, theme }) =>
     $selected &&
     css`
-      background-color: ${({ theme }) => theme.color.primaryLight};
-      &:hover {
-        background-color: ${({ theme }) => theme.color.primaryLight};
-      }
+      background: linear-gradient(
+        90deg,
+        rgba(124, 58, 237, 0.18) 0%,
+        rgba(124, 58, 237, 0.04) 100%
+      );
+      color: #ffffff;
+      border-left-color: ${theme.color.primary};
+      font-weight: 500;
     `}
 `
 

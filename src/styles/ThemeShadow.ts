@@ -1,10 +1,8 @@
-import { themeSpacing } from './ThemeSpacing'
-
 export const themeShadow: ThemeShadow = {
-  crisp: `0 0 ${themeSpacing.xSmall} rgba(0,0,0,0.5)`,
-  blur: `0 0 ${themeSpacing.medium} rgba(0,0,0,0.2)`,
-  strong: '0 1rem 5rem black',
-  soft: '0 1rem 3rem rgba(0,0,0,0.1)',
+  crisp: `0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08)`,
+  blur: `0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.06)`,
+  strong: '0 10px 25px rgba(0,0,0,0.25)',
+  soft: '0 1px 3px rgba(0,0,0,0.06)',
 }
 
 export type ThemeShadow = {

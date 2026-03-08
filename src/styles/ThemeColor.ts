@@ -4,6 +4,7 @@ import { colorTokens } from './colorTokens'
 export type ThemeColor = {
   id: Theme
   splash: string
+  surface: string
   primaryLight: string
   primary: string
   primaryDark: string
@@ -17,28 +18,30 @@ export type ThemeColor = {
 
 export const lightThemeColor: ThemeColor = {
   id: 'light',
-  splash: colorTokens.gray_50,
-  primaryLight: colorTokens.blue_500,
-  primary: colorTokens.blue_600,
-  primaryDark: colorTokens.blue_700,
-  secondaryLight: colorTokens.orange_400,
-  secondary: colorTokens.orange_500,
-  secondaryDark: colorTokens.orange_600,
-  accent: colorTokens.red_500,
-  text: colorTokens.gray_900,
-  hover: colorTokens.blue_100,
+  splash: '#EEEEF3',
+  surface: '#FFFFFF',
+  primaryLight: colorTokens.violet_400,
+  primary: colorTokens.violet_600,
+  primaryDark: colorTokens.violet_700,
+  secondaryLight: '#1A1F2E',
+  secondary: '#0C0F1A',
+  secondaryDark: '#060810',
+  accent: colorTokens.amber_500,
+  text: '#1C1C2E',
+  hover: colorTokens.violet_50,
 }
 
 export const darkThemeColor: ThemeColor = {
   id: 'dark',
-  splash: colorTokens.gray_950,
-  primaryLight: colorTokens.orange_400,
-  primary: colorTokens.orange_500,
-  primaryDark: colorTokens.orange_600,
-  secondaryLight: colorTokens.blue_500,
-  secondary: colorTokens.blue_600,
-  secondaryDark: colorTokens.blue_700,
-  accent: colorTokens.red_500,
-  text: colorTokens.gray_50,
-  hover: colorTokens.blue_900,
+  splash: '#07070F',
+  surface: '#0E1120',
+  primaryLight: colorTokens.violet_300,
+  primary: colorTokens.violet_400,
+  primaryDark: colorTokens.violet_500,
+  secondaryLight: '#141726',
+  secondary: '#080A14',
+  secondaryDark: '#03040A',
+  accent: colorTokens.amber_400,
+  text: '#E4E4F0',
+  hover: colorTokens.violet_900,
 }

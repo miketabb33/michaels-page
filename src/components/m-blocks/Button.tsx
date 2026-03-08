@@ -2,18 +2,23 @@ import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 
 const Container = styled.button`
-  background-color: ${({ theme }) => theme.color.primary};
-  border: ${({ theme }) => theme.color.primaryDark} solid 1px;
-  padding: ${({ theme }) => theme.spacing.small} ${({ theme }) => theme.spacing.medium};
-  border-radius: ${({ theme }) => theme.spacing.xSmall};
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.7rem 1.6rem;
+  border-radius: 10rem;
   cursor: pointer;
 
-  color: ${({ theme }) => theme.staticColor.gray_50};
-  text-transform: uppercase;
-  font-weight: 700;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: 0.04rem;
+  transition: all 0.2s;
 
-  :hover {
-    background-color: ${({ theme }) => theme.color.primaryDark};
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.07);
+    color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.28);
   }
 `
 

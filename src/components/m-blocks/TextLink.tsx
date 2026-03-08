@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 import styled from 'styled-components'
 
 const Link = styled.a`
-  color: ${({ theme }) => theme.color.primaryLight};
+  color: ${({ theme }) => theme.color.primary};
   transition: all 0.2s;
 
   :hover {
