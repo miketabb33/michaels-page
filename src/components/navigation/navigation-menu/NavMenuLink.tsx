@@ -6,32 +6,30 @@ import { useRouter } from '../../../router/useRouter'
 const Container = styled(RouterLink)<{ $selected: boolean }>`
   display: flex;
   align-items: center;
-  padding: 0.9rem 2rem;
+  padding: 0.7rem 1.2rem;
+  white-space: nowrap;
   text-decoration: none;
   font-family: 'DM Sans', sans-serif;
   font-size: 1.35rem;
   font-weight: 400;
-  letter-spacing: 0.03rem;
-  color: rgba(255, 255, 255, 0.5);
-  border-left: 2px solid transparent;
+  letter-spacing: 0.01em;
+  color: ${({ theme }) => theme.color.text};
+  opacity: 0.6;
+  border-radius: 0.7rem;
   transition: all 0.15s ease;
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-    color: rgba(255, 255, 255, 0.9);
-    border-left-color: rgba(167, 139, 250, 0.5);
+    opacity: 1;
+    background: ${({ theme }) => theme.color.hover};
+    color: ${({ theme }) => theme.color.primary};
   }
 
   ${({ $selected, theme }) =>
     $selected &&
     css`
-      background: linear-gradient(
-        90deg,
-        rgba(124, 58, 237, 0.18) 0%,
-        rgba(124, 58, 237, 0.04) 100%
-      );
-      color: #ffffff;
-      border-left-color: ${theme.color.primary};
+      opacity: 1;
+      color: ${theme.color.primary};
+      background: ${theme.color.hover};
       font-weight: 500;
     `}
 `

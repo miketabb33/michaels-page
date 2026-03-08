@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Background -->
+  <rect width="32" height="32" rx="8" fill="#13131E"/>
+  <!-- MT letters -->
+  <text
+    x="15"
+    y="21"
+    font-family="system-ui, -apple-system, sans-serif"
+    font-weight="900"
+    font-size="13"
+    text-anchor="middle"
+    fill="#7AA2F7"
+    letter-spacing="-0.5"
+  >MT</text>
+  <!-- Accent dot -->
+  <circle cx="27" cy="21" r="2.6" fill="#FF9E64"/>
+</svg>

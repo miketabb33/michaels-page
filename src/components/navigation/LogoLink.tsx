@@ -7,14 +7,13 @@ const LogoLinkElement = styled(RouterLink)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  gap: 0.6rem;
 `
 
 const Monogram = styled.span`
   font-family: 'Bricolage Grotesque', sans-serif;
   font-size: 2.2rem;
   font-weight: 800;
-  color: #ffffff;
+  color: ${({ theme }) => theme.color.primary};
   letter-spacing: -0.04em;
   line-height: 1;
 `

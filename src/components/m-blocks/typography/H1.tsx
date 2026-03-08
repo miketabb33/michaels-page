@@ -13,8 +13,8 @@ const H1 = styled.h1.withConfig({
 })<H1Props>`
   ${({ theme, $spacing, $lineLimit }) => css`
     font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 3.2rem;
-    line-height: 1.15;
+    font-size: 3rem;
+    line-height: 1.2;
     font-weight: 700;
     letter-spacing: -0.03em;
     color: ${theme.color.primary};

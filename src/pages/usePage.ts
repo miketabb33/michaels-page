@@ -40,8 +40,8 @@ export const usePageController = ({ title }: usePageControllerArgs) => {
 }
 
 const DESCRIPTION_DEFAULT =
-  'I specialize in delivering quality software. Explore insightful articles for valuable industry knowledge. Elevate your digital presence!'
-const IMAGE_DEFAULT = 'https://michael-tabb.com/images/logo.png'
+  'Senior Software Engineer based in Boston, MA. I build software with AI-driven iteration — shipping faster across Rails, Vue, React, TypeScript, and more.'
+const IMAGE_DEFAULT = 'https://michael-tabb.com/images/portrait.jpeg'
 
 type UsePageArgs = {
   title?: string

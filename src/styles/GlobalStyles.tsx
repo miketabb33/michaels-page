@@ -10,8 +10,12 @@ const GlobalStyle = createGlobalStyle`
   box-sizing: inherit;
 }
 
-html, body, #root {
+html, body {
   height: 100%;
+}
+
+#root {
+  min-height: 100%;
 }
 
 html {
@@ -20,6 +24,7 @@ html {
   font-weight: 400;
   color: ${({ theme }) => theme.color.text};
   box-sizing: border-box;
+  scroll-behavior: smooth;
 
   ${tabPortAndUp(css`
     font-size: 62.5%;
@@ -29,6 +34,7 @@ html {
 body {
   background-color: ${({ theme }) => theme.color.splash};
   font-size: 1.6rem;
+  overflow-y: scroll;
 }
 
 h1,
@@ -66,6 +72,18 @@ img {
     background-color: ${theme.color.primary};
     color: #ffffff;
   `}
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: ${({ theme }) => theme.color.hover};
+  border-radius: 3px;
 }
 `
 

@@ -16,32 +16,33 @@ export type ThemeColor = {
   hover: string
 }
 
-export const lightThemeColor: ThemeColor = {
-  id: 'light',
-  splash: '#EEEEF3',
-  surface: '#FFFFFF',
-  primaryLight: colorTokens.violet_400,
-  primary: colorTokens.violet_600,
-  primaryDark: colorTokens.violet_700,
-  secondaryLight: '#1A1F2E',
-  secondary: '#0C0F1A',
-  secondaryDark: '#060810',
-  accent: colorTokens.amber_500,
-  text: '#1C1C2E',
-  hover: colorTokens.violet_50,
-}
-
+// Tokyo Night-inspired warm dark
 export const darkThemeColor: ThemeColor = {
   id: 'dark',
-  splash: '#07070F',
-  surface: '#0E1120',
-  primaryLight: colorTokens.violet_300,
-  primary: colorTokens.violet_400,
-  primaryDark: colorTokens.violet_500,
-  secondaryLight: '#141726',
-  secondary: '#080A14',
-  secondaryDark: '#03040A',
-  accent: colorTokens.amber_400,
-  text: '#E4E4F0',
-  hover: colorTokens.violet_900,
+  splash: '#13131E',
+  surface: '#1A1B2E',
+  primaryLight: '#A9C1FA',
+  primary: '#7AA2F7',
+  primaryDark: '#5D85D4',
+  secondaryLight: 'rgba(26, 27, 46, 0.97)',
+  secondary: 'rgba(19, 19, 30, 0.88)',
+  secondaryDark: 'rgba(255, 255, 255, 0.09)',
+  accent: '#FF9E64',
+  text: '#C0CAF5',
+  hover: 'rgba(122, 162, 247, 0.1)',
+}
+
+export const lightThemeColor: ThemeColor = {
+  id: 'light',
+  splash: '#EEF2F9',
+  surface: '#FFFFFF',
+  primaryLight: '#6B8FD4',
+  primary: '#3D59A1',
+  primaryDark: '#2C4180',
+  secondaryLight: 'rgba(255, 255, 255, 0.97)',
+  secondary: 'rgba(238, 242, 249, 0.88)',
+  secondaryDark: 'rgba(0, 0, 0, 0.09)',
+  accent: '#E07B39',
+  text: '#1A1B2E',
+  hover: 'rgba(61, 89, 161, 0.08)',
 }

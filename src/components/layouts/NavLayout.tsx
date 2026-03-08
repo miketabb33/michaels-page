@@ -1,35 +1,25 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { navConfig } from '../../config/navConfig'
-import { tabLandAndUp } from '../../styles/Responsive'
 import { ChildrenProp } from '../../types/ChildrenProp'
-import Sidebar from '../navigation/Sidebar'
-import MobileHeader, { MOBILE_HEADER_HEIGHT } from '../navigation/MobileHeader'
+import TopNav from '../navigation/TopNav'
 
 const Container = styled.div`
-  overflow-x: hidden;
-  height: 100%;
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: ${MOBILE_HEADER_HEIGHT} 1fr;
-
-  ${tabLandAndUp(css`
-    grid-template-columns: 26rem 1fr;
-    grid-template-rows: auto;
-  `)}
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 `
 
 const Main = styled.main`
-  height: 100%;
-  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
 `
 
 const NavLayout = ({ children }: ChildrenProp) => {
   const nav = navConfig()
   return (
     <Container>
-      <MobileHeader navConfig={nav} />
-      <Sidebar navConfig={nav} />
+      <TopNav navConfig={nav} />
       <Main>{children}</Main>
     </Container>
   )

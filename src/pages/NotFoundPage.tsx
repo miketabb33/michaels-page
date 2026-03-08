@@ -13,7 +13,7 @@ const Container = styled.div`
   align-items: center;
 `
 const NotFoundPage = () => {
-  usePage({ title: 'Pong', description: 'The page you are looking for can not be found' })
+  usePage({ title: '404 Not Found', description: 'The page you are looking for can not be found.' })
   return (
     <NavLayout>
       <Container>

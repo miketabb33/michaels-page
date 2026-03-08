@@ -2,24 +2,18 @@ import React from 'react'
 import { ArticleMeta } from '../../network/articleClient'
 import RouterLink from '../../router/RouterLink'
 import Card, { CardContent } from '../m-blocks/Card'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import P from '../m-blocks/typography/P'
 import H3 from '../m-blocks/typography/H3'
-import { desktopAndUp } from '../../styles/Responsive'
 import { PATH_VALUES } from '../../router/pathValues'
-
-export const ARTICLE_CARD_HEIGHT = '52rem'
 
 const ArticleContainer = styled.div`
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  ${desktopAndUp(css`
-    height: ${ARTICLE_CARD_HEIGHT};
-  `)}
+  border-radius: 1.4rem;
 
   &:hover {
-    transform: translateY(-0.4rem);
-    box-shadow: 0 12px 40px rgba(124, 58, 237, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 48px ${({ theme }) => theme.color.hover};
   }
 `
 
@@ -32,12 +26,13 @@ const ArticleImage = styled.img`
 const DateLabel = styled.span`
   display: block;
   font-family: 'DM Sans', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  color: ${({ theme }) => theme.color.primary};
-  opacity: 0.6;
-  margin-bottom: 0.8rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.color.accent};
+  opacity: 0.85;
+  margin-bottom: 0.9rem;
 `
 
 type ArticleCardProps = {
@@ -63,7 +58,7 @@ const ArticleCard = ({ articleMeta }: ArticleCardProps) => {
               <H3 $lineLimit={2} $spacing={{ marginBottom: 'xs' }}>
                 {articleMeta.title}
               </H3>
-              <P $lineLimit={4}>{articleMeta.description}</P>
+              <P>{articleMeta.description}</P>
             </CardContent>
           </Card>
         </RouterLink>

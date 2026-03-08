@@ -1,16 +1,13 @@
 import React from 'react'
 import Card, { CardContent } from '../m-blocks/Card'
 import styled from 'styled-components'
-import { ARTICLE_CARD_HEIGHT } from './ArticleCard'
 import { Skeleton } from '../m-blocks/Skeleton'
 
 type StyledSkeletonProps = {
   $width: string
 }
 
-const Container = styled.div`
-  height: ${ARTICLE_CARD_HEIGHT};
-`
+const Container = styled.div``
 
 const ImageSkeleton = styled.div`
   aspect-ratio: 1.7799;

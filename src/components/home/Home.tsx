@@ -2,51 +2,60 @@ import React from 'react'
 import { useRequest } from '../../network/useRequest'
 import { ArticleMeta, fetchArticleManifest } from '../../network/articleClient'
 import ArticlesList, { ArticleListSkeleton } from '../article/ArticlesList'
-import ProfileAndContentLayout from '../layouts/ProvileAndContentLayout'
 import styled from 'styled-components'
+import HomeHero from './HomeHero'
 
-const SectionHeader = styled.div`
-  padding: 0 3rem;
+const PageWrap = styled.div`
+  max-width: 130rem;
+  margin: 0 auto;
+  padding-bottom: 8rem;
+`
+
+const Divider = styled.div`
+  height: 1px;
+  background: ${({ theme }) => theme.color.secondaryDark};
+  margin: 0 3rem;
+`
+
+const ArticlesHeader = styled.div`
+  padding: 3.6rem 3rem 2.4rem;
+  display: flex;
+  align-items: baseline;
+  gap: 1.4rem;
 `
 
 const Eyebrow = styled.span`
-  display: block;
   font-family: 'DM Sans', sans-serif;
   font-size: 1.1rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
   color: ${({ theme }) => theme.color.accent};
-  margin-bottom: 0.6rem;
 `
 
-const SectionTitle = styled.h1`
+const SectionTitle = styled.h2`
   font-family: 'Bricolage Grotesque', sans-serif;
-  font-size: 3.6rem;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1;
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
   color: ${({ theme }) => theme.color.text};
-
-  span {
-    color: ${({ theme }) => theme.color.primary};
-  }
+  margin: 0;
 `
 
 const Home = () => {
   const { showArticles, showLoading, articles } = useInHome()
 
   return (
-    <ProfileAndContentLayout>
-      <SectionHeader>
+    <PageWrap>
+      <HomeHero />
+      <Divider />
+      <ArticlesHeader>
         <Eyebrow>Writing</Eyebrow>
-        <SectionTitle>
-          Latest <span>Articles</span>
-        </SectionTitle>
-      </SectionHeader>
+        <SectionTitle>Articles</SectionTitle>
+      </ArticlesHeader>
       {showLoading && <ArticleListSkeleton count={6} />}
       {showArticles && <ArticlesList articles={articles} />}
-    </ProfileAndContentLayout>
+    </PageWrap>
   )
 }
 

@@ -6,10 +6,10 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
   background-color: ${({ theme }) => theme.color.surface};
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.07);
+  border: 1px solid ${({ theme }) => theme.color.secondaryDark};
   border-radius: 1.4rem;
   overflow: hidden;
+  transition: border-color 0.2s;
 `
 
 const ContentContainer = styled.div`

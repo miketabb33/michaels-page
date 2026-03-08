@@ -3,22 +3,25 @@ import styled from 'styled-components'
 
 const Container = styled.button`
   background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 0.7rem 1.6rem;
+  border: 1px solid ${({ theme }) => theme.color.secondaryDark};
+  padding: 0.6rem 1.4rem;
   border-radius: 10rem;
   cursor: pointer;
 
-  color: rgba(255, 255, 255, 0.55);
+  color: ${({ theme }) => theme.color.text};
   font-family: 'DM Sans', sans-serif;
   font-size: 1.3rem;
   font-weight: 400;
-  letter-spacing: 0.04rem;
-  transition: all 0.2s;
+  letter-spacing: 0.02rem;
+  opacity: 0.65;
+  transition: all 0.15s ease;
+  white-space: nowrap;
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.07);
-    color: rgba(255, 255, 255, 0.9);
-    border-color: rgba(255, 255, 255, 0.28);
+    opacity: 1;
+    background: ${({ theme }) => theme.color.primary};
+    color: #ffffff;
+    border-color: transparent;
   }
 `
 

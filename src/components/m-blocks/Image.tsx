@@ -17,9 +17,8 @@ const Image = ({ imageName, className }: ImageProps) => (
 
 export default Image
 
-type ImageName = 'logo' | 'portrait'
+type ImageName = 'portrait'
 
 const imageMap = new Map<ImageName, string>([
-  ['logo', '/images/logo.png'],
   ['portrait', '/images/portrait.jpeg'],
 ])

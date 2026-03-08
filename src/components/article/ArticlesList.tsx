@@ -7,7 +7,7 @@ import ArticleCardSkeleton from './ArticleCardSkeleton'
 import { ENV } from '../../config/environments/currentEnv'
 
 const Articles = styled.div`
-  margin: 0 3rem;
+  padding: 0 3rem;
   display: grid;
 
   grid-template-columns: 1fr;
@@ -15,8 +15,8 @@ const Articles = styled.div`
 
   ${desktopAndUp(css`
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 3rem;
-    row-gap: 3rem;
+    column-gap: 2.4rem;
+    row-gap: 2.4rem;
   `)}
 `
 

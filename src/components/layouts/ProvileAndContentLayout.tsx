@@ -1,49 +1,18 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { ChildrenProp } from '../../types/ChildrenProp'
-import { hideOnAndUp, tabLandAndUp } from '../../styles/Responsive'
 import React from 'react'
 
-import { PageLayout } from '../m-blocks/Layout'
-import ProfileCompact from '../profile/profile-compact/ProfileCompact'
-
-const Container = styled(PageLayout)`
+const Container = styled.div`
+  max-width: 130rem;
+  margin: 0 auto;
+  padding: 5rem 3rem 10rem;
   display: flex;
-
-  ${tabLandAndUp(css`
-    height: 100%;
-  `)}
-`
-
-const ViewPort = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    flex-direction: column;
-    gap: ${theme.spacing.large};
-    padding-top: 3rem;
-    padding-bottom: 6rem;
-    width: 100%;
-
-    ${tabLandAndUp(css`
-      overflow-y: auto;
-    `)}
-  `}
-`
-
-const ProfileMobile = styled.div`
-  ${hideOnAndUp('tablet-landscape')}
+  flex-direction: column;
+  gap: 6rem;
 `
 
 const ProfileAndContentLayout = ({ children }: ChildrenProp) => {
-  return (
-    <Container>
-      <ViewPort>
-        <ProfileMobile>
-          <ProfileCompact />
-        </ProfileMobile>
-        {children}
-      </ViewPort>
-    </Container>
-  )
+  return <Container>{children}</Container>
 }
 
 export default ProfileAndContentLayout
