@@ -158,6 +158,13 @@ const projects: Project[] = [
     tags: ['React', 'TypeScript'],
     href: PATH_VALUES.ticTacToe.base,
   },
+  {
+    name: 'TurnCraft',
+    description: 'A turn-based combat game where players battle head-to-head with strategy-driven mechanics.',
+    tags: ['JavaScript'],
+    href: 'https://turncraft.onrender.com/',
+    external: true,
+  },
 ]
 
 const Projects = () => (
