@@ -2,7 +2,7 @@
 
 exports[`App should match snapshot 1`] = `
 <styled.div>
-  <MobileHeader
+  <TopNav
     navConfig={
       [
         {
@@ -18,46 +18,8 @@ exports[`App should match snapshot 1`] = `
           "linkTo": "/recommended-books",
         },
         {
-          "label": "Trading",
-          "linkTo": "/my-trading-card-worth",
-        },
-        {
-          "label": "Pong",
-          "linkTo": "/pong",
-        },
-        {
-          "label": "T T T",
-          "linkTo": "/tic-tac-toe",
-        },
-      ]
-    }
-  />
-  <Sidebar
-    navConfig={
-      [
-        {
-          "label": "Home",
-          "linkTo": "/",
-        },
-        {
-          "label": "Me",
-          "linkTo": "/about-me",
-        },
-        {
-          "label": "Books",
-          "linkTo": "/recommended-books",
-        },
-        {
-          "label": "Trading",
-          "linkTo": "/my-trading-card-worth",
-        },
-        {
-          "label": "Pong",
-          "linkTo": "/pong",
-        },
-        {
-          "label": "T T T",
-          "linkTo": "/tic-tac-toe",
+          "label": "Projects",
+          "linkTo": "/projects",
         },
       ]
     }

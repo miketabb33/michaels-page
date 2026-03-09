@@ -2,6 +2,7 @@ const ticTacToeBase = '/tic-tac-toe'
 
 export const PATH_VALUES = {
   home: '/',
+  projects: '/projects',
   pong: '/pong',
   ticTacToe: {
     base: ticTacToeBase,

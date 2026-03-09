@@ -12,7 +12,8 @@ import { usePage } from './usePage'
 const AboutMePage = () => {
   usePage({
     title: 'About',
-    description: 'Senior Software Engineer based in Boston, MA. I build software with AI-driven iteration across Rails, Vue, React, TypeScript, C#, and Swift.',
+    description:
+      'Senior Software Engineer based in Boston, MA. I build software with AI-driven iteration across Rails, Vue, React, TypeScript, C#, and Swift.',
   })
   return (
     <NavLayout>

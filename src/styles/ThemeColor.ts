@@ -1,5 +1,4 @@
 import { Theme } from '../context/ThemeContext'
-import { colorTokens } from './colorTokens'
 
 export type ThemeColor = {
   id: Theme
@@ -16,7 +15,6 @@ export type ThemeColor = {
   hover: string
 }
 
-// Tokyo Night-inspired warm dark
 export const darkThemeColor: ThemeColor = {
   id: 'dark',
   splash: '#13131E',

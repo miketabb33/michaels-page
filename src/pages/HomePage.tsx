@@ -6,7 +6,8 @@ import Home from '../components/home/Home'
 const HomePage = () => {
   usePage({
     title: 'Home',
-    description: 'Michael Tabb — Senior Software Engineer based in Boston, MA. Building software with AI-driven iteration. Writing about engineering, productivity, and craft.',
+    description:
+      'Michael Tabb — Senior Software Engineer based in Boston, MA. Building software with AI-driven iteration. Writing about engineering, productivity, and craft.',
   })
   return (
     <NavLayout>

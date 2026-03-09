@@ -121,21 +121,37 @@ const MobileMenuDropdown = styled.ul`
   z-index: 200;
 `
 
-const MobileThemeRow = styled.div`
+const MobileThemeRow = styled.button`
   display: flex;
   align-items: center;
   gap: 0.8rem;
+  width: 100%;
   padding: 0.8rem 1.6rem 0.6rem;
+  border: none;
   border-top: 1px solid ${({ theme }) => theme.color.secondaryDark};
   margin-top: 0.4rem;
+  background: transparent;
   font-family: 'DM Sans', sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: ${({ theme }) => theme.color.text};
-  opacity: 0.55;
+  opacity: 0.35;
+  cursor: pointer;
+  text-align: left;
+
+  &:hover {
+    opacity: 0.6;
+  }
 `
 
 const SunIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <circle cx="12" cy="12" r="4" />
     <line x1="12" y1="2" x2="12" y2="4" />
     <line x1="12" y1="20" x2="12" y2="22" />
@@ -149,7 +165,14 @@ const SunIcon = () => (
 )
 
 const MoonIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
   </svg>
 )
@@ -182,10 +205,8 @@ const TopNav = ({ navConfig }: TopNavProps) => {
       <Popup {...popup.bind}>
         <MobileMenuDropdown>
           <NavigationMenu navConfig={navConfig} />
-          <MobileThemeRow>
-            <ThemeIconBtn onClick={toggleTheme} aria-label="Toggle theme">
-              {isDark ? <SunIcon /> : <MoonIcon />}
-            </ThemeIconBtn>
+          <MobileThemeRow onClick={toggleTheme} aria-label="Toggle theme">
+            <ThemeIconBtn as="span">{isDark ? <SunIcon /> : <MoonIcon />}</ThemeIconBtn>
             {isDark ? 'Light mode' : 'Dark mode'}
           </MobileThemeRow>
         </MobileMenuDropdown>

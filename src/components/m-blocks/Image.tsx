@@ -19,6 +19,4 @@ export default Image
 
 type ImageName = 'portrait'
 
-const imageMap = new Map<ImageName, string>([
-  ['portrait', '/images/portrait.jpeg'],
-])
+const imageMap = new Map<ImageName, string>([['portrait', '/images/portrait.jpeg']])

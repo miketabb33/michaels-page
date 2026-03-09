@@ -22,9 +22,7 @@ const PortraitWrap = styled.div`
   height: 5.6rem;
   border-radius: 50%;
   flex-shrink: 0;
-  box-shadow:
-    0 0 0 2px rgba(167, 139, 250, 0.5),
-    0 0 16px rgba(124, 58, 237, 0.35);
+  box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.5), 0 0 16px rgba(124, 58, 237, 0.35);
 `
 
 const PortraitImage = styled(Image).attrs({ imageName: 'portrait' })`

@@ -131,17 +131,18 @@ const Divider = styled.hr`
 export const WhatIDoHome = () => (
   <Section $delay={0}>
     <SectionLabel>How I work</SectionLabel>
-    <SectionTitle>AI-driven iteration,<br />real engineering.</SectionTitle>
+    <SectionTitle>
+      Fast iterations.
+      <br />
+      Real engineering.
+    </SectionTitle>
     <Body>
-      I'm a senior engineer who builds and ships software. I've gone deep on AI-driven development.
-      Not as a shortcut, but as a <Highlight>force multiplier</Highlight>. I write every line of code, follow
-      every decision, and understand the system end to end. The difference is I now move at a pace
-      that would've been impossible a few years ago.
+      I&apos;m a senior engineer who builds and ships software across the full stack. I care about understanding systems
+      end to end, making good architectural decisions, and delivering work that holds up over time.
     </Body>
     <Body>
-      My productivity has hit a new level. The iteration loops are tighter, the output is higher, and
-      the quality hasn't dropped. If anything, it's improved. I'm not just keeping up with AI tooling;
-      I'm <Highlight>building with it as a core part of how I work</Highlight>.
+      I move fast. AI has become a real part of how I work. Tighter loops, higher output, and the quality hasn&apos;t
+      dropped.
     </Body>
   </Section>
 )
@@ -151,11 +152,21 @@ export const IndustryKnowledgeHome = () => (
     <SectionLabel>Industries</SectionLabel>
     <SectionTitle>Shipped across domains.</SectionTitle>
     <Body>
-      I've delivered software across a wide range of industries, each one a different set of constraints,
-      users, and problems worth solving.
+      I&apos;ve delivered software across a wide range of industries, each one a different set of constraints, users,
+      and problems worth solving.
     </Body>
     <TagCloud>
-      {['Communications', 'Cultural Institutions', 'Digital Art Creation', 'E-Commerce', 'Education', 'Entertainment', 'Finance', 'Fitness', 'Medical'].map(industry => (
+      {[
+        'Communications',
+        'Cultural Institutions',
+        'Digital Art Creation',
+        'E-Commerce',
+        'Education',
+        'Entertainment',
+        'Finance',
+        'Fitness',
+        'Medical',
+      ].map((industry) => (
         <Tag key={industry}>{industry}</Tag>
       ))}
     </TagCloud>
@@ -165,18 +176,34 @@ export const IndustryKnowledgeHome = () => (
 export const TechnicalExpertiseHome = () => (
   <Section $delay={0.3}>
     <SectionLabel>Stack</SectionLabel>
-    <SectionTitle>Multi-language.<br />Adaptable everywhere.</SectionTitle>
+    <SectionTitle>
+      Multi-language.
+      <br />
+      Adaptable everywhere.
+    </SectionTitle>
     <Body>
       Currently working in <Highlight>Rails + Vue</Highlight>, with a strong background in{' '}
-      <Highlight>React + TypeScript</Highlight>, <Highlight>C#</Highlight>, and{' '}
-      <Highlight>Swift</Highlight>. I've built across the full stack in multiple languages. The specifics have changed over the years, but the approach hasn't.
+      <Highlight>React + TypeScript</Highlight>, <Highlight>C#</Highlight>, and <Highlight>Swift</Highlight>. I&apos;ve
+      built across the full stack in multiple languages. The specifics have changed over the years, but the approach
+      hasn&apos;t.
     </Body>
-    <Body>
-      AI tooling is part of my stack too, not as a crutch, but as a genuine accelerant
-      for writing, reviewing, and reasoning about code.
-    </Body>
+    <Body>I lean on modern tooling to move faster and think more clearly about the code I&apos;m writing.</Body>
     <TagCloud>
-      {['Rails', 'Vue', 'React', 'TypeScript', 'C#', 'Swift', 'Ruby', '.NET', 'MongoDB', 'PostgreSQL', 'Node.js', 'HTML / CSS', 'AI Tooling'].map(tech => (
+      {[
+        'Rails',
+        'Vue',
+        'React',
+        'TypeScript',
+        'C#',
+        'Swift',
+        'Ruby',
+        '.NET',
+        'MongoDB',
+        'PostgreSQL',
+        'Node.js',
+        'HTML / CSS',
+        'AI Tooling',
+      ].map((tech) => (
         <Tag key={tech}>{tech}</Tag>
       ))}
     </TagCloud>
@@ -192,7 +219,14 @@ export const WhatIValueHome = () => (
       <ValueCard>
         <ValueCardTitle>Team & Process</ValueCardTitle>
         <ValueItems>
-          {['Lean Management', 'Customer Collaboration', 'Extreme Programming', 'Agile Principles', 'Setting Expectations', 'Crucial Conversations'].map(v => (
+          {[
+            'Lean Management',
+            'Customer Collaboration',
+            'Extreme Programming',
+            'Agile Principles',
+            'Setting Expectations',
+            'Crucial Conversations',
+          ].map((v) => (
             <ValueItem key={v}>— {v}</ValueItem>
           ))}
         </ValueItems>
@@ -200,7 +234,7 @@ export const WhatIValueHome = () => (
       <ValueCard>
         <ValueCardTitle>Code Quality</ValueCardTitle>
         <ValueItems>
-          {['Extensibility', 'Reliability', 'Reusability', 'Readability', 'Performance'].map(v => (
+          {['Extensibility', 'Reliability', 'Reusability', 'Readability', 'Performance'].map((v) => (
             <ValueItem key={v}>— {v}</ValueItem>
           ))}
         </ValueItems>
@@ -208,7 +242,7 @@ export const WhatIValueHome = () => (
       <ValueCard>
         <ValueCardTitle>Visibility</ValueCardTitle>
         <ValueItems>
-          {['Analytics & Error Logging', 'Agile Metrics', 'User Feedback'].map(v => (
+          {['Analytics & Error Logging', 'Agile Metrics', 'User Feedback'].map((v) => (
             <ValueItem key={v}>— {v}</ValueItem>
           ))}
         </ValueItems>
@@ -216,7 +250,7 @@ export const WhatIValueHome = () => (
       <ValueCard>
         <ValueCardTitle>Mindset</ValueCardTitle>
         <ValueItems>
-          {['Flow State', 'Fun', '1% Gains', 'Structured Work Day'].map(v => (
+          {['Flow State', 'Fun', '1% Gains', 'Structured Work Day'].map((v) => (
             <ValueItem key={v}>— {v}</ValueItem>
           ))}
         </ValueItems>

@@ -32,9 +32,7 @@ const Portrait = styled(Image).attrs({ imageName: 'portrait' })`
   border-radius: 50%;
   object-fit: cover;
   display: block;
-  box-shadow:
-    0 0 0 3px ${({ theme }) => theme.color.splash},
-    0 0 0 5px ${({ theme }) => theme.color.primary},
+  box-shadow: 0 0 0 3px ${({ theme }) => theme.color.splash}, 0 0 0 5px ${({ theme }) => theme.color.primary},
     0 8px 40px ${({ theme }) => theme.color.hover};
 
   ${tabLandAndUp(css`
@@ -129,11 +127,12 @@ const HomeHero = () => (
       <Portrait />
     </PhotoWrap>
     <TextContent>
-      <Greeting>Hey, I'm</Greeting>
+      <Greeting>Hey, I&apos;m</Greeting>
       <HeroName>{MichaelTabb.name}</HeroName>
       <HeroTitle>{MichaelTabb.title}</HeroTitle>
       <HeroTagline>
-        I build software. AI-driven iteration has taken my productivity to a whole new level. I write every line, follow every decision, and ship a lot more of it.
+        I build and ship software across the full stack. I move fast, stay close to the code, and care about getting
+        things right.
       </HeroTagline>
       <SocialRow>
         <SocialLink href="https://www.linkedin.com/in/michael-tabb-24b34488/" target="_blank" rel="noreferrer">
@@ -144,13 +143,11 @@ const HomeHero = () => (
           <SocialIcon iconName="github" />
           GitHub
         </SocialLink>
-        <SocialLink href="https://humaniz.io/" target="_blank" rel="noreferrer">
+        <SocialLink href="https://humaniz.io/" target="_blank" rel="noopener">
           <SocialIcon iconName="humaniz" />
           Humaniz
         </SocialLink>
-        <SocialLink href={`mailto:${MichaelTabb.email}`}>
-          {MichaelTabb.email}
-        </SocialLink>
+        <SocialLink href={`mailto:${MichaelTabb.email}`}>{MichaelTabb.email}</SocialLink>
       </SocialRow>
     </TextContent>
   </HeroSection>

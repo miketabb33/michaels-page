@@ -10,8 +10,9 @@ import TicTacToeRegularPage from '../pages/TicTacToe/TicTacToeRegularPage'
 import TicTacToeTimedPage from '../pages/TicTacToe/TicTacToeTimedPage'
 import TicTacToe3dPage from '../pages/TicTacToe/TicTacToe3dPage'
 import RecommendedBooksPage from '../pages/RecommendedBooksPage'
-import MyTradingCardWorthPage from '../pages/MyTradingCardWorthPage'
+import TcgValorPage from '../pages/TcgValorPage'
 import AboutMePage from '../pages/AboutMePage'
+import ProjectsPage from '../pages/ProjectsPage'
 
 const Router = () => {
   return (
@@ -26,10 +27,11 @@ const Router = () => {
           <Route path="3d" element={<TicTacToe3dPage />} />
         </Route>
         <Route path="landing" element={<LandingPage />} />
-        <Route path="my-trading-card-worth" element={<MyTradingCardWorthPage />} />
+        <Route path="my-trading-card-worth" element={<TcgValorPage />} />
         <Route path="article/:slug" element={<ArticlePage />} />
         <Route path="recommended-books" element={<RecommendedBooksPage />} />
         <Route path="about-me" element={<AboutMePage />} />
+        <Route path="projects" element={<ProjectsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
