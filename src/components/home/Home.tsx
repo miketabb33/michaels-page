@@ -4,6 +4,7 @@ import { ArticleMeta, fetchArticleManifest } from '../../network/articleClient'
 import ArticlesList, { ArticleListSkeleton } from '../article/ArticlesList'
 import styled from 'styled-components'
 import HomeHero from './HomeHero'
+import HomeTestimonial from './HomeTestimonial'
 
 const PageWrap = styled.div`
   max-width: 130rem;
@@ -48,6 +49,8 @@ const Home = () => {
   return (
     <PageWrap>
       <HomeHero />
+      <Divider />
+      <HomeTestimonial />
       <Divider />
       <ArticlesHeader>
         <Eyebrow>Writing</Eyebrow>
