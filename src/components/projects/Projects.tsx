@@ -147,6 +147,13 @@ const projects: Project[] = [
     href: PATH_VALUES.myTradingCardWorth,
   },
   {
+    name: 'Shanghai Rummy',
+    description: 'A multiplayer card game for 2–6 players with real-time gameplay powered by Firebase.',
+    tags: ['Vue', 'TypeScript', 'Firebase'],
+    href: 'https://shanghai-rummy.onrender.com/',
+    external: true,
+  },
+  {
     name: 'Pong',
     description: 'A take on the classic arcade game. How high can you score?',
     tags: ['React', 'TypeScript', 'Canvas'],
